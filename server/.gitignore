@@ -1,0 +1,8 @@
+# Environment vars
+.env
+
+# Dependency directories
+node_modules
+
+# vscode
+.vscode
