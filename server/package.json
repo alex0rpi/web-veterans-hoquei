@@ -1,18 +1,13 @@
 {
-  "type": "module",
   "name": "back",
   "description": "This project was bootstrapped with Fastify-CLI.",
   "version": "1.0.0",
-  "main": "app.ts",
+  "main": "dist/app.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "c8 tap \"test/**/*.test.js\"",
-    "startold": "fastify start -l info app.ts",
-    "build": "tsc -p tsconfig.json",
-    "start": "node index.js",
-    "dev": "fastify start -w -l info -P app.ts"
+    "dev": "nodemon src/app.ts"
   },
   "keywords": [],
   "author": "",
@@ -35,8 +30,13 @@
     "zod-to-json-schema": "^3.21.4"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/dotenv": "^8.2.0",
+    "@types/jsonwebtoken": "^9.0.5",
     "@types/node": "^20.9.0",
+    "@types/uuid": "^9.0.7",
     "c8": "^7.13.0",
+    "nodemon": "^3.0.1",
     "tap": "^16.1.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"

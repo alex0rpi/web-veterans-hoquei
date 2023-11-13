@@ -1,8 +1,8 @@
 import { FastifyInstance } from 'fastify';
-import { registerUser, loginUser } from '../../controllers/users';
+import { registerUser } from '../../controllers/users';
 import { $ref } from '../../schemas/userSchema';
 
-const registerUserOpts = {
+/* const registerUserOpts = {
   schema: {
     description: 'Register a new user',
     body: $ref('createUserSchema'),
@@ -19,8 +19,8 @@ const registerUserOpts = {
     },
   },
   //   handler: registerUser,
-};
-const loginUserOpts = {
+}; */
+/* const loginUserOpts = {
   schema: {
     description: 'Login a user',
     body: $ref('loginUserSchema'),
@@ -37,12 +37,12 @@ const loginUserOpts = {
     },
   },
   //   handler: loginUser,
-};
+}; */
 
 export async function userRoutes(fastify: FastifyInstance) {
-  fastify.post('/', registerUserOpts, registerUser);
+  fastify.post('/register', registerUser);
 
-  fastify.post('/', loginUserOpts, loginUser);
+  // app.post('/', loginUserOpts, loginUser);
 
   //   fastify.get('/', getUsersOpts, getUsers)
 }
