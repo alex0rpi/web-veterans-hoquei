@@ -3,14 +3,16 @@
   "name": "back",
   "description": "This project was bootstrapped with Fastify-CLI.",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "app.ts",
   "directories": {
     "test": "test"
   },
   "scripts": {
     "test": "c8 tap \"test/**/*.test.js\"",
-    "start": "fastify start -l info app.js",
-    "dev": "fastify start -w -l info -P app.js"
+    "startold": "fastify start -l info app.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node index.js",
+    "dev": "fastify start -w -l info -P app.ts"
   },
   "keywords": [],
   "author": "",
