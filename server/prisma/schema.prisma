@@ -11,16 +11,28 @@ datasource db {
 }
 
 model User {
-  id        String    @id @default(uuid())
-  email     String    @unique
+  id        String      @id @default(uuid())
+  email     String      @unique
   name      String
   password  String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  status    USER_STATUS @default(INACTIVE)
+  role      USER_ROLE   @default(REGISTERED)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
   posts     Post[]
   Chapter   Chapter[]
 
   @@map("users")
+}
+
+enum USER_STATUS {
+  ACTIVE
+  INACTIVE
+}
+
+enum USER_ROLE {
+  ADMIN
+  REGISTERED
 }
 
 model Post {

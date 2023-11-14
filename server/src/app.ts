@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import fastify from 'fastify';
 import Swagger from '@fastify/swagger';
 import SwaggerUI from '@fastify/swagger-ui';
@@ -16,9 +17,10 @@ app.get('/health-check', async function () {
 async function main() {
   app.register(userRoutes, { prefix: '/api/users' });
 
+  const PORT = 8000;
   try {
-    await app.listen({ port: 5000, host: '0.0.0.0' });
-    console.log('Server ready at port 5000');
+    await app.listen({ port: PORT, host: '0.0.0.0' });
+    console.log(`Server ready at port ${PORT}`);
   } catch (error) {
     console.log(error);
     process.exit(1);
