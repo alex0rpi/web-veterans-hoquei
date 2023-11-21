@@ -1,15 +1,16 @@
 # Getting Started with [Fastify-CLI](https://www.npmjs.com/package/fastify-cli)
 
-This project was bootstrapped with Fastify-CLI.
+This project was bootstrapped with Fastify-CLI. I am still learning it, so server development is going slower than I would like but anyway, I think its worth it.
 
 To learn Fastify, check out the [Fastify documentation](https://www.fastify.io/docs/latest/).
 
-## For backend:
+## Backend start up:
 
-- Make database migration if necessary
+- Install dependencies
 
 ```Bash
-npx prisma migrate dev --name migrationName
+cd server
+npm i
 ```
 
 - Initiate the database:
@@ -17,6 +18,12 @@ npx prisma migrate dev --name migrationName
 ```bash
 cd back/
 docker compose up
+```
+
+- Make database migration if necessary
+
+```Bash
+npx prisma migrate dev --name migrationName
 ```
 
 - Then run the server
@@ -30,4 +37,25 @@ npm run dev
 
 ```Bash
 docker compose down
+```
+
+## Frontend start up:
+
+- Install dependencies
+
+```Bash
+cd client
+npm i
+```
+
+- Start client server
+
+```Bash
+npm run dev
+```
+
+- Initiate tailwind watch in case you want to mess with it
+
+```Bash
+npm run watch:css
 ```
