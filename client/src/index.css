@@ -2,3 +2,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: 'Nunito', sans-serif;
+  font-family: 'Poppins', sans-serif;
+}
+
+.btn {
+  @apply rounded-full py-2 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider;
+}
+
+.card {
+  @apply bg-white rounded overflow-hidden shadow-md relative;
+}
