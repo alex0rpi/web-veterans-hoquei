@@ -1,15 +1,18 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
 import prisma from '../../config/prisma';
 import { TCreateUser } from '../../schemas/userRegisterSchema';
-import bcrypt from 'bcrypt';
+import { hashPassword } from '../../helpers/passwordHash';
 
 export const registerUser = async (
   req: FastifyRequest<{ Body: TCreateUser }>,
   reply: FastifyReply
 ) => {
-  const newUserData = req.body;
   try {
-    const hashedPassword = await bcrypt.hash(newUserData.password, 10);
+    const newUserData = req.body;
+    if (newUserData.password !== newUserData.confirmPassword) {
+      return reply.code(400).send('Passwords do not match.');
+    }
+    const hashedPassword = await hashPassword(newUserData.password);
 
     await prisma.user.create({
       data: {
