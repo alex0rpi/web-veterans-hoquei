@@ -23,23 +23,24 @@ Run the test cases.
 
 To learn Fastify, check out the [Fastify documentation](https://www.fastify.io/docs/latest/).
 
-For developers:
+For backend:
 
-- To initiate the database:
+- Initiate the database:
 
 ```bash
-    docker run -d \
-        --name postgres \
-        -e POSTGRES_USER=$DB_USER \
-         -e POSTGRES_PASSWORD=$DB_PASS \
-        -e POSTGRES_DB=$DB_NAME \
-        -v "/$(pwd)/config/init.sql:/docker-entrypoint-initdb.d/init.sql" \
-        -p $DB_PORT:5432 \
-        postgres:latest
+cd back/
+docker compose up
 ```
 
 - Then run the server
 
 ```Bash
 npm run dev
+```
+
+- To stop the server just ctrl+C
+- Then stop the container running the postgre database server
+
+```Bash
+docker compose down
 ```

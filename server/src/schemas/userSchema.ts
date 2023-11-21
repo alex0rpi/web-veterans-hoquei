@@ -1,29 +1,29 @@
 import { z } from 'zod';
-import { buildJsonSchemas } from 'fastify-zod';
 
-const createUserSchema = z.object({
-  name: z.string().min(1).max(100),
-  email: z.string().email(),
-  password: z.string().min(6).max(100),
+export const userSchema = z.object({
+  id: z.string(),
+  email: z
+    .string({
+      required_error: 'Invalid email address.',
+      invalid_type_error: 'Email must be a string.',
+    })
+    .email(),
+  password: z
+    .string({
+      required_error: 'Invalid password address.',
+      invalid_type_error: 'Password must be a string.',
+    })
+    .min(8)
+    .max(50),
+  name: z
+    .string({
+      required_error: 'Invalid name.',
+      invalid_type_error: 'Name must be a string.',
+    })
+    .min(1)
+    .max(100),
+  status: z.enum(['ACTIVE', 'INACTIVE']),
+  role: z.enum(['ADMIN', 'REGISTERED']),
+  createdAt: z.string().datetime(),
+  updatedAt: z.string().datetime(),
 });
-
-const loginUserSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(6).max(100),
-});
-
-const updateUserSchema = z.object({
-  name: z.string().min(1).max(100),
-  email: z.string().email(),
-  password: z.string().min(6).max(100),
-});
-
-export const { schemas: userSchemas, $ref } = buildJsonSchemas({
-  createUserSchema,
-  loginUserSchema,
-  updateUserSchema,
-});
-
-export type TCreateUser = z.infer<typeof createUserSchema>;
-export type TLoginUser = z.infer<typeof loginUserSchema>;
-export type TUpdateUser = z.infer<typeof updateUserSchema>;

@@ -20,7 +20,7 @@ model User {
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
   posts     Post[]
-  Chapter   Chapter[]
+  chapters  Chapter[]
 
   @@map("users")
 }
