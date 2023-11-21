@@ -17,7 +17,7 @@ app.get('/health-check', async function () {
 async function main() {
   app.register(userRoutes, { prefix: '/api/users' });
 
-  const PORT = 8000;
+  const PORT = 5000;
   try {
     await app.listen({ port: PORT, host: '0.0.0.0' });
     console.log(`Server ready at port ${PORT}`);
