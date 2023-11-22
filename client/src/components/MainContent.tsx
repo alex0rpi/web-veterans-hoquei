@@ -1,24 +1,25 @@
 export const MainContent = () => {
   return (
-    <div className="px-10 py-6 bg-gray-100 md:col-span-4">
-      <div className="flex justify-center md:justify-end gap-4">
+    <div className="md:col-start-3 md:col-span-3 w-full min-w-fit px-8 py-6 bg-gray-100 ">
+      <div className="pb-4 md:flex justify-center hidden md:dysplay-block md:justify-end gap-4">
         <a
-          href="#"
+          href="/admin"
           className="btn text-sky-950 border-sky-950 md:border-2 hover:bg-sky-950 hover:text-white transition ease-out duration-500"
         >
-          Log in
-        </a>
-        <a
-          href="#"
-          className="btn text-sky-950 border-sky-950 md:border-2 hover:bg-sky-950 hover:text-white transition ease-out duration-500"
-        >
-          Register
+          Accés membres
         </a>
       </div>
 
       <header>
-        <h2 className="text-gray-700 text-6xl font-semibold">ASSOCIACIO</h2>
-        <h3 className="text-2xl font-semibold">VETERANS HOQUEI PATINS FCB</h3>
+        <h1 className="text-gray-700 lg:text-4xl hidden sm:block sm:text-2xl font-semibold">
+          ASSOCIACIO DE VETERANS
+        </h1>
+        <h1 className="text-gray-700 lg:text-6xl hidden sm:block sm:text-2xl font-semibold">
+          HOQUEI PATINS FCB
+        </h1>
+        <h1 className="text-gray-700 text-center lg:text-4xl sm:hidden text-2xl font-semibold">
+          VETERANS HOQUEI PATINS FCB
+        </h1>
       </header>
 
       <div>
