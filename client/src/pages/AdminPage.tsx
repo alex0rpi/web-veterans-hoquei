@@ -1,7 +1,12 @@
+import { AdminContent } from '../components';
+import { AdminNavigation } from '../components/admin/AdminNavigation';
+import { MainLayout } from '../layouts/MainLayout';
+
 export const AdminPage = () => {
   return (
-    <div>
-      <h1>Admin Page</h1>
-    </div>
+    <MainLayout>
+      <AdminNavigation />
+      <AdminContent />
+    </MainLayout>
   );
 };

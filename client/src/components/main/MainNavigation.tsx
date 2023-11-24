@@ -1,5 +1,5 @@
-import { MenuItem } from './MenuItem';
-import { LogoItem } from './LogoItem';
+import { MenuItem } from '../utils/MenuItem';
+import { LogoItem } from '../utils/LogoItem';
 
 export const MainNavigation = () => {
   return (
@@ -9,7 +9,7 @@ export const MainNavigation = () => {
         {/* Page Navigation Items */}
         <div className="w-full ps-5 pe-2 text-sm mt-6 hidden md:block" id="menu">
           <MenuItem title="Home" />
-          <MenuItem title="Accés" />
+          <MenuItem title="Accés" to="/admin/login" />
           <MenuItem title="El Llibre" />
           <MenuItem title="Junta" />
           <MenuItem title="Temporades" />

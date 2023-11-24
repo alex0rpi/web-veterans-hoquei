@@ -9,7 +9,7 @@ export const Card = (props: Props) => {
     <img
       src={props.foto}
       alt="foto"
-      className="object-cover card h-full my-2 w-[300px] inline-block m-2"
+      className="card object-cover h-[320px] w-[400px] inline-block m-1"
     />
   );
 };

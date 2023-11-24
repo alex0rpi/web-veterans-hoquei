@@ -1,6 +1,6 @@
 export const HeaderTitle = () => {
   return (
-    <header>
+    <header className="mt-3">
       <h1 className="text-gray-700 xl:text-4xl lg:text-3xl hidden md:text-left text-center sm:block sm:text-2xl font-semibold">
         ASSOCIACIO DE VETERANS
       </h1>

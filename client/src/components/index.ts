@@ -1,19 +1,19 @@
 import { NotFound } from './NotFound';
-import { HeaderBar } from './HeaderBar';
-import { MainNavigation } from './MainNavigation';
-import { MainContent } from './MainContent';
-import { MenuItem } from './MenuItem';
-import { LogoItem } from './LogoItem';
-import { HeaderTitle } from './HeaderTitle';
-import { Card } from './Card';
+import { MainNavigation } from './main/MainNavigation';
+import { MainContent } from './main/MainContent';
+import { MenuItem } from './utils/MenuItem';
+import { LogoItem } from './utils/LogoItem';
+import { HeaderTitle } from './main/HeaderTitle';
+import { Card } from './utils/Card';
+import { AdminContent } from './admin/AdminContent';
 
 export {
   NotFound,
-  HeaderBar,
   MainNavigation,
   MainContent,
   MenuItem,
   LogoItem,
   HeaderTitle,
   Card,
+  AdminContent,
 };
