@@ -6,6 +6,11 @@ export default {
       fontFamily: {
         body: ['Nunito'],
       },
+
+      gridTemplateColumns: {
+        layoutMd: '7.5% 17.5% 67.5% 7.5%',
+        layoutLg: '12.5% 15% 60% 12.5%',
+      },
     },
   },
   plugins: [],

@@ -13,5 +13,5 @@ body {
 }
 
 .card {
-  @apply bg-white rounded overflow-hidden shadow-md relative;
+  @apply cursor-pointer rounded-xl shadow-slate-950 hover:shadow-lg hover:scale-105 transition ease-out duration-300;
 }

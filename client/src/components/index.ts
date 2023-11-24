@@ -4,5 +4,16 @@ import { MainNavigation } from './MainNavigation';
 import { MainContent } from './MainContent';
 import { MenuItem } from './MenuItem';
 import { LogoItem } from './LogoItem';
+import { HeaderTitle } from './HeaderTitle';
+import { Card } from './Card';
 
-export { NotFound, HeaderBar, MainNavigation, MainContent, MenuItem, LogoItem };
+export {
+  NotFound,
+  HeaderBar,
+  MainNavigation,
+  MainContent,
+  MenuItem,
+  LogoItem,
+  HeaderTitle,
+  Card,
+};

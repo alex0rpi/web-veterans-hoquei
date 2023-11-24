@@ -7,9 +7,10 @@ export const MainNavigation = () => {
       <nav className="text-right bg-sky-950 text-slate-200 w-full min-w-fit">
         <LogoItem />
         {/* Page Navigation Items */}
-        <div className="ps-12 text-sm mt-6 hidden md:block" id="menu">
+        <div className="w-full ps-5 pe-2 text-sm mt-6 hidden md:block" id="menu">
           <MenuItem title="Home" />
-          <MenuItem title="Accés membres" />
+          <MenuItem title="Accés" />
+          <MenuItem title="El Llibre" />
           <MenuItem title="Junta" />
           <MenuItem title="Temporades" />
           <MenuItem title="Blog i notícies" />

@@ -1,110 +1,71 @@
+import { Button } from './Button';
+import { Card } from './Card';
+import { HeaderTitle } from './HeaderTitle';
+import { foto01, foto02, foto03, foto04, foto05 } from '../assets/pictures';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+
 export const MainContent = () => {
+  const slideLeft = () => {
+    const slider = document.getElementById('slider');
+    if (slider) {
+      slider.scrollLeft -= 400;
+    }
+  };
+  const slideRight = () => {
+    const slider = document.getElementById('slider');
+    if (slider) {
+      slider.scrollLeft += 400;
+    }
+  };
+
   return (
-    <div className="md:col-start-3 md:col-span-3 w-full min-w-fit px-8 py-6 bg-gray-100 ">
-      <div className="pb-4 md:flex justify-center hidden md:dysplay-block md:justify-end gap-4">
-        <a
-          href="/admin"
-          className="btn text-sky-950 border-sky-950 md:border-2 hover:bg-sky-950 hover:text-white transition ease-out duration-500"
+    <div className="md:col-start-3 md:col-end-4 md:justify-stretch px-6 py-6 bg-gray-200 ">
+      <Button title="Accés membres" />
+      <HeaderTitle />
+
+      {/* Main Page content */}
+      <h4 className="font-bold mt-8 pb-2 border-b border-gray-400">Primera secció</h4>
+      <div className="relative flex items-center w-full justify-center container mx-auto my-6 h-[350px]">
+        <FontAwesomeIcon
+          icon={faChevronLeft}
+          size="lg"
+          onClick={slideLeft}
+          className="cursor-pointer me-1 hover:scale-125 transition ease-out duration-250"
+        />
+        <div
+          id="slider"
+          className="w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth"
         >
-          Accés membres
-        </a>
+          <Card foto={foto01} />
+          <Card foto={foto02} />
+          <Card foto={foto03} />
+          <Card foto={foto04} />
+          <Card foto={foto05} />
+        </div>
+        <FontAwesomeIcon
+          icon={faChevronRight}
+          size="lg"
+          onClick={slideRight}
+          className="cursor-pointer ms-1 hover:scale-125 transition ease-out duration-250"
+        />
       </div>
 
-      <header>
-        <h1 className="text-gray-700 lg:text-4xl hidden sm:block sm:text-2xl font-semibold">
-          ASSOCIACIO DE VETERANS
-        </h1>
-        <h1 className="text-gray-700 lg:text-6xl hidden sm:block sm:text-2xl font-semibold">
-          HOQUEI PATINS FCB
-        </h1>
-        <h1 className="text-gray-700 text-center lg:text-4xl sm:hidden text-2xl font-semibold">
-          VETERANS HOQUEI PATINS FCB
-        </h1>
-      </header>
+      {/* Nova secció aqui */}
+      <h4 className="font-bold mt-12 pb-2 border-b border-gray-400">Segona Secció</h4>
 
-      <div>
-        <h4 className="font-bold mt-12 pb-2 border-b border-gray-400">Primera secció</h4>
-        <div className="mt-8 grid md:grid-cols-3 gap-3">
-          {/* <!-- Cards go here --> */}
-          <div className="card hover:shadow-lg">
-            <img src="" alt="foto" className="w-full h-32 sm:h-48 object-cover" />
-            <div className="m-4">
-              <span className="font-bold">Algun titol</span>
-              <span className="block text-gray-500 text-sm">Shirley Temple</span>
-            </div>
-            <div className="badge">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                className="w-5 h-5 inline-block"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </div>
-          </div>
-          <div className="card hover:shadow-lg">
-            <img src="" alt="foto" className="w-full h-32 sm:h-48 object-cover" />
-            <div className="m-4">
-              <span className="font-bold">Algun titol</span>
-              <span className="block text-gray-500 text-sm">Shirley Temple</span>
-            </div>
-            <div className="badge">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                className="w-5 h-5 inline-block"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </div>
-          </div>
-          <div className="card hover:shadow-lg">
-            <img src="" alt="foto" className="w-full h-32 sm:h-48 object-cover" />
-            <div className="m-4">
-              <span className="font-bold">Algun titol</span>
-              <span className="block text-gray-500 text-sm">Shirley Temple</span>
-            </div>
-            <div className="badge">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                className="w-5 h-5 inline-block"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <h4 className="font-bold mt-12 pb-2 border-b border-gray-400">Segona Secció</h4>
-        <div className="mt-8">{/* <!-- MOre cards here --> */}</div>
-
-        <div className="flex justify-center">
-          <div className="btn bg-secondary-100 text-secondary-200 hover:shadow-inner hover:bg-opacity-50 transform hover:scale-125 transition ease-out duration-500">
-            Més contingut
-          </div>
+      <div className="flex justify-center">
+        <div className="btn bg-secondary-100 text-secondary-200 hover:shadow-inner hover:bg-opacity-50 transform hover:scale-125 transition ease-out duration-500">
+          Més contingut
         </div>
       </div>
+      {/* Secció Junta */}
+      {/* Secció Llibre */}
+      {/* Secció Temporades-epitafis del llibre */}
+      {/* Secció Blog i Notícies - potser pàgina apart?? */}
+      {/* Secció Enllaços */}
+      {/* Secció On Som */}
+      {/* Secció Contacte */}
     </div>
   );
 };
