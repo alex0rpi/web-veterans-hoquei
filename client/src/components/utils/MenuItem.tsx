@@ -12,7 +12,7 @@ export const MenuItem = ({ title, to = '/' }: Props) => {
   return (
     <Link
       to={to}
-      className="py-1 pe-1 flex justify-end text-base hover:text-lg hover:bg-white hover:text-sky-950 transition ease-out duration-500"
+      className="py-1 pe-1 flex justify-end text-base hover:text-lg hover:bg-slate-100 hover:text-sky-950 transition ease-out duration-500"
     >
       <span>{title}</span>
       {/*  <FontAwesomeIcon

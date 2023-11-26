@@ -1,73 +1,46 @@
-import { Card } from '../utils/Card';
 import { HeaderTitle } from './HeaderTitle';
-import { foto01, foto02, foto03, foto04, foto05 } from '../../assets/pictures';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { easeInOut, motion } from 'framer-motion';
+import { ImageCarousel } from './ImageCarousel';
+import Testimonials from './Testimonials';
+import BookFeatures from './BookFeatures';
 
-type MainContentProps = {
-  loggedUser: string;
-};
+// loader
+// export const mainContentLoader = () => {
+//   const userName: string = fetchData('userName');
+//   return {
+//     userName,
+//   };
+// };
 
-export const MainContent = (props: MainContentProps) => {
-  const slideLeft = () => {
-    const slider = document.getElementById('slider');
-    if (slider) {
-      slider.scrollLeft -= 410;
-    }
-  };
-  const slideRight = () => {
-    const slider = document.getElementById('slider');
-    if (slider) {
-      slider.scrollLeft += 410;
-    }
-  };
+// type TLoaderData = {
+//   userName: string;
+// };
+
+export const MainContent = () => {
+  // const { userName } = useLoaderData<TLoaderData>();
 
   return (
-    <div className="md:col-start-3 md:col-end-4 md:justify-stretch px-6 py-6 bg-gray-200 ">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ type: easeInOut, duration: 1 }}
+      exit={{ opacity: 0 }}
+    >
       {/* <Button title="Accés membres" /> */}
       <HeaderTitle />
 
       {/* Main Page content */}
       <div className="pb-2 border-b border-gray-400"></div>
-      <p className="text-right text-gray-700">
-        Bon dia, <strong>{props.loggedUser}</strong>
-      </p>
-      <div className="relative flex items-center w-full justify-center container mx-auto mt-1 mb-4 h-[340px]">
-        <FontAwesomeIcon
-          icon={faChevronLeft}
-          size="lg"
-          onClick={slideLeft}
-          className="cursor-pointer me-2 hover:scale-125 transition ease-out duration-250"
-        />
-        <div
-          id="slider"
-          className="w-full h-full flex items-center overflow-x-scroll scrollbar-hide whitespace-nowrap scroll-smooth"
-        >
-          <Card foto={foto01} />
-          <Card foto={foto02} />
-          <Card foto={foto03} />
-          <Card foto={foto04} />
-          <Card foto={foto05} />
-        </div>
-        <FontAwesomeIcon
-          icon={faChevronRight}
-          size="lg"
-          onClick={slideRight}
-          className="cursor-pointer ms-2 hover:scale-125 transition ease-out duration-250"
-        />
-      </div>
 
+      <ImageCarousel />
       {/* Nova secció aqui */}
-      <h4 className="text-gray-700 text-4xl font-medium mt-12 pb-2 border-b border-gray-400">
+      <h4 className="text-gray-700 text-4xl font-medium mt-12 pb-2 border-b border-gray-400 mb-3">
         LLIBRE
       </h4>
-
-      <div className="flex justify-center">
-        <div className="btn bg-secondary-100 text-secondary-200 hover:shadow-inner hover:bg-opacity-50 transform hover:scale-125 transition ease-out duration-500">
-          Més contingut
-        </div>
-      </div>
-      <h4 className="text-gray-700 text-4xl font-medium mt-12 pb-2 border-b border-gray-400">
+      <BookFeatures />
+      <Testimonials />
+      {/* --------------------------------------- */}
+      <h4 className="text-gray-700 text-4xl font-medium mt-12 pb-2 border-b border-gray-400 mb-3">
         JUNTA
       </h4>
       <div className="flex justify-center">
@@ -75,7 +48,19 @@ export const MainContent = (props: MainContentProps) => {
           Més contingut
         </div>
       </div>
-      <h4 className="text-gray-700 text-4xl font-medium mt-12 pb-2 border-b border-gray-400">
+      {/* --------------------------------------- */}
+
+      <h4 className="text-gray-700 text-4xl font-medium mt-12 pb-2 border-b border-gray-400 mb-3">
+        TEMPORADES RECENTS
+      </h4>
+      <div className="flex justify-center">
+        <div className="btn bg-secondary-100 text-secondary-200 hover:shadow-inner hover:bg-opacity-50 transform hover:scale-125 transition ease-out duration-500">
+          Els epitafis del llibre aquí.
+        </div>
+      </div>
+      {/* --------------------------------------- */}
+
+      <h4 className="text-gray-700 text-4xl font-medium mt-12 pb-2 border-b border-gray-400 mb-3">
         Enllaços
       </h4>
       <div className="flex justify-center">
@@ -83,7 +68,9 @@ export const MainContent = (props: MainContentProps) => {
           Més contingut
         </div>
       </div>
-      <h4 className="text-gray-700 text-4xl font-medium mt-12 pb-2 border-b border-gray-400">
+      {/* --------------------------------------- */}
+
+      <h4 className="text-gray-700 text-4xl font-medium mt-12 pb-2 border-b border-gray-400 mb-3">
         On Som
       </h4>
       <div className="flex justify-center">
@@ -91,7 +78,9 @@ export const MainContent = (props: MainContentProps) => {
           Més contingut
         </div>
       </div>
-      <h4 className="text-gray-700 text-4xl font-medium mt-12 pb-2 border-b border-gray-400">
+      {/* --------------------------------------- */}
+
+      <h4 className="text-gray-700 text-4xl font-medium mt-12 pb-2 border-b border-gray-400 mb-3">
         Contacte
       </h4>
       <div className="flex justify-center">
@@ -99,11 +88,6 @@ export const MainContent = (props: MainContentProps) => {
           Més contingut
         </div>
       </div>
-      {/* Secció Temporades-epitafis del llibre */}
-      {/* Secció Blog i Notícies - potser pàgina apart?? */}
-      {/* Secció Enllaços */}
-      {/* Secció On Som */}
-      {/* Secció Contacte */}
-    </div>
+    </motion.div>
   );
 };

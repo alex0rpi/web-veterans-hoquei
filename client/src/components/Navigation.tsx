@@ -14,6 +14,7 @@ export const Navigation = () => {
           <MenuItem title="El Llibre" />
           <MenuItem title="Junta" />
           <MenuItem title="Temporades" />
+          <MenuItem title="Info jugadors" />
           <MenuItem title="Blog i notícies" />
           <MenuItem title="Enllaços" />
           <MenuItem title="On som" />

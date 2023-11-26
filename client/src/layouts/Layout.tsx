@@ -1,11 +1,14 @@
-import { PropsWithChildren } from 'react';
 import { Navigation } from '../components';
+import { Outlet } from 'react-router-dom';
 
-export const MainLayout = (props: PropsWithChildren) => {
+export const MainLayout = () => {
   return (
-    <div className="grid md:grid-cols-layoutMd xl:grid-cols-layoutLg h-screen">
+    <div className="main-grid">
       <Navigation />
-      {props.children}
+      <div className="main-column-layout">
+        <Outlet />
+      </div>
+      {/* Outlet is a special component that will render the child route’s component */}
     </div>
   );
 };

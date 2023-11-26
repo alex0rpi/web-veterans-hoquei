@@ -8,10 +8,18 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+.main-grid {
+  @apply grid md:grid-cols-layoutMd xl:grid-cols-layoutLg h-screen;
+}
+
+.main-column-layout {
+  @apply md:col-start-3 md:col-end-4 md:justify-stretch px-6 py-6 bg-gray-200;
+}
+
 .btn {
   @apply rounded-full py-2 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider;
 }
 
 .card {
-  @apply cursor-pointer rounded-xl shadow-slate-950 hover:shadow-lg hover:scale-95 transition ease-out duration-300;
+  @apply cursor-pointer rounded-xl shadow-slate-950 hover:shadow-xl hover:scale-95 transition ease-out duration-300;
 }
