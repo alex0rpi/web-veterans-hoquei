@@ -1,4 +1,4 @@
-// import React from 'react';
+import { motion } from 'framer-motion';
 
 import { Button } from '../../utils/Button';
 
@@ -6,7 +6,16 @@ import { Button } from '../../utils/Button';
 
 export const AdminLogin = () => {
   return (
-    <>
+    <motion.div
+      initial={{ scale: 0 }}
+      animate={{ translateX: 0, scale: 1 }}
+      transition={{
+        type: 'spring',
+        stiffness: 260,
+        damping: 20,
+      }}
+      exit={{ opacity: 0, x: '-100vw' }}
+    >
       <h1 className="text-gray-700 text-4xl font-medium mt-10 border-b border-gray-400 pb-2">
         Accés per a membres
       </h1>
@@ -50,7 +59,7 @@ export const AdminLogin = () => {
           <Button title="Registrar-me" to="/admin/register" />
         </form>
       </div>
-    </>
+    </motion.div>
   );
 };
 

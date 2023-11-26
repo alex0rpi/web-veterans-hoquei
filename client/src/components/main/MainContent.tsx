@@ -1,11 +1,14 @@
-// import { Button } from './Button';
 import { Card } from '../utils/Card';
 import { HeaderTitle } from './HeaderTitle';
 import { foto01, foto02, foto03, foto04, foto05 } from '../../assets/pictures';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
-export const MainContent = () => {
+type MainContentProps = {
+  loggedUser: string;
+};
+
+export const MainContent = (props: MainContentProps) => {
   const slideLeft = () => {
     const slider = document.getElementById('slider');
     if (slider) {
@@ -26,7 +29,10 @@ export const MainContent = () => {
 
       {/* Main Page content */}
       <div className="pb-2 border-b border-gray-400"></div>
-      <div className="relative flex items-center w-full justify-center container mx-auto my-4 h-[340px]">
+      <p className="text-right text-gray-700">
+        Bon dia, <strong>{props.loggedUser}</strong>
+      </p>
+      <div className="relative flex items-center w-full justify-center container mx-auto mt-1 mb-4 h-[340px]">
         <FontAwesomeIcon
           icon={faChevronLeft}
           size="lg"

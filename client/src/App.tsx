@@ -1,14 +1,16 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { NotFound } from './components';
 import { AdminPage, MainPage } from './pages';
+import { mainPageLoader } from './pages/MainPage';
+// import Error from './helpers/Error';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <MainPage />,
-    // loader:
+    loader: mainPageLoader, // loads data for the page
+    // errorElement: <Error />, // shows error if data failed to load
     // actions:
-    // errorElement
   },
   {
     path: '/admin/login',

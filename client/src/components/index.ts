@@ -1,4 +1,4 @@
-import { NotFound } from './NotFound';
+import { NotFound } from '../pages/NotFound';
 import { Navigation } from './Navigation';
 import { MainContent } from './main/MainContent';
 import { MenuItem } from './utils/MenuItem';
