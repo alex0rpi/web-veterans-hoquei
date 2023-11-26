@@ -1,11 +1,9 @@
 import { AdminContent } from '../components';
-import { AdminNavigation } from '../components/admin/AdminNavigation';
-import { MainLayout } from '../layouts/MainLayout';
+import { MainLayout } from '../layouts/Layout';
 
 export const AdminPage = () => {
   return (
     <MainLayout>
-      <AdminNavigation />
       <AdminContent />
     </MainLayout>
   );

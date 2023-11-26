@@ -1,6 +1,8 @@
 import { MenuItem } from '../utils/MenuItem';
 import { LogoItem } from '../utils/LogoItem';
 
+// Should only be visible once the user is logged in.
+
 export const AdminNavigation = () => {
   return (
     <div className="md:col-start-2  md:col-span-1 md:flex md:justify-end">

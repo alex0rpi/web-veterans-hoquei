@@ -1,5 +1,5 @@
 import { NotFound } from './NotFound';
-import { MainNavigation } from './main/MainNavigation';
+import { Navigation } from './Navigation';
 import { MainContent } from './main/MainContent';
 import { MenuItem } from './utils/MenuItem';
 import { LogoItem } from './utils/LogoItem';
@@ -9,7 +9,7 @@ import { AdminContent } from './admin/AdminContent';
 
 export {
   NotFound,
-  MainNavigation,
+  Navigation,
   MainContent,
   MenuItem,
   LogoItem,

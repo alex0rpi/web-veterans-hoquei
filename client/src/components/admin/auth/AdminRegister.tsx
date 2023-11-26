@@ -39,7 +39,7 @@ const AdminRegister = () => {
               name="password"
               id="password"
               placeholder="••••••••"
-              className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 "
+              className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 mb-3"
             />
           </div>
           <div>
@@ -47,7 +47,7 @@ const AdminRegister = () => {
               htmlFor="confirmPassword"
               className="block mb-1 text-sm font-semibold text-gray-900"
             >
-              Contrasenya
+              Confirma contrasenya
             </label>
             <input
               type="password"

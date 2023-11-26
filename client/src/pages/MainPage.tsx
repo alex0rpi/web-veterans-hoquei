@@ -1,10 +1,9 @@
-import { MainNavigation, MainContent } from '../components';
-import { MainLayout } from '../layouts/MainLayout';
+import { MainContent } from '../components';
+import { MainLayout } from '../layouts/Layout';
 
 export const MainPage = () => {
   return (
     <MainLayout>
-      <MainNavigation />
       <MainContent />
     </MainLayout>
   );
