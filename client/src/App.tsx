@@ -3,11 +3,16 @@ import MainContent from "./components/main/MainContent";
 import NotFound from "./pages/NotFound";
 import AdminLogin from "./components/admin/auth/AdminLogin";
 import AdminRegister from "./components/admin/auth/AdminRegister";
+import SeasonContent from './components/main/SeasonContent';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainContent />,
+  },
+  {
+    path: "/temporades/:season",
+    element: <SeasonContent />,
   },
   {
     path: "/admin/login",

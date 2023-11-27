@@ -1,25 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&family=Poppins:wght@200;300;400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&family=Poppins:wght@200;300;400;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: 'Nunito', sans-serif;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Nunito", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .main-grid {
-  @apply grid md:grid-cols-layoutMd xl:grid-cols-layoutLg h-screen;
+  @apply grid h-screen md:grid-cols-layoutMd xl:grid-cols-layoutLg;
 }
 
 .main-column-layout {
-  @apply md:col-start-3 md:col-end-4 md:justify-stretch px-6 py-6 bg-gray-200;
+  @apply overflow-auto bg-gray-200 px-6 py-6 md:col-start-3 md:col-end-4 md:justify-stretch;
 }
 
 .btn {
-  @apply rounded-full py-2 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider;
+  @apply cursor-pointer rounded-full px-3 py-2 text-xs font-bold uppercase tracking-wider;
 }
 
 .card {
-  @apply cursor-pointer rounded-xl shadow-slate-950 hover:shadow-xl hover:scale-95 transition ease-out duration-300;
+  @apply cursor-pointer rounded-xl shadow-slate-950 transition duration-300 ease-out hover:scale-95 hover:shadow-xl;
 }

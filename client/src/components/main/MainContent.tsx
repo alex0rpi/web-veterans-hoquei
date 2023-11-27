@@ -18,17 +18,12 @@ const MainContent = () => {
       >
         <HeaderTitle />
 
-        {/* Main Page content */}
-        <div className="border-b border-gray-400 pb-2"></div>
-
         <ImageCarousel />
-        {/* Nova secció aqui */}
         <h4 className="mb-3 mt-12 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700">
           LLIBRE
         </h4>
         <BookFeatures />
         <Testimonials />
-        {/* --------------------------------------- */}
         <h4 className="mb-3 mt-12 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700">
           JUNTA
         </h4>
@@ -37,13 +32,11 @@ const MainContent = () => {
             Més contingut
           </div>
         </div>
-        {/* --------------------------------------- */}
 
         <h4 className="mb-3 mt-12 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700">
           TEMPORADES RECENTS
         </h4>
         <ChapterGrid />
-        {/* --------------------------------------- */}
 
         <h4 className="mb-3 mt-12 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700">
           Enllaços
@@ -53,13 +46,11 @@ const MainContent = () => {
             Més contingut
           </div>
         </div>
-        {/* --------------------------------------- */}
 
         <h4 className="mb-3 mt-12 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700">
           On Som
         </h4>
         <Location />
-        {/* --------------------------------------- */}
 
         <h4 className="mb-3 mt-12 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700">
           Contacte
