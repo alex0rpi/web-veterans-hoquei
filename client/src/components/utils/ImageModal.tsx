@@ -34,7 +34,7 @@ const ModalOverlay = (props: TModalOverlayProps) => {
       <img
         src={props.image}
         alt="foto"
-        className="fixed left-1/2 top-1/4 z-20 w-3/4 -translate-x-1/2 -translate-y-32 transform rounded-xl object-cover"
+        className="fixed left-1/2 top-1/4 z-20 w-[60%] -translate-x-1/2 -translate-y-32 transform rounded-xl object-cover"
       />
     </motion.div>
   );
