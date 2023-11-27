@@ -1,13 +1,13 @@
-import { testimoni01, testimoni02, testimoni03 } from '../../assets/testimonis';
+import { testimoni01, testimoni02, testimoni03 } from "../../assets/testimonis";
 
 const Testimonials = () => {
   return (
-    <section className="flex flex-column md:flex-row items-center justify-between">
+    <section className="flex-column flex items-center justify-between md:flex-row">
       <div className="text-center">
         <img
           src={testimoni01}
           alt="testimonial_1"
-          className="rounded-full h-44 w-44 mb-2 object-cover mx-auto"
+          className="mx-auto mb-2 h-44 w-44 rounded-full object-cover "
         />
         <p className="text-lg italic ">
           "Aquest es el meu comentari sobre aquest llibre."
@@ -19,7 +19,7 @@ const Testimonials = () => {
         <img
           src={testimoni02}
           alt="testimonial_2"
-          className="rounded-full h-44 w-44 mb-2 object-cover mx-auto"
+          className="mx-auto mb-2 h-44 w-44 rounded-full object-cover"
         />
         <p className="text-lg italic">
           "Aquest es el meu comentari sobre aquest llibre."
@@ -31,7 +31,7 @@ const Testimonials = () => {
         <img
           src={testimoni03}
           alt="testimonial_3"
-          className="rounded-full h-44 w-44 mb-2 object-cover mx-auto"
+          className="mx-auto mb-2 h-44 w-44 rounded-full object-cover"
         />
         <p className="text-lg italic">
           "Aquest es el meu comentari sobre aquest llibre."

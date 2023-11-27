@@ -1,23 +1,25 @@
-// import { useState } from 'react';
-// import Modal from './ImageModal';
+import { useState } from "react";
+import Modal from "./ImageModal";
 
 type Props = {
   foto: string;
 };
 
 export const Card = (props: Props) => {
-  // const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false);
 
-  // const hideImageModal = () => {
-  //   setShow((prevState) => !prevState);
-  // };
+  const toggleImageModal = () => {
+    setShow((prevState) => !prevState);
+  };
   return (
     <>
-      {/* {show && <Modal image={props.foto} modalClick={hideImageModal} />} */}
+      {show && <Modal image={props.foto} onBackdropClick={toggleImageModal} />}
+      {/* {show && <Modal />} */}
       <img
         src={props.foto}
         alt="foto"
-        className="card object-cover h-[320px] w-[400px] inline-block m-1"
+        className="card m-1 inline-block h-[320px] w-[400px] object-cover"
+        onClick={toggleImageModal}
       />
     </>
   );

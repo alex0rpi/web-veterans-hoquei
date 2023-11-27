@@ -1,46 +1,62 @@
-import ReactDOM from 'react-dom';
+import { motion } from "framer-motion";
+import ReactDOM from "react-dom";
 
-const Backdrop = () => {
-  return <div className="fixed top-0 left-0 w-full h-full z-10 bg-y-950/[.5]" />;
+type TBackdropProps = {
+  onClick: () => void;
+};
+
+const Backdrop = (props: TBackdropProps) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
+    >
+      <div
+        className="fixed left-0 top-0 z-10 h-full w-full bg-slate-950/80"
+        onClick={props.onClick}
+      />
+    </motion.div>
+  );
 };
 
 type TModalOverlayProps = {
   image: string;
-  modalClick: () => void;
 };
 
 const ModalOverlay = (props: TModalOverlayProps) => {
   return (
-    <div className="fixed top-40 left-1/2 w-5/6 z-100 overflow-hidden">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
+    >
       <img
         src={props.image}
         alt="foto"
-        className="object-cover h-[320px] w-[400px] inline-block m-1"
+        className="fixed left-1/2 top-1/4 z-20 w-3/4 -translate-x-1/2 -translate-y-32 transform rounded-xl object-cover"
       />
-      <div className="flex justify-center">
-        <div
-          className="btn bg-secondary-100 text-secondary-200 hover:shadow-inner hover:bg-opacity-50 transform hover:scale-125 transition ease-out duration-500"
-          onClick={props.modalClick}
-        >
-          Tancar
-        </div>
-      </div>
-    </div>
+    </motion.div>
   );
 };
 
 type TModalProps = {
   image: string;
-  modalClick: () => void;
+  onBackdropClick: () => void;
 };
 
 const Modal = (props: TModalProps) => {
+  console.log("Modal");
+
   return (
     <>
-      {ReactDOM.createPortal(<Backdrop />, document.getElementById('backdrop-root')!)}
       {ReactDOM.createPortal(
-        <ModalOverlay image={props.image} modalClick={props.modalClick} />,
-        document.getElementById('modal-root')!
+        <Backdrop onClick={props.onBackdropClick} />,
+        document.getElementById("backdrop-root")!,
+      )}
+      {ReactDOM.createPortal(
+        <ModalOverlay image={props.image} />,
+        document.getElementById("modal-root")!,
       )}
     </>
   );

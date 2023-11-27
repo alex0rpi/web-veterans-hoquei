@@ -5,10 +5,10 @@ import { LogoItem } from './utils/LogoItem';
 
 export const Navigation = () => {
   return (
-    <div className="md:col-start-2  md:col-span-1 md:flex md:justify-end">
+    <div className="md:col-start-2 md:col-span-1 md:flex md:justify-end">
       <nav className="text-right bg-sky-950 text-slate-200 w-full min-w-fit">
         <LogoItem />
-        <div className="w-full ps-5 pe-2 text-sm mt-6 hidden md:block" id="menu">
+        <div className="w-full  pe-2 text-sm mt-6 ps-5 hidden md:block" id="menu">
           <MenuItem title="Home" />
           <MenuItem title="Accés" to="/admin/login" />
           <MenuItem title="El Llibre" />
