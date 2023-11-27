@@ -2,10 +2,10 @@ import { useState } from "react";
 import Modal from "./ImageModal";
 
 type Props = {
-  foto: string;
+  foto?: string;
 };
 
-export const Card = (props: Props) => {
+export const FotoCard = (props: Props) => {
   const [show, setShow] = useState(false);
 
   const toggleImageModal = () => {
@@ -13,8 +13,10 @@ export const Card = (props: Props) => {
   };
   return (
     <>
-      {show && <Modal image={props.foto} onBackdropClick={toggleImageModal} />}
-      {/* {show && <Modal />} */}
+      {props.foto && show && (
+        <Modal image={props.foto} onBackdropClick={toggleImageModal} />
+      )}
+
       <img
         src={props.foto}
         alt="foto"

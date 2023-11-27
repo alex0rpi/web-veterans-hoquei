@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { MainContent, NotFound } from "./components";
+import MainContent from "./components/main/MainContent";
+import NotFound from "./pages/NotFound";
 import AdminLogin from "./components/admin/auth/AdminLogin";
 import AdminRegister from "./components/admin/auth/AdminRegister";
 

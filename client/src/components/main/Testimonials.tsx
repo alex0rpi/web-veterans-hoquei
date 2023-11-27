@@ -2,7 +2,7 @@ import { testimoni01, testimoni02, testimoni03 } from "../../assets/testimonis";
 
 const Testimonials = () => {
   return (
-    <section className="flex-column flex items-center justify-between md:flex-row">
+    <section className="grid gap-3 md:grid-cols-3">
       <div className="text-center">
         <img
           src={testimoni01}

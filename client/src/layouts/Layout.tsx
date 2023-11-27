@@ -1,4 +1,4 @@
-import { Navigation } from "../components";
+import { Navigation } from "../components/Navigation";
 // import { Outlet } from "react-router-dom";
 import { PropsWithChildren } from "react";
 
