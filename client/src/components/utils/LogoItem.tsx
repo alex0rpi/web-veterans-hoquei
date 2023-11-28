@@ -2,12 +2,14 @@ import logoImage from "../../assets/logos/logo-no-text-removebg.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
 import { useState } from "react";
-import SideDrawer from "./SideDrawer";
+import SideDrawer from "../../navigation/SideDrawer";
 
 export const LogoItem = () => {
   const [show, setShow] = useState(false);
   const clickHandler = () => {
     setShow((prevState) => !prevState);
+    const mobileMenu = document.getElementById("menu");
+    mobileMenu?.classList.toggle("hidden");
   };
   return (
     <div className="flex items-center justify-between border-b-2 border-gray-300 md:justify-center">
