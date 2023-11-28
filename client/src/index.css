@@ -23,3 +23,26 @@ body {
 .card {
   @apply cursor-pointer rounded-xl shadow-slate-950 transition duration-300 ease-out hover:scale-95 hover:shadow-xl;
 }
+
+/* ------------------------------------- */
+/* CUSTOM SCROLL BAR */
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar-track {
+  background: #bbcbd9;
+  border-radius: 50%;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(8 47 73);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6c93ae;
+}
+/* ------------------------------------- */

@@ -5,7 +5,7 @@ type TBackdropProps = {
   onClick: () => void;
 };
 
-const Backdrop = (props: TBackdropProps) => {
+export const Backdrop = (props: TBackdropProps) => {
   return (
     <motion.div
       initial={{ opacity: 0 }}

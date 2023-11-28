@@ -1,6 +1,6 @@
 // import { FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 type Props = {
   title: string;
@@ -8,11 +8,11 @@ type Props = {
   to?: string;
 };
 
-export const MenuItem = ({ title, to = '/' }: Props) => {
+export const MenuItem = ({ title, to = "/" }: Props) => {
   return (
     <Link
       to={to}
-      className="py-1 pe-1 flex justify-end text-base hover:text-lg hover:bg-slate-100 hover:text-sky-950 transition ease-out duration-500"
+      className="flex justify-end py-1 pe-1 text-base transition duration-500 ease-out hover:bg-slate-100 hover:text-lg hover:text-sky-950"
     >
       <span>{title}</span>
       {/*  <FontAwesomeIcon

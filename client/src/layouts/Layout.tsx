@@ -1,10 +1,10 @@
-import { Navigation } from "../components/Navigation";
+import { Navigation } from "../navigation/Navigation";
 // import { Outlet } from "react-router-dom";
 import { PropsWithChildren } from "react";
 
 export const MainLayout = (props: PropsWithChildren) => {
   return (
-    <div className="main-grid">
+    <div className="main-grid bg-hero-pattern bg-cover">
       <Navigation />
       <div className="main-column-layout">
         {/* <Outlet /> */}

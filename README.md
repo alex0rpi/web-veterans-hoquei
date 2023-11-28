@@ -57,5 +57,5 @@ npm run dev
 - Initiate tailwind watch in case you want to mess with it
 
 ```Bash
-npm run watch:css
+npm run tailwind:watch
 ```
