@@ -9,7 +9,7 @@ import {
 import { filtersReducer } from "./reducer";
 import { TInitialState } from "./types";
 
-const FiltersContext = createContext<TInitialState | undefined>(undefined);
+const AuthContext = createContext<TInitialState | undefined>(undefined);
 
 const defaultFilters: TInitialState = {
   user: null,
@@ -23,14 +23,12 @@ const FiltersProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   const value = useMemo(() => ({ user, dispatch }), [user]);
 
-  return (
-    <FiltersContext.Provider value={value}>{children}</FiltersContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
 // ==> CUSTOM HOOK TO USE CONTEXT
-const useFiltersContext = () => {
-  const context = useContext(FiltersContext);
+const useAuthContext = () => {
+  const context = useContext(AuthContext);
   if (!context) {
     throw new Error(
       "useFiltersContext has to be used inside a FiltersProvider",
@@ -39,4 +37,4 @@ const useFiltersContext = () => {
   return context;
 };
 
-export { FiltersProvider, useFiltersContext };
+export { FiltersProvider, useAuthContext };

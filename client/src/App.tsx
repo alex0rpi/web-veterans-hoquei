@@ -1,8 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainContent from "./components/main/MainContent";
 import NotFound from "./pages/NotFound";
-import AdminLogin from "./components/admin/auth/AdminLogin";
-import AdminRegister from "./components/admin/auth/AdminRegister";
+import AdminLogin from "./components/admin/AdminLogin";
+import AdminRegister from "./components/admin/AdminRegister";
 import SeasonContent from "./components/main/SeasonContent";
 import NewChapterForm from "./components/admin/chapters/NewChapterForm";
 import AdminChapters from "./components/admin/chapters/AdminChapters";

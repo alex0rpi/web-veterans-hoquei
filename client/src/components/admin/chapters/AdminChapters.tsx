@@ -10,7 +10,7 @@ const AdminChapters = () => {
       <section className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
         {chapters.map((chapter, index) => {
           return (
-            <div className="flex flex-col border-slate-400">
+            <div className="flex flex-col border-solid border-slate-400">
               <ChapterCard
                 key={index}
                 season={chapter.season}
