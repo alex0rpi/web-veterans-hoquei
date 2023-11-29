@@ -17,7 +17,7 @@ body {
 }
 
 .btn {
-  @apply cursor-pointer rounded-full px-3 py-2 text-xs font-bold uppercase tracking-wider;
+  @apply cursor-pointer rounded-full px-3 py-2 text-sm font-bold uppercase tracking-wider;
 }
 
 .card {

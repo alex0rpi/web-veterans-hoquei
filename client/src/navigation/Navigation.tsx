@@ -55,9 +55,9 @@ export const Navigation = () => {
             <MenuItem title="Enllaços" />
             <MenuItem title="On som" />
             <MenuItem title="Contacte" />
-            <MenuItem title="Els meus epitafis" />
+            <MenuItem title="Els meus epitafis" to="/admin/chapter-list" />
             <MenuItem title="El meus posts" />
-            <MenuItem title="Crear epitafi" />
+            <MenuItem title="Crear epitafi" to="/admin/new-chapter" />
             <MenuItem title="Fer un post" />
             <MenuItem title="Les meves dades" />
             <MenuItem title="Desconnectar" />
@@ -68,11 +68,11 @@ export const Navigation = () => {
         <>
           <Backdrop onClick={clickHandler} />
           <motion.div
-            initial={{ x: "100vw" }}
-            animate={{ x: "40vw" }}
-            exit={{ x: "100vw" }}
+            initial={{ x: "100vw", opacity: 0 }}
+            animate={{ x: "40vw", opacity: 1 }}
+            exit={{ x: "100vw", opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="right-0 top-20 z-50 w-[60vw] bg-sky-950 pb-2 pe-8 pt-2 text-slate-200 md:hidden"
+            className="fixed top-20 z-50 w-[60vw] rounded-l-xl bg-sky-950 px-8 pb-2 pt-2 text-slate-200 md:hidden"
           >
             <MenuItem title="Home" />
             <MenuItem title="Accés" to="/admin/login" />
@@ -84,9 +84,9 @@ export const Navigation = () => {
             <MenuItem title="Enllaços" />
             <MenuItem title="On som" />
             <MenuItem title="Contacte" />
-            <MenuItem title="Els meus epitafis" />
+            <MenuItem title="Els meus epitafis" to="/admin/chapter-list" />
             <MenuItem title="El meus posts" />
-            <MenuItem title="Crear epitafi" />
+            <MenuItem title="Crear epitafi" to="/admin/new-chapter" />
             <MenuItem title="Fer un post" />
             <MenuItem title="Les meves dades" />
             <MenuItem title="Desconnectar" />

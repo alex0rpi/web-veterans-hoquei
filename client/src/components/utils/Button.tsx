@@ -1,14 +1,18 @@
-import React from 'react';
+import { Link } from "react-router-dom";
 
-type Props = { title: string; to: string };
+type TButtonProps = {
+  type?: "button" | "submit";
+  title: string;
+  to?: string;
+};
 
-export const Button = (props: Props) => {
+export const Button = ({ type = "button", title, to }: TButtonProps) => {
   return (
-    <a
-      href={props.to}
-      className="btn text-sky-950 border-sky-950 md:border-2 hover:bg-sky-950 hover:text-white transition ease-out duration-500"
+    <button
+      type={type}
+      className="btn border-sky-950 text-sky-950 transition duration-500 ease-out hover:bg-sky-950 hover:text-white md:border-2"
     >
-      {props.title}
-    </a>
+      {to ? <Link to={to}>{title}</Link> : title}
+    </button>
   );
 };
