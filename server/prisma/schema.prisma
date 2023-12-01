@@ -35,6 +35,21 @@ enum USER_ROLE {
   REGISTERED
 }
 
+model Chapter {
+  id           String   @id @default(uuid())
+  season       String
+  titlePro     String
+  contentPro   String
+  titleBases   String
+  contentBases String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  author       User     @relation(fields: [userId], references: [id])
+  userId       String
+
+  @@map("chapters")
+}
+
 model Post {
   id        String   @id @default(uuid())
   title     String
@@ -46,19 +61,4 @@ model Post {
   userId    String
 
   @@map("posts")
-}
-
-model Chapter {
-  id           String   @id @default(uuid())
-  season       String
-  titlePro     String
-  titleBases   String
-  contentPro   String
-  contentBases String
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-  author       User     @relation(fields: [userId], references: [id])
-  userId       String
-
-  @@map("chapters")
 }

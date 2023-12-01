@@ -9,8 +9,8 @@ services:
       POSTGRES_DB: veterans
     ports:
       - '5050:5432'
-    # volumes:
-    # This volume saves the data in the host machine
-    # - data:/var/lib/postgresql/data
-# volumes:
-# data:
+    volumes:
+      # This volume saves the data in the host machine
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:

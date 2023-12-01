@@ -17,19 +17,25 @@ npm i
 
 ```bash
 cd back/
-docker compose up
+docker compose up -d
 ```
 
-- Make database migration if necessary
+- Seed the database with data, if any. In any case run this command:
 
-```Bash
-npx prisma migrate dev --name migrationName
+```bash
+npx prisma migrate reset --force
 ```
 
 - Then run the server
 
 ```Bash
 npm run dev
+```
+
+- When necessary, e.g. modifying the schema.prisma file, make database migration.
+
+```Bash
+npx prisma migrate dev --name migrationName
 ```
 
 - To stop the server just ctrl+C
