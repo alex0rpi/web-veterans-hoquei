@@ -8,8 +8,9 @@ const AdminRegister = () => {
         animate={{ translateX: 0, scale: 1 }}
         transition={{
           type: "spring",
-          stiffness: 260,
-          damping: 20,
+          stiffness: 250,
+          damping: 30,
+          duration: 250
         }}
         exit={{ opacity: 0, x: "-100vw" }}
       >

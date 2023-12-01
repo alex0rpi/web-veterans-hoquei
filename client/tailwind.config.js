@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+import colors from "tailwindcss/colors"
+
 export default {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
@@ -9,6 +12,10 @@ export default {
 
       backgroundImage: {
         "hero-pattern": "url('./src/assets/backgrounds/bg01.jpg')",
+      },
+
+      colors: {
+        primary: {...colors.sky, DEFAULT: colors.sky[950]},
       },
 
       gridTemplateColumns: {

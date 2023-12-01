@@ -18,7 +18,7 @@ export const Navigation = () => {
   return (
     <>
       <div className="md:col-span-1 md:col-start-2 md:flex md:justify-end">
-        <nav className="w-full min-w-fit bg-sky-950 text-right text-slate-200">
+        <nav className="w-full min-w-fit bg-primary text-right text-slate-200">
             <motion.div
               initial={{x:'100%', opacity:0.2}}
               animate={{x:'0%', opacity:1}}
@@ -93,7 +93,7 @@ export const Navigation = () => {
             animate={{ x: "40vw", opacity: 1 }}
             exit={{ x: "100vw", opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-20 z-50 w-[60vw] rounded-l-xl bg-sky-950 px-8 pb-2 pt-2 text-slate-200 md:hidden"
+            className="fixed top-20 z-50 w-[60vw] rounded-l-xl bg-primary px-8 pb-2 pt-2 text-slate-200 md:hidden"
           >
             {isLoggedIn ? (
               <>

@@ -47,7 +47,7 @@ const SeasonContent = () => {
             onClick={previousSeatonClick}
             className="duration-250 me-3 cursor-pointer transition ease-out hover:scale-125 active:scale-95"
           />
-          <h1 className="my-5 text-center text-5xl font-light text-sky-950">{`Temporada ${seasonObject?.season}`}</h1>
+          <h1 className="my-5 text-center text-5xl font-light text-primary">{`Temporada ${seasonObject?.season}`}</h1>
           <FontAwesomeIcon
             icon={faChevronRight}
             size="2xl"
@@ -56,12 +56,12 @@ const SeasonContent = () => {
           />
         </div>
         <div>
-          <h1 className="mt-6 text-left text-2xl font-semibold text-sky-950">
+          <h1 className="mt-6 text-left text-2xl font-semibold text-primary">
             {seasonObject?.titlePro}
           </h1>
           <div className="mb-2 border-b border-gray-400 pb-2"></div>
           <p className="text-md leading-7">{seasonObject?.contentPro}</p>
-          <h1 className="mt-6 text-left text-2xl font-semibold text-sky-950">
+          <h1 className="mt-6 text-left text-2xl font-semibold text-primary">
             {seasonObject?.titleBases}
           </h1>
           <div className="mb-2 border-b border-gray-400 pb-2"></div>
