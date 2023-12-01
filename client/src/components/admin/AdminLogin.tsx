@@ -24,6 +24,7 @@ export const AdminLogin = () => {
           type: "spring",
           stiffness: 250,
           damping: 30,
+          duration: 250
         }}
         exit={{ opacity: 0, x: "-100vw" }}
       >

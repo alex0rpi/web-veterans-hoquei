@@ -9,6 +9,7 @@ import AdminChapters from "./components/admin/chapters/AdminChapters";
 import { AuthProvider } from "./context/AuthProvider";
 
 const router = createBrowserRouter([
+  // Pending wrap the routes in a Layout component
   {
     path: "/",
     element: <MainContent />,

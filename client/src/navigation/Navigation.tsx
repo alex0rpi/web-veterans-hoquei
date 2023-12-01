@@ -19,17 +19,27 @@ export const Navigation = () => {
     <>
       <div className="md:col-span-1 md:col-start-2 md:flex md:justify-end">
         <nav className="w-full min-w-fit bg-sky-950 text-right text-slate-200">
-          <div className="flex items-center justify-between border-b-2 border-gray-300 md:justify-center">
-            <a
-              href="/"
-              className="z-50 px-4 py-1 transition duration-200 hover:scale-95 active:scale-100 md:py-2"
+            <motion.div
+              initial={{x:'100%', opacity:0.2}}
+              animate={{x:'0%', opacity:1}}
+              transition={{
+                type: "spring",
+                stiffness: 200,
+                damping: 10,
+              
+              }}
             >
-              <img
-                src={logoImage}
-                className="h-14 brightness-125 md:h-24"
-                alt="logo"
-              />
-            </a>
+          <div className="flex items-center justify-between md:justify-center">
+              <a
+                href="/"
+                className="z-50 px-4 py-1 transition duration-200 hover:scale-95 active:scale-100 md:py-2"
+                >
+                <img
+                  src={logoImage}
+                  className="h-14 brightness-125 md:h-24"
+                  alt="logo"
+                  />
+              </a>
             {!show ? (
               <FontAwesomeIcon
                 icon={faBars}
@@ -43,10 +53,11 @@ export const Navigation = () => {
                 size="2xl"
                 className="z-50 cursor-pointer px-8 transition duration-200 hover:scale-95 active:scale-100 md:hidden"
                 onClick={clickHandler}
-              />
-            )}
+                />
+                )}
           </div>
-          <div className="mt-6 hidden w-full pe-2 ps-5 text-sm md:block">
+                </motion.div>
+          <div className="hidden w-full pe-2 pt-2 mt-0 ps-5 text-sm md:block border-t-2 border-gray-300">
             {isLoggedIn ? (
               <>
                 <MenuItem title="Home" />
