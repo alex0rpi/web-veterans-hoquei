@@ -5,6 +5,7 @@ import Testimonials from "./Testimonials";
 import BookFeatures from "./BookFeatures";
 import Location from "./Location";
 import ChapterGrid from "./ChapterGrid";
+import ImageSlider from "./ImageSlider";
 
 const MainContent = () => {
   return (
@@ -16,7 +17,8 @@ const MainContent = () => {
       >
         <HeaderTitle />
 
-        <ImageCarousel />
+        <ImageSlider/>
+        {/* <ImageCarousel /> */}
         <h4 className="mb-3 mt-12 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700">
           LLIBRE
         </h4>
