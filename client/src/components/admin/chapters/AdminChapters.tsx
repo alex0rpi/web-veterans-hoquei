@@ -2,11 +2,9 @@ import { ChapterCard } from "../../utils/ChapterCard";
 import chapters from "../../../data/chapters.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { MainLayout } from "../../../layouts/Layout";
 
 const AdminChapters = () => {
   return (
-    <MainLayout>
       <section className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
         {chapters.map((chapter, index) => {
           return (
@@ -33,7 +31,6 @@ const AdminChapters = () => {
           );
         })}
       </section>
-    </MainLayout>
   );
 };
 

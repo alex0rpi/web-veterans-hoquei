@@ -1,11 +1,8 @@
 import { motion } from "framer-motion";
-
 import { Button } from "../../utils/Button";
-import { MainLayout } from "../../../layouts/Layout";
 
 const NewChapterForm = () => {
   return (
-    <MainLayout>
       <motion.div
         initial={{ scale: 0 }}
         animate={{ translateX: 0, scale: 1 }}
@@ -118,7 +115,6 @@ const NewChapterForm = () => {
           </form>
         </div>
       </motion.div>
-    </MainLayout>
   );
 };
 

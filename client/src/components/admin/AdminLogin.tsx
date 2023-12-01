@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Button } from "../utils/Button";
-import { MainLayout } from "../../layouts/Layout";
 
 import { useAuth } from "../../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
@@ -16,7 +15,6 @@ export const AdminLogin = () => {
     navigate("/admin/new-chapter");
   };
   return (
-    <MainLayout>
       <motion.div
         initial={{ scale: 0 }}
         animate={{ translateX: 0, scale: 1 }}
@@ -79,7 +77,6 @@ export const AdminLogin = () => {
           <Button title="Registrar-me" to="/admin/register" />
         </div>
       </motion.div>
-    </MainLayout>
   );
 };
 

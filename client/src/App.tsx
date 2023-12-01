@@ -7,35 +7,65 @@ import SeasonContent from "./components/main/SeasonContent";
 import NewChapterForm from "./components/admin/chapters/NewChapterForm";
 import AdminChapters from "./components/admin/chapters/AdminChapters";
 import { AuthProvider } from "./context/AuthProvider";
+import { MainLayout } from "./layouts/Layout";
 
 const router = createBrowserRouter([
   // Pending wrap the routes in a Layout component
   {
     path: "/",
-    element: <MainContent />,
+    element: (
+      <MainLayout>
+        <MainContent />
+      </MainLayout>
+    )
   },
   {
     path: "/temporades/:season",
-    element: <SeasonContent />,
+    element: (
+      <MainLayout>
+        <SeasonContent />
+      </MainLayout>
+    )
   },
   {
     path: "/admin/login",
-    element: <AdminLogin />,
+    element: (
+      <MainLayout>
+        <AdminLogin />
+      </MainLayout>
+    )
   },
   {
     path: "/admin/register",
-    element: <AdminRegister />,
+    element: (
+      <MainLayout>
+        <AdminRegister />
+      </MainLayout>
+    )
   },
   {
     path: "/admin/new-chapter",
-    element: <NewChapterForm />,
+    element: (
+      <MainLayout>
+        <NewChapterForm />
+      </MainLayout>
+    )
   },
   {
     path: "/admin/chapter-list",
-    element: <AdminChapters />,
+    element: (
+      <MainLayout>
+        <AdminChapters />
+      </MainLayout>
+    )
   },
 
-  { path: "*", element: <NotFound /> },
+  { path: "*", element: (
+      <MainLayout>
+        <NotFound /> 
+      </MainLayout>
+    )
+  },
 ]);
 
 function App() {

@@ -2,7 +2,6 @@ import chapters from "../../data/chapters.json";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { HeaderTitle } from "./HeaderTitle";
-import { MainLayout } from "../../layouts/Layout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,
@@ -37,7 +36,7 @@ const SeasonContent = () => {
   };
 
   return (
-    <MainLayout>
+    <>
       <HeaderTitle />
 
       <article>
@@ -69,7 +68,7 @@ const SeasonContent = () => {
           <p className="text-md leading-7">{seasonObject?.contentBases}</p>
         </div>
       </article>
-    </MainLayout>
+    </>
   );
 };
 

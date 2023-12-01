@@ -3,13 +3,11 @@ import { easeInOut, motion } from "framer-motion";
 import { ImageCarousel } from "./ImageCarousel";
 import Testimonials from "./Testimonials";
 import BookFeatures from "./BookFeatures";
-import { MainLayout } from "../../layouts/Layout";
 import Location from "./Location";
 import ChapterGrid from "./ChapterGrid";
 
 const MainContent = () => {
   return (
-    <MainLayout>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -61,7 +59,6 @@ const MainContent = () => {
           </div>
         </div>
       </motion.div>
-    </MainLayout>
   );
 };
 

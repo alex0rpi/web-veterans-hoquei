@@ -1,12 +1,8 @@
 import { motion } from "framer-motion";
 import { Button } from "../utils/Button";
-import { MainLayout } from "../../layouts/Layout";
-
-// type Props = {};
 
 const AdminRegister = () => {
   return (
-    <MainLayout>
       <motion.div
         initial={{ scale: 0 }}
         animate={{ translateX: 0, scale: 1 }}
@@ -77,7 +73,6 @@ const AdminRegister = () => {
           <Button title="Accedir" to="/admin/login" />
         </div>
       </motion.div>
-    </MainLayout>
   );
 };
 
