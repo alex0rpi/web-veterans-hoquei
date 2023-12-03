@@ -24,9 +24,9 @@ body {
   @apply cursor-pointer rounded-xl shadow-slate-950 transition duration-300 ease-out hover:scale-95 hover:shadow-xl;
 }
 
-/* .foto-dialog {
-  @apply fixed w-full h-full m-auto;
-} */
+dialog::backdrop {
+  background-color: salmon;
+}
 
 /* ------------------------------------- */
 /* CUSTOM SCROLL BAR */

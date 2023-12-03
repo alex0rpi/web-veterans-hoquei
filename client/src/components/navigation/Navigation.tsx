@@ -1,11 +1,10 @@
-import logoImage from "../assets/logos/logo-no-text-removebg.png";
+import logoImage from "../../assets/logos/logo-no-text-removebg.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { MenuItem } from "./MenuItem";
-import { Backdrop } from "../components/utils/ImageModal";
 import { motion } from "framer-motion";
-import { useAuth } from "../context/AuthProvider";
+import { useAuth } from "../../context/AuthProvider";
 
 //* Menu items will change whether the user is logged in or not
 
@@ -87,7 +86,6 @@ export const Navigation = () => {
       </div>
       {show && (
         <>
-          <Backdrop onClick={clickHandler} />
           <motion.div
             initial={{ x: "100vw", opacity: 0 }}
             animate={{ x: "40vw", opacity: 1 }}

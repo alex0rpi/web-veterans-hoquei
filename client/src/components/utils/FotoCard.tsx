@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Modal from "./ImageModal";
+import Modal from "./ModalImage";
 
 type Props = {
   foto?: string;

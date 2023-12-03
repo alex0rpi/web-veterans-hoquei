@@ -7,6 +7,8 @@ import {
   faCircleDot,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import ImageModal from "../utils/ModalImage";
+// import { motion } from "framer-motion";
 
 const ImageSlider = () => {
 
@@ -32,23 +34,21 @@ const ImageSlider = () => {
         setCurrentIndex(index)
     }
 
-const showImageModal = () => {
-    console.log('showImageModal');
+const toggleImageModal = () => {
     setShowModal(prevState => !prevState)
 }
 
   return (
     <>
-      {/* <dialog open={showModal}>
-        <div>
-          <img src={slides[currentIndex]} alt="Foto" className="w-auto h-[70vh] m-auto rounded-xl top-10"/>
-          <form method="dialog">
-          <button className="bg-slate-500 text-2xl">Tanca</button>
-          </form>
-        </div>
-      </dialog> */}
+      {/* <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 250 }}
+      > */}
+      <ImageModal show={showModal} image={slides[currentIndex]} onModalClick={toggleImageModal}/>
+      {/* </motion.div> */}
       <div className="relative m-auto h-[450px] w-auto px-4 pt-4 group">
-          <div style={{backgroundImage: `url(${slides[currentIndex]})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat',backgroundPosition:'center'}} className="w-full h-full rounded-2xl duration-200" onClick={showImageModal}></div>
+          <div style={{backgroundImage: `url(${slides[currentIndex]})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat',backgroundPosition:'center'}} className="w-full h-full rounded-2xl duration-200 cursor-pointer" onClick={toggleImageModal}></div>
           <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 cursor-pointer text-white w-10 h-10 flex items-center justify-center">
           <FontAwesomeIcon
           icon={faChevronLeft}
