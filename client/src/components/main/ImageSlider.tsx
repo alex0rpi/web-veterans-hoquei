@@ -11,6 +11,7 @@ import { useState } from "react";
 const ImageSlider = () => {
 
     const [currentIndex, setCurrentIndex] = useState(0)
+    const [showModal, setShowModal] = useState(false)
     const slides = [foto01, foto02, foto03]
 
     const slideLeft = () => {
@@ -31,44 +32,60 @@ const ImageSlider = () => {
         setCurrentIndex(index)
     }
 
+const showImageModal = () => {
+    console.log('showImageModal');
+    setShowModal(prevState => !prevState)
+}
+
   return (
-    <div className="relative m-auto h-[600px] w-full px-4 pt-4 group">
-        <div style={{backgroundImage: `url(${slides[currentIndex]})`, backgroundSize: 'cover'}} className="w-full h-full rounded-2xl duration-200"></div>
-        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 cursor-pointer text-white w-10 h-10 flex items-center justify-center">
+    <>
+      {/* <dialog open={showModal}>
+        <div>
+          <img src={slides[currentIndex]} alt="Foto" className="w-auto h-[70vh] m-auto rounded-xl top-10"/>
+          <form method="dialog">
+          <button className="bg-slate-500 text-2xl">Tanca</button>
+          </form>
+        </div>
+      </dialog> */}
+      <div className="relative m-auto h-[450px] w-auto px-4 pt-4 group">
+          <div style={{backgroundImage: `url(${slides[currentIndex]})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat',backgroundPosition:'center'}} className="w-full h-full rounded-2xl duration-200" onClick={showImageModal}></div>
+          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 cursor-pointer text-white w-10 h-10 flex items-center justify-center">
+          <FontAwesomeIcon
+          icon={faChevronLeft}
+          size="lg"
+          onClick={slideLeft}
+          className="transition-scale duration-200 hover:scale-125"
+          />
+          </div>
+          <div className="opacity-0 group-hover:opacity-100 transition-all duration-250 absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 cursor-pointer text-white w-10 h-10 flex items-center justify-center">
         <FontAwesomeIcon
-        icon={faChevronLeft}
-        size="lg"
-        onClick={slideLeft}
-        className="transition-scale duration-200 hover:scale-125"
-        />
-        </div>
-        <div className="opacity-0 group-hover:opacity-100 transition-all duration-250 absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 cursor-pointer text-white w-10 h-10 flex items-center justify-center">
-       <FontAwesomeIcon
-        icon={faChevronRight}
-        size="lg"
-        onClick={slideRight}
-        className="transition-scale duration-200 hover:scale-125"
-        />
-        </div>
-        <div className="flex top-4 justify-center py-2">
-           { slides.map((slide, slideIndex) => (
-            <div key={slideIndex} className="cursor-pointer">
-              {slideIndex === currentIndex 
-              ? (
+          icon={faChevronRight}
+          size="lg"
+          onClick={slideRight}
+          className="transition-scale duration-200 hover:scale-125"
+          />
+          </div>
+          <div className="flex top-4 justify-center mt-1">
+            { slides.map((slide, slideIndex) => (
+              <div key={slideIndex} className="cursor-pointer">
+                {slideIndex === currentIndex 
+                ? (
 
-                <FontAwesomeIcon icon={faCircleDot} size="2xs" style={{color: "rgb(8 47 73)"}} className="hover:scale-125 mx-2" onClick={() => goToSlideHandler(slideIndex)}/>
-              ) 
-              : (
+                  <FontAwesomeIcon icon={faCircleDot} size="2xs" style={{color: "rgb(8 47 73)"}} className="hover:scale-125 mx-2" onClick={() => goToSlideHandler(slideIndex)}/>
+                ) 
+                : (
 
-                <FontAwesomeIcon icon={faCircle} size="2xs" style={{color: "rgb(8 47 73)"}} className="hover:scale-125 mx-2" onClick={() => goToSlideHandler(slideIndex)}/>
-              )
-              }
-            </div>
-           ))
-        }
+                  <FontAwesomeIcon icon={faCircle} size="2xs" style={{color: "rgb(8 47 73)"}} className="hover:scale-125 mx-2" onClick={() => goToSlideHandler(slideIndex)}/>
+                )
+                }
+              </div>
+            ))
+          }
 
-        </div>
-    </div>
+          </div>
+      </div>
+    </>
+
   );
 };
 
