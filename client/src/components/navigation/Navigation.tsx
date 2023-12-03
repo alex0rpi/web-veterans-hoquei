@@ -3,17 +3,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { MenuItem } from "./MenuItem";
-import { motion } from "framer-motion";
-import { useAuth } from "../../context/AuthProvider";
 
-//* Menu items will change whether the user is logged in or not
+import { Backdrop } from "../utils/ImageModal";
+import { motion } from "framer-motion";
+import {useContext} from 'react'
+import {UserContext} from '../../context/UserContext'
 
 export const Navigation = () => {
+  
   const [show, setShow] = useState(false);
-  const isLoggedIn = useAuth();
+  const { user, setUser } = useContext(UserContext);
+
   const clickHandler = () => {
     setShow((prevState) => !prevState);
   };
+
+  const onLogoutHandler = () => {
+    setUser({name:'', email:''});
+  }
+
   return (
     <>
       <div className="md:col-span-1 md:col-start-2 md:flex md:justify-end">
@@ -57,7 +65,8 @@ export const Navigation = () => {
           </div>
                 </motion.div>
           <div className="hidden w-full pe-2 pt-2 mt-0 ps-5 text-sm md:block border-t-2 border-gray-300">
-            {isLoggedIn ? (
+
+            {user.name === '' ? (
               <>
                 <MenuItem title="Home" />
                 <MenuItem title="Accés" to="/admin/login" />
@@ -78,7 +87,8 @@ export const Navigation = () => {
                 <MenuItem title="Crear epitafi" to="/admin/new-chapter" />
                 <MenuItem title="Fer un post" />
                 <MenuItem title="Les meves dades" />
-                <MenuItem title="Desconnectar" />
+                <MenuItem title="Desconnectar" onItemClick={onLogoutHandler}/>
+
               </>
             )}
           </div>
@@ -86,6 +96,9 @@ export const Navigation = () => {
       </div>
       {show && (
         <>
+
+          <Backdrop onClick={clickHandler} />
+
           <motion.div
             initial={{ x: "100vw", opacity: 0 }}
             animate={{ x: "40vw", opacity: 1 }}
@@ -93,7 +106,8 @@ export const Navigation = () => {
             transition={{ duration: 0.2 }}
             className="fixed top-20 z-50 w-[60vw] rounded-l-xl bg-primary px-8 pb-2 pt-2 text-slate-200 md:hidden"
           >
-            {isLoggedIn ? (
+
+            {user.name === '' ? (
               <>
                 <MenuItem title="Home" />
                 <MenuItem title="Accés" to="/admin/login" />
@@ -114,7 +128,7 @@ export const Navigation = () => {
                 <MenuItem title="Crear epitafi" to="/admin/new-chapter" />
                 <MenuItem title="Fer un post" />
                 <MenuItem title="Les meves dades" />
-                <MenuItem title="Desconnectar" />
+                <MenuItem title="Desconnectar" onItemClick={onLogoutHandler}/>
               </>
             )}
           </motion.div>
