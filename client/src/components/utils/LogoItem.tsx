@@ -1,16 +1,18 @@
 import logoImage from "../../assets/logos/logo-no-text-removebg.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
-import { useState } from "react";
-import SideDrawer from "../navigation/SideDrawer";
+
+// import { useState } from "react";
+// import SideDrawer from "";
+
 
 export const LogoItem = () => {
-  const [show, setShow] = useState(false);
-  const clickHandler = () => {
-    setShow((prevState) => !prevState);
-    const mobileMenu = document.getElementById("menu");
-    mobileMenu?.classList.toggle("hidden");
-  };
+  // const [show, setShow] = useState(false);
+  // const clickHandler = () => {
+  //   setShow((prevState) => !prevState);
+  //   const mobileMenu = document.getElementById("menu");
+  //   mobileMenu?.classList.toggle("hidden");
+  // };
   return (
     <div className="flex items-center justify-between border-b-2 border-gray-300 md:justify-center">
       <a
@@ -29,9 +31,9 @@ export const LogoItem = () => {
         size="xl"
         className="cursor-pointer px-8 md:hidden"
         id="burger"
-        onClick={clickHandler}
+        // onClick={clickHandler}
       />
-      {show && <SideDrawer onBackdropClick={clickHandler} />}
+      {/* {show && <SideDrawer onBackdropClick={clickHandler} />} */}
     </div>
   );
 };

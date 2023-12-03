@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { MenuItem } from "./MenuItem";
+
 import { Backdrop } from "../utils/ImageModal";
 import { motion } from "framer-motion";
 import {useContext} from 'react'
@@ -64,6 +65,7 @@ export const Navigation = () => {
           </div>
                 </motion.div>
           <div className="hidden w-full pe-2 pt-2 mt-0 ps-5 text-sm md:block border-t-2 border-gray-300">
+
             {user.name === '' ? (
               <>
                 <MenuItem title="Home" />
@@ -86,6 +88,7 @@ export const Navigation = () => {
                 <MenuItem title="Fer un post" />
                 <MenuItem title="Les meves dades" />
                 <MenuItem title="Desconnectar" onItemClick={onLogoutHandler}/>
+
               </>
             )}
           </div>
@@ -93,7 +96,9 @@ export const Navigation = () => {
       </div>
       {show && (
         <>
+
           <Backdrop onClick={clickHandler} />
+
           <motion.div
             initial={{ x: "100vw", opacity: 0 }}
             animate={{ x: "40vw", opacity: 1 }}
@@ -101,6 +106,7 @@ export const Navigation = () => {
             transition={{ duration: 0.2 }}
             className="fixed top-20 z-50 w-[60vw] rounded-l-xl bg-primary px-8 pb-2 pt-2 text-slate-200 md:hidden"
           >
+
             {user.name === '' ? (
               <>
                 <MenuItem title="Home" />
