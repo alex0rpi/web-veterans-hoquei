@@ -8,7 +8,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import ImageModal from "../utils/ModalImage";
-// import { motion } from "framer-motion";
 
 const ImageSlider = () => {
 
@@ -40,30 +39,26 @@ const toggleImageModal = () => {
 
   return (
     <>
-      {/* <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 250 }}
-      > */}
       <ImageModal show={showModal} image={slides[currentIndex]} onModalClick={toggleImageModal}/>
-      {/* </motion.div> */}
       <div className="relative m-auto h-[450px] w-auto px-4 pt-4 group">
-          <div style={{backgroundImage: `url(${slides[currentIndex]})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat',backgroundPosition:'center'}} className="w-full h-full rounded-2xl duration-200 cursor-pointer" onClick={toggleImageModal}></div>
+        {/* Image container */}
+          <div style={{backgroundImage: `url(${slides[currentIndex]})`, backgroundSize: 'contain', backgroundRepeat: 'no-repeat',backgroundPosition:'center'}} className="w-full h-full rounded-xl duration-200 cursor-pointer hover:scale-95" onClick={toggleImageModal}></div>
+        {/* End of Image container */}
           <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 cursor-pointer text-white w-10 h-10 flex items-center justify-center">
-          <FontAwesomeIcon
-          icon={faChevronLeft}
-          size="lg"
-          onClick={slideLeft}
-          className="transition-scale duration-200 hover:scale-125"
-          />
+            <FontAwesomeIcon
+            icon={faChevronLeft}
+            size="lg"
+            onClick={slideLeft}
+            className="transition-scale duration-200 hover:scale-125"
+            />
           </div>
           <div className="opacity-0 group-hover:opacity-100 transition-all duration-250 absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 cursor-pointer text-white w-10 h-10 flex items-center justify-center">
-        <FontAwesomeIcon
-          icon={faChevronRight}
-          size="lg"
-          onClick={slideRight}
-          className="transition-scale duration-200 hover:scale-125"
-          />
+            <FontAwesomeIcon
+              icon={faChevronRight}
+              size="lg"
+              onClick={slideRight}
+              className="transition-scale duration-200 hover:scale-125"
+              />
           </div>
           <div className="flex top-4 justify-center mt-1">
             { slides.map((slide, slideIndex) => (
