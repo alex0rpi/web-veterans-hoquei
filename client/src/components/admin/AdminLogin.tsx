@@ -1,17 +1,18 @@
 import { motion } from "framer-motion";
 import { Button } from "../utils/Button";
 
-import { useAuth } from "../../context/AuthProvider";
+import {useContext} from 'react'
 import { useNavigate } from "react-router-dom";
+import {UserContext} from "../../context/UserContext";
 
 // type Props = {};
 
 export const AdminLogin = () => {
   const navigate = useNavigate();
-  const { setUser } = useAuth();
+  const { setUser } = useContext(UserContext);
   const onLoginSubmitHandler = () => {
     console.log("Login submitted");
-    setUser({ isLoggedIn: true });
+    setUser({name: 'Alex', email: 'alex@alex.com'});
     navigate("/admin/new-chapter");
   };
   return (

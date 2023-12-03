@@ -6,7 +6,7 @@ import AdminRegister from "./components/admin/AdminRegister";
 import SeasonContent from "./components/main/SeasonContent";
 import NewChapterForm from "./components/admin/chapters/NewChapterForm";
 import AdminChapters from "./components/admin/chapters/AdminChapters";
-import { AuthProvider } from "./context/AuthProvider";
+import UserProvider from "./context/UserContext";
 import { MainLayout } from "./layouts/Layout";
 
 const router = createBrowserRouter([
@@ -70,9 +70,9 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <AuthProvider>
+    <UserProvider>
       <RouterProvider router={router} />
-    </AuthProvider>
+    </UserProvider>
   );
 }
 

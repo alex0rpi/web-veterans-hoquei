@@ -5,8 +5,11 @@ import Testimonials from "./Testimonials";
 import BookFeatures from "./BookFeatures";
 import Location from "./Location";
 import ChapterGrid from "./ChapterGrid";
+import { useContext } from "react";
+import {UserContext } from '../../context/UserContext'
 
 const MainContent = () => {
+  const {user} = useContext(UserContext)
   return (
       <motion.div
         initial={{ opacity: 0 }}
@@ -14,6 +17,7 @@ const MainContent = () => {
         transition={{ type: easeInOut, duration: 1 }}
         exit={{ opacity: 0 }}
       >
+        {user.name !== '' &&(<h1 className="text-lg text-right">Bon dia, <span className="font-bold text-lg text-right">  {user.name}</span></h1>)}
         <HeaderTitle />
 
         <ImageCarousel />
