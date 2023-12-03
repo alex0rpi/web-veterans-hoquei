@@ -4,7 +4,7 @@ import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { MenuItem } from "./MenuItem";
 
-import { Backdrop } from "../utils/ImageModal";
+import { Backdrop } from "../utils/Backdrop";
 import { motion } from "framer-motion";
 import {useContext} from 'react'
 import {UserContext} from '../../context/UserContext'
