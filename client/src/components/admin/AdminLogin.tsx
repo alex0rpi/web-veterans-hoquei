@@ -2,8 +2,9 @@ import { motion } from "framer-motion";
 import { Button } from "../utils/Button";
 
 import {useContext} from 'react'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {UserContext} from "../../context/UserContext";
+import FormInput from "./FormInput";
 
 // type Props = {};
 
@@ -32,50 +33,31 @@ export const AdminLogin = () => {
         </h1>
         <div className="mt-6 space-y-4 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6">
           <form className="" action="#" onSubmit={onLoginSubmitHandler}>
-            <div>
-              <label
-                htmlFor="email"
-                className="mb-1 block text-sm font-semibold text-gray-900"
-              >
-                El teu email
-              </label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                className="mb-3 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
-                placeholder="email@email.com"
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="password"
-                className="mb-1 block text-sm font-semibold text-gray-900"
-              >
-                Contrasenya
-              </label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="••••••••"
-                className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 "
-              />
-            </div>
+          <FormInput 
+              label="El teu email"
+              name="email"
+              type="email"
+              placeholder="email@email.com"
+            />
+           <FormInput 
+              label="Contrasenya"
+              name="password"
+              type="password"
+              placeholder="••••••••"
+            />
             <div className="my-3 w-full">
-              <Button type="submit" title="Accedir" />
               <a
                 href="#"
                 className="block text-sm font-medium hover:font-semibold hover:underline"
               >
                 He oblidat la contrasenya
               </a>
+              <Button type="submit" title="Accedir" />
             </div>
           </form>
-          <p className="mb-3 text-sm font-light">
-            Ets membre i no estàs registrat?
+          <p className="text-sm font-light">
+            No estàs registrat? <Link className="font-bold hover:underline hover:underline-offset-4 hover:decoration-[3px]" to="/admin/register">Crear usuari</Link>
           </p>
-          <Button title="Registrar-me" to="/admin/register" />
         </div>
       </motion.div>
   );
