@@ -1,48 +1,53 @@
 import { FastifyInstance } from 'fastify';
-import { registerUser } from '../../controllers/users';
-// import { $ref } from '../../schemas/userRegisterSchema';
+import { registerUser, loginUser } from '../../controllers/users';
+import { $ref } from '../../schemas/userRoutesSchema';
 
-/* const registerUserOpts = {
+const registerUserOpts = {
   schema: {
     description: 'Register a new user',
-    body: $ref('createUserSchema'),
+    body: $ref('userRegisterSchema'),
     response: {
       204: {
+        type: 'object',
+        properties: {},
         description: 'Successful user registration',
       },
       400: {
+        type: 'object',
+        properties: {},
         description: 'Invalid user registration',
       },
       500: {
+        type: 'object',
+        properties: {},
         description: 'Server error',
       },
     },
   },
   //   handler: registerUser,
-}; */
-/* const loginUserOpts = {
+};
+
+const loginUserOpts = {
   schema: {
     description: 'Login a user',
-    body: $ref('loginUserSchema'),
+    body: $ref('userLoginSchema'),
     response: {
-      204: {
-        description: 'Successful user login',
-      },
+      200: $ref('userLoginResponse'),
       400: {
+        type: 'object',
+        properties: {},
         description: 'Invalid user credentials',
       },
       500: {
+        type: 'object',
+        properties: {},
         description: 'Server error',
       },
     },
   },
-  //   handler: loginUser,
-}; */
+};
 
 export async function userRoutes(fastify: FastifyInstance) {
-  fastify.post('/register', registerUser);
-
-  // app.post('/', loginUserOpts, loginUser);
-
-  //   fastify.get('/', getUsersOpts, getUsers)
+  fastify.post('/register', registerUserOpts, registerUser);
+  fastify.post('/login', loginUserOpts, loginUser);
 }

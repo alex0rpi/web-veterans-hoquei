@@ -17,7 +17,7 @@ export const userSchema = z.object({
     .email(),
   password: z
     .string({
-      required_error: 'Invalid password address.',
+      required_error: 'Invalid password.',
       invalid_type_error: 'Password must be a string.',
     })
     .min(8)

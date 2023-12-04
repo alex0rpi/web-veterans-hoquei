@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
 import prisma from '../../config/prisma';
-import { TRegisterUser } from '../../schemas/userRegisterSchema';
+import { TRegisterUser } from '../../schemas/userRoutesSchema';
 import { hashPassword } from '../../helpers/passwordHash';
 
 export const registerUser = async (

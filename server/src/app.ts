@@ -3,6 +3,7 @@ import fastify from 'fastify';
 import Swagger from '@fastify/swagger';
 import SwaggerUI from '@fastify/swagger-ui';
 import { userRoutes } from './routes/users/userRoutes';
+import { userSchemas } from './schemas/userRoutesSchema';
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
 
@@ -15,6 +16,13 @@ app.get('/health-check', async function () {
 });
 
 async function main() {
+  // Register endpoint schemas before the routes.
+
+  for (const schema of userSchemas) {
+    app.addSchema(schema);
+  }
+
+  // Register routes.
   app.register(userRoutes, { prefix: '/users' });
 
   const PORT = 4000;
