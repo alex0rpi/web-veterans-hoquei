@@ -4,16 +4,28 @@ import { Button } from '../UI-components/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 import FormInput from './FormInput';
+import LoginService from '../../services/LoginService';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const AdminLogin = () => {
-  const emailRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
-  const onLoginSubmitHandler = () => {
-    console.log('Login submitted');
-    setUser({ name: 'Alex', email: 'alex@alex.com' });
-    navigate('/admin/new-chapter');
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const onLoginSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const loginInput = {
+      email: emailRef.current?.value,
+      password: passwordRef.current?.value,
+    };
+
+    const user = await LoginService(loginInput);
+    if (user) {
+      toast.success(`Benvingut ${user.name}!`);
+      setUser({ id: user.id, name: user.name });
+      navigate('/admin/new-chapter');
+    }
   };
   return (
     <motion.div

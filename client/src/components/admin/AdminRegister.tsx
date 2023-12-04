@@ -16,11 +16,13 @@ const AdminRegister = () => {
 
   const onRegisterHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const name = nameRef.current?.value;
-    const email = emailRef.current?.value;
-    const password = passwordRef.current?.value;
-    const confirmPassword = confirmPasswordRef.current?.value;
-    const registerInput = { name, email, password, confirmPassword };
+
+    const registerInput = {
+      name: nameRef.current?.value,
+      email: emailRef.current?.value,
+      password: passwordRef.current?.value,
+      confirmPassword: confirmPasswordRef.current?.value,
+    };
 
     const isSuccess = await RegisterService(registerInput);
 

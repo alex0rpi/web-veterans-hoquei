@@ -10,7 +10,7 @@ export const MainLayout = (props: PropsWithChildren) => {
       <div className="main-column-layout">
         <ToastContainer
           position="top-center"
-          autoClose={3500}
+          autoClose={3000}
           hideProgressBar={false}
           newestOnTop={false}
           closeOnClick

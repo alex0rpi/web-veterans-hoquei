@@ -1,8 +1,8 @@
 import { createContext, useState } from 'react';
 
 export type TUser = {
+  id: string;
   name: string;
-  email: string;
 };
 
 export interface IUserContext {
@@ -13,8 +13,8 @@ export interface IUserContext {
 
 const defaultState = {
   user: {
+    id: '',
     name: '',
-    email: '',
   },
   setUser: () => {},
 } as IUserContext;
@@ -28,8 +28,8 @@ type TUserProviderProps = {
 
 export default function UserProvider({ children }: TUserProviderProps) {
   const [user, setUser] = useState<TUser>({
+    id: '',
     name: '',
-    email: '',
   });
 
   return (
