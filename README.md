@@ -1,8 +1,12 @@
-# Getting Started with [Fastify-CLI](https://www.npmjs.com/package/fastify-cli)
+# Fullstask blog website with user auth
 
-This project was bootstrapped with Fastify-CLI. I am still learning it, so server development is going slower than I would like but anyway, I think its worth it.
+This is my ongoing project for the Rink Hockey veterans association.
 
-To learn Fastify, check out the [Fastify documentation](https://www.fastify.io/docs/latest/).
+- The frontend is being made in React-Vite with Router, Context and Tailwind.
+
+- The backend is bootstrapped with Fastify-CLI. I am still learning it, so server development is going slower than I would like but anyway, I think its worth it.<br>
+  [Fastify CLI to start a project](https://www.npmjs.com/package/fastify-cli). <br>
+  [Fastify documentation here](https://www.fastify.io/docs/latest/).
 
 ## Backend start up:
 

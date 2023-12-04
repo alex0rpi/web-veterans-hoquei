@@ -1,6 +1,7 @@
 import logoImage from "../../assets/logos/logo-no-text-removebg.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
+import { Link } from "react-router-dom";
 
 // import { useState } from "react";
 // import SideDrawer from "";
@@ -15,8 +16,8 @@ export const LogoItem = () => {
   // };
   return (
     <div className="flex items-center justify-between border-b-2 border-gray-300 md:justify-center">
-      <a
-        href="/"
+      <Link
+        to="/"
         className="px-4 py-1 transition duration-200 hover:scale-95 active:scale-100 md:py-2"
       >
         <img
@@ -25,7 +26,7 @@ export const LogoItem = () => {
           alt="logo"
           // width="96px"
         />
-      </a>
+      </Link>
       <FontAwesomeIcon
         icon={faBars}
         size="xl"
