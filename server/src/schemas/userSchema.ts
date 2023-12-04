@@ -2,6 +2,13 @@ import { z } from 'zod';
 
 export const userSchema = z.object({
   id: z.string(),
+  name: z
+    .string({
+      required_error: 'Invalid name.',
+      invalid_type_error: 'Name must be a string.',
+    })
+    .min(1)
+    .max(100),
   email: z
     .string({
       required_error: 'Invalid email address.',
@@ -15,13 +22,6 @@ export const userSchema = z.object({
     })
     .min(8)
     .max(50),
-  name: z
-    .string({
-      required_error: 'Invalid name.',
-      invalid_type_error: 'Name must be a string.',
-    })
-    .min(1)
-    .max(100),
   status: z.enum(['ACTIVE', 'INACTIVE']),
   role: z.enum(['ADMIN', 'REGISTERED']),
   createdAt: z.string().datetime(),

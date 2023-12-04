@@ -2,6 +2,10 @@ import { motion } from "framer-motion";
 import { Button } from "../utils/Button";
 
 const AdminRegister = () => {
+  const onRegisterHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    console.log("onRegisterHandler", e.target);
+    
+  }
   return (
       <motion.div
         initial={{ scale: 0 }}
@@ -18,7 +22,7 @@ const AdminRegister = () => {
           Registrar nou membre
         </h1>
         <div className="mt-6 space-y-4 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6">
-          <form className="" action="#">
+          <form onSubmit={onRegisterHandler}>
             <div>
               <label
                 htmlFor="email"

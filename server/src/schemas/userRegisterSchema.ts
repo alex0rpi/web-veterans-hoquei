@@ -27,5 +27,5 @@ const userRegisterSchema = userSchema
 //   loginUserSchema,
 // });
 
-export type TCreateUser = z.infer<typeof userRegisterSchema>;
+export type TRegisterUser = z.infer<typeof userRegisterSchema>;
 // export type TLoginUser = z.infer<typeof loginUserSchema>;
