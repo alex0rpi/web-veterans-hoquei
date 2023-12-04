@@ -1,15 +1,14 @@
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Button } from '../utils/Button';
+import { Button } from '../UI-components/Button';
 import FormInput from './FormInput';
 import RegisterService from '../../services/RegisterService';
-import { useContext } from 'react';
-import { UserContext } from '../../context/UserContext';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AdminRegister = () => {
-  const { setUser } = useContext(UserContext);
-
+  const navigate = useNavigate();
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -22,15 +21,13 @@ const AdminRegister = () => {
     const password = passwordRef.current?.value;
     const confirmPassword = confirmPasswordRef.current?.value;
     const registerInput = { name, email, password, confirmPassword };
-    console.log('registerInput: ', registerInput);
 
-    const user = await RegisterService(registerInput);
-    console.log('user created: ', user);
+    const isSuccess = await RegisterService(registerInput);
 
-    setUser({
-      name: user.name,
-      email: user.email,
-    });
+    if (isSuccess) {
+      toast.success('Now usuari registrat.');
+      navigate('/admin/login');
+    }
   };
 
   return (

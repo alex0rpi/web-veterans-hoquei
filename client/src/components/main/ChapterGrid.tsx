@@ -1,5 +1,5 @@
-import { ChapterCard } from "../utils/ChapterCard";
-import chapters from "../../data/chapters.json";
+import { ChapterCard } from '../UI-components/ChapterCard';
+import chapters from '../../data/chapters.json';
 
 const ChapterGrid = () => {
   return (

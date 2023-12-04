@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 type TRegisterProps = {
   name: string | undefined;
   email: string | undefined;
@@ -26,15 +28,13 @@ const RegisterService = async (props: TRegisterProps) => {
     if (!response.ok) {
       const error = await response.json();
       alert(error.message);
-      return;
+      return false;
     }
-    const data = await response.json();
-    console.log('data-received: ', data);
-    return data;
+
+    return true;
   } catch (error) {
-    // show an alert window with the error received from the backend
-    alert('Alguna cosa ha fallat, sisplau torna-ho a provar més tard');
-    return;
+    toast.warning('Alguna cosa ha fallat, sisplau torna-ho a provar més tard.');
+    return false;
   }
 };
 

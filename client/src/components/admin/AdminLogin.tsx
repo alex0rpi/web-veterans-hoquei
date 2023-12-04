@@ -1,11 +1,9 @@
 import { useContext, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Button } from '../utils/Button';
+import { Button } from '../UI-components/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 import FormInput from './FormInput';
-
-// type Props = {};
 
 export const AdminLogin = () => {
   const emailRef = useRef<HTMLInputElement>(null);

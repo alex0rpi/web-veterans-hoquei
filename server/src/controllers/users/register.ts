@@ -11,14 +11,14 @@ export const registerUser = async (
   try {
     const hashedPassword = await hashPassword(newUserData.password);
 
-    const user = await prisma.user.create({
+    await prisma.user.create({
       data: {
         name: newUserData.name,
         email: newUserData.email,
         password: hashedPassword,
       },
     });
-    return reply.code(201).send(user);
+    return reply.code(204).send();
   } catch (error) {
     console.log('error: ', error);
     return reply.code(500).send(error);
