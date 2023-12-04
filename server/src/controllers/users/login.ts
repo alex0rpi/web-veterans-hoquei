@@ -2,7 +2,7 @@ import { FastifyReply, FastifyRequest } from 'fastify';
 import prisma from '../../config/prisma';
 import { TLoginUser } from '../../schemas/userRoutesSchema';
 import { checkPassword } from '../../helpers/passwordHash';
-import jwt, { Secret } from 'jsonwebtoken';
+import { app } from '../../app';
 
 export const loginUser = async (
   req: FastifyRequest<{ Body: TLoginUser }>,
@@ -25,19 +25,21 @@ export const loginUser = async (
 
     if (!match) return reply.code(400).send('Invalid user credentials.');
 
-    /*     const token = jwt.sign({ id: existingUser.id }, process.env.JWT_SECRET as Secret, {
-      expiresIn: expirationInMilliseconds.toString(),
-    }); */
+    // Generate JWT token and set it as a cookie on the client browser.
 
-    /*     reply.setCookie('token', token, {
-      // path: '/',
-      httpOnly: true, // meaning that the cookie cannot be accessed by client-side JavaScript code.
+    const { id, name } = existingUser;
+    const accessToken = app.jwt.sign(
+      { id, name },
+      { expiresIn: expirationInMilliseconds }
+    );
+    reply.setCookie('token', accessToken, {
+      path: '/',
+      secure: false, // set this to false if you're not using https
+      httpOnly: true,
+      sameSite: 'lax', // or 'strict' or 'none'. // lax means that the cookie will be sent with requests from the same site and also from subdomains
       maxAge: expirationInMilliseconds,
-      sameSite: 'lax', // this means that the cookie will only be sent in requests to the same domain.
-      // secure: process.env.NODE_ENV === 'production',
-    }); */
-
-    return reply.code(200).send(existingUser);
+    });
+    return reply.code(200).send({ id, name });
   } catch (error) {
     console.log('error: ', error);
     return reply.code(500).send(error);
