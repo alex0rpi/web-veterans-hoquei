@@ -1,21 +1,22 @@
+import React from 'react';
+
 type TFormInputProps = {
-    label: string;
-    name: string;
-    type: string;
-    placeholder: string;
+  label: string;
+  name: string;
+  type: string;
+  placeholder: string;
+  inputRef: React.RefObject<HTMLInputElement>;
+};
 
-}
-
-const FormInput = (props: TFormInputProps) => {
+const FormInput = React.forwardRef<HTMLInputElement, TFormInputProps>((props, ref) => {
   return (
     <div>
-      <label
-        htmlFor="email"
-        className="mb-1 block text-sm font-semibold text-gray-900"
-      >
+      <label htmlFor="email" className="mb-1 block text-sm font-semibold text-gray-900">
         {props.label}
       </label>
       <input
+        required
+        ref={props.inputRef}
         type={props.type}
         name={props.name}
         id={props.name}
@@ -23,7 +24,7 @@ const FormInput = (props: TFormInputProps) => {
         placeholder={props.placeholder}
       />
     </div>
-  )
-}
+  );
+});
 
-export default FormInput
+export default FormInput;

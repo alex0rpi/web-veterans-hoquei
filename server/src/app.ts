@@ -15,11 +15,11 @@ app.get('/health-check', async function () {
 });
 
 async function main() {
-  app.register(userRoutes, { prefix: '/api/users' });
+  app.register(userRoutes, { prefix: '/users' });
 
   const PORT = 4000;
   try {
-    await app.listen({ port: PORT, host: '0.0.0.0' });
+    await app.listen({ port: PORT, host: 'localhost' });
     console.log(`Server ready at port ${PORT}`);
   } catch (error) {
     console.log(error);
