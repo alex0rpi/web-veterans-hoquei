@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Button } from '../../UI-components/Button';
+import FormInput from '../../UI-components/FormInput';
 
 const NewChapterForm = () => {
   return (
@@ -44,23 +45,13 @@ const NewChapterForm = () => {
                 <option className="bg-slate-200">2017-2018</option>
               </select>
             </div>
-            <div>
-              <label
-                htmlFor="title-pro"
-                className="text-md mb-1 mt-3 block font-semibold text-gray-900"
-              >
-                Títol article secció pro
-              </label>
-              <input
-                type="text"
-                name="title-pro"
-                id="title-pro"
-                placeholder=""
-                required
-                className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 "
-              />
-            </div>
-            <div>
+            <FormInput
+              label="Títol article secció pro"
+              name="title-pro"
+              type="text"
+              placeholder=""
+            />
+            <div className="mb-2">
               <label
                 htmlFor="content-pro"
                 className="text-md mb-1 mt-3 block font-semibold text-gray-900"
@@ -77,22 +68,12 @@ const NewChapterForm = () => {
               ></textarea>
             </div>
 
-            <div>
-              <label
-                htmlFor="title-pro"
-                className="text-md mb-1 mt-3 block font-semibold text-gray-900"
-              >
-                Títol article bases i filial
-              </label>
-              <input
-                type="text"
-                name="title-pro"
-                id="title-pro"
-                placeholder=""
-                required
-                className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 "
-              />
-            </div>
+            <FormInput
+              label="Títol article bases i filial"
+              name="title-bases"
+              type="text"
+              placeholder=""
+            />
             <div>
               <label
                 htmlFor="content-pro"

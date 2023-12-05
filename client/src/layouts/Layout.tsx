@@ -7,7 +7,7 @@ export const MainLayout = (props: PropsWithChildren) => {
   return (
     <div className="main-grid bg-hero-pattern bg-cover">
       <Navigation />
-      <div className="main-column-layout">
+      <div className="main-column-layout overflow-y-hidden">
         <ToastContainer
           position="top-right"
           autoClose={3000}
