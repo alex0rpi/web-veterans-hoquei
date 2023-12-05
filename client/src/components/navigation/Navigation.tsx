@@ -8,17 +8,26 @@ import { Backdrop } from '../UI-components/Backdrop';
 import { motion } from 'framer-motion';
 import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import LogoutService from '../../services/LogoutService';
 
 export const Navigation = () => {
   const [show, setShow] = useState(false);
   const { user, setUser } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const clickHandler = () => {
     setShow((prevState) => !prevState);
   };
 
-  const onLogoutHandler = () => {
-    setUser({ name: '', email: '' });
+  const onLogoutHandler = async () => {
+    const isSuccess = await LogoutService();
+    if (isSuccess) {
+      setUser({ id: '', name: '' });
+      toast.success('Usuari desconnectat.');
+      navigate('/');
+    }
   };
 
   return (
@@ -37,7 +46,7 @@ export const Navigation = () => {
             <div className="flex items-center justify-between md:justify-center">
               <a
                 href="/"
-                className="z-50 px-4 py-1 transition duration-200 hover:scale-95 active:scale-100 md:py-2"
+                className="px-4 py-1 transition duration-200 hover:scale-95 active:scale-100 md:py-2"
               >
                 <img src={logoImage} className="h-14 brightness-125 md:h-24" alt="logo" />
               </a>

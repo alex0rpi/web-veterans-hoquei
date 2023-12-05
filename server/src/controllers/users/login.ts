@@ -4,7 +4,7 @@ import { TLoginUser } from '../../schemas/userRoutesSchema';
 import { checkPassword } from '../../helpers/passwordHash';
 import { app } from '../../app';
 
-export const loginUser = async (
+export const login = async (
   req: FastifyRequest<{ Body: TLoginUser }>,
   reply: FastifyReply
 ) => {

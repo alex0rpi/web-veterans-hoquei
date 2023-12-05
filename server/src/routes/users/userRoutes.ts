@@ -1,5 +1,5 @@
 import { FastifyInstance } from 'fastify';
-import { registerUser, loginUser } from '../../controllers/users';
+import { register, login, logout } from '../../controllers/users';
 import { $ref } from '../../schemas/userRoutesSchema';
 
 const registerUserOpts = {
@@ -47,7 +47,21 @@ const loginUserOpts = {
   },
 };
 
+const logoutUserOpts = {
+  schema: {
+    description: 'Logout a user',
+    response: {
+      204: {
+        type: 'object',
+        properties: {},
+        description: 'Successful user logout',
+      },
+    },
+  },
+};
+
 export async function userRoutes(fastify: FastifyInstance) {
-  fastify.post('/register', registerUserOpts, registerUser);
-  fastify.post('/login', loginUserOpts, loginUser);
+  fastify.post('/register', registerUserOpts, register);
+  fastify.post('/login', loginUserOpts, login);
+  fastify.get('/logout', logoutUserOpts, logout);
 }

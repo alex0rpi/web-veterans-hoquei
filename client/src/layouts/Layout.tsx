@@ -9,7 +9,7 @@ export const MainLayout = (props: PropsWithChildren) => {
       <Navigation />
       <div className="main-column-layout">
         <ToastContainer
-          position="top-center"
+          position="top-right"
           autoClose={3000}
           hideProgressBar={false}
           newestOnTop={false}

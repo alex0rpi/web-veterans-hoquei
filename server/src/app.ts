@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import Fastify, { FastifyReply, FastifyRequest } from 'fastify';
 import fjwt from '@fastify/jwt';
-import fcookie from '@fastify/cookie';
+import fcookie, { FastifyCookieOptions } from '@fastify/cookie';
 import Swagger from '@fastify/swagger';
 import SwaggerUI from '@fastify/swagger-ui';
 import { userRoutes } from './routes/users/userRoutes';
@@ -29,7 +29,7 @@ app.register(fcookie, {
   secret: process.env.COOKIE_SECRET as string,
   hook: 'onRequest',
   parseOptions: {},
-});
+}) as FastifyCookieOptions;
 
 app.get('/health-check', async function () {
   return { status: 'ok' };

@@ -22,8 +22,8 @@ export const AdminLogin = () => {
 
     const user = await LoginService(loginInput);
     if (user) {
-      toast.success(`Benvingut ${user.name}!`);
       setUser({ id: user.id, name: user.name });
+      toast.success(`Benvingut ${user.name}!`);
       navigate('/admin/new-chapter');
     }
   };

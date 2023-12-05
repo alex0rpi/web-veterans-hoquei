@@ -3,7 +3,7 @@ import prisma from '../../config/prisma';
 import { TRegisterUser } from '../../schemas/userRoutesSchema';
 import { hashPassword } from '../../helpers/passwordHash';
 
-export const registerUser = async (
+export const register = async (
   req: FastifyRequest<{ Body: TRegisterUser }>,
   reply: FastifyReply
 ) => {
