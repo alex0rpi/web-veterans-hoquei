@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Button } from '../../UI-components/Button';
 import FormInput from '../../UI-components/FormInput';
+import TextAreaInput from '../../UI-components/TextAreaInput';
 
 const NewChapterForm = () => {
   return (
@@ -23,7 +24,7 @@ const NewChapterForm = () => {
             <div>
               <label
                 htmlFor="season"
-                className="text-md mb-1 mt-3 block font-semibold text-gray-900"
+                className="text-md mb-1 block font-semibold text-gray-900"
               >
                 Selecciona una temporada
               </label>
@@ -45,54 +46,40 @@ const NewChapterForm = () => {
                 <option className="bg-slate-200">2017-2018</option>
               </select>
             </div>
+            <div className="border-b-2 border-slate-400 mt-4 mb-3"></div>
             <FormInput
-              label="Títol article secció pro"
+              label="Títol article secció professional"
               name="title-pro"
               type="text"
               placeholder=""
             />
-            <div className="mb-2">
-              <label
-                htmlFor="content-pro"
-                className="text-md mb-1 mt-3 block font-semibold text-gray-900"
-              >
-                Redacta el cos article per a la secció pro
-              </label>
-              <textarea
-                name="content-pro"
-                id="content-pro"
-                placeholder=""
-                rows={5}
-                required
-                className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 "
-              ></textarea>
-            </div>
 
+            <TextAreaInput
+              label="Cos de l'article secció professional"
+              name="content-pro"
+              rows={4}
+              maxLength={3000}
+              placeholder="Contingut de l'article..."
+            />
+
+            <div className="border-b-2 border-slate-400 mt-4 mb-3"></div>
             <FormInput
               label="Títol article bases i filial"
               name="title-bases"
               type="text"
               placeholder=""
             />
-            <div>
-              <label
-                htmlFor="content-pro"
-                className="text-md mb-1 mt-3 block font-semibold text-gray-900"
-              >
-                Redacta el cos article per a la secció filial i base
-              </label>
-              <textarea
-                name="content-pro"
-                id="content-pro"
-                placeholder=""
-                rows={5}
-                required
-                className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 "
-              ></textarea>
-            </div>
+
+            <TextAreaInput
+              label="Cos de l'article secció base i filial"
+              name="content-bases"
+              rows={4}
+              maxLength={3000}
+              placeholder="Contingut de l'article..."
+            />
           </div>
 
-          <Button type="submit" title="PUBLICAR" to="/admin/chapter-list" />
+          <Button type="submit" title="PUBLICAR CAPÍTOL" to="/admin/chapter-list" />
         </form>
       </div>
     </motion.div>

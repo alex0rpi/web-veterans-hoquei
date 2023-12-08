@@ -1,5 +1,6 @@
 import FormInput from '../UI-components/FormInput';
 import { Button } from '../UI-components/Button';
+import TextAreaInput from '../UI-components/TextAreaInput';
 
 const ContactForm = () => {
   return (
@@ -22,21 +23,13 @@ const ContactForm = () => {
             />
           </div>
         </div>
-        <label
-          htmlFor="contactMessage"
-          className="mb-1 block text-sm font-semibold text-gray-900"
-        >
-          Missatge
-        </label>
-        <textarea
-          className="mb-3 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
+        <TextAreaInput
+          label="Missatge"
           name="message"
           rows={4}
-          id="contactMessage"
-          placeholder="Escriu el teu missatge..."
           maxLength={2000}
-        ></textarea>
-
+          placeholder="Escriu el teu missatge..."
+        />
         <div className="w-full">
           <Button type="button" title="Enviar" />
         </div>

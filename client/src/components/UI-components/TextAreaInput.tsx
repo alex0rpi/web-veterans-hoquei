@@ -10,7 +10,7 @@ type TFormTextAreaProps = {
 };
 
 const TextAreaInput = React.forwardRef<HTMLTextAreaElement, TFormTextAreaProps>(
-  (props, ref) => {
+  (props) => {
     return (
       <div>
         <label htmlFor="email" className="mb-1 block text-md font-semibold text-gray-900">
