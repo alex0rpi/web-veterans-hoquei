@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainContent from './pages/MainContent';
 import NotFound from './pages/NotFound';
+import BookPage from './pages/BookPage';
 import AdminLogin from './components/admin/AdminLogin';
 import AdminRegister from './components/admin/AdminRegister';
 import SeasonContent from './components/main/SeasonContent';
@@ -24,6 +25,14 @@ const router = createBrowserRouter([
     element: (
       <MainLayout>
         <SeasonContent />
+      </MainLayout>
+    ),
+  },
+  {
+    path: '/llibre-veterans-hoquei-patins-fcb',
+    element: (
+      <MainLayout>
+        <BookPage />
       </MainLayout>
     ),
   },

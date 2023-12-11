@@ -72,7 +72,7 @@ export const Navigation = () => {
               <>
                 <MenuItem title="Home" />
                 <MenuItem title="Accés" to="/admin/login" />
-                <MenuItem title="El Llibre" />
+                <MenuItem title="El Llibre" to="/llibre-veterans-hoquei-patins-fcb" />
                 <MenuItem title="Junta" />
                 <MenuItem title="Temporades" />
                 <MenuItem title="Info jugadors" />
@@ -110,7 +110,7 @@ export const Navigation = () => {
               <>
                 <MenuItem title="Home" />
                 <MenuItem title="Accés" to="/admin/login" />
-                <MenuItem title="El Llibre" />
+                <MenuItem title="El Llibre" to="/llibre-veterans-hoquei-patins-fcb" />
                 <MenuItem title="Junta" />
                 <MenuItem title="Temporades" />
                 <MenuItem title="Info jugadors" />
