@@ -1,17 +1,8 @@
-import { FaHockeyPuck } from "react-icons/fa";
-import { GiHockey } from "react-icons/gi";
-import { MdOutlineSportsHockey } from "react-icons/md";
+import { FaHockeyPuck } from 'react-icons/fa';
+import { GiHockey } from 'react-icons/gi';
+import { MdOutlineSportsHockey } from 'react-icons/md';
+import { Button } from '../UI-components/Button';
 
-{
-  /* <FaHockeyPuck className="fa-2x inline-block" />
-        <MdOutlineSportsHockey className="fa-2x inline-block" /> */
-  //   <p className="ms-1 inline-block text-lg font-semibold">
-  //   Amb imatges històriques i documents inèdits
-  // </p>
-  //   <p className="ms-1 inline-block text-lg font-semibold">
-  //   Amb totes les dades per temporades
-  // </p>
-}
 const BookFeatures = () => {
   return (
     <section className="mb-3 grid gap-3 md:grid-cols-3">
@@ -21,8 +12,8 @@ const BookFeatures = () => {
           Des dels inicis fins a l'actualitat
         </p>
         <p className="text-md">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus ut
-          ab sit, quod modi iste? Amet deserunt quos obcaecati laudantium.
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus ut ab sit,
+          quod modi iste? Amet deserunt quos obcaecati laudantium.
         </p>
       </div>
       <div className="mx-2 text-left">
@@ -31,8 +22,8 @@ const BookFeatures = () => {
           Amb imatges històriques i documents inèdits
         </p>
         <p className="text-md">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus ut
-          ab sit, quod modi iste? Amet deserunt quos obcaecati laudantium.
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus ut ab sit,
+          quod modi iste? Amet deserunt quos obcaecati laudantium.
         </p>
       </div>
       <div className="mx-2 text-left">
@@ -41,9 +32,13 @@ const BookFeatures = () => {
           Amb totes les dades per temporades
         </p>
         <p className="text-md">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus ut
-          ab sit, quod modi iste? Amet deserunt quos obcaecati laudantium.
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus ut ab sit,
+          quod modi iste? Amet deserunt quos obcaecati laudantium.
         </p>
+      </div>
+      <div className="my-3 mx-auto md:col-span-1 md:col-start-2 flex gap-4">
+        <Button title="Visualitza'l" type="button" />
+        <Button title="Descarrega'l" type="button" />
       </div>
     </section>
   );

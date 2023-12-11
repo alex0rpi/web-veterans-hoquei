@@ -32,7 +32,7 @@ export const Navigation = () => {
 
   return (
     <>
-      <div className="md:col-span-1 md:col-start-2 md:flex md:justify-end opacity-80">
+      <div className="md:col-span-1 md:col-start-2 md:flex md:justify-end opacity-90">
         <nav className="w-full min-w-fit bg-primary text-right text-slate-200">
           <motion.div
             initial={{ x: '100%', opacity: 0.2 }}
