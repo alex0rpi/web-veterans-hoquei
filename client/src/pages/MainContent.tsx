@@ -1,14 +1,14 @@
-import { HeaderTitle } from './HeaderTitle';
+import { HeaderTitle } from '../components/main/HeaderTitle';
 import { easeInOut, motion } from 'framer-motion';
-import Testimonials from './Testimonials';
-import BookFeatures from './BookFeatures';
-import Location from './Location';
-import ChapterGrid from './ChapterGrid';
+import Testimonials from '../components/main/Testimonials';
+import BookFeatures from '../components/main/BookFeatures';
+import Location from '../components/main/Location';
+import ChapterGrid from '../components/main/ChapterGrid';
 
-import ImageSlider from './ImageSlider';
+import ImageSlider from '../components/main/ImageSlider';
 import { useContext } from 'react';
-import { UserContext } from '../../context/UserContext';
-import ContactForm from './ContactForm';
+import { UserContext } from '../context/UserContext';
+import ContactForm from '../components/main/ContactForm';
 
 const MainContent = () => {
   const { user } = useContext(UserContext);

@@ -1,70 +1,72 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import MainContent from "./components/main/MainContent";
-import NotFound from "./pages/NotFound";
-import AdminLogin from "./components/admin/AdminLogin";
-import AdminRegister from "./components/admin/AdminRegister";
-import SeasonContent from "./components/main/SeasonContent";
-import NewChapterForm from "./components/admin/chapters/NewChapterForm";
-import AdminChapters from "./components/admin/chapters/AdminChapters";
-import UserProvider from "./context/UserContext";
-import { MainLayout } from "./layouts/Layout";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import MainContent from './pages/MainContent';
+import NotFound from './pages/NotFound';
+import AdminLogin from './components/admin/AdminLogin';
+import AdminRegister from './components/admin/AdminRegister';
+import SeasonContent from './components/main/SeasonContent';
+import NewChapterForm from './components/admin/chapters/NewChapterForm';
+import AdminChapters from './components/admin/chapters/AdminChapters';
+import UserProvider from './context/UserContext';
+import { MainLayout } from './layouts/Layout';
 
 const router = createBrowserRouter([
   // Pending wrap the routes in a Layout component
   {
-    path: "/",
+    path: '/',
     element: (
       <MainLayout>
         <MainContent />
       </MainLayout>
-    )
+    ),
   },
   {
-    path: "/temporades/:season",
+    path: '/temporades/:season',
     element: (
       <MainLayout>
         <SeasonContent />
       </MainLayout>
-    )
+    ),
   },
   {
-    path: "/admin/login",
+    path: '/admin/login',
     element: (
       <MainLayout>
         <AdminLogin />
       </MainLayout>
-    )
+    ),
   },
   {
-    path: "/admin/register",
+    path: '/admin/register',
     element: (
       <MainLayout>
         <AdminRegister />
       </MainLayout>
-    )
+    ),
   },
   {
-    path: "/admin/new-chapter",
+    path: '/admin/new-chapter',
     element: (
       <MainLayout>
         <NewChapterForm />
       </MainLayout>
-    )
+    ),
   },
   {
-    path: "/admin/chapter-list",
+    path: '/admin/chapter-list',
     element: (
       <MainLayout>
         <AdminChapters />
       </MainLayout>
-    )
+    ),
   },
 
-  { path: "*", element: (
+  {
+    path: '*',
+    element: (
       <MainLayout>
-        <NotFound /> 
+        <NotFound />
       </MainLayout>
-    )
+    ),
   },
 ]);
 
