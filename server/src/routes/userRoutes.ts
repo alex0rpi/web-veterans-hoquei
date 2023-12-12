@@ -1,6 +1,6 @@
 import { FastifyInstance } from 'fastify';
-import { register, login, logout } from '../../controllers/users';
-import { $ref } from '../../schemas/userRoutesSchema';
+import { register, login, logout } from '../controllers/users';
+import { $ref } from '../schemas/userRoutesSchema';
 
 const registerUserOpts = {
   schema: {
@@ -32,7 +32,7 @@ const loginUserOpts = {
     description: 'Login a user',
     body: $ref('userLoginSchema'),
     response: {
-      200: $ref('userLoginResponse'),
+      200: $ref('userLoginResponse'), // here we stipulate the response object returned by the controller to follow userLoginResponse schema
       400: {
         type: 'object',
         properties: {},

@@ -4,14 +4,25 @@ import fjwt from '@fastify/jwt';
 import fcookie, { FastifyCookieOptions } from '@fastify/cookie';
 import Swagger from '@fastify/swagger';
 import SwaggerUI from '@fastify/swagger-ui';
-import { userRoutes } from './routes/users/userRoutes';
+import { userRoutes } from './routes/userRoutes';
 import { userSchemas } from './schemas/userRoutesSchema';
+import { chapterSchemas } from './schemas/chapterRoutesSchema';
+import { chapterRoutes } from './routes/chapterRoutes';
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
 
 // Pass --options via CLI arguments in command to enable these options.
 // export const options = {};
 export const app = Fastify();
+
+declare module '@fastify/jwt' {
+  interface FastifyJWT {
+    user: {
+      id: string;
+      name: string;
+    };
+  }
+}
 
 app.register(fjwt, {
   secret: process.env.JWT_SECRET as string,
@@ -36,14 +47,17 @@ app.get('/health-check', async function () {
 });
 
 async function main() {
-  // Register endpoint schemas before the routes.
-
-  for (const schema of userSchemas) {
+  // Register the endpoint schemas before the routes.
+  for (const schema of [...userSchemas]) {
     app.addSchema(schema);
   }
+  // for (const schema of [...chapterSchemas]) {
+  // app.addSchema(schema);
+  // }
 
   // Register routes.
   app.register(userRoutes, { prefix: '/users' });
+  app.register(chapterRoutes, { prefix: '/chapters' });
 
   const PORT = 4000;
   try {

@@ -9,10 +9,10 @@ const NavList = ({ mode = 'main', onLogout }: TMainNav) => {
   return mode === 'admin' ? (
     <>
       <MenuItem title="Home" />
-      <MenuItem title="Els meus epitafis" to="/admin/chapter-list" />
+      <MenuItem title="Els meus capítols" to="/admin/chapter-list" />
+      <MenuItem title="Crear capítol" to="/admin/new-chapter" />
       <MenuItem title="El meus posts" />
-      <MenuItem title="Crear epitafi" to="/admin/new-chapter" />
-      <MenuItem title="Fer un post" />
+      <MenuItem title="Nou post" />
       <MenuItem title="Les meves dades" />
       <MenuItem title="Desconnectar" onItemClick={onLogout} />
     </>

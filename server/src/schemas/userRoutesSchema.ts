@@ -26,9 +26,6 @@ const userLoginResponse = userSchema.pick({
   id: true,
   name: true,
 });
-// .extend({
-//   token: z.string(),
-// });
 
 export type TLoginUser = z.infer<typeof userLoginSchema>;
 
