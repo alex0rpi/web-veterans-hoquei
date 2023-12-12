@@ -19,6 +19,7 @@ export default {
       },
 
       gridTemplateColumns: {
+        layoutBook: '5% 10% 80% 5%',
         layoutMd: '7.5% 17.5% 67.5% 7.5%',
         layoutLg: '12.5% 15% 60% 12.5%',
       },

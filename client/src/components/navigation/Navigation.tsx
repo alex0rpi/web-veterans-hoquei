@@ -2,8 +2,6 @@ import logoImage from '../../assets/logos/logo-no-text-removebg.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
-import { MenuItem } from './MenuItem';
-
 import { Backdrop } from '../UI-components/Backdrop';
 import { motion } from 'framer-motion';
 import { useContext } from 'react';
@@ -11,6 +9,7 @@ import { UserContext } from '../../context/UserContext';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import LogoutService from '../../services/LogoutService';
+import NavList from './NavList';
 
 export const Navigation = () => {
   const [show, setShow] = useState(false);
@@ -25,7 +24,7 @@ export const Navigation = () => {
     const isSuccess = await LogoutService();
     if (isSuccess) {
       setUser({ id: '', name: '' });
-      toast.success('Usuari desconnectat.');
+      toast.info('Usuari desconnectat.');
       navigate('/');
     }
   };
@@ -50,7 +49,9 @@ export const Navigation = () => {
               >
                 <img src={logoImage} className="h-14 brightness-125 md:h-24" alt="logo" />
               </a>
+              {/* For small screens */}
               {!show ? (
+                // Hamburguer icon
                 <FontAwesomeIcon
                   icon={faBars}
                   size="xl"
@@ -58,6 +59,7 @@ export const Navigation = () => {
                   onClick={clickHandler}
                 />
               ) : (
+                // Close icon
                 <FontAwesomeIcon
                   icon={faXmark}
                   size="2xl"
@@ -69,28 +71,9 @@ export const Navigation = () => {
           </motion.div>
           <div className="hidden w-full pe-2 pt-2 mt-0 ps-5 text-sm md:block border-t-2 border-gray-300">
             {user.name === '' ? (
-              <>
-                <MenuItem title="Home" />
-                <MenuItem title="Accés" to="/admin/login" />
-                <MenuItem title="El Llibre" to="/llibre-veterans-hoquei-patins-fcb" />
-                <MenuItem title="Junta" />
-                <MenuItem title="Temporades" />
-                <MenuItem title="Info jugadors" />
-                <MenuItem title="Blog i notícies" />
-                <MenuItem title="Enllaços" />
-                <MenuItem title="On som" />
-                <MenuItem title="Contacte" />
-              </>
+              <NavList mode="main" onLogout={onLogoutHandler} />
             ) : (
-              <>
-                <MenuItem title="Home" />
-                <MenuItem title="Els meus epitafis" to="/admin/chapter-list" />
-                <MenuItem title="El meus posts" />
-                <MenuItem title="Crear epitafi" to="/admin/new-chapter" />
-                <MenuItem title="Fer un post" />
-                <MenuItem title="Les meves dades" />
-                <MenuItem title="Desconnectar" onItemClick={onLogoutHandler} />
-              </>
+              <NavList mode="admin" onLogout={onLogoutHandler} />
             )}
           </div>
         </nav>
@@ -107,28 +90,9 @@ export const Navigation = () => {
             className="fixed top-20 z-50 w-[60vw] rounded-l-xl bg-primary px-8 pb-2 pt-2 text-slate-200 md:hidden"
           >
             {user.name === '' ? (
-              <>
-                <MenuItem title="Home" />
-                <MenuItem title="Accés" to="/admin/login" />
-                <MenuItem title="El Llibre" to="/llibre-veterans-hoquei-patins-fcb" />
-                <MenuItem title="Junta" />
-                <MenuItem title="Temporades" />
-                <MenuItem title="Info jugadors" />
-                <MenuItem title="Blog i notícies" />
-                <MenuItem title="Enllaços" />
-                <MenuItem title="On som" />
-                <MenuItem title="Contacte" />
-              </>
+              <NavList mode="main" onLogout={onLogoutHandler} />
             ) : (
-              <>
-                <MenuItem title="Home" />
-                <MenuItem title="Els meus epitafis" to="/admin/chapter-list" />
-                <MenuItem title="El meus posts" />
-                <MenuItem title="Crear epitafi" to="/admin/new-chapter" />
-                <MenuItem title="Fer un post" />
-                <MenuItem title="Les meves dades" />
-                <MenuItem title="Desconnectar" onItemClick={onLogoutHandler} />
-              </>
+              <NavList mode="admin" onLogout={onLogoutHandler} />
             )}
           </motion.div>
         </>

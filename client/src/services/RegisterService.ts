@@ -10,7 +10,7 @@ type TRegisterProps = {
 const RegisterService = async (props: TRegisterProps) => {
   const { email, name, password, confirmPassword } = props;
   if (password !== confirmPassword) {
-    alert('Les contrasenyes no coincideixen');
+    toast.warning('Les contrasenyes no coincideixen');
     return;
   }
 

@@ -27,7 +27,7 @@ const AdminRegister = () => {
     const isSuccess = await RegisterService(registerInput);
 
     if (isSuccess) {
-      toast.success('Now usuari registrat.');
+      toast.info('Now usuari registrat.');
       navigate('/admin/login');
     }
   };
