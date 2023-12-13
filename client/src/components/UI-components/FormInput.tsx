@@ -8,7 +8,7 @@ type TFormInputProps = {
   inputRef?: React.RefObject<HTMLInputElement>;
 };
 
-const FormInput = React.forwardRef<HTMLInputElement, TFormInputProps>((props, ref) => {
+const FormInput = React.forwardRef<HTMLInputElement, TFormInputProps>((props) => {
   return (
     <div>
       <label htmlFor="email" className="mb-1 block text-md font-semibold text-gray-900">

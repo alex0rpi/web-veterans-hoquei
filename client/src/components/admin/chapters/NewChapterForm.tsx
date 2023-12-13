@@ -7,14 +7,15 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRef } from 'react';
+import { paths } from '../../../constants';
 
 const NewChapterForm = () => {
   const navigate = useNavigate();
-  const seasonRef = useRef<HTMLInputElement>(null);
+  const seasonRef = useRef<HTMLSelectElement>(null);
   const titleProRef = useRef<HTMLInputElement>(null);
-  const contentProRef = useRef<HTMLInputElement>(null);
+  const contentProRef = useRef<HTMLTextAreaElement>(null);
   const titleBasesRef = useRef<HTMLInputElement>(null);
-  const contentBasesRef = useRef<HTMLInputElement>(null);
+  const contentBasesRef = useRef<HTMLTextAreaElement>(null);
 
   const onChapterSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,11 +28,13 @@ const NewChapterForm = () => {
       contentBases: contentBasesRef.current?.value,
     };
 
+    console.log('type of season: ', typeof chapterInput.season);
+
     const isSuccess = await CreateChapterService(chapterInput);
 
     if (isSuccess) {
       toast.info('Capítol creat correctament.');
-      navigate('/admin/chapters');
+      navigate(paths.userChapterList);
     }
   };
 
@@ -64,6 +67,7 @@ const NewChapterForm = () => {
                 id="season"
                 className="mb-3 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
                 placeholder="email@email.com"
+                ref={seasonRef}
               >
                 {/* Funció per a què agafi desde la temporada actual fins la del 17-18 */}
                 <option selected className="bg-slate-200">
@@ -92,6 +96,7 @@ const NewChapterForm = () => {
               rows={4}
               maxLength={3000}
               placeholder="Contingut de l'article..."
+              inputRef={contentProRef}
             />
 
             <div className="border-b-2 border-slate-400 mt-4 mb-3"></div>
@@ -109,6 +114,7 @@ const NewChapterForm = () => {
               rows={4}
               maxLength={3000}
               placeholder="Contingut de l'article..."
+              inputRef={contentBasesRef}
             />
           </div>
 

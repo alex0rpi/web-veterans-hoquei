@@ -20,7 +20,7 @@ const LoginService = async (props: TRegisterProps) => {
     });
     if (!response.ok) {
       const error = await response.json();
-      alert(error.message);
+      toast.warning(error.message);
       return false;
     }
 

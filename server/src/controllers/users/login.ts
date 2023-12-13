@@ -2,6 +2,7 @@ import Koa from 'koa';
 import jwt, { Secret } from 'jsonwebtoken';
 import { checkPassword } from '../../helpers/passwordHash';
 import prisma from '../../config/prisma';
+import { userLoginResponse } from '../../schemas';
 
 export const login = async (ctx: Koa.Context) => {
   const { email, password } = ctx.request.body;
@@ -9,7 +10,7 @@ export const login = async (ctx: Koa.Context) => {
 
   const user = await prisma.user.findUnique({
     where: { email },
-    select: { id: true, password: true, status: true },
+    select: { id: true, name: true, password: true, status: true },
   });
 
   if (!user) {
@@ -32,7 +33,7 @@ export const login = async (ctx: Koa.Context) => {
     return;
   }
 
-  const token = jwt.sign({ userId: user.id }, process.env.JWT_KEY as Secret, {
+  const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET as Secret, {
     expiresIn: expirationInMilliseconds.toString(),
   });
 
@@ -41,5 +42,8 @@ export const login = async (ctx: Koa.Context) => {
     maxAge: expirationInMilliseconds,
   });
 
-  ctx.status = 204;
+  const parsedUser = userLoginResponse.parse(user);
+
+  ctx.status = 200;
+  ctx.body = parsedUser;
 };
