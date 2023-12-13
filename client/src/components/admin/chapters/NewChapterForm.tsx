@@ -2,8 +2,39 @@ import { motion } from 'framer-motion';
 import { Button } from '../../UI-components/Button';
 import FormInput from '../../UI-components/FormInput';
 import TextAreaInput from '../../UI-components/TextAreaInput';
+import CreateChapterService from '../../../services/CreateChapterService';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useRef } from 'react';
 
 const NewChapterForm = () => {
+  const navigate = useNavigate();
+  const seasonRef = useRef<HTMLInputElement>(null);
+  const titleProRef = useRef<HTMLInputElement>(null);
+  const contentProRef = useRef<HTMLInputElement>(null);
+  const titleBasesRef = useRef<HTMLInputElement>(null);
+  const contentBasesRef = useRef<HTMLInputElement>(null);
+
+  const onChapterSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const chapterInput = {
+      season: seasonRef.current?.value,
+      titlePro: titleProRef.current?.value,
+      contentPro: contentProRef.current?.value,
+      titleBases: titleBasesRef.current?.value,
+      contentBases: contentBasesRef.current?.value,
+    };
+
+    const isSuccess = await CreateChapterService(chapterInput);
+
+    if (isSuccess) {
+      toast.info('Capítol creat correctament.');
+      navigate('/admin/chapters');
+    }
+  };
+
   return (
     <motion.div
       initial={{ scale: 0 }}
@@ -19,7 +50,7 @@ const NewChapterForm = () => {
         Crea un nou capítol
       </h1>
       <div className="mt-6 space-y-4 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6">
-        <form className="" action="#">
+        <form onSubmit={onChapterSubmitHandler}>
           <div className="mb-3">
             <div>
               <label
@@ -52,6 +83,7 @@ const NewChapterForm = () => {
               name="title-pro"
               type="text"
               placeholder=""
+              inputRef={titleProRef}
             />
 
             <TextAreaInput
@@ -68,6 +100,7 @@ const NewChapterForm = () => {
               name="title-bases"
               type="text"
               placeholder=""
+              inputRef={titleBasesRef}
             />
 
             <TextAreaInput
@@ -79,7 +112,7 @@ const NewChapterForm = () => {
             />
           </div>
 
-          <Button type="submit" title="PUBLICAR CAPÍTOL" to="/admin/chapter-list" />
+          <Button type="submit" title="PUBLICAR CAPÍTOL" />
         </form>
       </div>
     </motion.div>
