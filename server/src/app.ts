@@ -4,10 +4,9 @@ import Koa from 'koa';
 import cors from '@koa/cors';
 import helmet from 'koa-helmet';
 import { HttpMethodEnum, koaBody } from 'koa-body';
-import yamljs from 'yamljs';
 import path from 'path';
 import * as Routes from './routes';
-// import { errorMiddleware } from './middleware'
+import { errorMiddleware } from './middleware';
 
 dotenv.config();
 
@@ -29,7 +28,7 @@ app.use(
     ],
   })
 );
-// app.use(errorMiddleware)
+app.use(errorMiddleware);
 
 // Routes
 app.use(Routes.userRouter.routes());
