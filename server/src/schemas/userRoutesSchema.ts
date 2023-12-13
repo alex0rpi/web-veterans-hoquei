@@ -1,9 +1,8 @@
 import { z } from 'zod';
 import { userSchema } from './user';
 import { passwordRegex } from './passwordRegex';
-import { buildJsonSchemas } from 'fastify-zod';
 
-const userRegisterSchema = userSchema
+export const userRegisterSchema = userSchema
   .pick({
     email: true,
     name: true,
@@ -17,22 +16,15 @@ const userRegisterSchema = userSchema
     path: ['confirmPassword'],
   });
 
-const userLoginSchema = userSchema.pick({
+export const userLoginSchema = userSchema.pick({
   email: true,
   password: true,
 });
 
-const userLoginResponse = userSchema.pick({
+export const userLoginResponse = userSchema.pick({
   id: true,
   name: true,
 });
 
 export type TLoginUser = z.infer<typeof userLoginSchema>;
-
-export const { schemas: userSchemas, $ref } = buildJsonSchemas({
-  userRegisterSchema,
-  userLoginSchema,
-  userLoginResponse,
-});
-
 export type TRegisterUser = z.infer<typeof userRegisterSchema>;

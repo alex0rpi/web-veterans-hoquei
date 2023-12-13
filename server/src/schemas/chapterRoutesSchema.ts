@@ -1,8 +1,7 @@
 import { z } from 'zod';
 import { chapterSchema } from './chapter';
-import { buildJsonSchemas } from 'fastify-zod';
 
-const chapterCreateSchema = chapterSchema.pick({
+export const chapterCreateSchema = chapterSchema.pick({
   season: true,
   titlePro: true,
   contentPro: true,
@@ -11,7 +10,7 @@ const chapterCreateSchema = chapterSchema.pick({
   userId: true,
 });
 
-const chapterGetResponseSchema = chapterSchema.pick({
+export const chapterGetResponseSchema = chapterSchema.pick({
   id: true,
   season: true,
   titlePro: true,
@@ -22,12 +21,6 @@ const chapterGetResponseSchema = chapterSchema.pick({
   updatedAt: true,
 });
 
-const chaptersGetResponseSchema = z.array(chapterGetResponseSchema);
+export const chaptersGetResponseSchema = z.array(chapterGetResponseSchema);
 
 export type TCreateChapter = z.infer<typeof chapterCreateSchema>;
-
-export const { schemas: chapterSchemas, $ref } = buildJsonSchemas({
-  chapterCreateSchema,
-  chapterGetResponseSchema,
-  chaptersGetResponseSchema,
-});

@@ -1,12 +1,12 @@
 import { FastifyInstance } from 'fastify';
 import { createChapter, getChapters, getSingleChapter } from '../controllers/chapters';
-// import { $ref } from '../schemas/chapterRoutesSchema';
+import { $ref } from '../schemas/schemas';
 
 const createChapterOpts = {
   // preHandler: ,
   schema: {
     description: 'Create a new chapter that extends the book.',
-    // body: $ref('chapterCreateSchema'),
+    body: $ref('chapterCreateSchema'),
     response: {
       204: {
         type: 'object',
@@ -25,10 +25,11 @@ const createChapterOpts = {
       },
     },
   },
+  handler: createChapter,
 };
 
 export async function chapterRoutes(fastify: FastifyInstance) {
-  fastify.post('/', createChapterOpts, createChapter);
+  fastify.post('/', createChapterOpts);
   fastify.get('/', getChapters);
   fastify.get('/:id', getSingleChapter);
 }

@@ -5,9 +5,8 @@ import fcookie, { FastifyCookieOptions } from '@fastify/cookie';
 import Swagger from '@fastify/swagger';
 import SwaggerUI from '@fastify/swagger-ui';
 import { userRoutes } from './routes/userRoutes';
-import { userSchemas } from './schemas/userRoutesSchema';
-import { chapterSchemas } from './schemas/chapterRoutesSchema';
 import { chapterRoutes } from './routes/chapterRoutes';
+import { schemas } from './schemas/schemas';
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
 
@@ -48,12 +47,9 @@ app.get('/health-check', async function () {
 
 async function main() {
   // Register the endpoint schemas before the routes.
-  for (const schema of [...userSchemas]) {
+  for (const schema of [...schemas]) {
     app.addSchema(schema);
   }
-  // for (const schema of [...chapterSchemas]) {
-  // app.addSchema(schema);
-  // }
 
   // Register routes.
   app.register(userRoutes, { prefix: '/users' });

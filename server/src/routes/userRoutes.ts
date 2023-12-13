@@ -1,6 +1,6 @@
 import { FastifyInstance } from 'fastify';
 import { register, login, logout } from '../controllers/users';
-import { $ref } from '../schemas/userRoutesSchema';
+import { $ref } from '../schemas/schemas';
 
 const registerUserOpts = {
   schema: {
