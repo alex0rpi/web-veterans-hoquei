@@ -1,67 +1,22 @@
-import { FastifyInstance } from 'fastify';
-import { register, login, logout } from '../controllers/users';
-import { $ref } from '../schemas/schemas';
+import Router from '@koa/router';
+import { z } from 'zod';
+import { getMe, login, logout, register } from '../controllers';
+// import { validate, authenticate } from '../middleware';
+// import { userLoginSchema, userRegisterSchema } from '../schemas';
+import { pathRoot } from './routes';
 
-const registerUserOpts = {
-  schema: {
-    description: 'Register a new user',
-    body: $ref('userRegisterSchema'),
-    response: {
-      204: {
-        type: 'object',
-        properties: {},
-        description: 'Successful user registration',
-      },
-      400: {
-        type: 'object',
-        properties: {},
-        description: 'Invalid user registration',
-      },
-      500: {
-        type: 'object',
-        properties: {},
-        description: 'Server error',
-      },
-    },
-  },
-  //   handler: registerUser,
-};
+const userRouter = new Router();
 
-const loginUserOpts = {
-  schema: {
-    description: 'Login a user',
-    body: $ref('userLoginSchema'),
-    response: {
-      200: $ref('userLoginResponse'), // here we stipulate the response object returned by the controller to follow userLoginResponse schema
-      400: {
-        type: 'object',
-        properties: {},
-        description: 'Invalid user credentials',
-      },
-      500: {
-        type: 'object',
-        properties: {},
-        description: 'Server error',
-      },
-    },
-  },
-};
+userRouter.prefix(pathRoot.v1.users);
 
-const logoutUserOpts = {
-  schema: {
-    description: 'Logout a user',
-    response: {
-      204: {
-        type: 'object',
-        properties: {},
-        description: 'Successful user logout',
-      },
-    },
-  },
-};
+// userRouter.post('/register', validate(z.object({ body: userRegisterSchema })), register);
+userRouter.post('/register', register);
 
-export async function userRoutes(fastify: FastifyInstance) {
-  fastify.post('/register', registerUserOpts, register);
-  fastify.post('/login', loginUserOpts, login);
-  fastify.get('/logout', logoutUserOpts, logout);
-}
+// userRouter.post('/login', validate(z.object({ body: userLoginSchema })), login);
+userRouter.post('/login', login);
+
+userRouter.get('/logout', logout);
+
+userRouter.get('/me', getMe);
+
+export { userRouter };

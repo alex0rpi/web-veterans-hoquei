@@ -7,7 +7,6 @@ export const chapterCreateSchema = chapterSchema.pick({
   contentPro: true,
   titleBases: true,
   contentBases: true,
-  userId: true,
 });
 
 export const chapterGetResponseSchema = chapterSchema.pick({

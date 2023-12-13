@@ -1,35 +1,26 @@
-import { FastifyInstance } from 'fastify';
-import { createChapter, getChapters, getSingleChapter } from '../controllers/chapters';
-import { $ref } from '../schemas/schemas';
+import Router from '@koa/router';
+import { z } from 'zod';
+import {
+  createChapter,
+  getChapters,
+  getSingleChapter,
+  getUserChapters,
+} from '../controllers';
+// import { validate, authenticate } from '../middleware';
+// import { userLoginSchema, userRegisterSchema } from '../schemas';
+import { pathRoot } from './routes';
 
-const createChapterOpts = {
-  // preHandler: ,
-  schema: {
-    description: 'Create a new chapter that extends the book.',
-    body: $ref('chapterCreateSchema'),
-    response: {
-      204: {
-        type: 'object',
-        properties: {},
-        description: 'Successful chapter creation',
-      },
-      400: {
-        type: 'object',
-        properties: {},
-        description: 'Invalid chapter data',
-      },
-      500: {
-        type: 'object',
-        properties: {},
-        description: 'Server error',
-      },
-    },
-  },
-  handler: createChapter,
-};
+const chapterRouter = new Router();
 
-export async function chapterRoutes(fastify: FastifyInstance) {
-  fastify.post('/', createChapterOpts);
-  fastify.get('/', getChapters);
-  fastify.get('/:id', getSingleChapter);
-}
+chapterRouter.prefix(pathRoot.v1.chapters);
+
+// chapterRouter.post('/register', validate(z.object({ body: userRegisterSchema })), register);
+chapterRouter.post('/', createChapter);
+
+chapterRouter.get('/', getChapters);
+
+chapterRouter.get('/:chapterId', getSingleChapter);
+
+chapterRouter.get('/:userId', getUserChapters);
+
+export { chapterRouter };

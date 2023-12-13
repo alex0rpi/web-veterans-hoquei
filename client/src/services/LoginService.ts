@@ -1,4 +1,5 @@
 import { toast } from 'react-toastify';
+import { urls } from '../constants';
 
 type TRegisterProps = {
   email: string | undefined;
@@ -9,7 +10,7 @@ const LoginService = async (props: TRegisterProps) => {
   const { email, password } = props;
 
   try {
-    const response = await fetch('/api/users/login', {
+    const response = await fetch(urls.logIn, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

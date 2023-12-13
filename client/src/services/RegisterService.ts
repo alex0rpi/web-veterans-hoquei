@@ -1,4 +1,5 @@
 import { toast } from 'react-toastify';
+import { urls } from '../constants';
 
 type TRegisterProps = {
   name: string | undefined;
@@ -15,7 +16,7 @@ const RegisterService = async (props: TRegisterProps) => {
   }
 
   try {
-    const response = await fetch('/api/users/register', {
+    const response = await fetch(urls.register, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

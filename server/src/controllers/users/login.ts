@@ -1,47 +1,45 @@
-import { FastifyReply, FastifyRequest } from 'fastify';
-import prisma from '../../config/prisma';
-import { TLoginUser } from '../../schemas/userRoutesSchema';
+import Koa from 'koa';
+import jwt, { Secret } from 'jsonwebtoken';
 import { checkPassword } from '../../helpers/passwordHash';
-import { app } from '../../app';
+import prisma from '../../config/prisma';
 
-export const login = async (
-  req: FastifyRequest<{ Body: TLoginUser }>,
-  reply: FastifyReply
-) => {
-  const userData = req.body;
+export const login = async (ctx: Koa.Context) => {
+  const { email, password } = ctx.request.body;
   const expirationInMilliseconds = 86400000;
 
-  try {
-    const existingUser = await prisma.user.findUnique({
-      where: { email: userData.email },
-    });
+  const user = await prisma.user.findUnique({
+    where: { email },
+    select: { id: true, password: true, status: true },
+  });
 
-    if (!existingUser) return reply.code(400).send('Invalid user credentials.');
-
-    if (existingUser.status === 'INACTIVE')
-      return reply.code(400).send('User not activated.');
-
-    const match = await checkPassword(userData.password, existingUser.password);
-
-    if (!match) return reply.code(400).send('Invalid user credentials.');
-
-    // Generate JWT token and set it as a cookie on the client browser.
-
-    const { id, name } = existingUser;
-    const accessToken = app.jwt.sign(
-      { id, name },
-      { expiresIn: expirationInMilliseconds }
-    );
-    reply.setCookie('token', accessToken, {
-      path: '/',
-      secure: false, // set this to false if you're not using https
-      httpOnly: true,
-      sameSite: 'lax', // or 'strict' or 'none'. // lax means that the cookie will be sent with requests from the same site and also from subdomains
-      maxAge: expirationInMilliseconds,
-    });
-    return reply.code(200).send({ id, name });
-  } catch (error) {
-    console.log('error: ', error);
-    return reply.code(500).send(error);
+  if (!user) {
+    ctx.status = 404;
+    ctx.body = { error: 'User not found' };
+    return;
   }
+
+  if (user.status !== 'ACTIVE') {
+    ctx.status = 403;
+    ctx.body = { error: 'Only active users can login' };
+    return;
+  }
+
+  const isPasswordValid = await checkPassword(password, user.password);
+
+  if (!isPasswordValid) {
+    ctx.status = 422;
+    ctx.body = { error: 'Invalid password' };
+    return;
+  }
+
+  const token = jwt.sign({ userId: user.id }, process.env.JWT_KEY as Secret, {
+    expiresIn: expirationInMilliseconds.toString(),
+  });
+
+  ctx.cookies.set('token', token, {
+    httpOnly: true,
+    maxAge: expirationInMilliseconds,
+  });
+
+  ctx.status = 204;
 };

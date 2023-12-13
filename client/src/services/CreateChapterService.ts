@@ -1,4 +1,5 @@
 import { toast } from 'react-toastify';
+import { urls } from '../constants';
 
 type TCreateChapterProps = {
   season: string | undefined;
@@ -12,7 +13,7 @@ const CreateChapterService = async (props: TCreateChapterProps) => {
   console.log('CreateChapterService');
   const { season, titlePro, contentPro, titleBases, contentBases } = props;
   try {
-    const response = await fetch('/api/chapters', {
+    const response = await fetch(urls.createChapter, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

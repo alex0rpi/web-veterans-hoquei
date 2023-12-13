@@ -1,26 +1,18 @@
-import { FastifyReply, FastifyRequest } from 'fastify';
+import { Context, Middleware } from 'koa';
 import prisma from '../../config/prisma';
 import { TRegisterUser } from '../../schemas/userRoutesSchema';
 import { hashPassword } from '../../helpers/passwordHash';
 
-export const register = async (
-  req: FastifyRequest<{ Body: TRegisterUser }>,
-  reply: FastifyReply
-) => {
-  const newUserData = req.body;
-  try {
-    const hashedPassword = await hashPassword(newUserData.password);
+export const register: Middleware = async (ctx: Context) => {
+  const { name, email, password }: TRegisterUser = ctx.request.body;
+  const hashedPassword = await hashPassword(password);
 
-    await prisma.user.create({
-      data: {
-        name: newUserData.name,
-        email: newUserData.email,
-        password: hashedPassword,
-      },
-    });
-    return reply.code(204).send();
-  } catch (error) {
-    console.log('error: ', error);
-    return reply.code(500).send(error);
-  }
+  await prisma.user.create({
+    data: {
+      name: name,
+      email: email,
+      password: hashedPassword,
+    },
+  });
+  ctx.status = 204;
 };

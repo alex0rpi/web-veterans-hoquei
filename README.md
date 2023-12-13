@@ -4,10 +4,11 @@ This is my ongoing project for the Rink Hockey veterans association.
 
 - The frontend is being made in React-Vite with Router, Context and Tailwind.
 
-- The backend is bootstrapped with Fastify-CLI. I am still learning it, so server development is going slower than I would like but anyway, I think its worth it.<br>
+- As for the backend initially it was bootstrapped with Fastify-CLI, which I am learning. However I found the authentication to be a bit cumbersome and while I'm investigating how to implement a robust authentication system, I decided in the meantime to switch to the KOA framework.<br>
   [Fastify CLI to start a project](https://www.npmjs.com/package/fastify-cli). <br>
   [Fastify documentation here](https://www.fastify.io/docs/latest/).<br>
-  ![Fastify](https://img.shields.io/badge/fastify-%23000000.svg?style=for-the-badge&logo=fastify&logoColor=white)
+  ![Fastify](https://img.shields.io/badge/fastify-%23000000.svg?style=for-the-badge&logo=fastify&logoColor=white)<br>
+  [KOA Documentation here](https://koajs.com/#)
 
 ## Backend start up:
 

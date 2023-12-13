@@ -9,11 +9,12 @@ import NewChapterForm from './components/admin/chapters/NewChapterForm';
 import AdminChapters from './components/admin/chapters/AdminChapters';
 import UserProvider from './context/UserContext';
 import { MainLayout } from './layouts/Layout';
+import { paths } from './constants';
 
 const router = createBrowserRouter([
   // Pending wrap the routes in a Layout component
   {
-    path: '/',
+    path: paths.home,
     element: (
       <MainLayout>
         <MainContent />
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/temporades/:season',
+    path: paths.season,
     element: (
       <MainLayout>
         <SeasonContent />
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/llibre-veterans-hoquei-patins-fcb',
+    path: paths.book,
     element: (
       <MainLayout>
         <BookPage />
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/admin/login',
+    path: paths.login,
     element: (
       <MainLayout>
         <AdminLogin />
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/admin/register',
+    path: paths.register,
     element: (
       <MainLayout>
         <AdminRegister />
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/admin/new-chapter',
+    path: paths.newChapter,
     element: (
       <MainLayout>
         <NewChapterForm />
@@ -61,7 +62,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/admin/chapter-list',
+    path: paths.userChapterList,
     element: (
       <MainLayout>
         <AdminChapters />
