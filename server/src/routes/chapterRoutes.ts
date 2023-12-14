@@ -3,7 +3,7 @@ import { z } from 'zod';
 import {
   createChapter,
   getChapters,
-  getSingleChapter,
+  getChapterById,
   getUserChapters,
 } from '../controllers';
 import { authenticate, authorize, validate } from '../middleware';
@@ -14,6 +14,8 @@ import { USER_ROLE } from '@prisma/client';
 const chapterRouter = new Router();
 
 chapterRouter.prefix(pathRoot.v1.chapters);
+
+chapterRouter.get('/me', authenticate, authorize(USER_ROLE.ADMIN), getUserChapters);
 
 chapterRouter.post(
   '/',
@@ -26,12 +28,9 @@ chapterRouter.post(
 chapterRouter.get('/', getChapters);
 
 chapterRouter.get(
-  '/:chapterId',
-  authenticate,
-  authorize(USER_ROLE.ADMIN),
-  getSingleChapter
+  '/id/:chapterId',
+  validate(z.object({ params: z.object({ chapterId: z.string() }) })),
+  getChapterById
 );
-
-chapterRouter.get('/:userId', authenticate, authorize(USER_ROLE.ADMIN), getUserChapters);
 
 export { chapterRouter };

@@ -1,13 +1,27 @@
 import { Context, Middleware } from 'koa';
 import prisma from '../../config/prisma';
-import { TCreateChapter } from '../../schemas/chapterRoutesSchema';
 
 export const getUserChapters: Middleware = async (ctx: Context) => {
-  const { season, titlePro, contentPro, titleBases, contentBases }: TCreateChapter =
-    ctx.request.body;
+  const user = ctx.user;
 
-  // await prisma.chapter.create({
+  const userChapters = await prisma.chapter.findMany({
+    where: { userId: user.id },
+    select: {
+      id: true,
+      season: true,
+      titlePro: true,
+      contentPro: true,
+      titleBases: true,
+      contentBases: true,
+      author: {
+        select: {
+          name: true,
+        },
+      },
+      createdAt: true,
+    },
+  });
 
-  // })
-  ctx.status = 204;
+  ctx.status = 200;
+  ctx.body = userChapters;
 };

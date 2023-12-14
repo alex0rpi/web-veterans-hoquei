@@ -7,17 +7,10 @@ export const getChapters: Middleware = async (ctx: Context) => {
       id: true,
       season: true,
       titlePro: true,
-      contentPro: true,
+      contentPro: false,
       titleBases: true,
-      contentBases: true,
-      author: {
-        select: {
-          id: true,
-          name: true,
-        },
-      },
-      createdAt: true,
-      updatedAt: true,
+      contentBases: false,
+      createdAt: false,
     },
   });
   ctx.status = 200;
