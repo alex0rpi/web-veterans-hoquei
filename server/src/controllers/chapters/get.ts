@@ -12,6 +12,9 @@ export const getChapters: Middleware = async (ctx: Context) => {
       contentBases: false,
       createdAt: false,
     },
+    orderBy: {
+      season: 'asc',
+    },
   });
   ctx.status = 200;
   ctx.body = chapters;

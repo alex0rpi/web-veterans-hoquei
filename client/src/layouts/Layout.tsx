@@ -26,7 +26,6 @@ export const MainLayout = (props: PropsWithChildren) => {
           pauseOnHover
           theme="light"
         />
-        {/* Same as */}
         {props.children}
       </div>
       {/* Outlet is a special component that will render the child route’s component */}

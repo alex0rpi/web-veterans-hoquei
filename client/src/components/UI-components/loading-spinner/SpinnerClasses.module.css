@@ -1,0 +1,25 @@
+.loader {
+  width: 48px;
+  height: 48px;
+  background: #082f49;
+  border-radius: 50%;
+  position: absolute;
+  animation: roll 1s ease-in-out infinite alternate;
+  position: relative;
+}
+.loader:after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  border: 5px solid #b7c2c9;
+  border-color: #b7c2c9 transparent;
+}
+@keyframes roll {
+  0% {
+    transform: translateX(-150%) rotate(0deg);
+  }
+  100% {
+    transform: translateX(150%) rotate(360deg);
+  }
+}

@@ -3,14 +3,12 @@ export interface User {
   name: string | undefined;
 }
 
-export interface Chapter {
-  id: string | undefined;
-  season: string | undefined;
-  titlePro: string | undefined;
-  titleBases: string | undefined;
-  contentPro: string | undefined;
-  contentBases: string | undefined;
-}
+export type ChapterListItem = {
+  id: string;
+  season: string;
+  titlePro: string;
+  titleBases: string;
+};
 
 export interface blogPost {
   id: string | undefined;
