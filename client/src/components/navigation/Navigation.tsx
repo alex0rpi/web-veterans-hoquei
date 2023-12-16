@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import LogoutService from '../../services/LogoutService';
 import NavList from './NavList';
+import { paths } from '../../constants';
 
 export const Navigation = () => {
   const [show, setShow] = useState(false);
@@ -25,7 +26,7 @@ export const Navigation = () => {
     if (isSuccess) {
       setUser({ id: '', name: '' });
       toast.info('Usuari desconnectat.');
-      navigate('/');
+      navigate(`${paths.home}`);
     }
   };
 

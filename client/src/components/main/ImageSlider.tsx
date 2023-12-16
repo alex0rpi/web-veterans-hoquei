@@ -49,7 +49,7 @@ const ImageSlider = () => {
           />
         </>
       )}
-      <div className="relative m-auto h-[450px] w-auto px-4 pt-4 group">
+      <div className="relative m-auto h-[400px] w-auto px-4 pt-4 group">
         {/* Image container */}
         <div
           style={{

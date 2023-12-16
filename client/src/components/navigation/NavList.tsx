@@ -1,4 +1,5 @@
 import { MenuItem } from './MenuItem';
+import { paths } from '../../constants';
 
 type TMainNav = {
   mode?: 'admin' | 'main';
@@ -9,18 +10,16 @@ const NavList = ({ mode = 'main', onLogout }: TMainNav) => {
   return mode === 'admin' ? (
     <>
       <MenuItem title="Home" />
-      <MenuItem title="Els meus capítols" to="/admin/chapter-list" />
-      <MenuItem title="Crear capítol" to="/admin/new-chapter" />
-      <MenuItem title="El meus posts" />
-      <MenuItem title="Nou post" />
-      <MenuItem title="Les meves dades" />
+      <MenuItem title="Els meus capítols" to={paths.userChapterList} />
+      <MenuItem title="Crear capítol" to={paths.newChapter} />
+      <MenuItem title="Les meves dades" to={paths.me} />
       <MenuItem title="Desconnectar" onItemClick={onLogout} />
     </>
   ) : (
     <>
       <MenuItem title="Home" />
-      <MenuItem title="Accés" to="/admin/login" />
-      <MenuItem title="El Llibre" to="/llibre-veterans-hoquei-patins-fcb" />
+      <MenuItem title="Accés" to={paths.login} />
+      <MenuItem title="El Llibre" to={paths.book} />
       <MenuItem title="Junta" />
       <MenuItem title="Temporades" />
       <MenuItem title="Jugadors" />

@@ -1,6 +1,5 @@
-import { ChapterCard } from '../UI-components/ChapterCard';
-// import chapters from '../../data/chapters.json';
 import { useEffect, useState } from 'react';
+import { ChapterCard } from '../UI-components/ChapterCard';
 import Spinner from '../UI-components/loading-spinner/Spinner';
 import GetChaptersService from '../../services/GetChaptersService';
 import { ChapterListItem } from '../../types/Item-types';

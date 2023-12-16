@@ -6,10 +6,11 @@ import AdminLogin from './components/admin/AdminLogin';
 import AdminRegister from './components/admin/AdminRegister';
 import SeasonContent from './components/main/SeasonContent';
 import NewChapterForm from './components/admin/chapters/NewChapterForm';
-import AdminChapters from './components/admin/chapters/AdminChapters';
+import AdminChapters from './components/admin/chapters/AdminChapterList';
 import UserProvider from './context/UserContext';
 import { MainLayout } from './layouts/Layout';
 import { paths } from './constants';
+import AdminData from './components/admin/AdminData';
 
 const router = createBrowserRouter([
   // Pending wrap the routes in a Layout component
@@ -66,6 +67,14 @@ const router = createBrowserRouter([
     element: (
       <MainLayout>
         <AdminChapters />
+      </MainLayout>
+    ),
+  },
+  {
+    path: paths.me,
+    element: (
+      <MainLayout>
+        <AdminData />
       </MainLayout>
     ),
   },

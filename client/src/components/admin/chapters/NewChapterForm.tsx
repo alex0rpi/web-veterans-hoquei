@@ -52,7 +52,7 @@ const NewChapterForm = () => {
       <h1 className="mt-10 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700">
         Crea un nou capítol
       </h1>
-      <div className="mt-6 space-y-4 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6">
+      <div className="mt-6 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6">
         <form onSubmit={onChapterSubmitHandler}>
           <div className="mb-3">
             <div>

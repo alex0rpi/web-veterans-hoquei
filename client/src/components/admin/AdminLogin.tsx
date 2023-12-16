@@ -7,6 +7,7 @@ import FormInput from '../UI-components/FormInput';
 import LoginService from '../../services/LoginService';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { paths } from '../../constants';
 
 export const AdminLogin = () => {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ export const AdminLogin = () => {
       setUser({ id: user.id, name: user.name });
 
       toast.info(`Benvingut ${user.name}!`);
-      navigate('/admin/new-chapter');
+      navigate(`${paths.userChapterList}`);
     }
   };
   return (
@@ -73,7 +74,7 @@ export const AdminLogin = () => {
           No estàs registrat?{' '}
           <Link
             className="font-bold hover:underline hover:underline-offset-4 hover:decoration-[3px]"
-            to="/admin/register"
+            to={paths.userChapterList}
           >
             Crear usuari
           </Link>

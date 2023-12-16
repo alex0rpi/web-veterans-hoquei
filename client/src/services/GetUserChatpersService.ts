@@ -1,9 +1,9 @@
 import { toast } from 'react-toastify';
 import { urls } from '../constants';
 
-const GetChaptersService = async () => {
+const GetUserChaptersService = async () => {
   try {
-    const response = await fetch(urls.getAllChapters, {
+    const response = await fetch(urls.getMyChapters, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });
@@ -21,4 +21,4 @@ const GetChaptersService = async () => {
   }
 };
 
-export default GetChaptersService;
+export default GetUserChaptersService;
