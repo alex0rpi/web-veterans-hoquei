@@ -1,6 +1,6 @@
-import { testimoni01, testimoni02, testimoni03 } from "../../assets/testimonis";
+import { testimoni01, testimoni02, testimoni03 } from '../../assets/testimonis';
 
-const Testimonials = () => {
+const BookTestimonials = () => {
   return (
     <section className="grid gap-3 md:grid-cols-3">
       <div className="text-center">
@@ -42,4 +42,4 @@ const Testimonials = () => {
   );
 };
 
-export default Testimonials;
+export default BookTestimonials;

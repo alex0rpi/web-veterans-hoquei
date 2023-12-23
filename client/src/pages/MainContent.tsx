@@ -1,6 +1,6 @@
 import { HeaderTitle } from '../components/main/HeaderTitle';
 import { easeInOut, motion } from 'framer-motion';
-import Testimonials from '../components/main/Testimonials';
+import BookTestimonials from '../components/main/BookTestimonials';
 import BookFeatures from '../components/main/BookFeatures';
 import Location from '../components/main/Location';
 import ChapterGrid from '../components/main/ChapterGrid';
@@ -9,6 +9,7 @@ import ImageSlider from '../components/main/ImageSlider';
 import { useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import ContactForm from '../components/main/ContactForm';
+import BookTeasers from '../components/main/BookTeasers';
 
 const MainContent = () => {
   const { user } = useContext(UserContext);
@@ -32,7 +33,9 @@ const MainContent = () => {
       </h4>
       <BookFeatures />
 
-      <Testimonials />
+      <BookTeasers />
+
+      <BookTestimonials />
       <h4 className="mb-3 mt-6 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700">
         JUNTA
       </h4>
