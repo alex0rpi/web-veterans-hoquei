@@ -7,4 +7,6 @@ export const paths = {
   me: '/admin/me',
   newChapter: '/admin/new-chapter',
   userChapterList: '/admin/chapter-list',
+  blog: '/blog',
+  players: '/jugadors',
 };

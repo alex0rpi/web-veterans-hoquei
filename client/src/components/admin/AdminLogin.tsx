@@ -74,7 +74,7 @@ export const AdminLogin = () => {
           No estàs registrat?{' '}
           <Link
             className="font-bold hover:underline hover:underline-offset-4 hover:decoration-[3px]"
-            to={paths.userChapterList}
+            to={paths.register}
           >
             Crear usuari
           </Link>

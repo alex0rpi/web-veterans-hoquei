@@ -1,22 +1,26 @@
 import { Link } from 'react-router-dom';
 import stickIcon from '../../assets/logos/hockeyStick-no-bg.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 type Props = {
   title: string;
   // iconItem: FontAwesomeIconProps;
   to?: string;
   onItemClick?: () => void;
+  icon?: IconDefinition;
 };
 
-export const MenuItem = ({ title, to = '/', onItemClick }: Props) => {
+export const MenuItem = ({ title, to = '/', icon, onItemClick }: Props) => {
   return (
     <Link
       to={to}
-      className="group flex justify-end py-1 pe-1 text-sm transition-all duration-250 ease-in-out hover:bg-slate-100 rounded-lg hover:text-base hover:text-primary"
+      className="group flex justify-end py-1 pe-1 text-sm transition-all duration-250 ease-in-out hover:bg-slate-100 rounded-lg hover:text-sm hover:text-primary"
       onClick={onItemClick}
     >
       <div>
         {title}
+        {icon && <FontAwesomeIcon icon={icon} className="ms-2" />}
         <img
           src={stickIcon}
           width="20"

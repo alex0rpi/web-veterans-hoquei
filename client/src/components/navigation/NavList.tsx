@@ -1,5 +1,20 @@
 import { MenuItem } from './MenuItem';
 import { paths } from '../../constants';
+import {
+  faHouse,
+  faUser,
+  faBookOpen,
+  faPeopleGroup,
+  faPersonSkating,
+  faNewspaper,
+  faLink,
+  faLocationDot,
+  faAddressCard,
+  faCirclePlus,
+  faArrowRightFromBracket,
+  faEnvelope,
+  faCalendar,
+} from '@fortawesome/free-solid-svg-icons';
 
 type TMainNav = {
   mode?: 'admin' | 'main';
@@ -9,24 +24,28 @@ type TMainNav = {
 const NavList = ({ mode = 'main', onLogout }: TMainNav) => {
   return mode === 'admin' ? (
     <>
-      <MenuItem title="Home" />
+      <MenuItem icon={faHouse} title="Home" />
       <MenuItem title="Els meus capítols" to={paths.userChapterList} />
-      <MenuItem title="Crear capítol" to={paths.newChapter} />
-      <MenuItem title="Les meves dades" to={paths.me} />
-      <MenuItem title="Desconnectar" onItemClick={onLogout} />
+      <MenuItem icon={faCirclePlus} title="Crear capítol" to={paths.newChapter} />
+      <MenuItem icon={faAddressCard} title="Les meves dades" to={paths.me} />
+      <MenuItem
+        icon={faArrowRightFromBracket}
+        title="Desconnectar"
+        onItemClick={onLogout}
+      />
     </>
   ) : (
     <>
-      <MenuItem title="Home" />
-      <MenuItem title="Accés" to={paths.login} />
-      <MenuItem title="El Llibre" to={paths.book} />
-      <MenuItem title="Junta" />
-      <MenuItem title="Temporades" />
-      <MenuItem title="Jugadors" />
-      <MenuItem title="Blog i cotis" />
-      <MenuItem title="Enllaços" />
-      <MenuItem title="On som" />
-      <MenuItem title="Contacte" />
+      <MenuItem icon={faHouse} title="Home" />
+      <MenuItem icon={faUser} title="Accés" to={paths.login} />
+      <MenuItem icon={faBookOpen} title="El Llibre" to={paths.book} />
+      <MenuItem icon={faPeopleGroup} title="Junta" />
+      <MenuItem icon={faCalendar} title="Temporades" />
+      <MenuItem icon={faPersonSkating} title="Jugadors" to={paths.players} />
+      <MenuItem icon={faNewspaper} title="Blog i cotis" to={paths.blog} />
+      <MenuItem icon={faLink} title="Enllaços" />
+      <MenuItem icon={faLocationDot} title="On som" />
+      <MenuItem icon={faEnvelope} title="Contacte" />
     </>
   );
 };

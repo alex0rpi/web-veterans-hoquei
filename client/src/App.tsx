@@ -11,6 +11,8 @@ import UserProvider from './context/UserContext';
 import { MainLayout } from './layouts/Layout';
 import { paths } from './constants';
 import AdminData from './components/admin/AdminData';
+import BlogPage from './pages/BlogPage';
+import PlayersPage from './pages/PlayersPage';
 
 const router = createBrowserRouter([
   // Pending wrap the routes in a Layout component
@@ -35,6 +37,22 @@ const router = createBrowserRouter([
     element: (
       <MainLayout>
         <BookPage />
+      </MainLayout>
+    ),
+  },
+  {
+    path: paths.blog,
+    element: (
+      <MainLayout>
+        <BlogPage />
+      </MainLayout>
+    ),
+  },
+  {
+    path: paths.players,
+    element: (
+      <MainLayout>
+        <PlayersPage />
       </MainLayout>
     ),
   },
