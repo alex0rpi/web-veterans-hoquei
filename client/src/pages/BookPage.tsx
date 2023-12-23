@@ -2,12 +2,12 @@ import pdf from '../assets/documents/Llibre-veterans-hoquei-patins-fcb_compresse
 
 const BookPage = () => {
   return (
-    <div>
+    <div className="w-full h-full">
       <iframe
         title="Browser PDF Viewer"
         src={`${pdf}`}
         allowFullScreen
-        className="w-full h-screen rounded-lg"
+        className="w-full h-full rounded-lg"
       />
     </div>
   );
