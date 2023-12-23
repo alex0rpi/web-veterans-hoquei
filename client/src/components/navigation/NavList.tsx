@@ -23,7 +23,7 @@ const NavList = ({ mode = 'main', onLogout }: TMainNav) => {
       <MenuItem title="Junta" />
       <MenuItem title="Temporades" />
       <MenuItem title="Jugadors" />
-      <MenuItem title="Blog i notícies" />
+      <MenuItem title="Blog i cotis" />
       <MenuItem title="Enllaços" />
       <MenuItem title="On som" />
       <MenuItem title="Contacte" />

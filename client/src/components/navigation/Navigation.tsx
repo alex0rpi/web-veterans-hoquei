@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import LogoutService from '../../services/LogoutService';
 import NavList from './NavList';
 import { paths } from '../../constants';
+import Footer from '../main/Footer';
 
 export const Navigation = () => {
   const [show, setShow] = useState(false);
@@ -33,7 +34,7 @@ export const Navigation = () => {
   return (
     <>
       <div className="md:col-span-1 md:col-start-2 md:flex md:justify-end opacity-90">
-        <nav className="w-full min-w-fit bg-primary text-right text-slate-200">
+        <nav className="w-full min-w-fit bg-primary text-right text-slate-200 relative">
           <motion.div
             initial={{ x: '100%', opacity: 0.2 }}
             animate={{ x: '0%', opacity: 1 }}
@@ -70,13 +71,15 @@ export const Navigation = () => {
               )}
             </div>
           </motion.div>
-          <div className="hidden w-full pe-2 pt-2 mt-0 ps-5 text-sm md:block border-t-2 border-gray-300">
+          <div className="hidden w-full pe-2 pt-2 mt-0 ps-2 text-sm md:block border-t-[1px] border-slate-300">
             {user.name === '' ? (
               <NavList mode="main" onLogout={onLogoutHandler} />
             ) : (
               <NavList mode="admin" onLogout={onLogoutHandler} />
             )}
           </div>
+          {/* Ficar aquí el Footer */}
+          <Footer />
         </nav>
       </div>
       {show && (
