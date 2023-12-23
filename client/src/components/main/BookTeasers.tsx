@@ -1,4 +1,6 @@
 import { imatgeLlibre01, imatgeLlibre03 } from '../../assets/bookImages';
+import { Button } from '../UI-components/Button';
+import { paths } from '../../constants';
 
 const BookTeasers = () => {
   return (
@@ -24,6 +26,10 @@ const BookTeasers = () => {
           alt="Imatge llibre"
           className="h-auto max-w-[75%] rounded-lg"
         />
+      </div>
+      <div className="my-3 mx-auto flex flex-row gap-4 items-center justify-center">
+        <Button title="Visualitza'l" type="button" to={paths.book} />
+        <Button title="Descarrega'l" type="button" to={paths.book} />
       </div>
       <p className="font-semibold mt-3 mb-2">
         Alguns testimonis i protagonistes de la història.

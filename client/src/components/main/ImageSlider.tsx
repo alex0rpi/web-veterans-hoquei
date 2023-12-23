@@ -54,11 +54,11 @@ const ImageSlider = () => {
         <div
           style={{
             backgroundImage: `url(${slides[currentIndex]})`,
-            backgroundSize: 'contain',
+            backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
           }}
-          className="w-full h-full rounded-xl duration-200 cursor-pointer"
+          className="w-full h-full rounded-lg overflow-hidden duration-200 cursor-pointer"
           onClick={toggleImageModal}
         ></div>
         {/* End of Image container */}
@@ -78,6 +78,7 @@ const ImageSlider = () => {
             className="transition-scale duration-200 hover:scale-125"
           />
         </div>
+        {/* Circle dots */}
         <div className="flex top-4 justify-center mt-1">
           {slides.map((slide, slideIndex) => (
             <div key={slideIndex} className="cursor-pointer">
