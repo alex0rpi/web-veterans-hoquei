@@ -4,21 +4,21 @@
 @tailwind utilities;
 
 body {
-  font-family: 'Nunito', sans-serif;
-  font-family: 'Poppins', sans-serif;
-  overflow: hidden;
+  @apply font-nunito md:overflow-hidden
+  /* font-family: 'Nunito', sans-serif; */
+  /* overflow: hidden; */;
 }
 
 .main-grid {
-  @apply grid h-screen md:grid-cols-layoutMd xl:grid-cols-layoutLg;
+  @apply h-screen md:grid md:grid-cols-layoutMd xl:grid-cols-layoutLg;
 }
 
 .book-grid {
-  @apply grid h-screen md:grid-cols-layoutBook;
+  @apply h-screen md:grid md:grid-cols-layoutBook;
 }
 
 .main-column-layout {
-  @apply overflow-auto bg-gray-200 px-5 py-5 md:col-start-3 md:col-end-4 md:justify-stretch;
+  @apply md:overflow-auto bg-gray-200 px-5 py-5 md:col-start-3 md:col-end-4 md:justify-stretch;
 }
 
 .btn {

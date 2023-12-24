@@ -11,17 +11,19 @@ export const MainLayout = (props: PropsWithChildren) => {
       ? 'book-grid'
       : 'main-grid';
   return (
-    <div className={`${gridClass} bg-hero-pattern bg-cover transition-all duration-200`}>
+    <div
+      className={`${gridClass} md:bg-hero-pattern md:bg-cover transition-all duration-200`}
+    >
       <Navigation />
-      <div className="main-column-layout overflow-y-hidden">
+      <div className="main-column-layout">
         <ToastContainer
-          position="top-right"
+          position="bottom-right"
           autoClose={3000}
           hideProgressBar={false}
           newestOnTop={false}
           closeOnClick
           rtl={false}
-          pauseOnFocusLoss
+          // pauseOnFocusLoss
           draggable
           pauseOnHover
           theme="light"

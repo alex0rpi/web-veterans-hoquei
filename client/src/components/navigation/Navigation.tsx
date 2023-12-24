@@ -18,7 +18,7 @@ export const Navigation = () => {
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const clickHandler = () => {
+  const menuClickHandler = () => {
     setShow((prevState) => !prevState);
   };
 
@@ -44,29 +44,29 @@ export const Navigation = () => {
               damping: 10,
             }}
           >
+            {/* Logo and hamburguer / cross icons */}
             <div className="flex items-center justify-between md:justify-center">
-              <a
-                href="/"
-                className="px-4 py-1 transition duration-200 hover:scale-95 active:scale-100 md:py-2"
-              >
-                <img src={logoImage} className="h-14 brightness-125 md:h-24" alt="logo" />
+              {/* Logo always visible but variable */}
+              <a href="/" className="px-4 py-1 transition duration-200 md:py-2">
+                <img
+                  src={logoImage}
+                  className="h-14 brightness-125 md:h-24"
+                  alt="rink-hockey-logo"
+                />
               </a>
-              {/* For small screens */}
               {!show ? (
-                // Hamburguer icon
                 <FontAwesomeIcon
                   icon={faBars}
                   size="xl"
-                  className="z-50 cursor-pointer px-8 transition duration-200 md:hidden"
-                  onClick={clickHandler}
+                  className="z-50 cursor-pointer px-8 md:hidden"
+                  onClick={menuClickHandler}
                 />
               ) : (
-                // Close icon
                 <FontAwesomeIcon
                   icon={faXmark}
                   size="2xl"
-                  className="z-50 cursor-pointer px-8 transition duration-200 hover:scale-95 active:scale-100 md:hidden"
-                  onClick={clickHandler}
+                  className="cursor-pointer px-8 md:hidden"
+                  onClick={menuClickHandler}
                 />
               )}
             </div>
@@ -78,20 +78,20 @@ export const Navigation = () => {
               <NavList mode="admin" onLogout={onLogoutHandler} />
             )}
           </div>
-          {/* Ficar aquí el Footer */}
           <Footer />
         </nav>
       </div>
+      {/* Mobile side menu */}
       {show && (
         <>
-          <Backdrop onClick={clickHandler} />
+          <Backdrop onClick={menuClickHandler} />
 
           <motion.div
             initial={{ x: '100vw', opacity: 0 }}
             animate={{ x: '40vw', opacity: 1 }}
             exit={{ x: '100vw', opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-20 z-50 w-[60vw] rounded-l-xl bg-primary px-8 pb-2 pt-2 text-slate-200 md:hidden"
+            className="fixed transform translate-x-full md:translate-x-0 top-20 z-50 w-[60vw] bg-primary px-8 pb-2 pt-2 text-slate-200 md:hidden"
           >
             {user.name === '' ? (
               <NavList mode="main" onLogout={onLogoutHandler} />

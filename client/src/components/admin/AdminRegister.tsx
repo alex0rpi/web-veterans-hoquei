@@ -82,7 +82,7 @@ const AdminRegister = () => {
           </div>
         </form>
         <p className="text-sm font-light">
-          Ja estàs registrat?
+          Ja estàs registrat?{' '}
           <Link
             className="font-bold hover:underline hover:underline-offset-4 hover:decoration-[3px]"
             to="/admin/login"

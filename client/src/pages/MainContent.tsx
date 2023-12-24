@@ -19,6 +19,7 @@ const MainContent = () => {
       animate={{ opacity: 1 }}
       transition={{ type: easeInOut, duration: 1 }}
       exit={{ opacity: 0 }}
+      // className="overflow-y-auto"
     >
       {user.name !== '' && (
         <h1 className="text-lg text-right text-gray-600">

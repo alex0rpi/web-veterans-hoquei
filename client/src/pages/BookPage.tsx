@@ -7,7 +7,7 @@ const BookPage = () => {
         title="Browser PDF Viewer"
         src={`${pdf}`}
         allowFullScreen
-        className="w-full h-full rounded-lg"
+        className="w-full h-[87vh] rounded-lg"
       />
     </div>
   );

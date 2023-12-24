@@ -12,7 +12,7 @@ export const Backdrop = (props: TBackdropProps) => {
       transition={{ duration: 0.3 }}
     >
       <div
-        className="fixed left-0 top-0 h-full w-full bg-slate-950/80"
+        className="fixed left-0 top-15 md:top-0 h-full w-full bg-slate-950/80"
         onClick={props.onClick}
       />
     </motion.div>
