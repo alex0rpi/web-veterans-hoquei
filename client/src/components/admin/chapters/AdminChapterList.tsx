@@ -1,4 +1,4 @@
-import { ChapterListItem } from '../../../types/Item-types';
+import { TChapterListItem } from '../../../types/Item-types';
 import { useEffect, useState } from 'react';
 import Spinner from '../../UI-components/loading-spinner/Spinner';
 import GetUserChaptersService from '../../../services/GetUserChatpersService';
@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 
 const AdminChapterList = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [chapters, setChapters] = useState<ChapterListItem[]>([]);
+  const [chapters, setChapters] = useState<TChapterListItem[]>([]);
   useEffect(() => {
     const getChapters = async () => {
       const chapterList = await GetUserChaptersService();

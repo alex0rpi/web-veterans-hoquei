@@ -1,23 +1,35 @@
-import { useEffect, useState } from 'react';
 import { ChapterCard } from '../UI-components/ChapterCard';
 import Spinner from '../UI-components/loading-spinner/Spinner';
-import GetChaptersService from '../../services/GetChaptersService';
-import { ChapterListItem } from '../../types/Item-types';
+// import { TChapterListItem } from '../../types/Item-types';
+import useChapters from '../../hooks/useChapters';
 
 const ChapterGrid = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [chapters, setChapters] = useState<ChapterListItem[]>([]);
-  useEffect(() => {
-    const getChapters = async () => {
-      const chapterList = await GetChaptersService();
-      if (chapterList) {
-        setIsLoading(false);
-        setChapters(chapterList);
-      }
-    };
+  // const [chapters, setChapters] = useState<TChapterListItem[]>([]);
+  const { isLoading, chapters } = useChapters();
 
-    getChapters();
-  }, []);
+  let chapterContent = [
+    <ChapterCard
+      key={'no-chapters'}
+      index={0}
+      season={'Sense informació'}
+      titlePro={'De moment no tenim cap article.'}
+      titleBases={"En breu n'afegirem."}
+    />,
+  ];
+
+  if (chapters.length > 0) {
+    chapterContent = chapters.map((chapter, index) => {
+      return (
+        <ChapterCard
+          key={chapter.id}
+          index={index}
+          season={chapter.season}
+          titlePro={chapter.titlePro}
+          titleBases={chapter.titleBases}
+        />
+      );
+    });
+  }
 
   return (
     <section className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
@@ -30,17 +42,7 @@ const ChapterGrid = () => {
           <div></div>
         </>
       ) : (
-        chapters.map((chapter, index) => {
-          return (
-            <ChapterCard
-              key={chapter.id}
-              index={index}
-              season={chapter.season}
-              titlePro={chapter.titlePro}
-              titleBases={chapter.titleBases}
-            />
-          );
-        })
+        chapterContent
       )}
     </section>
   );

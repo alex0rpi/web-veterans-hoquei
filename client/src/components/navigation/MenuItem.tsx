@@ -15,7 +15,7 @@ export const MenuItem = ({ title, to = '/', icon, onItemClick }: Props) => {
   return (
     <Link
       to={to}
-      className="group flex justify-end py-1 pe-1 text-base transition-all duration-250 ease-in-out hover:bg-slate-100 rounded-lg hover:text-sm hover:text-primary"
+      className="group flex justify-end py-1 pe-1 text-base transition-all duration-250 ease-in-out hover:bg-slate-100 rounded-lg hover:text-primary"
       onClick={onItemClick}
     >
       <div>
@@ -24,7 +24,7 @@ export const MenuItem = ({ title, to = '/', icon, onItemClick }: Props) => {
         <img
           src={stickIcon}
           width="20"
-          className="ms-1 hidden group-hover:inline-block transition-all duration-250 ease-in-out"
+          className="ms-1 hidden group-hover:inline-block transition-all duration-200 ease-in-out"
         />
       </div>
     </Link>

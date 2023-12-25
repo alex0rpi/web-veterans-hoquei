@@ -1,10 +1,10 @@
 import { GiHockey } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
-import { ChapterListItem } from '../../types/Item-types';
+import { TChapterListItem } from '../../types/Item-types';
 
-type chapterCardProps = Omit<ChapterListItem, 'id'> & { index: number };
+type TchapterCardProps = Omit<TChapterListItem, 'id'> & { index: number };
 
-export const ChapterCard = (props: chapterCardProps) => {
+export const ChapterCard = (props: TchapterCardProps) => {
   const evenIndex = props.index % 2 === 0;
   const cardBg = evenIndex ? 'bg-slate-400' : 'bg-slate-300';
   return (

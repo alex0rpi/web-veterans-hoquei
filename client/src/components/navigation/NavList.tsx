@@ -25,7 +25,7 @@ const NavList = ({ mode = 'main', onLogout }: TMainNav) => {
   return mode === 'admin' ? (
     <>
       <MenuItem icon={faHouse} title="Home" />
-      <MenuItem title="Els meus capítols" to={paths.userChapterList} />
+      <MenuItem icon={faCalendar} title="Els meus capítols" to={paths.userChapterList} />
       <MenuItem icon={faCirclePlus} title="Crear capítol" to={paths.newChapter} />
       <MenuItem icon={faAddressCard} title="Les meves dades" to={paths.me} />
       <MenuItem

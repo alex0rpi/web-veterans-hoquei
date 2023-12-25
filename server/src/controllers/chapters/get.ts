@@ -7,9 +7,9 @@ export const getChapters: Middleware = async (ctx: Context) => {
       id: true,
       season: true,
       titlePro: true,
-      contentPro: false,
+      contentPro: true,
       titleBases: true,
-      contentBases: false,
+      contentBases: true,
       createdAt: false,
     },
     orderBy: {

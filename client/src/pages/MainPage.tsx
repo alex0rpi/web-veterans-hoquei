@@ -11,7 +11,7 @@ import { UserContext } from '../context/UserContext';
 import ContactForm from '../components/main/ContactForm';
 import BookTeasers from '../components/main/BookTeasers';
 
-const MainContent = () => {
+const MainPage = () => {
   const { user } = useContext(UserContext);
   return (
     <motion.div
@@ -19,7 +19,6 @@ const MainContent = () => {
       animate={{ opacity: 1 }}
       transition={{ type: easeInOut, duration: 1 }}
       exit={{ opacity: 0 }}
-      // className="overflow-y-auto"
     >
       {user.name !== '' && (
         <h1 className="text-lg text-right text-gray-600">
@@ -72,4 +71,4 @@ const MainContent = () => {
   );
 };
 
-export default MainContent;
+export default MainPage;

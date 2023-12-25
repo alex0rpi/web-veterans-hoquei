@@ -1,26 +1,21 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import MainContent from './pages/MainContent';
-import NotFound from './pages/NotFound';
-import BookPage from './pages/BookPage';
 import AdminLogin from './components/admin/AdminLogin';
 import AdminRegister from './components/admin/AdminRegister';
-import SeasonContent from './components/main/SeasonContent';
 import NewChapterForm from './components/admin/chapters/NewChapterForm';
 import AdminChapters from './components/admin/chapters/AdminChapterList';
 import UserProvider from './context/UserContext';
 import { MainLayout } from './layouts/Layout';
 import { paths } from './constants';
 import AdminData from './components/admin/AdminData';
-import BlogPage from './pages/BlogPage';
-import PlayersPage from './pages/PlayersPage';
+import { MainPage, SeasonPage, BookPage, BlogPage, PlayersPage, NotFound } from './pages';
+import ChapterProvider from './context/ChaptersContext';
 
 const router = createBrowserRouter([
-  // Pending wrap the routes in a Layout component
   {
     path: paths.home,
     element: (
       <MainLayout>
-        <MainContent />
+        <MainPage />
       </MainLayout>
     ),
   },
@@ -28,7 +23,7 @@ const router = createBrowserRouter([
     path: paths.season,
     element: (
       <MainLayout>
-        <SeasonContent />
+        <SeasonPage />
       </MainLayout>
     ),
   },
@@ -109,9 +104,11 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <UserProvider>
-      <RouterProvider router={router} />
-    </UserProvider>
+    <ChapterProvider>
+      <UserProvider>
+        <RouterProvider router={router} />
+      </UserProvider>
+    </ChapterProvider>
   );
 }
 
