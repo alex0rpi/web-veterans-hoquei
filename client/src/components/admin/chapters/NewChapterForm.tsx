@@ -6,10 +6,13 @@ import CreateChapterService from '../../../services/CreateChapterService';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
 import { paths } from '../../../constants';
+import { ChapterContext } from '../../../context/ChaptersContext';
+import GetChaptersService from '../../../services/GetChaptersService';
 
 const NewChapterForm = () => {
+  const { setChapters } = useContext(ChapterContext);
   const navigate = useNavigate();
   const seasonRef = useRef<HTMLSelectElement>(null);
   const titleProRef = useRef<HTMLInputElement>(null);
@@ -34,6 +37,8 @@ const NewChapterForm = () => {
 
     if (isSuccess) {
       toast.info('Capítol creat correctament.');
+      const updatedChapters = await GetChaptersService(); // Fetch updated chapters
+      setChapters(updatedChapters); // Update context with the new chapter list
       navigate(paths.userChapterList);
     }
   };

@@ -1,10 +1,8 @@
 import { ChapterCard } from '../UI-components/ChapterCard';
 import Spinner from '../UI-components/loading-spinner/Spinner';
-// import { TChapterListItem } from '../../types/Item-types';
 import useChapters from '../../hooks/useChapters';
 
 const ChapterGrid = () => {
-  // const [chapters, setChapters] = useState<TChapterListItem[]>([]);
   const { isLoading, chapters } = useChapters();
 
   let chapterContent = [

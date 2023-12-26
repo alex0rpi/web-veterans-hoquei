@@ -6,5 +6,6 @@ export { modifyUser } from './users/patchUser';
 export { createChapter } from './chapters/create';
 export { getChapters } from './chapters/get';
 export { getChapterById } from './chapters/getById';
+export { getChapterBySeason } from './chapters/getBySeason';
 export { getUserChapters } from './chapters/getByUserId';
 export { modifyChapter } from './chapters/patchChapter';

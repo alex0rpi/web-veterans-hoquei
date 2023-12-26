@@ -8,9 +8,9 @@ export const HeaderTitle = () => {
         HOQUEI PATINS FCB
       </h1>
       <h1 className="text-center text-2xl font-semibold text-gray-700 sm:hidden">
-        ASSOCIACIÓ
+        ASSOCIACIÓ VETERANS
         <br />
-        VETERANS HOQUEI PATINS FCB
+        HOQUEI PATINS FCB
       </h1>
       <div className="border-b border-gray-400 pb-2"></div>
     </header>

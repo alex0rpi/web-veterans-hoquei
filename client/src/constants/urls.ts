@@ -7,5 +7,6 @@ export const urls = {
   createChapter: '/api/v1/chapters',
   getAllChapters: '/api/v1/chapters',
   getChapterById: '/api/v1/chapters/id/:chapterId',
+  getChapterBySeason: '/api/v1/chapters/season',
   getMyChapters: '/api/v1/chapters/me',
 };

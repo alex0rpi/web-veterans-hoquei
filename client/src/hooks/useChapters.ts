@@ -5,7 +5,7 @@ import GetChaptersService from '../services/GetChaptersService';
 const useChapters = () => {
   const { chapters, setChapters } = useContext(ChapterContext);
   const [isLoading, setIsLoading] = useState(false);
-  const [hasFetched, setHasFetched] = useState(false);
+  const [hasFetchedChapters, setHasFetched] = useState(false);
 
   useEffect(() => {
     const fetchChapters = async () => {
@@ -17,12 +17,12 @@ const useChapters = () => {
       setIsLoading(false);
       setHasFetched(true);
     };
-    if (!chapters || (chapters.length === 0 && !hasFetched)) {
+    if (!chapters || (chapters.length === 0 && !hasFetchedChapters)) {
       fetchChapters();
     }
-  }, [chapters, setChapters, hasFetched]);
+  }, [chapters, setChapters, hasFetchedChapters]);
 
-  return { chapters, isLoading };
+  return { chapters, isLoading, hasFetchedChapters, setHasFetched };
 };
 
 export default useChapters;

@@ -6,6 +6,7 @@ import {
   getChapterById,
   getUserChapters,
   modifyChapter,
+  getChapterBySeason,
 } from '../controllers';
 import { authenticate, authorize, validate } from '../middleware';
 import { chapterCreateSchema } from '../schemas';
@@ -32,6 +33,12 @@ chapterRouter.get(
   '/id/:chapterId',
   validate(z.object({ params: z.object({ chapterId: z.string() }) })),
   getChapterById
+);
+
+chapterRouter.get(
+  '/season/:chapterSeason',
+  validate(z.object({ params: z.object({ chapterSeason: z.string() }) })),
+  getChapterBySeason
 );
 
 chapterRouter.patch('/', authenticate, authorize(USER_ROLE.ADMIN), modifyChapter);
