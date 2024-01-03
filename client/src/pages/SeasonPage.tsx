@@ -106,17 +106,26 @@ const SeasonPage = () => {
               />
             </div>
           </div>
+          {/* Season text content here below */}
           <div>
-            <h1 className="mt-6 text-left text-2xl font-semibold text-primary">
+            <h1 className="mt-6 text-left text-lg md:text-2xl font-semibold md:font-bold text-primary">
               {season?.titlePro}
             </h1>
             <div className="mb-2 border-b border-gray-400 pb-2"></div>
-            <p className="text-md leading-7">{season?.contentPro}</p>
+            {season?.contentPro.split('\n').map((line, i) => (
+              <p key={i} className="text-md mt-2 leading-7">
+                {line}
+              </p>
+            ))}
             <h1 className="mt-6 text-left text-2xl font-semibold text-primary">
               {season?.titleBases}
             </h1>
             <div className="mb-2 border-b border-gray-400 pb-2"></div>
-            <p className="text-md leading-7">{season?.contentBases}</p>
+            {season?.contentBases.split('\n').map((line, i) => (
+              <p key={i} className="text-md mt-2 leading-7">
+                {line}
+              </p>
+            ))}
           </div>
         </article>
       )}
