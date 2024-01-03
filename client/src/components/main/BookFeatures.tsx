@@ -1,12 +1,14 @@
-import { FaHockeyPuck } from 'react-icons/fa';
-import { GiHockey } from 'react-icons/gi';
-import { MdOutlineSportsHockey } from 'react-icons/md';
+// import { FaHockeyPuck } from 'react-icons/fa';
+// import { GiHockey } from 'react-icons/gi';
+import stickIcon from '../../assets/logos/hockeyStick-no-bg.png';
+// import { MdOutlineSportsHockey } from 'react-icons/md';
 
 const BookFeatures = () => {
   return (
     <section className="mb-3 grid gap-3 md:grid-cols-3">
       <div className="mx-2 text-left">
-        <GiHockey className="fa-2x inline-block" />
+        {/* <GiHockey className="fa-2x inline-block" /> */}
+        <img src={stickIcon} width="30" className="ms-1 inline-block" />
         <p className="ms-1 inline text-lg font-semibold">
           Des dels inicis fins a l'actualitat
         </p>
@@ -16,7 +18,9 @@ const BookFeatures = () => {
         </p>
       </div>
       <div className="mx-2 text-left">
-        <FaHockeyPuck className="fa-2x inline-block" />
+        {/* <FaHockeyPuck className="fa-2x inline-block" /> */}
+        <img src={stickIcon} width="30" className="ms-1 inline-block" />
+
         <p className="ms-1 inline text-lg font-semibold">
           Amb imatges històriques i documents inèdits
         </p>
@@ -26,7 +30,9 @@ const BookFeatures = () => {
         </p>
       </div>
       <div className="mx-2 text-left">
-        <MdOutlineSportsHockey className="fa-2x inline-block" />
+        {/* <MdOutlineSportsHockey className="fa-2x inline-block" /> */}
+        <img src={stickIcon} width="30" className="ms-1 inline-block" />
+
         <p className="ms-1 inline text-lg font-semibold">
           Amb totes les dades per temporades
         </p>
