@@ -10,6 +10,7 @@ import { useContext, useRef } from 'react';
 import { paths } from '../../../constants';
 import { ChapterContext } from '../../../context/ChaptersContext';
 import GetChaptersService from '../../../services/GetChaptersService';
+import SeasonSelect from '../../UI-components/SeasonSelect';
 
 const NewChapterForm = () => {
   const { setChapters } = useContext(ChapterContext);
@@ -60,32 +61,11 @@ const NewChapterForm = () => {
       <div className="mt-6 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6">
         <form onSubmit={onChapterSubmitHandler}>
           <div className="mb-3">
-            <div>
-              <label
-                htmlFor="season"
-                className="text-md mb-1 block font-semibold text-gray-900"
-              >
-                Selecciona una temporada
-              </label>
-              <select
-                name="season"
-                id="season"
-                className="mb-3 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
-                placeholder="email@email.com"
-                ref={seasonRef}
-              >
-                {/* Funció per a què agafi desde la temporada actual fins la del 17-18 */}
-                <option selected className="bg-slate-200">
-                  2023-2024
-                </option>
-                <option>2022-2023</option>
-                <option className="bg-slate-200">2021-2022</option>
-                <option>2020-2021</option>
-                <option className="bg-slate-200">2019-2020</option>
-                <option>2018-2019</option>
-                <option className="bg-slate-200">2017-2018</option>
-              </select>
-            </div>
+            <SeasonSelect
+              label="Selecciona una temporada"
+              name="season"
+              seasonRef={seasonRef}
+            />
             <div className="border-b-2 border-slate-400 mt-4 mb-3"></div>
             <FormInput
               label="Títol article secció professional"
@@ -94,16 +74,14 @@ const NewChapterForm = () => {
               placeholder=""
               inputRef={titleProRef}
             />
-
             <TextAreaInput
               label="Cos de l'article secció professional"
               name="content-pro"
               rows={4}
-              maxLength={3000}
+              maxLength={6000}
               placeholder="Contingut de l'article..."
               inputRef={contentProRef}
             />
-
             <div className="border-b-2 border-slate-400 mt-4 mb-3"></div>
             <FormInput
               label="Títol article bases i filial"
@@ -112,17 +90,15 @@ const NewChapterForm = () => {
               placeholder=""
               inputRef={titleBasesRef}
             />
-
             <TextAreaInput
               label="Cos de l'article secció base i filial"
               name="content-bases"
               rows={4}
-              maxLength={3000}
+              maxLength={6000}
               placeholder="Contingut de l'article..."
               inputRef={contentBasesRef}
             />
           </div>
-
           <Button type="submit" title="PUBLICAR CAPÍTOL" />
         </form>
       </div>

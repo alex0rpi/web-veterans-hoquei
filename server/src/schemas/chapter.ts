@@ -21,7 +21,7 @@ export const chapterSchema = z.object({
       invalid_type_error: 'Content must be a string.',
     })
     .min(2)
-    .max(3000),
+    .max(6000),
 
   titleBases: z
     .string({
@@ -36,7 +36,7 @@ export const chapterSchema = z.object({
       invalid_type_error: 'Content must be a string.',
     })
     .min(2)
-    .max(3000),
+    .max(6000),
   userId: z.string(),
   createdAt: z.string().datetime(),
   updatedAt: z.string().datetime(),
