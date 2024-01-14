@@ -7,7 +7,8 @@ export const paths = {
   register: '/admin/register',
   me: '/admin/me',
   newChapter: '/admin/new-chapter',
-  userChapterList: '/admin/chapter-list',
+  userChapterList: '/admin/llistat-temporades',
+  editChapter: '/admin/temporades/edit-chapter/:currentSeason',
   blog: '/blog',
   players: '/jugadors',
 };

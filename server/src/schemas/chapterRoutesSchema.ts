@@ -20,6 +20,16 @@ export const chapterGetResponseSchema = chapterSchema.pick({
   updatedAt: true,
 });
 
+export const chapterPatchSchema = chapterSchema.partial().pick({
+  id: true,
+  season: true,
+  titlePro: true,
+  contentPro: true,
+  titleBases: true,
+  contentBases: true,
+});
+
 export const chaptersGetResponseSchema = z.array(chapterGetResponseSchema);
 
 export type TCreateChapter = z.infer<typeof chapterCreateSchema>;
+export type TPatchChapter = z.infer<typeof chapterPatchSchema>;

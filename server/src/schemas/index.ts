@@ -4,3 +4,4 @@ export { userLoginResponse } from './userRoutesSchema';
 export { chapterCreateSchema } from './chapterRoutesSchema';
 export { chapterGetResponseSchema } from './chapterRoutesSchema';
 export { chaptersGetResponseSchema } from './chapterRoutesSchema';
+export { chapterPatchSchema } from './chapterRoutesSchema';

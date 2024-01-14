@@ -7,6 +7,7 @@ type TFormTextAreaProps = {
   maxLength: number;
   placeholder: string;
   inputRef?: React.RefObject<HTMLTextAreaElement>;
+  defaultValue?: string;
 };
 
 const TextAreaInput = React.forwardRef<HTMLTextAreaElement, TFormTextAreaProps>(
@@ -25,6 +26,7 @@ const TextAreaInput = React.forwardRef<HTMLTextAreaElement, TFormTextAreaProps>(
           placeholder={props.placeholder}
           id={props.name}
           required
+          defaultValue={props.defaultValue}
         ></textarea>
       </div>
     );

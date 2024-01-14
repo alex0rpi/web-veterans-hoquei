@@ -9,7 +9,7 @@ import {
   getChapterBySeason,
 } from '../controllers';
 import { authenticate, authorize, validate } from '../middleware';
-import { chapterCreateSchema } from '../schemas';
+import { chapterCreateSchema, chapterPatchSchema } from '../schemas';
 import { pathRoot } from './allRoutes';
 import { USER_ROLE } from '@prisma/client';
 
@@ -25,6 +25,14 @@ chapterRouter.post(
   authorize(USER_ROLE.ADMIN),
   validate(z.object({ body: chapterCreateSchema })),
   createChapter
+);
+
+chapterRouter.patch(
+  '/',
+  authenticate,
+  authorize(USER_ROLE.ADMIN),
+  validate(z.object({ body: chapterPatchSchema })),
+  modifyChapter
 );
 
 chapterRouter.get('/', getChapters);

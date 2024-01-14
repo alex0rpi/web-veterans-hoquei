@@ -4,7 +4,9 @@ import stickIcon from '../../assets/logos/hockeyStick-no-bg.png';
 import { Link } from 'react-router-dom';
 import { TChapterListItem } from '../../types/Item-types';
 
-type TchapterCardProps = Omit<TChapterListItem, 'id'> & { index: number };
+type TchapterCardProps = Omit<TChapterListItem, 'id'> & { index: number } & {
+  goTo?: string;
+};
 
 export const ChapterCard = (props: TchapterCardProps) => {
   const truncateString = (str: string, num: number) => {
@@ -20,7 +22,13 @@ export const ChapterCard = (props: TchapterCardProps) => {
   const evenIndex = props.index % 2 === 0;
   const cardBg = evenIndex ? 'bg-slate-400' : 'bg-slate-300';
   return (
-    <Link to={`/temporades/${props.season}`}>
+    <Link
+      to={
+        !props.goTo
+          ? `/temporades/${props.season}`
+          : `/admin/temporades/edit-chapter/${props.goTo}`
+      }
+    >
       <div className={`card block ${cardBg} p-2`}>
         {/* <GiHockey className="fa-2x inline-block" /> */}
         <img src={stickIcon} width="30" className="ms-1 inline-block" />

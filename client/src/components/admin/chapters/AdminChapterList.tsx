@@ -55,6 +55,7 @@ const AdminChapterList = () => {
                 season={chapter.season}
                 titlePro={chapter.titlePro}
                 titleBases={chapter.titleBases}
+                goTo={chapter.season}
               />
             );
           })

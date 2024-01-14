@@ -3,6 +3,7 @@ import AdminLogin from './components/admin/AdminLogin';
 import AdminRegister from './components/admin/AdminRegister';
 import NewChapterForm from './components/admin/chapters/NewChapterForm';
 import AdminChapters from './components/admin/chapters/AdminChapterList';
+import EditChapterForm from './components/admin/chapters/EditChapterForm';
 import UserProvider from './context/UserContext';
 import { MainLayout } from './layouts/Layout';
 import { paths } from './constants';
@@ -80,6 +81,14 @@ const router = createBrowserRouter([
     element: (
       <MainLayout>
         <AdminChapters />
+      </MainLayout>
+    ),
+  },
+  {
+    path: paths.editChapter,
+    element: (
+      <MainLayout>
+        <EditChapterForm />
       </MainLayout>
     ),
   },
