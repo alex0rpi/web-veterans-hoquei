@@ -22,9 +22,9 @@
   },
   "include": [
     "src",
-    "public/assets/pictures",
-    "public/assets/testimonis",
-    "public/assets/bookImages"
+    "src/assets/pictures",
+    "src/assets/testimonis",
+    "src/assets/bookImages"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

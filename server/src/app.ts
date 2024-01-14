@@ -5,6 +5,7 @@ import cors from '@koa/cors';
 import helmet from 'koa-helmet';
 import { HttpMethodEnum, koaBody } from 'koa-body';
 import path from 'path';
+import serve from 'koa-static';
 import * as Routes from './routes';
 import { errorMiddleware } from './middleware';
 
@@ -18,6 +19,31 @@ const app = new Koa();
 
 app.use(cors());
 app.use(helmet());
+
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'"],
+      styleSrc: ["'self'"],
+      imgSrc: ["'self'"],
+      connectSrc: ["'self'"],
+      fontSrc: ["'self'"],
+      objectSrc: ["'none'"],
+      mediaSrc: ["'self'"],
+      frameAncestors: ["'self'", 'http://localhost:3000'],
+    },
+  })
+);
+// set Cache-Control headers so the pdf document is then cached by the browser.
+app.use(async (ctx, next) => {
+  await next();
+  if (ctx.url.startsWith('/public/documents')) {
+    ctx.set('Cache-Control', 'public, max-age=31536000');
+  }
+});
+
+// Body parser
 app.use(
   koaBody({
     parsedMethods: [
@@ -29,6 +55,9 @@ app.use(
   })
 );
 app.use(errorMiddleware);
+
+// Serve static files from the 'public' folder
+app.use(serve(path.join(__dirname, 'public')));
 
 // Routes
 app.use(Routes.userRouter.routes());

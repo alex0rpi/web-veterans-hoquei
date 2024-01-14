@@ -1,6 +1,7 @@
 // import { FaHockeyPuck } from 'react-icons/fa';
 // import { GiHockey } from 'react-icons/gi';
-import stickIcon from '../../../public/assets/logos/hockeyStick-no-bg.png';
+// import stickIcon from '../../../public/assets/logos/hockeyStick-no-bg.png';
+import stickIcon from '../../assets/logos/hockeyStick-no-bg.png';
 // import { MdOutlineSportsHockey } from 'react-icons/md';
 
 const BookFeatures = () => {
