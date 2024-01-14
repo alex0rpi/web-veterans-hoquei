@@ -1,5 +1,4 @@
-// import { GiHockey } from 'react-icons/gi';
-import stickIcon from '../../assets/logos/hockeyStick-no-bg.png';
+import stickIcon from '../../../public/assets/logos/hockeyStick-no-bg.png';
 
 import { Link } from 'react-router-dom';
 import { TChapterListItem } from '../../types/Item-types';

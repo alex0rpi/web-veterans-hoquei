@@ -11,7 +11,7 @@ export default {
       },
 
       backgroundImage: {
-        'hero-pattern': "url('./src/assets/backgrounds/bg01.jpg')",
+        'hero-pattern': "url('/assets/backgrounds/bg01.jpg')",
       },
 
       colors: {

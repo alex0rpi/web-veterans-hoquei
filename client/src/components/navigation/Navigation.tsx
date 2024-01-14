@@ -1,4 +1,4 @@
-import logoImage from '../../assets/logos/logo-no-text-removebg.png';
+import logoImage from '../../../public/assets/logos/logo-no-text-removebg.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';

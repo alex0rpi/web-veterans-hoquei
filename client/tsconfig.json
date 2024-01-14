@@ -20,6 +20,11 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": [
+    "src",
+    "public/assets/pictures",
+    "public/assets/testimonis",
+    "public/assets/bookImages"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

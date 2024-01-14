@@ -1,4 +1,4 @@
-import { testimoni01, testimoni02, testimoni03 } from '../../assets/testimonis';
+import { testimoni01, testimoni02, testimoni03 } from '../../../public/assets/testimonis';
 
 const BookTestimonials = () => {
   return (

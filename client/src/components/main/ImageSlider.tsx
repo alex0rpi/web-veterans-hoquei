@@ -1,4 +1,4 @@
-import { foto01, foto02, foto03 } from '../../assets/pictures';
+import { foto01, foto02, foto03 } from '../../../public/assets/pictures';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChevronLeft,

@@ -1,4 +1,4 @@
-import pdf from '../assets/documents/Llibre-veterans-hoquei-patins-fcb_compressed.pdf';
+import pdf from '../../public/assets/documents/Llibre-veterans-hoquei-patins-fcb_compressed.pdf';
 
 const BookPage = () => {
   return (

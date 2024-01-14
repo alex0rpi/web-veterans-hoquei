@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import stickIcon from '../../assets/logos/hockeyStick-no-bg.png';
+import stickIcon from '../../../public/assets/logos/hockeyStick-no-bg.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 

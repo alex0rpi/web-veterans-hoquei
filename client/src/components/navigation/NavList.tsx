@@ -30,7 +30,7 @@ const NavList = ({ mode = 'main', onLogout }: TMainNav) => {
       <MenuItem icon={faAddressCard} title="Les meves dades" to={paths.me} />
       <MenuItem icon={faBookOpen} title="El Llibre" to={paths.book} />
       <MenuItem icon={faPeopleGroup} title="Junta" />
-      <MenuItem icon={faCalendar} title="Temporades" />
+      <MenuItem icon={faCalendar} title="Temporades" to={paths.genericSeason} />
       <MenuItem icon={faPersonSkating} title="Jugadors" to={paths.players} />
       <MenuItem icon={faNewspaper} title="Blog i cotis" to={paths.blog} />
       <MenuItem icon={faLink} title="Enllaços" />
@@ -48,7 +48,7 @@ const NavList = ({ mode = 'main', onLogout }: TMainNav) => {
       <MenuItem icon={faUser} title="Accés" to={paths.login} />
       <MenuItem icon={faBookOpen} title="El Llibre" to={paths.book} />
       <MenuItem icon={faPeopleGroup} title="Junta" />
-      <MenuItem icon={faCalendar} title="Temporades" />
+      <MenuItem icon={faCalendar} title="Temporades" to={paths.genericSeason} />
       <MenuItem icon={faPersonSkating} title="Jugadors" to={paths.players} />
       <MenuItem icon={faNewspaper} title="Blog i cotis" to={paths.blog} />
       <MenuItem icon={faLink} title="Enllaços" />

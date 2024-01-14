@@ -1,4 +1,4 @@
-import { imatgeLlibre01, imatgeLlibre03 } from '../../assets/bookImages';
+import { imatgeLlibre01, imatgeLlibre03 } from '../../../public/assets/bookImages';
 import { Button } from '../UI-components/Button';
 import { paths } from '../../constants';
 

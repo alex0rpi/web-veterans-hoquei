@@ -14,7 +14,7 @@ import { RxFontSize } from 'react-icons/rx';
 // import { RiFontSize2 } from 'react-icons/ri';
 
 const SeasonPage = () => {
-  const availableTextSizes = ['xs', 'sm', 'base', 'lg', 'xl', '2xl', '3xl'];
+  const availableTextSizes = ['xs', 'sm', 'base', 'lg', 'xl', '2xl'];
 
   const [textSize, setTextSize] = useState('base');
 
@@ -25,17 +25,19 @@ const SeasonPage = () => {
     }
     const increase = value === '+';
     const currentIndex = availableTextSizes.findIndex((size) => size === textSize);
+
     if (increase) {
-      if (currentIndex === availableTextSizes.length - 1) return;
-      setTextSize(availableTextSizes[currentIndex + 1]);
-      return;
+      if (currentIndex < availableTextSizes.length - 1) {
+        setTextSize(availableTextSizes[currentIndex + 1]);
+      }
+    } else {
+      if (currentIndex > 0) {
+        setTextSize(availableTextSizes[currentIndex - 1]);
+      }
     }
-    if (currentIndex === 0) return;
-    setTextSize(availableTextSizes[currentIndex - 1]);
   };
 
   const { chapters, setChapters } = useContext(ChapterContext);
-  console.log('chapters: ', chapters);
 
   const [isLoading, setIsLoading] = useState(true);
   const [season, setSeason] = useState<TSeason | null>(null);
@@ -45,8 +47,6 @@ const SeasonPage = () => {
 
   useEffect(() => {
     const fetchSeason = async () => {
-      console.log('currentSeason: ', currentSeason);
-
       const fetchedSeason = await GetSeasonService(currentSeason!);
       if (!fetchedSeason) return;
       setSeason(fetchedSeason);
