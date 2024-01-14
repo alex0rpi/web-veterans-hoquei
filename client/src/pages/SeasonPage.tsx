@@ -10,8 +10,30 @@ import GetSeasonService from '../services/GetSeasonService';
 import { TSeason } from '../types/Item-types';
 import Spinner from '../components/UI-components/loading-spinner/Spinner';
 import GetChaptersService from '../services/GetChaptersService';
+import { RxFontSize } from 'react-icons/rx';
+// import { RiFontSize2 } from 'react-icons/ri';
 
 const SeasonPage = () => {
+  const availableTextSizes = ['xs', 'sm', 'base', 'lg', 'xl', '2xl', '3xl'];
+
+  const [textSize, setTextSize] = useState('base');
+
+  const changeFontSizeHandler = (value: string) => {
+    if (value === '=') {
+      setTextSize('base');
+      return;
+    }
+    const increase = value === '+';
+    const currentIndex = availableTextSizes.findIndex((size) => size === textSize);
+    if (increase) {
+      if (currentIndex === availableTextSizes.length - 1) return;
+      setTextSize(availableTextSizes[currentIndex + 1]);
+      return;
+    }
+    if (currentIndex === 0) return;
+    setTextSize(availableTextSizes[currentIndex - 1]);
+  };
+
   const { chapters, setChapters } = useContext(ChapterContext);
   console.log('chapters: ', chapters);
 
@@ -107,13 +129,36 @@ const SeasonPage = () => {
             </div>
           </div>
           {/* Season text content here below */}
-          <div>
-            <h1 className="mt-6 text-left text-lg md:text-2xl font-semibold md:font-bold text-primary">
-              {season?.titlePro}
-            </h1>
+          <div className="mt-6 ">
+            <div className="flex flex-row justify-between items-center">
+              <h1 className="text-left text-lg md:text-2xl font-semibold md:font-bold text-primary">
+                {season?.titlePro}
+              </h1>
+              <div className="flex flex-row items-center justify-center border border-gray-400 rounded-full px-3">
+                <button
+                  type="button"
+                  className="font-bold text-2xl hover:scale-125"
+                  onClick={() => changeFontSizeHandler('-')}
+                >
+                  -
+                </button>
+                <RxFontSize
+                  className="mx-2 text-xl hover:scale-125"
+                  onClick={() => changeFontSizeHandler('=')}
+                />
+                {/* <RiFontSize2 className="mx-2 text-xl" /> */}
+                <button
+                  type="button"
+                  className="font-bold text-2xl hover:scale-125"
+                  onClick={() => changeFontSizeHandler('+')}
+                >
+                  +
+                </button>
+              </div>
+            </div>
             <div className="mb-2 border-b border-gray-400 pb-2"></div>
             {season?.contentPro.split('\n').map((line, i) => (
-              <p key={i} className="text-md mt-2 leading-7">
+              <p key={i} className={`text-${textSize} mt-2 leading-7`}>
                 {line}
               </p>
             ))}
@@ -122,7 +167,7 @@ const SeasonPage = () => {
             </h1>
             <div className="mb-2 border-b border-gray-400 pb-2"></div>
             {season?.contentBases.split('\n').map((line, i) => (
-              <p key={i} className="text-md mt-2 leading-7">
+              <p key={i} className={`text-${textSize} mt-2 leading-7`}>
                 {line}
               </p>
             ))}
