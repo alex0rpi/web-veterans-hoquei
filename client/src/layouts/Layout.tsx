@@ -6,16 +6,21 @@ import { PropsWithChildren } from 'react';
 
 export const MainLayout = (props: PropsWithChildren) => {
   const location = useLocation();
-  const gridClass =
-    location.pathname === '/llibre-veterans-hoquei-patins-fcb'
-      ? 'book-grid'
-      : 'main-grid';
+  let opacityAmount: string;
+  let gridClass: string;
+  if (location.pathname === '/llibre-veterans-hoquei-patins-fcb') {
+    opacityAmount = '100';
+    gridClass = 'book-grid';
+  } else {
+    opacityAmount = '90';
+    gridClass = 'main-grid';
+  }
   return (
     <div
       className={`${gridClass} md:bg-hero-pattern md:bg-cover transition-all duration-200`}
     >
       <Navigation />
-      <div className="main-column-layout">
+      <div className={`main-column-layout opacity-${opacityAmount}`}>
         <ToastContainer
           position="bottom-right"
           autoClose={3000}
