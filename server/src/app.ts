@@ -17,6 +17,8 @@ fs.mkdir(path.join(__dirname, '/static/media'), { recursive: true }, (err) => {
 });
 const app = new Koa();
 
+app.use(errorMiddleware);
+
 app.use(cors());
 app.use(helmet());
 
@@ -54,7 +56,6 @@ app.use(
     ],
   })
 );
-app.use(errorMiddleware);
 
 // Serve static files from the 'public' folder
 app.use(serve(path.join(__dirname, 'public')));

@@ -29,7 +29,7 @@ const errorMiddleware = async (ctx: Context, next: Next) => {
     }
     ctx.status = error.status || 500;
     ctx.body = {
-      message: error.messages || error.message || 'Something bad happened',
+      message: error.messages || error.message || 'Alguna cosa ha anat malament 🔧',
     };
   }
 };

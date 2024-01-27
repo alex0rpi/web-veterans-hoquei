@@ -34,9 +34,19 @@ const AdminChapterList = () => {
       <h1 className="mt-10 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700">
         Els meus capítols
       </h1>
-      <h1 className="mt-5 text-2xl text-gray-700">
-        Selecciona un capítol per visualitzar o modificar.
-      </h1>
+      {isLoading ? (
+        <>
+          <div></div>
+          <h1 className="text-xl text-gray-700 mt-5">Carregant...</h1>
+          <div></div>
+        </>
+      ) : chapters.length > 0 ? (
+        <h1 className="mt-5 text-2xl text-gray-700">
+          Selecciona un capítol per visualitzar o modificar.
+        </h1>
+      ) : (
+        <h1 className="mt-5 text-2xl text-gray-700">No tens camp capitol publicat.</h1>
+      )}
       <section className="mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
         {isLoading ? (
           <>

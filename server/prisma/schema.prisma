@@ -37,7 +37,7 @@ enum USER_ROLE {
 
 model Chapter {
   id           String   @id @default(uuid())
-  season       String
+  season       String   @unique
   titlePro     String
   contentPro   String
   titleBases   String

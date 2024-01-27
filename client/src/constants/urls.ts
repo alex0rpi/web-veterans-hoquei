@@ -10,4 +10,5 @@ export const urls = {
   getChapterBySeason: '/api/v1/chapters/season',
   getMyChapters: '/api/v1/chapters/me',
   getPdfBook: '/public/documents/Llibre-veterans-hoquei-patins-fcb_compressed.pdf',
+  sendContactEmail: 'https://formspree.io/f/mzbljkgl',
 };

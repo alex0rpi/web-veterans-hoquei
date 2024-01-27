@@ -8,8 +8,8 @@ export const userRegisterSchema = userSchema
     name: true,
   })
   .extend({
-    password: z.string().min(8).regex(passwordRegex),
-    confirmPassword: z.string().min(8).regex(passwordRegex),
+    password: z.string().regex(passwordRegex),
+    confirmPassword: z.string().regex(passwordRegex),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: 'Passwords do not match.',

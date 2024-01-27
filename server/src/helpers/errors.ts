@@ -41,7 +41,7 @@ class NotFoundError extends DefaultError {
 
 class DuplicateError extends DefaultError {
   constructor(resource: string) {
-    super(409, `${resource} already exists`);
+    super(409, `Entrada ja existeix (${resource}), verifica les dades sisplau.`);
   }
 }
 
