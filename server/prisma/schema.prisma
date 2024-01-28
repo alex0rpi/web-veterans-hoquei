@@ -11,16 +11,18 @@ datasource db {
 }
 
 model User {
-  id        String      @id @default(uuid())
-  email     String      @unique
-  name      String
-  password  String
-  status    USER_STATUS @default(INACTIVE)
-  role      USER_ROLE   @default(REGISTERED)
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
-  posts     Post[]
-  chapters  Chapter[]
+  id         String      @id @default(uuid())
+  name       String
+  email      String      @unique
+  password   String
+  isVerified Boolean     @default(false)
+  emailToken String?
+  status     USER_STATUS @default(INACTIVE)
+  role       USER_ROLE   @default(REGISTERED)
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  posts      Post[]
+  chapters   Chapter[]
 
   @@map("users")
 }

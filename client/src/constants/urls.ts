@@ -1,5 +1,6 @@
 export const urls = {
   register: '/api/v1/users/register',
+  emailVerify: '/api/v1/users/verify-email',
   logIn: '/api/v1/users/login',
   logOut: '/api/v1/users/logout',
   getMe: '/api/v1/users/me',

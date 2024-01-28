@@ -3,6 +3,7 @@ import { createContext, useState } from 'react';
 export type TUser = {
   id: string;
   name: string;
+  isVerified: boolean;
 };
 
 export interface IUserContext {
@@ -15,6 +16,7 @@ const defaultState = {
   user: {
     id: '',
     name: '',
+    isVerified: false,
   },
   setUser: () => {},
 } as IUserContext;
@@ -30,6 +32,7 @@ export default function UserProvider({ children }: TUserProviderProps) {
   const [user, setUser] = useState<TUser>({
     id: '',
     name: '',
+    isVerified: false,
   });
 
   return (
