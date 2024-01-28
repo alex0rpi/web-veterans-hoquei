@@ -8,7 +8,6 @@ const BookPage = () => {
     <div className="w-full h-full">
       <iframe
         title="Browser PDF Viewer"
-        // src={`${pdf}`}
         src={pdfUrl}
         allowFullScreen
         className="w-full h-[95vh] rounded-lg"

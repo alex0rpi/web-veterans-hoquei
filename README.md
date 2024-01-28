@@ -9,6 +9,12 @@ This is my ongoing project for the Rink Hockey veterans association.
   [Fastify documentation here](https://www.fastify.io/docs/latest/).<br>
   [KOA Documentation here](https://koajs.com/#)
 
+The backend covers a CRUD API for chapters as well as an almost fully fledged user auth and login system, including email confirmation.
+
+## Env variables setup
+
+Please use the .env-template as a guide to create your .env file and fulfill the required infos.
+
 ## Backend start up:
 
 - Install dependencies

@@ -30,7 +30,7 @@ export const MainLayout = (props: PropsWithChildren) => {
           rtl={false}
           // pauseOnFocusLoss
           draggable
-          pauseOnHover
+          pauseOnHover={false}
           theme="light"
         />
         {props.children}

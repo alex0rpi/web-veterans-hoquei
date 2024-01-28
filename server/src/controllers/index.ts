@@ -1,5 +1,6 @@
 export { login } from './users/login';
 export { register } from './users/register';
+export { verify } from './users/verify';
 export { getMe } from './users/getMe';
 export { logout } from './users/logout';
 export { modifyUser } from './users/patchUser';

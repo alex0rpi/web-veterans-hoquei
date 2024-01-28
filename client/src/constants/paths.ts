@@ -5,6 +5,7 @@ export const paths = {
   book: '/llibre-veterans-hoquei-patins-fcb',
   login: '/admin/login',
   register: '/admin/register',
+  verify: '/admin/verify',
   me: '/admin/me',
   newChapter: '/admin/new-chapter',
   userChapterList: '/admin/llistat-temporades',

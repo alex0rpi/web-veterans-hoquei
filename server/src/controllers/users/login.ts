@@ -10,7 +10,13 @@ export const login = async (ctx: Koa.Context) => {
 
   const user = await prisma.user.findUnique({
     where: { email },
-    select: { id: true, name: true, password: true, status: true },
+    select: {
+      id: true,
+      name: true,
+      password: true,
+      isVerified: true,
+      status: true,
+    },
   });
 
   if (!user) {
@@ -19,9 +25,9 @@ export const login = async (ctx: Koa.Context) => {
     return;
   }
 
-  if (user.status !== 'ACTIVE') {
+  if (user.isVerified === false || user.status !== 'ACTIVE') {
     ctx.status = 403;
-    ctx.body = { error: 'Only active users can login' };
+    ctx.body = { error: 'Only verified and activated users can login' };
     return;
   }
 

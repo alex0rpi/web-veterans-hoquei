@@ -10,6 +10,7 @@ import { paths } from './constants';
 import AdminData from './components/admin/AdminData';
 import { MainPage, SeasonPage, BookPage, BlogPage, PlayersPage, NotFound } from './pages';
 import ChapterProvider from './context/ChaptersContext';
+import UserVerify from './pages/UserVerify';
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,14 @@ const router = createBrowserRouter([
     element: (
       <MainLayout>
         <AdminRegister />
+      </MainLayout>
+    ),
+  },
+  {
+    path: paths.verify,
+    element: (
+      <MainLayout>
+        <UserVerify />
       </MainLayout>
     ),
   },

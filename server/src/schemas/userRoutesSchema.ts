@@ -16,6 +16,13 @@ export const userRegisterSchema = userSchema
     path: ['confirmPassword'],
   });
 
+export const userVerifySchema = userSchema.pick({
+  emailToken: true,
+});
+export const userVerifyResponse = userSchema.pick({
+  isVerified: true,
+});
+
 export const userLoginSchema = userSchema.pick({
   email: true,
   password: true,
@@ -24,7 +31,17 @@ export const userLoginSchema = userSchema.pick({
 export const userLoginResponse = userSchema.pick({
   id: true,
   name: true,
+  isVerified: true,
 });
 
 export type TLoginUser = z.infer<typeof userLoginSchema>;
 export type TRegisterUser = z.infer<typeof userRegisterSchema>;
+export type TVerifyUser = z.infer<typeof userVerifySchema>;
+
+const userEmailVerifySchema = userSchema.pick({
+  email: true,
+  name: true,
+  emailToken: true,
+});
+
+export type TUserForVerification = z.infer<typeof userEmailVerifySchema>;
