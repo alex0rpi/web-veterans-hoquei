@@ -1,6 +1,8 @@
 export const urls = {
   register: '/api/v1/users/register',
   emailVerify: '/api/v1/users/verify-email',
+  requestPasswordReset: '/api/v1/users/forgot-password',
+  updatePassword: '/api/v1/users/update-password',
   logIn: '/api/v1/users/login',
   logOut: '/api/v1/users/logout',
   getMe: '/api/v1/users/me',

@@ -1,6 +1,8 @@
 export { login } from './users/login';
 export { register } from './users/register';
 export { verify } from './users/verify';
+export { requestPasswordReset } from './users/requestPasswordReset';
+export { udpatePassword } from './users/updatePassword';
 export { getMe } from './users/getMe';
 export { logout } from './users/logout';
 export { modifyUser } from './users/patchUser';

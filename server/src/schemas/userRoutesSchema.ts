@@ -19,9 +19,27 @@ export const userRegisterSchema = userSchema
 export const userVerifySchema = userSchema.pick({
   emailToken: true,
 });
-export const userVerifyResponse = userSchema.pick({
-  isVerified: true,
+export type TVerifyUser = z.infer<typeof userVerifySchema>;
+
+export const requestPasswordResetSchema = userSchema.pick({
+  email: true,
 });
+export type TRequestPasswordReset = z.infer<typeof requestPasswordResetSchema>;
+
+export const userUpdatePasswordSchema = userSchema
+  .pick({
+    resetToken: true,
+  })
+  .extend({
+    newPassword: z.string().regex(passwordRegex),
+    confirmNewPassword: z.string().regex(passwordRegex),
+  })
+  .refine((data) => data.newPassword === data.confirmNewPassword, {
+    message: 'Passwords do not match.',
+    path: ['confirmNewPassword'],
+  });
+
+export type TUpdateUserPassword = z.infer<typeof userUpdatePasswordSchema>;
 
 export const userLoginSchema = userSchema.pick({
   email: true,
@@ -36,12 +54,10 @@ export const userLoginResponse = userSchema.pick({
 
 export type TLoginUser = z.infer<typeof userLoginSchema>;
 export type TRegisterUser = z.infer<typeof userRegisterSchema>;
-export type TVerifyUser = z.infer<typeof userVerifySchema>;
 
 const userEmailVerifySchema = userSchema.pick({
   email: true,
   name: true,
   emailToken: true,
 });
-
 export type TUserForVerification = z.infer<typeof userEmailVerifySchema>;

@@ -15,6 +15,7 @@ export const userSchema = z.object({
       invalid_type_error: 'Email must be a string.',
     })
     .email(),
+  resetToken: z.string().nullable(),
   isVerified: z.boolean(),
   emailToken: z.string().nullable(),
   password: z
