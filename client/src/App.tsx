@@ -11,6 +11,8 @@ import AdminData from './components/admin/AdminData';
 import { MainPage, SeasonPage, BookPage, BlogPage, PlayersPage, NotFound } from './pages';
 import ChapterProvider from './context/ChaptersContext';
 import UserVerify from './pages/UserVerify';
+import UpdatePassword from './pages/UpdatePassword';
+import RequestPasswordReset from './pages/RequestPasswordReset';
 
 const router = createBrowserRouter([
   {
@@ -74,6 +76,22 @@ const router = createBrowserRouter([
     element: (
       <MainLayout>
         <UserVerify />
+      </MainLayout>
+    ),
+  },
+  {
+    path: paths.requestPasswordReset,
+    element: (
+      <MainLayout>
+        <RequestPasswordReset />
+      </MainLayout>
+    ),
+  },
+  {
+    path: paths.updatePassword,
+    element: (
+      <MainLayout>
+        <UpdatePassword />
       </MainLayout>
     ),
   },

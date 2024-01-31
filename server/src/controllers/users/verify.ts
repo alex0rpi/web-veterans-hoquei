@@ -1,6 +1,6 @@
 import { Context, Middleware } from 'koa';
 import prisma from '../../config/prisma';
-import { TVerifyUser, userVerifyResponse } from '../../schemas/userRoutesSchema';
+import { TVerifyUser } from '../../schemas/userRoutesSchema';
 
 export const verify: Middleware = async (ctx: Context) => {
   const { emailToken } = ctx.request.body as TVerifyUser;
@@ -27,8 +27,5 @@ export const verify: Middleware = async (ctx: Context) => {
     // select: { isVerified: true },
   });
 
-  // const parsedVerifiedUser = userVerifyResponse.parse(user);
-
   ctx.status = 204;
-  // ctx.body = user;
 };

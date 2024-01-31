@@ -7,6 +7,8 @@ type TFormInputProps = {
   placeholder: string;
   inputRef?: React.RefObject<HTMLInputElement>;
   defaultValue?: string;
+
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const FormInput = React.forwardRef<HTMLInputElement, TFormInputProps>((props) => {
@@ -24,6 +26,7 @@ const FormInput = React.forwardRef<HTMLInputElement, TFormInputProps>((props) =>
         className="mb-3 block w-full rounded-lg border border-gray-300 bg-gray-100 p-2.5 text-gray-800"
         placeholder={props.placeholder}
         defaultValue={props.defaultValue}
+        onChange={props.onChange}
       />
     </div>
   );

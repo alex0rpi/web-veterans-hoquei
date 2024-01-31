@@ -6,6 +6,8 @@ export const paths = {
   login: '/admin/login',
   register: '/admin/register',
   verify: '/admin/verify',
+  requestPasswordReset: '/admin/request-password-reset',
+  updatePassword: '/admin/reset-password',
   me: '/admin/me',
   newChapter: '/admin/new-chapter',
   userChapterList: '/admin/llistat-temporades',
