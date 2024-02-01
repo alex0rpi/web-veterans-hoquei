@@ -16,7 +16,6 @@ const UpdatePassword = () => {
   const [searchParams] = useSearchParams();
   const passwordRef = useRef<HTMLInputElement>(null);
   const confirmPasswordRef = useRef<HTMLInputElement>(null);
-  const resetToken: string | null = searchParams.get('resetToken') ?? null;
   const [requestStatus, setRequestStatus] = useState({
     submitted: false,
     isLoading: false,
@@ -32,6 +31,7 @@ const UpdatePassword = () => {
   const onResetPasswordSubmitHandler = async (e: React.FormEvent) => {
     e.preventDefault();
     setRequestStatus({ submitted: true, isLoading: true, error: false });
+    const resetToken: string | null = searchParams.get('resetToken') ?? null;
     const newPassword = passwordRef.current?.value;
     const confirmNewPassword = confirmPasswordRef.current?.value;
 
@@ -66,9 +66,6 @@ const UpdatePassword = () => {
       if (isSuccess) {
         setRequestStatus({ submitted: true, isLoading: false, error: false });
         toast.info('Contrasenya actualitzada correctament.');
-      } else {
-        setRequestStatus({ submitted: true, isLoading: false, error: true });
-        toast.error("No s'ha pogut actualitzar la contrasenya.");
       }
       setTimeout(() => {
         return navigate(paths.login);
@@ -93,7 +90,7 @@ const UpdatePassword = () => {
           Crea una nova contrasenya
         </h1>
         <div className="mt-6 space-y-4 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6">
-          <form className="" action="#" onSubmit={onResetPasswordSubmitHandler}>
+          <form onSubmit={onResetPasswordSubmitHandler}>
             <FormInput
               label="Contrasenya"
               name="password"

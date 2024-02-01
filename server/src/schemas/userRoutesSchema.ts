@@ -43,7 +43,7 @@ export type TUpdateUserPassword = z.infer<typeof userUpdatePasswordSchema>;
 
 export const userLoginSchema = userSchema.pick({
   email: true,
-  password: true,
+  // password: true,
 });
 
 export const userLoginResponse = userSchema.pick({

@@ -7,6 +7,7 @@ import { sendVerificationEmail } from '../../outils/sendVerificationEmail';
 
 export const register: Middleware = async (ctx: Context) => {
   const { name, email, password }: TRegisterUser = ctx.request.body;
+
   const hashedPassword = await hashPassword(password);
 
   const emailToken: string = crypto.randomBytes(64).toString('hex');
@@ -17,6 +18,7 @@ export const register: Middleware = async (ctx: Context) => {
       email: email,
       password: hashedPassword,
       emailToken,
+      emailTokenExp: new Date(Date.now() + 86400000), // 24h
     },
   });
 

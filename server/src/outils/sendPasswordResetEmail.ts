@@ -17,14 +17,16 @@ export const sendPasswordResetEmail = ({
     to: email,
     subjecy: 'Crea un nou password pel teu compte...',
     html: `<div style="font-family: sans-serif; font-size: 1.2em;">
-    <p>Hola 🌤️👋🏻 ${name}, <br>
-    Si has rebut aquest correu electrònic, significa que has sol·licitat una nova contrasenya per autentificar-te a la nostra aplicació. <br>
-    Per a completar el procés, clica en el següent link:</p>
+    <h3>Hola 🌤️👋🏻 ${name},</h3>
+    <p>Si has rebut aquest correu electrònic, significa que has sol·licitat una nova contrasenya per autentificar-te a la nostra aplicació.</p>
+    <p>Per a completar el procés, clica en el següent link:</p>
     ➡️ <a href='${process.env.CLIENT_URL}/admin/reset-password?resetToken=${resetToken}'>CONFIRMEM EL TEU CORREU 📧</a> <br>
-
+    <p style="color:red">❗Aquest link caducarà d'aquí 1h❗</p>
+    <hr>
     <p>Sisplau no contestis a aquest correu electrònic.</p>
     <p>Gràcies,</p>
     <p>🟥🟦 El teu equip de Veterans Hoquei Patins FCB 🟦🟥</p>
+    <hr>
     </div>
     `,
   };

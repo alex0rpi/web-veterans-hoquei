@@ -36,7 +36,6 @@ export const AdminLogin = () => {
     const user = await LoginService(loginInput);
     if (user) {
       setUser({ id: user.id, name: user.name, isVerified: user.isVerified });
-
       toast.info(`Benvingut ${user.name}!`);
       navigate(`${paths.userChapterList}`);
     }

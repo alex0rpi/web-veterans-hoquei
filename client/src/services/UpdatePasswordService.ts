@@ -1,4 +1,6 @@
 import { urls } from '../constants';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 type TResetPasswordServiceProps = {
   newPassword: string;
@@ -22,10 +24,13 @@ const UpdatePasswordService = async ({
       }),
     });
     if (!response.ok) {
+      const error = await response.json();
+      toast.warning(error.message);
       return false;
     }
     return true;
   } catch (error) {
+    toast.warning('Alguna cosa ha fallat, sisplau torna-ho a provar més tard.');
     return false;
   }
 };

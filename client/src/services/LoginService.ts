@@ -1,4 +1,5 @@
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { urls } from '../constants';
 
 type TRegisterProps = {
@@ -19,13 +20,13 @@ const LoginService = async (props: TRegisterProps) => {
       }),
     });
     if (!response.ok) {
-      const error = await response.json();
-      toast.warning(error.message);
+      const data = await response.json();
+      console.log('error', data);
+      toast.warning(data.error);
       return false;
     }
 
     const data = await response.json();
-
     return data;
   } catch (error) {
     toast.warning('Alguna cosa ha fallat, sisplau torna-ho a provar més tard.');

@@ -69,7 +69,17 @@ const UserVerification = () => {
           <div></div>
         </>
       ) : error ? (
-        <>
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ translateX: 0, scale: 1 }}
+          transition={{
+            type: 'spring',
+            stiffness: 250,
+            damping: 30,
+            duration: 250,
+          }}
+          exit={{ opacity: 0, x: '-100vw' }}
+        >
           <h1 className="text-4xl font-medium text-gray-700 mt-4">
             <span className="text-rose-800 font-bold">Hi ha hagut un error</span> l'usuari
             no ha pogut ser verificat.
@@ -77,9 +87,19 @@ const UserVerification = () => {
           <h1 className="text-3xl text-gray-700 mt-2">
             En uns segons serà redireccionat al login...
           </h1>
-        </>
+        </motion.div>
       ) : (
-        <>
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ translateX: 0, scale: 1 }}
+          transition={{
+            type: 'spring',
+            stiffness: 250,
+            damping: 30,
+            duration: 250,
+          }}
+          exit={{ opacity: 0, x: '-100vw' }}
+        >
           <h1 className="text-3xl font-medium text-gray-700 mt-4">
             <span className="text-green-800 font-bold">
               Usuari verificat correctament!
@@ -88,7 +108,7 @@ const UserVerification = () => {
           <h1 className="text-2xl text-gray-700 mt-2">
             En uns segons serà redireccionat al login...
           </h1>
-        </>
+        </motion.div>
       )}
     </motion.div>
   );

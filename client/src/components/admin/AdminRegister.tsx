@@ -31,6 +31,7 @@ const AdminRegister = () => {
       toast.info('Verifica el teu email per activar el compte.');
       navigate('/admin/login');
     }
+    return;
   };
 
   return (
@@ -68,7 +69,7 @@ const AdminRegister = () => {
             label="Contrasenya"
             name="password"
             type="password"
-            placeholder="••••••••"
+            placeholder="abcABC123!"
             inputRef={passwordRef}
           />
           <FormInput

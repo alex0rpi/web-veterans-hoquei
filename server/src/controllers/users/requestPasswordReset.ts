@@ -17,7 +17,7 @@ export const requestPasswordReset: Middleware = async (ctx: Context) => {
 
     const { name } = await prisma.user.update({
       where: { email },
-      data: { resetToken },
+      data: { resetToken, resetTokenExp: new Date(Date.now() + 3600000) }, // 1h
       select: { name: true },
     });
 
