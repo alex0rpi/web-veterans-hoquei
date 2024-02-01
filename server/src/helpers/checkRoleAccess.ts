@@ -11,6 +11,8 @@ export const checkRoleAccess = (requiredRole: USER_ROLE, userRole: USER_ROLE) =>
   const userRolePoints = rolePoints[userRole];
 
   if (requiredRolePoints > userRolePoints) {
-    throw new ForbiddenError(`Access denied. You don't have permissions`);
+    throw new ForbiddenError(
+      `Accés denegat. No tens permís per realitzar aquesta acció.`
+    );
   }
 };
