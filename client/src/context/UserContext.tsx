@@ -1,10 +1,5 @@
 import { createContext, useState } from 'react';
-
-export type TUser = {
-  id: string;
-  name: string;
-  isVerified: boolean;
-};
+import { TUser } from '../types/Item-types';
 
 export interface IUserContext {
   user: TUser;

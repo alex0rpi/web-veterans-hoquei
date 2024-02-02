@@ -1,7 +1,5 @@
 import { createContext, useState } from 'react';
-import { TSeason } from '../types/Item-types';
-
-export type TChapter = TSeason;
+import { TChapter } from '../types/Item-types';
 
 export interface IChaptersContext {
   chapters: TChapter[];

@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button } from '../UI-components/Button';
@@ -6,33 +6,44 @@ import FormInput from '../UI-components/FormInput';
 import RegisterService from '../../services/RegisterService';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { registerSchema } from '../../validation';
+import { Formik } from 'formik';
+import { RegisterForm } from '../../types/Item-types';
 
 const AdminRegister = () => {
+  const initialValues: RegisterForm = {
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    formError: null,
+  };
+
   const navigate = useNavigate();
-  const nameRef = useRef<HTMLInputElement>(null);
-  const emailRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
-  const confirmPasswordRef = useRef<HTMLInputElement>(null);
 
-  const onRegisterHandler = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const registerInput = {
-      name: nameRef.current?.value,
-      email: emailRef.current?.value,
-      password: passwordRef.current?.value,
-      confirmPassword: confirmPasswordRef.current?.value,
+  const onRegisterHandler = async (values: RegisterForm) => {
+    const formState = {
+      name: values.name,
+      email: values.email,
+      password: values.password,
+      confirmPassword: values.confirmPassword,
     };
-
-    const isSuccess = await RegisterService(registerInput);
-
+    const isSuccess = await RegisterService(formState);
     if (isSuccess) {
       toast.info('Nou usuari registrat.');
       toast.info('Verifica el teu email per activar el compte.');
       navigate('/admin/login');
+      return;
     }
-    return;
   };
+
+  // Auto-focus name input
+  const nameInputRef = useRef<HTMLInputElement | null>(null);
+  useEffect(() => {
+    if (nameInputRef.current) {
+      nameInputRef.current.focus();
+    }
+  }, []);
 
   return (
     <motion.div
@@ -50,39 +61,63 @@ const AdminRegister = () => {
         Registrar nou membre
       </h1>
       <div className="mt-6 space-y-4 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6">
-        <form onSubmit={onRegisterHandler}>
-          <FormInput
-            label="El teu nom"
-            name="name"
-            type="name"
-            placeholder="Nom"
-            inputRef={nameRef}
-          />
-          <FormInput
-            label="El teu email"
-            name="email"
-            type="email"
-            placeholder="email@email.com"
-            inputRef={emailRef}
-          />
-          <FormInput
-            label="Contrasenya"
-            name="password"
-            type="password"
-            placeholder="abcABC123!"
-            inputRef={passwordRef}
-          />
-          <FormInput
-            label="Confirma la contrasenya"
-            name="confirm-password"
-            type="password"
-            placeholder="••••••••"
-            inputRef={confirmPasswordRef}
-          />
-          <div className="w-full">
-            <Button type="submit" title="Registrar" />
-          </div>
-        </form>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={registerSchema}
+          onSubmit={onRegisterHandler}
+        >
+          {(formik) => {
+            return (
+              <form onSubmit={formik.handleSubmit}>
+                <FormInput
+                  label="El teu nom"
+                  name="name"
+                  type="name"
+                  placeholder="Nom"
+                  error={formik.errors.name}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.name}
+                  inputRef={nameInputRef}
+                />
+                <FormInput
+                  label="El teu email"
+                  name="email"
+                  type="email"
+                  placeholder="email@email.com"
+                  error={formik.errors.email}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.email}
+                />
+                <FormInput
+                  label="Contrasenya"
+                  name="password"
+                  type="password"
+                  placeholder="abcABC123!"
+                  error={formik.errors.password}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.password}
+                />
+                <FormInput
+                  label="Confirma la contrasenya"
+                  name="confirmPassword"
+                  type="password"
+                  placeholder="••••••••"
+                  error={formik.errors.confirmPassword}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.confirmPassword}
+                />
+                <div className="w-full">
+                  <Button type="submit" title="Registrar" />
+                </div>
+              </form>
+            );
+          }}
+        </Formik>
+
         <p className="text-sm font-light">
           Ja estàs registrat?{' '}
           <Link

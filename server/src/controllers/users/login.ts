@@ -4,6 +4,7 @@ import { checkPassword } from '../../helpers/passwordHash';
 import prisma from '../../config/prisma';
 import { userLoginResponse } from '../../schemas';
 import { TLoginUser } from '../../schemas/userRoutesSchema';
+import { ValidationError } from '../../helpers/errors';
 
 type TLoginUserWithPassword = TLoginUser & { password: string };
 
@@ -32,9 +33,7 @@ export const login = async (ctx: Koa.Context) => {
     const isPasswordValid = await checkPassword(password, user.password);
 
     if (!isPasswordValid) {
-      ctx.status = 422;
-      ctx.body = { error: 'Invalid password' };
-      return;
+      throw new ValidationError('Invalid password');
     }
 
     const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET as Secret, {

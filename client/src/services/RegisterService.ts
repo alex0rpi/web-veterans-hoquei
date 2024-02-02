@@ -27,8 +27,8 @@ const RegisterService = async (props: TRegisterProps) => {
       }),
     });
     if (!response.ok) {
-      const data = await response.json();
-      toast.warning(data.message);
+      const errorData = await response.json();
+      toast.warning(errorData.message);
       return false;
     }
     return true;

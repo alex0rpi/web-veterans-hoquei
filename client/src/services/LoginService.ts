@@ -20,9 +20,9 @@ const LoginService = async (props: TRegisterProps) => {
       }),
     });
     if (!response.ok) {
-      const data = await response.json();
-      console.log('error', data);
-      toast.warning(data.error);
+      const errorData = await response.json();
+      console.log('error', errorData);
+      toast.warning(errorData.error);
       return false;
     }
 
