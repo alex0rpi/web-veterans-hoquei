@@ -1,3 +1,5 @@
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
 type TFormInputProps = {
@@ -11,6 +13,7 @@ type TFormInputProps = {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void | undefined;
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void | undefined;
   value?: string;
+  check?: boolean | undefined;
 };
 
 const FormInput = React.forwardRef<HTMLInputElement, TFormInputProps>((props) => {
@@ -20,6 +23,9 @@ const FormInput = React.forwardRef<HTMLInputElement, TFormInputProps>((props) =>
         {props.label}
         {props.error && ( // Condición para mostrar el mensaje de error
           <p className="text-red-600 text-md inline-block ms-1">-{props.error}</p>
+        )}
+        {props.check && (
+          <FontAwesomeIcon icon={faCheck} style={{ color: '#2b6e66' }} className="ms-1" />
         )}
       </label>
       <input

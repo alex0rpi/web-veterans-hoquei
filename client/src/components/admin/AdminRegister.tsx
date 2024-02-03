@@ -23,10 +23,10 @@ const AdminRegister = () => {
 
   const onRegisterHandler = async (values: RegisterForm) => {
     const formState = {
-      name: values.name,
-      email: values.email,
-      password: values.password,
-      confirmPassword: values.confirmPassword,
+      name: values.name.trim(),
+      email: values.email.trim(),
+      password: values.password.trim(),
+      confirmPassword: values.confirmPassword.trim(),
     };
     const isSuccess = await RegisterService(formState);
     if (isSuccess) {
@@ -75,6 +75,7 @@ const AdminRegister = () => {
                   type="name"
                   placeholder="Nom"
                   error={formik.errors.name}
+                  check={formik.touched.name && !formik.errors.name}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.name}
@@ -86,6 +87,7 @@ const AdminRegister = () => {
                   type="email"
                   placeholder="email@email.com"
                   error={formik.errors.email}
+                  check={formik.touched.email && !formik.errors.email}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.email}
@@ -96,6 +98,7 @@ const AdminRegister = () => {
                   type="password"
                   placeholder="abcABC123!"
                   error={formik.errors.password}
+                  check={formik.touched.password && !formik.errors.password}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.password}
@@ -106,6 +109,7 @@ const AdminRegister = () => {
                   type="password"
                   placeholder="••••••••"
                   error={formik.errors.confirmPassword}
+                  check={formik.touched.confirmPassword && !formik.errors.confirmPassword}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.confirmPassword}

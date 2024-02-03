@@ -2,10 +2,10 @@ import { toast } from 'react-toastify';
 import { urls } from '../constants';
 
 type TRegisterProps = {
-  name: string | undefined;
-  email: string | undefined;
-  password: string | undefined;
-  confirmPassword: string | undefined;
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
 };
 
 const RegisterService = async (props: TRegisterProps) => {

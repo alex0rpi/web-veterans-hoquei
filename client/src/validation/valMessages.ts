@@ -12,10 +12,11 @@ export const valMessages = {
   password: {
     weak: 'Contrasenya massa feble, ha de contenir almenys 8 caràcters, una majúscula, una minúscula i un número',
     required: 'Contrasenya és requerida',
-    short: 'Contrasenya massa curta, ha de contenir almenys 8 caràcters',
+    short: 'Massa curta, ha de contenir almenys 8 caràcters i cap espai en blanc',
   },
   confirmPassword: {
     match: 'Contrasenyes no coincideixen',
     required: 'Sisplau confirma la contrasenya',
   },
+  noWhiteSpace: 'No pot contenir espais en blanc',
 };
