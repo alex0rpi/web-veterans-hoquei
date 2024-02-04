@@ -4,10 +4,16 @@ export type TUser = {
   isVerified: boolean;
 };
 
-export type RegisterForm = Omit<TUser, 'isVerified' | 'id'> & {
+export type TRegisterForm = Omit<TUser, 'isVerified' | 'id'> & {
   email: string;
   password: string;
   confirmPassword: string;
+  formError: string | null;
+};
+
+export type TLoginForm = Omit<TUser, 'name'|'isVerified' | 'id'> & {
+  email: string;
+  password: string;
   formError: string | null;
 };
 

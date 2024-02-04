@@ -1,5 +1,5 @@
-import * as Yup from 'yup';
-import { valMessages } from './valMessages';
+import * as Yup from "yup";
+import { valMessages } from "./valMessages";
 
 export const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -8,6 +8,5 @@ export const loginSchema = Yup.object().shape({
     .required(valMessages.email.required),
   password: Yup.string()
     .required(valMessages.password.required)
-    .max(100, valMessages.email.max)
-    .min(8, valMessages.password.short),
+    .max(100, valMessages.email.max),
 });

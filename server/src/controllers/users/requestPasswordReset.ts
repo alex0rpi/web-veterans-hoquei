@@ -2,7 +2,7 @@ import { Context, Middleware } from 'koa';
 import prisma from '../../config/prisma';
 import { TRequestPasswordReset } from '../../schemas/userRoutesSchema';
 import crypto from 'crypto';
-import { sendPasswordResetEmail } from '../../outils/sendPasswordResetEmail';
+import { sendPasswordResetEmail } from '../../utils/sendPasswordResetEmail';
 
 export const requestPasswordReset: Middleware = async (ctx: Context) => {
   const { email }: TRequestPasswordReset = ctx.request.body;

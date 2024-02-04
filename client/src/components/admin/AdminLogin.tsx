@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '../UI-components/Button';
 import { Link, useNavigate } from 'react-router-dom';
@@ -8,38 +8,42 @@ import LoginService from '../../services/LoginService';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { paths } from '../../constants';
+import { loginSchema } from '../../validation';
+import { Formik } from 'formik';
+import { TLoginForm } from '../../types/Item-types';
+
 
 export const AdminLogin = () => {
-  const navigate = useNavigate();
-  const [email, setEmail] = useState<string>('');
-  const { setUser } = useContext(UserContext);
-  const emailRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (emailRef.current) {
-      emailRef.current.focus();
-    }
-  }, []);
-
-  const onEmailChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
+  const initialValues: TLoginForm = {
+    email: '',
+    password: '',
+    formError: null,
   };
+  const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
 
-  const onLoginSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const loginInput = {
-      email: emailRef.current?.value,
-      password: passwordRef.current?.value,
+  const onLoginHandler = async (values: TLoginForm) => {
+    const formState = {
+      email: values.email.trim(),
+      password: values.password.trim(),
     };
 
-    const user = await LoginService(loginInput);
+    const user = await LoginService(formState);
     if (user) {
       setUser({ id: user.id, name: user.name, isVerified: user.isVerified });
       toast.info(`Benvingut ${user.name}!`);
       navigate(`${paths.userChapterList}`);
     }
   };
+  
+  // Auto-focus email input
+  const emailInputRef = useRef<HTMLInputElement | null>(null);
+  useEffect(() => {
+    if (emailInputRef.current) {
+      emailInputRef.current.focus();
+    }
+  }, []);
+
   return (
     <motion.div
       initial={{ scale: 0 }}
@@ -55,30 +59,43 @@ export const AdminLogin = () => {
       <h1 className="mt-10 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700">
         Accés per a membres
       </h1>
-      <div className="mt-6 rounded-xl bg-slate-300 p-6 sm:p-8">
-        <form className="" action="#" onSubmit={onLoginSubmitHandler}>
-          <FormInput
-            label="El teu email"
-            name="email"
-            type="email"
-            placeholder="email@email.com"
-            inputRef={emailRef}
-            // value={email}
-            onChange={onEmailChangeHandler}
-          />
-          <FormInput
-            label="Contrasenya"
-            name="password"
-            type="password"
-            placeholder="••••••••"
-            inputRef={passwordRef}
-          />
+      <div className="mt-6 space-y-4 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6">
+        <Formik
+          initialValues={initialValues}
+          validationSchema={loginSchema}
+          onSubmit={onLoginHandler}
+        >
+          {(formik) => {
+            return (
+              <form onSubmit={formik.handleSubmit}>
+                <FormInput
+                  label="El teu email"
+                  name="email"
+                  type="email"
+                  placeholder="email@email.com"
+                  error={formik.errors.email}
+                  check={formik.touched.email && !formik.errors.email}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.email}
+                />
+                <FormInput
+                  label="Contrasenya"
+                  name="password"
+                  type="password"
+                  placeholder="abcABC123!"
+                  error={formik.errors.password}
+                  check={formik.touched.password && !formik.errors.password}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.password}
+                />
           <div className="my-2 w-full">
             <Link
               className="font-bold hover:underline hover:underline-offset-4 hover:decoration-[3px]"
               to={
-                email
-                  ? `${paths.requestPasswordReset}?userEmail=${email}`
+                formik.values.email
+                  ? `${paths.requestPasswordReset}?userEmail=${formik.values.email}`
                   : `${paths.requestPasswordReset}`
               }
             >
@@ -87,6 +104,10 @@ export const AdminLogin = () => {
           </div>
           <Button type="submit" title="Accedir" />
         </form>
+            )
+          }}
+        </Formik>
+
         <p className="text-md font-light mt-2">
           No estàs registrat?{' '}
           <Link

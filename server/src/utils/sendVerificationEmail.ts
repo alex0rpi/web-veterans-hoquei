@@ -11,8 +11,9 @@ export const sendVerificationEmail = (user: TUserForVerification) => {
     html: `<div style="font-family: sans-serif; font-size: 1.2em;">
     <p>Bon dia 🌤️👋🏻 ${user.name}, <br>
     Si has rebut aquest correu electrònic, significa que t'has registrat correctament a la nostra aplicació. <br>
-    Per a completar el procés de registre, confirma el teu email fent clic al següent enllaç:</p>
-    ➡️ <a href='${process.env.CLIENT_URL}/admin/verify?emailToken=${user.emailToken}'>CONFIRMEM EL TEU CORREU 📧</a> <br>
+    Per a completar el procés de registre, confirma el teu email fent clic en 
+    <a style="font-weight: strong; color: blue" href='${process.env.CLIENT_URL}/admin/verify?emailToken=${user.emailToken}'>aquest</a> enllaç:</p>
+
     <p><span style="color:red">Aquest link caducarà d'aquí 24 hores.</span> Passat aquest temps el teu compte serà esborrat i t'hauràs de tornat a registrar.</p>
     <p>Si no has estat tu, ignora aquest correu electrònic.</p>
     <p>Sisplau no contestis a aquest correu electrònic.</p>

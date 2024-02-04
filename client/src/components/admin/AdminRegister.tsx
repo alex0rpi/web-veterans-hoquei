@@ -8,10 +8,10 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { registerSchema } from '../../validation';
 import { Formik } from 'formik';
-import { RegisterForm } from '../../types/Item-types';
+import { TRegisterForm } from '../../types/Item-types';
 
 const AdminRegister = () => {
-  const initialValues: RegisterForm = {
+  const initialValues: TRegisterForm = {
     name: '',
     email: '',
     password: '',
@@ -21,7 +21,7 @@ const AdminRegister = () => {
 
   const navigate = useNavigate();
 
-  const onRegisterHandler = async (values: RegisterForm) => {
+  const onRegisterHandler = async (values: TRegisterForm) => {
     const formState = {
       name: values.name.trim(),
       email: values.email.trim(),

@@ -3,7 +3,7 @@ import prisma from '../../config/prisma';
 import { TRegisterUser } from '../../schemas/userRoutesSchema';
 import { hashPassword } from '../../helpers/passwordHash';
 import crypto from 'crypto';
-import { sendVerificationEmail } from '../../outils/sendVerificationEmail';
+import { sendVerificationEmail } from '../../utils/sendVerificationEmail';
 
 export const register: Middleware = async (ctx: Context) => {
   const { name, email, password }: TRegisterUser = ctx.request.body;
