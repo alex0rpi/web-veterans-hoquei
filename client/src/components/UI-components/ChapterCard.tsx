@@ -1,12 +1,12 @@
 // import stickIcon from '../../../public/assets/logos/hockeyStick-no-bg.png';
-import stickIcon from '../../assets/logos/hockeyStick-no-bg.png';
+import stickIcon from "../../assets/logos/hockeyStick-no-bg.png";
 
-import { Link } from 'react-router-dom';
-import { TChapterListItem } from '../../types/Item-types';
+import { Link } from "react-router-dom";
+import { TChapterListItem } from "../../types/Item-types";
 
-type TchapterCardProps = Omit<TChapterListItem, 'id'> & { index: number } & {
+type TchapterCardProps = Omit<TChapterListItem, "id"> & { index: number } & {
   goTo?: string;
-};
+} & { noLink?: boolean };
 
 export const ChapterCard = (props: TchapterCardProps) => {
   const truncateString = (str: string, num: number) => {
@@ -16,17 +16,19 @@ export const ChapterCard = (props: TchapterCardProps) => {
       return str;
     }
     // Return str truncated with '...' concatenated to the end of str.
-    return str.slice(0, num) + '...';
+    return str.slice(0, num) + "...";
   };
 
   const evenIndex = props.index % 2 === 0;
-  const cardBg = evenIndex ? 'bg-slate-400' : 'bg-slate-300';
+  const cardBg = evenIndex ? "bg-slate-400" : "bg-slate-300";
   return (
     <Link
       to={
-        !props.goTo
-          ? `/temporades/${props.season}`
-          : `/admin/temporades/edit-chapter/${props.goTo}`
+        props.noLink
+          ? ""
+          : !props.goTo
+            ? `/temporades/${props.season}`
+            : `/admin/temporades/edit-chapter/${props.goTo}`
       }
     >
       <div className={`card block ${cardBg} p-2`}>
@@ -37,7 +39,9 @@ export const ChapterCard = (props: TchapterCardProps) => {
         <h1 className="my-1 text-left text-lg">
           <strong>{truncateString(props.titlePro, 40)}</strong>
         </h1>
-        <h1 className="mb-1 text-left text-lg">{truncateString(props.titleBases, 40)}</h1>
+        <h1 className="mb-1 text-left text-lg">
+          {truncateString(props.titleBases, 40)}
+        </h1>
         {/* <img src="" alt="chapter-foto" className="" /> */}
       </div>
     </Link>

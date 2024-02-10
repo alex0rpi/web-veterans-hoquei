@@ -1,16 +1,17 @@
-import { motion } from 'framer-motion';
-import { Button } from '../../UI-components/Button';
-import FormInput from '../../UI-components/FormInput';
-import TextAreaInput from '../../UI-components/TextAreaInput';
-import CreateChapterService from '../../../services/CreateChapterService';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { useContext, useRef } from 'react';
-import { paths } from '../../../constants';
-import { ChapterContext } from '../../../context/ChaptersContext';
-import GetChaptersService from '../../../services/GetChaptersService';
-import SeasonSelect from '../../UI-components/SeasonSelect';
+import { motion } from "framer-motion";
+import { Button } from "../../UI-components/Button";
+import FormInput from "../../UI-components/FormInput";
+import TextAreaInput from "../../UI-components/TextAreaInput";
+import CreateChapterService from "../../../services/CreateChapterService";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useContext, useRef, useState } from "react";
+import { paths } from "../../../constants";
+import { ChapterContext } from "../../../context/ChaptersContext";
+import GetChaptersService from "../../../services/GetChaptersService";
+import SeasonSelect from "../../UI-components/SeasonSelect";
+import ImageInput from "../../UI-components/ImageInput";
 
 const NewChapterForm = () => {
   const { setChapters } = useContext(ChapterContext);
@@ -20,8 +21,34 @@ const NewChapterForm = () => {
   const contentProRef = useRef<HTMLTextAreaElement>(null);
   const titleBasesRef = useRef<HTMLInputElement>(null);
   const contentBasesRef = useRef<HTMLTextAreaElement>(null);
+  // Images refs
+  const imageProRef = useRef<HTMLInputElement>(null);
+  const imageBasesRef = useRef<HTMLInputElement>(null);
+  // State for image upload and handlers
+  const [filePro, setFilePro] = useState<File | null>(null);
+  const [fileBases, setFileBases] = useState<File | null>(null);
 
-  const onChapterSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+  const onImageInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.currentTarget.name === "image-pro") {
+      setFilePro(event.target.files ? event.target.files[0] : null);
+    } else if (event.currentTarget.name === "image-bases") {
+      setFileBases(event.target.files ? event.target.files[0] : null);
+    }
+  };
+
+  const fileCancelHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (event.currentTarget.name === "image-pro") {
+      setFilePro(null);
+      imageProRef.current && (imageProRef.current.value = "");
+    } else if (event.currentTarget.name === "image-bases") {
+      setFileBases(null);
+      imageBasesRef.current && (imageBasesRef.current.value = "");
+    }
+  };
+
+  const onChapterSubmitHandler = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
     e.preventDefault();
 
     const chapterInput = {
@@ -32,12 +59,12 @@ const NewChapterForm = () => {
       contentBases: contentBasesRef.current?.value,
     };
 
-    console.log('type of season: ', typeof chapterInput.season);
+    console.log("type of season: ", typeof chapterInput.season);
 
     const isSuccess = await CreateChapterService(chapterInput);
 
     if (isSuccess) {
-      toast.info('Capítol creat correctament.');
+      toast.info("Capítol creat correctament.");
       const updatedChapters = await GetChaptersService(); // Fetch updated chapters
       setChapters(updatedChapters); // Update context with the new chapter list
       navigate(paths.userChapterList);
@@ -49,11 +76,11 @@ const NewChapterForm = () => {
       initial={{ scale: 0 }}
       animate={{ translateX: 0, scale: 1 }}
       transition={{
-        type: 'spring',
+        type: "spring",
         stiffness: 250,
         damping: 30,
       }}
-      exit={{ opacity: 0, x: '-100vw' }}
+      exit={{ opacity: 0, x: "-100vw" }}
     >
       <h1 className="mt-10 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700">
         Crea un nou capítol
@@ -82,6 +109,17 @@ const NewChapterForm = () => {
               placeholder="Contingut de l'article..."
               inputRef={contentProRef}
             />
+            <ImageInput
+              label="Imatge secció pro"
+              name="image-pro"
+              type="file"
+              placeholder="Puja una imatge..."
+              inputRef={imageProRef}
+              onChange={onImageInputChange}
+              ImageSelected={!!filePro}
+              onCancel={fileCancelHandler}
+              accept="image/*"
+            />
             <div className="border-b-2 border-slate-400 mt-4 mb-3"></div>
             <FormInput
               label="Títol article bases i filial"
@@ -97,6 +135,18 @@ const NewChapterForm = () => {
               maxLength={6000}
               placeholder="Contingut de l'article..."
               inputRef={contentBasesRef}
+            />
+
+            <ImageInput
+              label="Imatge secció bases i filial"
+              name="image-bases"
+              type="file"
+              placeholder="Puja una imatge..."
+              inputRef={imageBasesRef}
+              onChange={onImageInputChange}
+              ImageSelected={!!fileBases}
+              onCancel={fileCancelHandler}
+              accept="image/*"
             />
           </div>
           <Button type="submit" title="PUBLICAR CAPÍTOL" />

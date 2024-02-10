@@ -1,17 +1,18 @@
-import { ChapterCard } from '../UI-components/ChapterCard';
-import Spinner from '../UI-components/loading-spinner/Spinner';
-import useChapters from '../../hooks/useChapters';
+import { ChapterCard } from "../UI-components/ChapterCard";
+import Spinner from "../UI-components/loading-spinner/Spinner";
+import useChapters from "../../hooks/useChapters";
 
 const ChapterGrid = () => {
   const { isLoading, chapters } = useChapters();
 
   let chapterContent = [
     <ChapterCard
-      key={'no-chapters'}
+      key={"no-chapters"}
       index={0}
-      season={'Sense informació'}
-      titlePro={'De moment no tenim cap article.'}
+      season={"Sense informació"}
+      titlePro={"De moment no tenim cap article."}
       titleBases={"En breu n'afegirem."}
+      noLink={true}
     />,
   ];
 

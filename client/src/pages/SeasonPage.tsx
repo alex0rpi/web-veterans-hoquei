@@ -1,30 +1,35 @@
-import { useNavigate, useParams } from 'react-router-dom';
-import { HeaderTitle } from '../components/main/HeaderTitle';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { useContext } from 'react';
-import { ChapterContext } from '../context/ChaptersContext';
-import { easeInOut, motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
-import GetSeasonService from '../services/GetSeasonService';
-import { TSeason } from '../types/Item-types';
-import Spinner from '../components/UI-components/loading-spinner/Spinner';
-import GetChaptersService from '../services/GetChaptersService';
-import { RxFontSize } from 'react-icons/rx';
+import { useNavigate, useParams } from "react-router-dom";
+import { HeaderTitle } from "../components/main/HeaderTitle";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
+import { useContext } from "react";
+import { ChapterContext } from "../context/ChaptersContext";
+import { easeInOut, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import GetSeasonService from "../services/GetSeasonService";
+import Spinner from "../components/UI-components/loading-spinner/Spinner";
+import GetChaptersService from "../services/GetChaptersService";
+import { RxFontSize } from "react-icons/rx";
+import { TChapter } from "../types/Item-types";
 // import { RiFontSize2 } from 'react-icons/ri';
 
 const SeasonPage = () => {
-  const availableTextSizes = ['xs', 'sm', 'base', 'lg', 'xl', '2xl'];
+  const availableTextSizes = ["xs", "sm", "base", "lg", "xl", "2xl"];
 
-  const [textSize, setTextSize] = useState('base');
+  const [textSize, setTextSize] = useState("base");
 
   const changeFontSizeHandler = (value: string) => {
-    if (value === '=') {
-      setTextSize('base');
+    if (value === "=") {
+      setTextSize("base");
       return;
     }
-    const increase = value === '+';
-    const currentIndex = availableTextSizes.findIndex((size) => size === textSize);
+    const increase = value === "+";
+    const currentIndex = availableTextSizes.findIndex(
+      (size) => size === textSize
+    );
 
     if (increase) {
       if (currentIndex < availableTextSizes.length - 1) {
@@ -40,7 +45,7 @@ const SeasonPage = () => {
   const { chapters, setChapters } = useContext(ChapterContext);
 
   const [isLoading, setIsLoading] = useState(true);
-  const [season, setSeason] = useState<TSeason | null>(null);
+  const [season, setSeason] = useState<TChapter | null>(null);
 
   const navigate = useNavigate();
   const { currentSeason } = useParams();
@@ -111,9 +116,9 @@ const SeasonPage = () => {
             <h1 className="px-2 text-center text-2xl md:text-4xl lg:text-5xl font-light text-primary">
               <span
                 style={{
-                  userSelect: 'none',
-                  msUserSelect: 'none',
-                  WebkitUserSelect: 'none',
+                  userSelect: "none",
+                  msUserSelect: "none",
+                  WebkitUserSelect: "none",
                 }}
               >
                 Temporada {`${season?.season}`}
@@ -138,26 +143,26 @@ const SeasonPage = () => {
                 <button
                   type="button"
                   className="font-bold text-2xl hover:scale-125"
-                  onClick={() => changeFontSizeHandler('-')}
+                  onClick={() => changeFontSizeHandler("-")}
                 >
                   -
                 </button>
                 <RxFontSize
                   className="mx-2 text-xl hover:scale-125"
-                  onClick={() => changeFontSizeHandler('=')}
+                  onClick={() => changeFontSizeHandler("=")}
                 />
                 {/* <RiFontSize2 className="mx-2 text-xl" /> */}
                 <button
                   type="button"
                   className="font-bold text-2xl hover:scale-125"
-                  onClick={() => changeFontSizeHandler('+')}
+                  onClick={() => changeFontSizeHandler("+")}
                 >
                   +
                 </button>
               </div>
             </div>
             <div className="mb-2 border-b border-gray-400 pb-2"></div>
-            {season?.contentPro.split('\n').map((line, i) => (
+            {season?.contentPro.split("\n").map((line, i) => (
               <p key={i} className={`text-${textSize} mt-2 leading-7`}>
                 {line}
               </p>
@@ -166,7 +171,7 @@ const SeasonPage = () => {
               {season?.titleBases}
             </h1>
             <div className="mb-2 border-b border-gray-400 pb-2"></div>
-            {season?.contentBases.split('\n').map((line, i) => (
+            {season?.contentBases.split("\n").map((line, i) => (
               <p key={i} className={`text-${textSize} mt-2 leading-7`}>
                 {line}
               </p>
