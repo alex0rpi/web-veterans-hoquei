@@ -21,10 +21,14 @@ export const valMessages = {
   },
   noWhiteSpace: "No pot contenir espais en blanc",
   season: {
-    required: "Temporada requerida",
+    required: "Camp requerit",
     titleMin: "El títol és massa curt",
     titleMax: "El títol és massa llarg",
-    max: "El text és massa llarg",
-    min: "El text és massa curt",
+    contentMax: "El text és massa llarg",
+    contentMin: "El text és massa curt",
+  },
+  image: {
+    size: "La imatge és massa gran, 5MB màxim",
+    format: "Format de la imatge no vàlid",
   },
 };

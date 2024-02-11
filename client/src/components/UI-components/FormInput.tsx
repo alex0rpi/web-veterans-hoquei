@@ -48,7 +48,7 @@ const FormInput = React.forwardRef<HTMLInputElement, TFormInputProps>(
             props.error ? "border-red-500" : ""
           }`}
           placeholder={props.placeholder}
-          defaultValue={props.defaultValue}
+          // defaultValue={props.defaultValue}
           onChange={props.onChange}
           onBlur={props.onBlur}
           value={props.value}

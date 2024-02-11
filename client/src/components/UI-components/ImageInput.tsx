@@ -36,7 +36,7 @@ const ImageInput = React.forwardRef<HTMLInputElement, TFormInputProps>(
         </label>
         <div className="flex flex-row">
           <input
-            required
+            required={false}
             ref={props.inputRef}
             type={props.type}
             name={props.name}

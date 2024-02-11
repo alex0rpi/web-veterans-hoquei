@@ -1,21 +1,21 @@
-import { useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Button } from '../UI-components/Button';
-import FormInput from '../UI-components/FormInput';
-import RegisterService from '../../services/RegisterService';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { registerSchema } from '../../validation';
-import { Formik } from 'formik';
-import { TRegisterForm } from '../../types/Item-types';
+import { useEffect, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Button } from "../UI-components/Button";
+import FormInput from "../UI-components/FormInput";
+import RegisterService from "../../services/RegisterService";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { registerSchema } from "../../validation";
+import { Formik } from "formik";
+import { TRegisterForm } from "../../types/Item-types";
 
 const AdminRegister = () => {
   const initialValues: TRegisterForm = {
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
     formError: null,
   };
 
@@ -30,9 +30,9 @@ const AdminRegister = () => {
     };
     const isSuccess = await RegisterService(formState);
     if (isSuccess) {
-      toast.info('Nou usuari registrat.');
-      toast.info('Verifica el teu email per activar el compte.');
-      navigate('/admin/login');
+      toast.info("Nou usuari registrat.");
+      toast.info("Verifica el teu email per activar el compte.");
+      navigate("/admin/login");
       return;
     }
   };
@@ -50,12 +50,12 @@ const AdminRegister = () => {
       initial={{ scale: 0 }}
       animate={{ translateX: 0, scale: 1 }}
       transition={{
-        type: 'spring',
+        type: "spring",
         stiffness: 250,
         damping: 30,
         duration: 250,
       }}
-      exit={{ opacity: 0, x: '-100vw' }}
+      exit={{ opacity: 0, x: "-100vw" }}
     >
       <h1 className="mt-10 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700">
         Registrar nou membre
@@ -74,7 +74,7 @@ const AdminRegister = () => {
                   name="name"
                   type="name"
                   placeholder="Nom"
-                  error={formik.errors.name}
+                  error={formik.touched.name ? formik.errors.name : undefined}
                   check={formik.touched.name && !formik.errors.name}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -86,7 +86,7 @@ const AdminRegister = () => {
                   name="email"
                   type="email"
                   placeholder="email@email.com"
-                  error={formik.errors.email}
+                  error={formik.touched.email ? formik.errors.email : undefined}
                   check={formik.touched.email && !formik.errors.email}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -97,7 +97,9 @@ const AdminRegister = () => {
                   name="password"
                   type="password"
                   placeholder="abcABC123!"
-                  error={formik.errors.password}
+                  error={
+                    formik.touched.password ? formik.errors.password : undefined
+                  }
                   check={formik.touched.password && !formik.errors.password}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -108,8 +110,15 @@ const AdminRegister = () => {
                   name="confirmPassword"
                   type="password"
                   placeholder="••••••••"
-                  error={formik.errors.confirmPassword}
-                  check={formik.touched.confirmPassword && !formik.errors.confirmPassword}
+                  error={
+                    formik.touched.confirmPassword
+                      ? formik.errors.confirmPassword
+                      : undefined
+                  }
+                  check={
+                    formik.touched.confirmPassword &&
+                    !formik.errors.confirmPassword
+                  }
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.confirmPassword}
@@ -123,7 +132,7 @@ const AdminRegister = () => {
         </Formik>
 
         <p className="text-sm font-light">
-          Ja estàs registrat?{' '}
+          Ja estàs registrat?{" "}
           <Link
             className="font-bold hover:underline hover:underline-offset-4 hover:decoration-[3px]"
             to="/admin/login"
