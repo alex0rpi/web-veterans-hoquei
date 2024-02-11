@@ -27,7 +27,7 @@ interface File {
 } */
 
 export const chapterSchema = Yup.object().shape({
-  season: Yup.string().required(valMessages.season.required),
+  season: Yup.string().required(valMessages.season.seasonRequired),
   titlePro: Yup.string()
     .trim(valMessages.season.titleMin)
     .required(valMessages.season.required)

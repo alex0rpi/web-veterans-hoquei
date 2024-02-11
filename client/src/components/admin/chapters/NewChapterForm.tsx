@@ -52,12 +52,14 @@ const NewChapterForm = () => {
   };
 
   const onChapterSubmitHandler = async (values: Omit<TChapter, "id">) => {
+    console.log("SUBMITTED");
+
     const formState = {
       season: values.season,
-      titlePro: values.season.trim(),
-      contentPro: values.season.trim(),
-      titleBases: values.season.trim(),
-      contentBases: values.season.trim(),
+      titlePro: values.titlePro,
+      contentPro: values.contentPro,
+      titleBases: values.titleBases,
+      contentBases: values.contentBases,
     };
 
     const isSuccess = await CreateChapterService(formState);
@@ -66,9 +68,7 @@ const NewChapterForm = () => {
       toast.info("Capítol creat correctament.");
       const updatedChapters = await GetChaptersService(); // Fetch updated chapters
       setChapters(updatedChapters); // Update context with the new chapter list
-      setTimeout(() => {
-        navigate(paths.userChapterList);
-      }, 1500);
+      navigate(paths.userChapterList);
     }
   };
 
@@ -108,6 +108,12 @@ const NewChapterForm = () => {
                     label="Selecciona una temporada"
                     name="season"
                     value={formik.values.season}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    check={formik.touched.season && !formik.errors.season}
+                    error={
+                      formik.touched.season ? formik.errors.season : undefined
+                    }
                   />
                   <div className="border-b-2 border-slate-400 mt-4 mb-3"></div>
                   <FormInput
@@ -201,7 +207,11 @@ const NewChapterForm = () => {
                     accept="image/*"
                   />
                 </div>
-                <Button type="submit" title="PUBLICAR CAPÍTOL" />
+                <Button
+                  type="submit"
+                  title="PUBLICAR"
+                  onClick={formik.handleSubmit}
+                />
               </form>
             );
           }}

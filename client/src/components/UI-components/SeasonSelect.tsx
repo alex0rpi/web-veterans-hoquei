@@ -1,4 +1,6 @@
 import React from "react";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type TSelectInputProps = {
   label: string;
@@ -6,6 +8,10 @@ type TSelectInputProps = {
   seasonRef?: React.RefObject<HTMLSelectElement>;
   defaultValue?: string;
   value?: string;
+  onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void | undefined;
+  onBlur?: (event: React.FocusEvent<HTMLSelectElement>) => void | undefined;
+  check?: boolean | undefined;
+  error?: string | undefined;
 };
 
 const SelectInput = React.forwardRef<HTMLSelectElement, TSelectInputProps>(
@@ -34,6 +40,18 @@ const SelectInput = React.forwardRef<HTMLSelectElement, TSelectInputProps>(
           className="text-md mb-1 block font-semibold text-gray-900"
         >
           {props.label}
+          {props.error && ( // Condición para mostrar el mensaje de error
+            <p className="text-red-600 text-md inline-block ms-1">
+              -{props.error}
+            </p>
+          )}
+          {props.check && (
+            <FontAwesomeIcon
+              icon={faCheck}
+              style={{ color: "#2b6e66" }}
+              className="ms-1"
+            />
+          )}
         </label>
         <select
           name={props.name}
@@ -42,6 +60,8 @@ const SelectInput = React.forwardRef<HTMLSelectElement, TSelectInputProps>(
           ref={props.seasonRef}
           // defaultValue={props.defaultValue}
           value={props.value}
+          onChange={props.onChange}
+          onBlur={props.onBlur}
         >
           {/* Funció per a què agafi desde la temporada actual fins la del 17-18 */}
           {generateSeasonOptions()}

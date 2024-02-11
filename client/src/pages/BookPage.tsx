@@ -1,7 +1,7 @@
 // import pdf from '../../public/assets/documents/Llibre-veterans-hoquei-patins-fcb_compressed.pdf';
 
 const pdfUrl =
-  'http://localhost:4000/documents/Llibre-veterans-hoquei-patins-fcb_compressed.pdf';
+  "http://localhost:4000/documents/Llibre-veterans-hoquei-patins-fcb_compressed.pdf";
 
 const BookPage = () => {
   return (
@@ -18,4 +18,5 @@ const BookPage = () => {
 
 export default BookPage;
 
-/* When you set the src attribute of an iframe to a URL, the browser automatically makes a GET request to that URL to fetch the content. This is a synchronous operation from the perspective of your JavaScript code, because you don't have to use the Fetch API or another method to manually make the request. */
+/* When setting the src attribute of an iframe to a URL, the browser automatically
+ makes a GET request to that URL to fetch the content. This is a SYNCHRONOUS operation. */

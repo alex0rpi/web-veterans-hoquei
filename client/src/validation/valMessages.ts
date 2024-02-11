@@ -21,6 +21,7 @@ export const valMessages = {
   },
   noWhiteSpace: "No pot contenir espais en blanc",
   season: {
+    seasonRequired: "Confirma temporada seleccionant-la",
     required: "Camp requerit",
     titleMin: "El títol és massa curt",
     titleMax: "El títol és massa llarg",
