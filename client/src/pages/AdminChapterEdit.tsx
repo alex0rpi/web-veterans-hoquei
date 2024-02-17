@@ -1,24 +1,24 @@
 import { motion } from 'framer-motion';
-import { Button } from '../../UI-components/Button';
-import FormInput from '../../UI-components/FormInput';
-import TextAreaInput from '../../UI-components/TextAreaInput';
+import { Button } from '../components/UI-components/Button';
+import FormInput from '../components/UI-components/FormInput';
+import TextAreaInput from '../components/UI-components/TextAreaInput';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { paths } from '../../../constants';
-import { ChapterContext } from '../../../context/ChaptersContext';
-import GetChaptersService from '../../../services/GetChaptersService';
-import SeasonSelect from '../../UI-components/SeasonSelect';
-import PatchChapterService from '../../../services/PatchChapterService';
-import GetSeasonService from '../../../services/GetSeasonService';
-import { TSeason } from '../../../types/Item-types';
-import Spinner from '../../UI-components/loading-spinner/Spinner';
+import { paths } from '../constants';
+import { ChapterContext } from '../context/ChaptersContext';
+import GetChaptersService from '../services/GetChaptersService';
+import SeasonSelect from '../components/UI-components/SeasonSelect';
+import PatchChapterService from '../services/PatchChapterService';
+import GetSeasonService from '../services/GetSeasonService';
+import Spinner from '../components/UI-components/loading-spinner/Spinner';
+import { TChapter } from '../types/Item-types';
 
-const EditChapterForm = () => {
+const AdminChapterEdit = () => {
   const { setChapters, chapters } = useContext(ChapterContext);
   const [isLoading, setIsLoading] = useState(true);
-  const [season, setSeason] = useState<TSeason | null>(null);
+  const [season, setSeason] = useState<TChapter | null>(null);
   const navigate = useNavigate();
   const seasonRef = useRef<HTMLSelectElement>(null);
   const titleProRef = useRef<HTMLInputElement>(null);
@@ -46,7 +46,9 @@ const EditChapterForm = () => {
     fetchSeason();
   }, [chapters, currentSeason, setChapters]);
 
-  const onChapterSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+  const onChapterSubmitHandler = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
     e.preventDefault();
 
     const chapterInput = {
@@ -79,57 +81,57 @@ const EditChapterForm = () => {
       }}
       exit={{ opacity: 0, x: '-100vw' }}
     >
-      <h1 className="mt-10 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700">
+      <h1 className='mt-10 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
         Edita aquesta temporada
       </h1>
-      <div className="mt-6 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6">
+      <div className='mt-6 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6'>
         {isLoading ? (
           <>
             <div></div>
-            <div className="flex items-center justify-center">
+            <div className='flex items-center justify-center'>
               <Spinner />
             </div>
             <div></div>
           </>
         ) : (
           <form onSubmit={onChapterSubmitHandler}>
-            <div className="mb-3">
+            <div className='mb-3'>
               <SeasonSelect
-                label="Selecciona una temporada"
-                name="season"
+                label='Selecciona una temporada'
+                name='season'
                 seasonRef={seasonRef}
                 defaultValue={season?.season}
               />
-              <div className="border-b-2 border-slate-400 mt-4 mb-3"></div>
+              <div className='border-b-2 border-slate-400 mt-4 mb-3'></div>
               <FormInput
-                label="Títol article secció professional"
-                name="title-pro"
-                type="text"
-                placeholder=""
+                label='Títol article secció professional'
+                name='title-pro'
+                type='text'
+                placeholder=''
                 inputRef={titleProRef}
                 defaultValue={season?.titlePro}
               />
               <TextAreaInput
                 label="Cos de l'article secció professional"
-                name="content-pro"
+                name='content-pro'
                 rows={4}
                 maxLength={6000}
                 placeholder="Contingut de l'article..."
                 inputRef={contentProRef}
                 defaultValue={season?.contentPro}
               />
-              <div className="border-b-2 border-slate-400 mt-4 mb-3"></div>
+              <div className='border-b-2 border-slate-400 mt-4 mb-3'></div>
               <FormInput
-                label="Títol article bases i filial"
-                name="title-bases"
-                type="text"
-                placeholder=""
+                label='Títol article bases i filial'
+                name='title-bases'
+                type='text'
+                placeholder=''
                 inputRef={titleBasesRef}
                 defaultValue={season?.titleBases}
               />
               <TextAreaInput
                 label="Cos de l'article secció base i filial"
-                name="content-bases"
+                name='content-bases'
                 rows={4}
                 maxLength={6000}
                 placeholder="Contingut de l'article..."
@@ -137,7 +139,7 @@ const EditChapterForm = () => {
                 defaultValue={season?.contentBases}
               />
             </div>
-            <Button type="submit" title="DESAR CANVIS" />
+            <Button type='submit' title='DESAR CANVIS' />
           </form>
         )}
       </div>
@@ -145,4 +147,4 @@ const EditChapterForm = () => {
   );
 };
 
-export default EditChapterForm;
+export default AdminChapterEdit;

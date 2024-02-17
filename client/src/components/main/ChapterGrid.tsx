@@ -1,16 +1,16 @@
-import { ChapterCard } from "../UI-components/ChapterCard";
-import Spinner from "../UI-components/loading-spinner/Spinner";
-import useChapters from "../../hooks/useChapters";
+import { ChapterCard } from '../UI-components/ChapterCard';
+import Spinner from '../UI-components/loading-spinner/Spinner';
+import useChapters from '../../hooks/useChapters';
 
 const ChapterGrid = () => {
-  const { isLoading, chapters } = useChapters();
+  const { chapters } = useChapters();
 
   let chapterContent = [
     <ChapterCard
-      key={"no-chapters"}
+      key={'no-chapters'}
       index={0}
-      season={"Sense informació"}
-      titlePro={"De moment no tenim cap article."}
+      season={'Sense informació'}
+      titlePro={'De moment no tenim cap article.'}
       titleBases={"En breu n'afegirem."}
       noLink={true}
     />,
@@ -31,11 +31,11 @@ const ChapterGrid = () => {
   }
 
   return (
-    <section className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
-      {isLoading ? (
+    <section className='grid gap-3 md:grid-cols-2 lg:grid-cols-3'>
+      {!chapters || chapters.length === 0 ? (
         <>
           <div></div>
-          <div className="flex items-center justify-center">
+          <div className='flex items-center justify-center'>
             <Spinner />
           </div>
           <div></div>

@@ -1,8 +1,8 @@
-import { TChapterListItem } from '../../../types/Item-types';
+import { TChapterListItem } from '../types/Item-types';
 import { useEffect, useState } from 'react';
-import Spinner from '../../UI-components/loading-spinner/Spinner';
-import GetUserChaptersService from '../../../services/GetUserChatpersService';
-import { ChapterCard } from '../../UI-components/ChapterCard';
+import Spinner from '../components/UI-components/loading-spinner/Spinner';
+import GetUserChaptersService from '../services/GetUserChatpersService';
+import { ChapterCard } from '../components/UI-components/ChapterCard';
 import { motion } from 'framer-motion';
 
 const AdminChapterList = () => {
@@ -31,27 +31,29 @@ const AdminChapterList = () => {
       }}
       exit={{ opacity: 0, x: '-100vw' }}
     >
-      <h1 className="mt-10 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700">
+      <h1 className='mt-10 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
         Els meus capítols
       </h1>
       {isLoading ? (
         <>
           <div></div>
-          <h1 className="text-xl text-gray-700 mt-5">Carregant...</h1>
+          <h1 className='text-xl text-gray-700 mt-5'>Carregant...</h1>
           <div></div>
         </>
       ) : chapters.length > 0 ? (
-        <h1 className="mt-5 text-2xl text-gray-700">
+        <h1 className='mt-5 text-2xl text-gray-700'>
           Selecciona un capítol per visualitzar o modificar.
         </h1>
       ) : (
-        <h1 className="mt-5 text-2xl text-gray-700">No tens camp capitol publicat.</h1>
+        <h1 className='mt-5 text-2xl text-gray-700'>
+          No tens camp capitol publicat.
+        </h1>
       )}
-      <section className="mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+      <section className='mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-3'>
         {isLoading ? (
           <>
             <div></div>
-            <div className="flex items-center justify-center">
+            <div className='flex items-center justify-center'>
               <Spinner />
             </div>
             <div></div>
