@@ -37,6 +37,7 @@ const NavList = ({ mode = 'main', onLogout }: TMainNav) => {
       />
       <MenuItem icon={faAddressCard} title='Les meves dades' to={paths.me} />
       <MenuItem icon={faBookOpen} title='El Llibre' to={paths.book} />
+      <MenuItem icon={faPeopleGroup} title='Qui som' />
       <MenuItem icon={faPeopleGroup} title='Junta' />
       <MenuItem icon={faCalendar} title='Temporades' to={paths.genericSeason} />
       <MenuItem icon={faPersonSkating} title='Jugadors' to={paths.players} />
@@ -55,6 +56,7 @@ const NavList = ({ mode = 'main', onLogout }: TMainNav) => {
       <MenuItem icon={faHouse} title='Home' />
       <MenuItem icon={faUser} title='Accés' to={paths.login} />
       <MenuItem icon={faBookOpen} title='El Llibre' to={paths.book} />
+      <MenuItem icon={faPeopleGroup} title='Qui som' />
       <MenuItem icon={faPeopleGroup} title='Junta' />
       <MenuItem icon={faCalendar} title='Temporades' to={paths.genericSeason} />
       <MenuItem icon={faPersonSkating} title='Jugadors' to={paths.players} />
