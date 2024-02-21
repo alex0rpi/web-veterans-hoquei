@@ -31,19 +31,24 @@ const ChapterGrid = () => {
   }
 
   return (
-    <section className='grid gap-3 md:grid-cols-2 lg:grid-cols-3'>
-      {!chapters || chapters.length === 0 ? (
-        <>
-          <div></div>
-          <div className='flex items-center justify-center'>
-            <Spinner />
-          </div>
-          <div></div>
-        </>
-      ) : (
-        chapterContent
-      )}
-    </section>
+    <>
+      <h4 className='mb-3 mt-6 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
+        TEMPORADES RECENTS
+      </h4>
+      <section className='grid gap-3 md:grid-cols-2 lg:grid-cols-3'>
+        {!chapters || chapters.length === 0 ? (
+          <>
+            <div></div>
+            <div className='flex items-center justify-center'>
+              <Spinner />
+            </div>
+            <div></div>
+          </>
+        ) : (
+          chapterContent
+        )}
+      </section>
+    </>
   );
 };
 

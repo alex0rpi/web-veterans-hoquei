@@ -20,39 +20,49 @@ const ContactForm = () => {
   // };
   const onContactSubmitHandler = () => {};
   return (
-    <div className="mt-6 space-y-4 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6">
-      <p className="">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati et accusamus
-        rem est ad tempora quibusdam doloremque commodi eligendi ullam?
-      </p>
-      <form onSubmit={onContactSubmitHandler}>
-        <div className="flex flex-row justify-start gap-2 w-auto">
-          <div className="w-1/2">
-            <FormInput label="El teu nom" name="name" type="text" placeholder="Nom" />
+    <>
+      <h4 className='mb-3 mt-6 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
+        Contacte
+      </h4>
+      <div className='mt-6 space-y-4 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6'>
+        <p className=''>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati et
+          accusamus rem est ad tempora quibusdam doloremque commodi eligendi
+          ullam?
+        </p>
+        <form onSubmit={onContactSubmitHandler}>
+          <div className='flex flex-row justify-start gap-2 w-auto'>
+            <div className='w-1/2'>
+              <FormInput
+                label='El teu nom'
+                name='name'
+                type='text'
+                placeholder='Nom'
+              />
+            </div>
+            <div className='w-1/2'>
+              <FormInput
+                label='El teu email'
+                name='email'
+                type='email'
+                placeholder='email@email.com'
+                inputRef={contactEmailRef}
+              />
+            </div>
           </div>
-          <div className="w-1/2">
-            <FormInput
-              label="El teu email"
-              name="email"
-              type="email"
-              placeholder="email@email.com"
-              inputRef={contactEmailRef}
-            />
+          <TextAreaInput
+            label='Missatge'
+            name='message'
+            rows={4}
+            placeholder='Escriu el teu missatge...'
+            inputRef={contactMessageRef}
+          />
+          <div className='w-full'>
+            <Button type='submit' title='Enviar' />
           </div>
-        </div>
-        <TextAreaInput
-          label="Missatge"
-          name="message"
-          rows={4}
-          maxLength={2000}
-          placeholder="Escriu el teu missatge..."
-          inputRef={contactMessageRef}
-        />
-        <div className="w-full">
-          <Button type="submit" title="Enviar" />
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>
+    </>
   );
 };
 
