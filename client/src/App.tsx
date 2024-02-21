@@ -16,130 +16,32 @@ import {
 import ChapterProvider from './context/ChaptersContext';
 import UpdatePassword from './components/auth/UpdatePassword';
 import RequestPasswordReset from './components/auth/RequestPasswordReset';
+import React from 'react';
 
-const router = createBrowserRouter([
-  {
-    path: paths.home,
-    element: (
-      <MainLayout>
-        <MainPage />
-      </MainLayout>
-    ),
-  },
-  {
-    path: paths.season,
-    element: (
-      <MainLayout>
-        <SeasonPage />
-      </MainLayout>
-    ),
-  },
-  {
-    path: paths.book,
-    element: (
-      <MainLayout>
-        <BookPage />
-      </MainLayout>
-    ),
-  },
-  {
-    path: paths.blog,
-    element: (
-      <MainLayout>
-        <BlogPage />
-      </MainLayout>
-    ),
-  },
-  {
-    path: paths.players,
-    element: (
-      <MainLayout>
-        <PlayersPage />
-      </MainLayout>
-    ),
-  },
-  {
-    path: paths.login,
-    element: (
-      <MainLayout>
-        <AuthPage />
-      </MainLayout>
-    ),
-  },
-  {
-    path: paths.register,
-    element: (
-      <MainLayout>
-        <AuthPage />
-      </MainLayout>
-    ),
-  },
-  {
-    path: paths.verify,
-    element: (
-      <MainLayout>
-        <AuthPage />
-      </MainLayout>
-    ),
-  },
-  {
-    path: paths.requestPasswordReset,
-    element: (
-      <MainLayout>
-        <RequestPasswordReset />
-      </MainLayout>
-    ),
-  },
-  {
-    path: paths.updatePassword,
-    element: (
-      <MainLayout>
-        <UpdatePassword />
-      </MainLayout>
-    ),
-  },
-  {
-    path: paths.newChapter,
-    element: (
-      <MainLayout>
-        <AdminPage />
-      </MainLayout>
-    ),
-  },
-  {
-    path: paths.userChapterList,
-    element: (
-      <MainLayout>
-        <AdminPage />
-      </MainLayout>
-    ),
-  },
-  {
-    path: paths.editChapter,
-    element: (
-      <MainLayout>
-        <AdminPage />
-      </MainLayout>
-    ),
-  },
-  {
-    path: paths.me,
-    element: (
-      <MainLayout>
-        <AdminPage />
-      </MainLayout>
-    ),
-  },
+const routes = [
+  { path: paths.home, component: MainPage },
+  { path: paths.season, component: SeasonPage },
+  { path: paths.book, component: BookPage },
+  { path: paths.blog, component: BlogPage },
+  { path: paths.players, component: PlayersPage },
+  { path: paths.login, component: AuthPage },
+  { path: paths.register, component: AuthPage },
+  { path: paths.verify, component: AuthPage },
+  { path: paths.requestPasswordReset, component: RequestPasswordReset },
+  { path: paths.updatePassword, component: UpdatePassword },
+  { path: paths.newChapter, component: AdminPage },
+  { path: paths.userChapterList, component: AdminPage },
+  { path: paths.editChapter, component: AdminPage },
+  { path: paths.me, component: AdminPage },
+  { path: '*', component: NotFound },
+];
 
-  {
-    path: '*',
-    element: (
-      <MainLayout>
-        <NotFound />
-      </MainLayout>
-    ),
-  },
-]);
+const router = createBrowserRouter(
+  routes.map(({ path, component }) => ({
+    path,
+    element: <MainLayout>{React.createElement(component)}</MainLayout>,
+  }))
+);
 
 function App() {
   return (

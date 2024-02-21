@@ -1,8 +1,8 @@
 import { ToastContainer } from 'react-toastify';
-import { Navigation } from '../components/navigation/Navigation';
 // import { Outlet } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 import { PropsWithChildren } from 'react';
+import { Navigation } from '../components/navigation/Navigation';
 
 export const MainLayout = (props: PropsWithChildren) => {
   const location = useLocation();
@@ -20,9 +20,10 @@ export const MainLayout = (props: PropsWithChildren) => {
       className={`${gridClass} md:bg-hero-pattern md:bg-cover transition-all duration-200`}
     >
       <Navigation />
+
       <div className={`main-column-layout opacity-${opacityAmount}`}>
         <ToastContainer
-          position="bottom-right"
+          position='bottom-right'
           autoClose={3000}
           hideProgressBar={false}
           newestOnTop={false}
@@ -31,7 +32,7 @@ export const MainLayout = (props: PropsWithChildren) => {
           // pauseOnFocusLoss
           draggable
           pauseOnHover={false}
-          theme="light"
+          theme='light'
         />
         {props.children}
       </div>

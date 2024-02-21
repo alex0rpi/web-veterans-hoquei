@@ -11,6 +11,7 @@ import ContactForm from '../components/main/ContactForm';
 import BookTeasers from '../components/main/BookTeasers';
 import Association from '../components/main/Association';
 import BoardMembers from '../components/main/BoardMembers';
+import { Navigation } from '../components/navigation/Navigation';
 
 const MainPage = () => {
   const { user } = useContext(UserContext);
