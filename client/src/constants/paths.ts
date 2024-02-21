@@ -10,8 +10,8 @@ export const paths = {
   updatePassword: '/admin/reset-password',
   me: '/admin/me',
   newChapter: '/admin/new-chapter',
-  userChapterList: '/admin/llistat-temporades',
-  editChapter: '/admin/temporades/edit-chapter/:currentSeason',
+  userChapterList: '/admin/user-chapter-list',
+  editChapter: '/admin/edit-chapter/:currentSeason',
   blog: '/blog',
   players: '/jugadors',
 };

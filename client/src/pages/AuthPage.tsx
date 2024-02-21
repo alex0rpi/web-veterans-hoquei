@@ -1,11 +1,12 @@
 import { easeInOut, motion } from 'framer-motion';
-import { AdminLogin, AdminRegister } from '../components/auth';
+import { AdminLogin, AdminRegister, UserVerify } from '../components/auth';
 import { useLocation } from 'react-router-dom';
 
 const AuthPage = () => {
   const location = useLocation();
   const isLogin = location.pathname === '/admin/login';
   const isRegister = location.pathname === '/admin/register';
+  const isVerify = location.pathname === '/admin/verify';
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -15,6 +16,7 @@ const AuthPage = () => {
     >
       {isLogin && <AdminLogin />}
       {isRegister && <AdminRegister />}
+      {isVerify && <UserVerify />}
     </motion.div>
   );
 };

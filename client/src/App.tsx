@@ -3,9 +3,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import UserProvider from './context/UserContext';
 import { MainLayout } from './layouts/Layout';
 import { paths } from './constants';
-import AdminData from './components/auth/AdminData';
 import {
   MainPage,
+  AdminPage,
   SeasonPage,
   BookPage,
   BlogPage,
@@ -13,13 +13,7 @@ import {
   NotFound,
   AuthPage,
 } from './pages';
-import {
-  AdminChapterNew,
-  AdminChapterList,
-  AdminChapterEdit,
-} from './components/chaptersAdmin';
 import ChapterProvider from './context/ChaptersContext';
-import UserVerify from './components/auth/UserVerify';
 import UpdatePassword from './components/auth/UpdatePassword';
 import RequestPasswordReset from './components/auth/RequestPasswordReset';
 
@@ -84,7 +78,7 @@ const router = createBrowserRouter([
     path: paths.verify,
     element: (
       <MainLayout>
-        <UserVerify />
+        <AuthPage />
       </MainLayout>
     ),
   },
@@ -108,7 +102,7 @@ const router = createBrowserRouter([
     path: paths.newChapter,
     element: (
       <MainLayout>
-        <AdminChapterNew />
+        <AdminPage />
       </MainLayout>
     ),
   },
@@ -116,7 +110,7 @@ const router = createBrowserRouter([
     path: paths.userChapterList,
     element: (
       <MainLayout>
-        <AdminChapterList />
+        <AdminPage />
       </MainLayout>
     ),
   },
@@ -124,7 +118,7 @@ const router = createBrowserRouter([
     path: paths.editChapter,
     element: (
       <MainLayout>
-        <AdminChapterEdit />
+        <AdminPage />
       </MainLayout>
     ),
   },
@@ -132,7 +126,7 @@ const router = createBrowserRouter([
     path: paths.me,
     element: (
       <MainLayout>
-        <AdminData />
+        <AdminPage />
       </MainLayout>
     ),
   },

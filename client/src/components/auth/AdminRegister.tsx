@@ -30,7 +30,7 @@ const AdminRegister = () => {
     };
     const isSuccess = await RegisterService(formState);
     if (isSuccess) {
-      toast.info('Nou usuari registrat.');
+      // toast.info('Nou usuari registrat.');
       toast.info('Verifica el teu email per activar el compte.');
       navigate('/admin/login');
       return;
