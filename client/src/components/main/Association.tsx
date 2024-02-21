@@ -4,6 +4,9 @@ import { cardImage01 } from '../../assets/CardImages';
 const Association = () => {
   return (
     <section className=''>
+      <h4 className='mb-3 mt-6 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
+        QUI SOM
+      </h4>
       <div className='rounded-md mb-2'>
         {/* <h1 className='text-xl font-bold text-primary mb-2 inline-block ms-2'>
           La nostra missió

@@ -26,7 +26,7 @@ export const Navigation = () => {
   const onLogoutHandler = async () => {
     const isSuccess = await LogoutService();
     if (isSuccess) {
-      setUser({ id: '', name: '' });
+      setUser({ id: '', name: '', isVerified: false });
       toast.info('Usuari desconnectat.');
       navigate(`${paths.home}`);
     }
@@ -34,8 +34,8 @@ export const Navigation = () => {
 
   return (
     <>
-      <div className="md:col-span-1 md:col-start-2 md:flex md:justify-end opacity-90">
-        <nav className="w-full min-w-fit bg-primary text-right text-slate-200 relative">
+      <div className='md:col-span-1 md:col-start-2 md:flex md:justify-end opacity-90'>
+        <nav className='w-full min-w-fit bg-primary text-right text-slate-200 relative'>
           <motion.div
             initial={{ x: '100%', opacity: 0.2 }}
             animate={{ x: '0%', opacity: 1 }}
@@ -46,37 +46,37 @@ export const Navigation = () => {
             }}
           >
             {/* Logo and hamburguer / cross icons */}
-            <div className="flex items-center justify-between md:justify-center">
+            <div className='flex items-center justify-between md:justify-center'>
               {/* Logo always visible but variable */}
-              <a href="/" className="px-4 py-1 transition duration-200 md:py-2">
+              <a href='/' className='px-4 py-1 transition duration-200 md:py-2'>
                 <img
                   src={logoImage}
-                  className="h-14 brightness-125 md:h-24"
-                  alt="rink-hockey-logo"
+                  className='h-14 brightness-125 md:h-24'
+                  alt='rink-hockey-logo'
                 />
               </a>
               {!show ? (
                 <FontAwesomeIcon
                   icon={faBars}
-                  size="xl"
-                  className="z-50 cursor-pointer px-8 md:hidden"
+                  size='xl'
+                  className='z-50 cursor-pointer px-8 md:hidden'
                   onClick={menuClickHandler}
                 />
               ) : (
                 <FontAwesomeIcon
                   icon={faXmark}
-                  size="2xl"
-                  className="cursor-pointer px-8 md:hidden"
+                  size='2xl'
+                  className='cursor-pointer px-8 md:hidden'
                   onClick={menuClickHandler}
                 />
               )}
             </div>
           </motion.div>
-          <div className="hidden w-full pe-2 pt-2 mt-0 ps-2 text-sm md:block border-t-[1px] border-slate-300">
+          <div className='hidden w-full pe-2 pt-2 mt-0 ps-2 text-sm md:block border-t-[1px] border-slate-300'>
             {user.name === '' ? (
-              <NavList mode="main" onLogout={onLogoutHandler} />
+              <NavList mode='main' onLogout={onLogoutHandler} />
             ) : (
-              <NavList mode="admin" onLogout={onLogoutHandler} />
+              <NavList mode='admin' onLogout={onLogoutHandler} />
             )}
           </div>
           <Footer />
@@ -92,12 +92,12 @@ export const Navigation = () => {
             animate={{ x: '40vw', opacity: 1 }}
             exit={{ x: '100vw', opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed transform translate-x-full md:translate-x-0 top-20 z-50 w-[60vw] bg-primary px-8 pb-2 pt-2 text-slate-200 md:hidden"
+            className='fixed transform translate-x-full md:translate-x-0 top-20 z-50 w-[60vw] bg-primary px-8 pb-2 pt-2 text-slate-200 md:hidden'
           >
             {user.name === '' ? (
-              <NavList mode="main" onLogout={onLogoutHandler} />
+              <NavList mode='main' onLogout={onLogoutHandler} />
             ) : (
-              <NavList mode="admin" onLogout={onLogoutHandler} />
+              <NavList mode='admin' onLogout={onLogoutHandler} />
             )}
           </motion.div>
         </>
