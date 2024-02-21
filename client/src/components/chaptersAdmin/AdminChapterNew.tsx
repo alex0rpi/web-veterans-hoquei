@@ -1,20 +1,20 @@
 import { motion } from 'framer-motion';
-import { Button } from '../components/UI-components/Button';
-import FormInput from '../components/UI-components/FormInput';
-import TextAreaInput from '../components/UI-components/TextAreaInput';
-import CreateChapterService from '../services/CreateChapterService';
+import { Button } from '../UI-components/Button';
+import FormInput from '../UI-components/FormInput';
+import TextAreaInput from '../UI-components/TextAreaInput';
+import CreateChapterService from '../../services/CreateChapterService';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { paths } from '../constants';
-import { ChapterContext } from '../context/ChaptersContext';
-import GetChaptersService from '../services/GetChaptersService';
-import SeasonSelect from '../components/UI-components/SeasonSelect';
-import ImageInput from '../components/UI-components/ImageInput';
+import { paths } from '../../constants';
+import { ChapterContext } from '../../context/ChaptersContext';
+import GetChaptersService from '../../services/GetChaptersService';
+import SeasonSelect from '../UI-components/SeasonSelect';
+import ImageInput from '../UI-components/ImageInput';
 import { Formik } from 'formik';
-import { TChapter } from '../types/Item-types';
-import { chapterSchema } from '../validation/chapterSchema';
+import { TChapter } from '../../types/Item-types';
+import { chapterSchema } from '../../validation/chapterSchema';
 
 const AdminChapterNew = () => {
   const initialValues: Omit<TChapter, 'id'> = {

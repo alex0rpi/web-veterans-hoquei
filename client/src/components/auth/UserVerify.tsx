@@ -1,14 +1,14 @@
 import { useState, useEffect, useContext } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import VerifyUserService from '../services/VerifyUserService';
-import { UserContext } from '../context/UserContext';
-import { paths } from '../constants';
+import VerifyUserService from '../../services/VerifyUserService';
+import { UserContext } from '../../context/UserContext';
+import { paths } from '../../constants';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Spinner from '../components/UI-components/loading-spinner/Spinner';
+import Spinner from '../UI-components/loading-spinner/Spinner';
 
-const UserVerification = () => {
+const UserVerify = () => {
   const [error, setError] = useState(false);
   const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
@@ -57,13 +57,13 @@ const UserVerification = () => {
       }}
       exit={{ opacity: 0, x: '-100vw' }}
     >
-      <h1 className="mt-10 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700">
+      <h1 className='mt-10 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
         Confirmació de compte.
       </h1>
       {isLoading ? (
         <>
           <div></div>
-          <div className="flex items-center justify-center mt-12">
+          <div className='flex items-center justify-center mt-12'>
             <Spinner />
           </div>
           <div></div>
@@ -80,11 +80,13 @@ const UserVerification = () => {
           }}
           exit={{ opacity: 0, x: '-100vw' }}
         >
-          <h1 className="text-4xl font-medium text-gray-700 mt-4">
-            <span className="text-rose-800 font-bold">Hi ha hagut un error</span> l'usuari
-            no ha pogut ser verificat.
+          <h1 className='text-4xl font-medium text-gray-700 mt-4'>
+            <span className='text-rose-800 font-bold'>
+              Hi ha hagut un error
+            </span>{' '}
+            l'usuari no ha pogut ser verificat.
           </h1>
-          <h1 className="text-3xl text-gray-700 mt-2">
+          <h1 className='text-3xl text-gray-700 mt-2'>
             En uns segons serà redireccionat al login...
           </h1>
         </motion.div>
@@ -100,12 +102,12 @@ const UserVerification = () => {
           }}
           exit={{ opacity: 0, x: '-100vw' }}
         >
-          <h1 className="text-3xl font-medium text-gray-700 mt-4">
-            <span className="text-green-800 font-bold">
+          <h1 className='text-3xl font-medium text-gray-700 mt-4'>
+            <span className='text-green-800 font-bold'>
               Usuari verificat correctament!
             </span>
           </h1>
-          <h1 className="text-2xl text-gray-700 mt-2">
+          <h1 className='text-2xl text-gray-700 mt-2'>
             En uns segons serà redireccionat al login...
           </h1>
         </motion.div>
@@ -114,4 +116,4 @@ const UserVerification = () => {
   );
 };
 
-export default UserVerification;
+export default UserVerify;

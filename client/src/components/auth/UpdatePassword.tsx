@@ -1,13 +1,13 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { paths } from '../constants';
+import { paths } from '../../constants';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Spinner from '../components/UI-components/loading-spinner/Spinner';
-import UpdatePasswordService from '../services/UpdatePasswordService';
-import FormInput from '../components/UI-components/FormInput';
-import { Button } from '../components/UI-components/Button';
+import Spinner from '../UI-components/loading-spinner/Spinner';
+import UpdatePasswordService from '../../services/UpdatePasswordService';
+import FormInput from '../UI-components/FormInput';
+import { Button } from '../UI-components/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 
@@ -86,27 +86,27 @@ const UpdatePassword = () => {
         }}
         exit={{ opacity: 0, x: '-100vw' }}
       >
-        <h1 className="mt-10 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700">
+        <h1 className='mt-10 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
           Crea una nova contrasenya
         </h1>
-        <div className="mt-6 space-y-4 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6">
+        <div className='mt-6 space-y-4 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6'>
           <form onSubmit={onResetPasswordSubmitHandler}>
             <FormInput
-              label="Contrasenya"
-              name="password"
-              type="password"
-              placeholder="••••••••"
+              label='Contrasenya'
+              name='password'
+              type='password'
+              placeholder='••••••••'
               inputRef={passwordRef}
             />
             <FormInput
-              label="Confirma la contrasenya"
-              name="confirm-password"
-              type="password"
-              placeholder="••••••••"
+              label='Confirma la contrasenya'
+              name='confirm-password'
+              type='password'
+              placeholder='••••••••'
               inputRef={confirmPasswordRef}
             />
-            <div className="my-3 w-full">
-              <Button type="submit" title="Actuatliza contrasenya" />
+            <div className='my-3 w-full'>
+              <Button type='submit' title='Actuatliza contrasenya' />
             </div>
           </form>
         </div>
@@ -126,35 +126,37 @@ const UpdatePassword = () => {
           requestStatus.isLoading ? (
             <>
               <div></div>
-              <div className="flex items-center justify-center mt-12">
+              <div className='flex items-center justify-center mt-12'>
                 <Spinner />
               </div>
               <div></div>
             </>
           ) : requestStatus.error ? (
             <>
-              <h1 className="text-4xl font-medium text-gray-700 mt-4">
-                <span className="text-rose-800 font-bold">Hi ha hagut un error.</span> No
-                s'ha pogut enviar sol·licitud.
+              <h1 className='text-4xl font-medium text-gray-700 mt-4'>
+                <span className='text-rose-800 font-bold'>
+                  Hi ha hagut un error.
+                </span>{' '}
+                No s'ha pogut enviar sol·licitud.
               </h1>
-              <h1 className="text-3xl text-gray-700 mt-2">
+              <h1 className='text-3xl text-gray-700 mt-2'>
                 En uns segons serà redireccionat al login...
               </h1>
             </>
           ) : (
             <>
-              <div className="flex flex-row items-center justify-start">
+              <div className='flex flex-row items-center justify-start'>
                 <FontAwesomeIcon
                   icon={faCircleCheck}
                   style={{ color: '#37816a' }}
-                  size="2xl"
-                  className="mx-2"
+                  size='2xl'
+                  className='mx-2'
                 />
-                <h1 className="text-3xl font-medium text-gray-700 mt-4">
+                <h1 className='text-3xl font-medium text-gray-700 mt-4'>
                   Contrasenya actualitzada correctament.
                 </h1>
               </div>
-              <h1 className="text-2xl text-gray-700 mt-2">
+              <h1 className='text-2xl text-gray-700 mt-2'>
                 En uns segons serà redireccionat al login...
               </h1>
             </>

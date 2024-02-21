@@ -1,19 +1,19 @@
 import { motion } from 'framer-motion';
-import { Button } from '../components/UI-components/Button';
-import FormInput from '../components/UI-components/FormInput';
-import TextAreaInput from '../components/UI-components/TextAreaInput';
+import { Button } from '../UI-components/Button';
+import FormInput from '../UI-components/FormInput';
+import TextAreaInput from '../UI-components/TextAreaInput';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { paths } from '../constants';
-import { ChapterContext } from '../context/ChaptersContext';
-import GetChaptersService from '../services/GetChaptersService';
-import SeasonSelect from '../components/UI-components/SeasonSelect';
-import PatchChapterService from '../services/PatchChapterService';
-import GetSeasonService from '../services/GetSeasonService';
-import Spinner from '../components/UI-components/loading-spinner/Spinner';
-import { TChapter } from '../types/Item-types';
+import { paths } from '../../constants';
+import { ChapterContext } from '../../context/ChaptersContext';
+import GetChaptersService from '../../services/GetChaptersService';
+import SeasonSelect from '../UI-components/SeasonSelect';
+import PatchChapterService from '../../services/PatchChapterService';
+import GetSeasonService from '../../services/GetSeasonService';
+import Spinner from '../UI-components/loading-spinner/Spinner';
+import { TChapter } from '../../types/Item-types';
 
 const AdminChapterEdit = () => {
   const { setChapters, chapters } = useContext(ChapterContext);
@@ -115,7 +115,6 @@ const AdminChapterEdit = () => {
                 label="Cos de l'article secció professional"
                 name='content-pro'
                 rows={4}
-                maxLength={6000}
                 placeholder="Contingut de l'article..."
                 inputRef={contentProRef}
                 defaultValue={season?.contentPro}
@@ -133,7 +132,6 @@ const AdminChapterEdit = () => {
                 label="Cos de l'article secció base i filial"
                 name='content-bases'
                 rows={4}
-                maxLength={6000}
                 placeholder="Contingut de l'article..."
                 inputRef={contentBasesRef}
                 defaultValue={season?.contentBases}

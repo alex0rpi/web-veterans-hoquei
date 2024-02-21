@@ -1,10 +1,10 @@
 // import stickIcon from '../../../public/assets/logos/hockeyStick-no-bg.png';
-import stickIcon from "../../assets/logos/hockeyStick-no-bg.png";
+import stickIcon from '../../assets/logos/hockeyStick-no-bg.png';
 
-import { Link } from "react-router-dom";
-import { TChapterListItem } from "../../types/Item-types";
+import { Link } from 'react-router-dom';
+import { TChapterListItem } from '../../types/Item-types';
 
-type TchapterCardProps = Omit<TChapterListItem, "id"> & { index: number } & {
+type TchapterCardProps = Omit<TChapterListItem, 'id'> & { index: number } & {
   goTo?: string;
 } & { noLink?: boolean };
 
@@ -16,31 +16,34 @@ export const ChapterCard = (props: TchapterCardProps) => {
       return str;
     }
     // Return str truncated with '...' concatenated to the end of str.
-    return str.slice(0, num) + "...";
+    return str.slice(0, num) + '...';
   };
 
   const evenIndex = props.index % 2 === 0;
-  const cardBg = evenIndex ? "bg-slate-400" : "bg-slate-300";
+  const cardBg = evenIndex ? 'bg-slate-400' : 'bg-slate-300';
+  const ShortenedTitleLength = 50;
   return (
     <Link
       to={
         props.noLink
-          ? ""
+          ? ''
           : !props.goTo
             ? `/temporades/${props.season}`
             : `/admin/temporades/edit-chapter/${props.goTo}`
       }
     >
-      <div className={`card block ${cardBg} p-2`}>
+      <div className={`card block ${cardBg} p-2 h-full`}>
         {/* <GiHockey className="fa-2x inline-block" /> */}
-        <img src={stickIcon} width="30" className="ms-1 inline-block" />
+        <img src={stickIcon} width='30' className='ms-1 inline-block' />
 
-        <h1 className="inline text-center text-lg font-bold">{props.season}</h1>
-        <h1 className="my-1 text-left text-lg">
-          <strong>{truncateString(props.titlePro, 40)}</strong>
+        <h1 className='inline text-center text-lg font-bold'>{props.season}</h1>
+        <h1 className='my-1 text-left text-lg'>
+          <strong>
+            {truncateString(props.titlePro, ShortenedTitleLength)}
+          </strong>
         </h1>
-        <h1 className="mb-1 text-left text-lg">
-          {truncateString(props.titleBases, 40)}
+        <h1 className='mb-1 text-left text-lg'>
+          {truncateString(props.titleBases, ShortenedTitleLength)}
         </h1>
         {/* <img src="" alt="chapter-foto" className="" /> */}
       </div>

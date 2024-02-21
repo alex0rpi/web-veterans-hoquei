@@ -3,24 +3,25 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import UserProvider from './context/UserContext';
 import { MainLayout } from './layouts/Layout';
 import { paths } from './constants';
-import AdminData from './pages/AdminData';
+import AdminData from './components/auth/AdminData';
 import {
   MainPage,
-  AdminLogin,
-  AdminRegister,
-  AdminChapterList,
-  AdminChapterNew,
-  AdminChapterEdit,
   SeasonPage,
   BookPage,
   BlogPage,
   PlayersPage,
   NotFound,
+  AuthPage,
 } from './pages';
+import {
+  AdminChapterNew,
+  AdminChapterList,
+  AdminChapterEdit,
+} from './components/chaptersAdmin';
 import ChapterProvider from './context/ChaptersContext';
-import UserVerify from './pages/UserVerify';
-import UpdatePassword from './pages/UpdatePassword';
-import RequestPasswordReset from './pages/RequestPasswordReset';
+import UserVerify from './components/auth/UserVerify';
+import UpdatePassword from './components/auth/UpdatePassword';
+import RequestPasswordReset from './components/auth/RequestPasswordReset';
 
 const router = createBrowserRouter([
   {
@@ -67,7 +68,7 @@ const router = createBrowserRouter([
     path: paths.login,
     element: (
       <MainLayout>
-        <AdminLogin />
+        <AuthPage />
       </MainLayout>
     ),
   },
@@ -75,7 +76,7 @@ const router = createBrowserRouter([
     path: paths.register,
     element: (
       <MainLayout>
-        <AdminRegister />
+        <AuthPage />
       </MainLayout>
     ),
   },

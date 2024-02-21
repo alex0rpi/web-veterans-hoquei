@@ -1,14 +1,14 @@
 import { useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Button } from '../components/UI-components/Button';
-import FormInput from '../components/UI-components/FormInput';
-import RegisterService from '../services/RegisterService';
+import { Button } from '../UI-components/Button';
+import FormInput from '../UI-components/FormInput';
+import RegisterService from '../../services/RegisterService';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { registerSchema } from '../validation';
+import { registerSchema } from '../../validation';
 import { Formik } from 'formik';
-import { TRegisterForm } from '../types/Item-types';
+import { TRegisterForm } from '../../types/Item-types';
 
 const AdminRegister = () => {
   const initialValues: TRegisterForm = {

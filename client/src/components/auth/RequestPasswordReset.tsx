@@ -1,13 +1,13 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { paths } from '../constants';
+import { paths } from '../../constants';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Spinner from '../components/UI-components/loading-spinner/Spinner';
-import FormInput from '../components/UI-components/FormInput';
-import { Button } from '../components/UI-components/Button';
-import RequestPasswordResetService from '../services/RequestPasswordResetService';
+import Spinner from '../UI-components/loading-spinner/Spinner';
+import FormInput from '../UI-components/FormInput';
+import { Button } from '../UI-components/Button';
+import RequestPasswordResetService from '../../services/RequestPasswordResetService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
@@ -44,7 +44,9 @@ const RequestPasswordReset = () => {
       toast.info('Sol·licitud enviada correctament. Revisa el teu email.');
       setRequestStatus({ submitted: true, isLoading: false, error: false });
     } else {
-      toast.error("No s'ha pogut enviar la sol·licitud, torna-ho a provar més tard.");
+      toast.error(
+        "No s'ha pogut enviar la sol·licitud, torna-ho a provar més tard."
+      );
       setRequestStatus({ submitted: true, isLoading: false, error: true });
     }
     setTimeout(() => {
@@ -64,56 +66,59 @@ const RequestPasswordReset = () => {
       }}
       exit={{ opacity: 0, x: '-100vw' }}
     >
-      <h1 className="mt-10 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700">
+      <h1 className='mt-10 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
         Sol·licita una nova contrasenya
       </h1>
-      <div className="mt-6 space-y-4 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6">
-        <form className="" onSubmit={onRequestPasswordResetHandler}>
+      <div className='mt-6 space-y-4 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6'>
+        <form className='' onSubmit={onRequestPasswordResetHandler}>
           <FormInput
-            label="El teu email"
-            name="email"
-            type="email"
-            placeholder="email@email.com"
+            label='El teu email'
+            name='email'
+            type='email'
+            placeholder='email@email.com'
             inputRef={emailRef}
             defaultValue={userEmail ? userEmail : ''}
           />
-          <div className="my-3 w-full">
-            <Button type="submit" title="Sol·licita nova contrasenya" />
+          <div className='my-3 w-full'>
+            <Button type='submit' title='Sol·licita nova contrasenya' />
           </div>
         </form>
         {requestStatus.submitted ? (
           requestStatus.isLoading ? (
             <>
               <div></div>
-              <div className="flex items-center justify-center mt-12">
+              <div className='flex items-center justify-center mt-12'>
                 <Spinner />
               </div>
               <div></div>
             </>
           ) : requestStatus.error ? (
             <>
-              <h1 className="text-2xl font-medium text-gray-700 mt-4">
-                <span className="text-rose-800 font-bold">Hi ha hagut un error</span> no
-                s'ha pogut enviar la sol·licitud.
+              <h1 className='text-2xl font-medium text-gray-700 mt-4'>
+                <span className='text-rose-800 font-bold'>
+                  Hi ha hagut un error
+                </span>{' '}
+                no s'ha pogut enviar la sol·licitud.
               </h1>
-              <h1 className="text-xl text-gray-700 mt-2">
+              <h1 className='text-xl text-gray-700 mt-2'>
                 En uns segons serà redireccionat al login...
               </h1>
             </>
           ) : (
             <>
-              <div className="flex flex-row items-center justify-start">
+              <div className='flex flex-row items-center justify-start'>
                 <FontAwesomeIcon
                   icon={faEnvelope}
-                  size="2xl"
-                  className="mx-2 text-green-800"
+                  size='2xl'
+                  className='mx-2 text-green-800'
                 />
-                <h1 className="text-2xl font-medium text-gray-700 mt-4">
-                  <span className="text-green-800 font-bold">D'acord!</span> Hem enviat un
-                  email amb instruccions per a restablir la contrasenya.
+                <h1 className='text-2xl font-medium text-gray-700 mt-4'>
+                  <span className='text-green-800 font-bold'>D'acord!</span> Hem
+                  enviat un email amb instruccions per a restablir la
+                  contrasenya.
                 </h1>
               </div>
-              <h1 className="text-xl text-gray-700 mt-2">
+              <h1 className='text-xl text-gray-700 mt-2'>
                 En uns segons serà redireccionat al login...
               </h1>
             </>

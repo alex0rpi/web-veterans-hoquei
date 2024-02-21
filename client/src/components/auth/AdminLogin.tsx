@@ -1,16 +1,16 @@
 import { useContext, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Button } from '../components/UI-components/Button';
+import { Button } from '../UI-components/Button';
 import { Link, useNavigate } from 'react-router-dom';
-import { UserContext } from '../context/UserContext';
-import FormInput from '../components/UI-components/FormInput';
-import LoginService from '../services/LoginService';
+import { UserContext } from '../../context/UserContext';
+import FormInput from '../UI-components/FormInput';
+import LoginService from '../../services/LoginService';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { paths } from '../constants';
-import { loginSchema } from '../validation';
+import { paths } from '../../constants';
+import { loginSchema } from '../../validation';
 import { Formik } from 'formik';
-import { TLoginForm } from '../types/Item-types';
+import { TLoginForm } from '../../types/Item-types';
 
 const AdminLogin = () => {
   const initialValues: TLoginForm = {

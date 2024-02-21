@@ -2,8 +2,8 @@ import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import FormInput from '../components/UI-components/FormInput';
-import { Button } from '../components/UI-components/Button';
+import FormInput from '../UI-components/FormInput';
+import { Button } from '../UI-components/Button';
 
 const AdminData = () => {
   const userNameRef = useRef<HTMLInputElement>(null);

@@ -1,8 +1,8 @@
-import { TChapterListItem } from '../types/Item-types';
+import { TChapterListItem } from '../../types/Item-types';
 import { useEffect, useState } from 'react';
-import Spinner from '../components/UI-components/loading-spinner/Spinner';
-import GetUserChaptersService from '../services/GetUserChatpersService';
-import { ChapterCard } from '../components/UI-components/ChapterCard';
+import Spinner from '../UI-components/loading-spinner/Spinner';
+import GetUserChaptersService from '../../services/GetUserChatpersService';
+import { ChapterCard } from '../UI-components/ChapterCard';
 import { motion } from 'framer-motion';
 
 const AdminChapterList = () => {
