@@ -1,13 +1,13 @@
 import { ToastContainer } from 'react-toastify';
-// import { Outlet } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 import { PropsWithChildren } from 'react';
+import { paths } from '../constants';
 
 export const MainLayout = (props: PropsWithChildren) => {
   const location = useLocation();
   let opacityAmount: string;
   let gridClass: string;
-  if (location.pathname === '/llibre-veterans-hoquei-patins-fcb') {
+  if (location.pathname === paths.book) {
     opacityAmount = '100';
     gridClass = 'book-grid';
   } else {

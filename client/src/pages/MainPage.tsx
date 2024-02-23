@@ -1,18 +1,20 @@
 import { useContext, useRef, useEffect, useState } from 'react';
 import { UserContext } from '../context/UserContext';
-import { HeaderTitle } from '../components/main/HeaderTitle';
 import { easeInOut, motion } from 'framer-motion';
-import BookTestimonials from '../components/main/BookTestimonials';
-import BookFeatures from '../components/main/BookFeatures';
-import Location from '../components/main/Location';
-import ChapterGrid from '../components/main/ChapterGrid';
-import ImageSlider from '../components/main/ImageSlider';
-import ContactForm from '../components/main/ContactForm';
-import BookTeasers from '../components/main/BookTeasers';
-import Association from '../components/main/Association';
-import BoardMembers from '../components/main/BoardMembers';
 import { Navigation } from '../components/navigation/Navigation';
 import ScrollTopBtn from '../components/UI-components/ScrollTopBtn';
+import {
+  Association,
+  BoardMembers,
+  BookFeatures,
+  BookTeasers,
+  BookTestimonials,
+  ChapterGrid,
+  ContactForm,
+  HeaderTitle,
+  ImageSlider,
+  Location,
+} from '../components/main';
 
 const MainPage = () => {
   const { user } = useContext(UserContext);
