@@ -1,9 +1,13 @@
 import FlipCard from '../UI-components/FlipCardWithImage';
 import { cardImage01 } from '../../assets/CardImages';
 
-const Association = () => {
+type TAssociationProps = {
+  scrollRef?: React.RefObject<HTMLDivElement>;
+};
+
+const Association = ({ scrollRef }: TAssociationProps) => {
   return (
-    <section className=''>
+    <section ref={scrollRef}>
       <h4 className='mb-3 mt-6 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
         QUI SOM
       </h4>

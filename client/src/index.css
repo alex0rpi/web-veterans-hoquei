@@ -18,7 +18,7 @@ body {
 }
 
 .main-column-layout {
-  @apply md:overflow-auto bg-gray-200 px-5 py-5 md:col-start-3 md:col-end-4 md:justify-stretch;
+  @apply md:overflow-auto bg-gray-200 md:col-start-2 md:col-end-3 md:justify-stretch;
 }
 
 .btn {

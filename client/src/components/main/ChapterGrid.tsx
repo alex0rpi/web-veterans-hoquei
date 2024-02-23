@@ -2,7 +2,11 @@ import { ChapterCard } from '../UI-components/ChapterCard';
 import Spinner from '../UI-components/loading-spinner/Spinner';
 import useChapters from '../../hooks/useChapters';
 
-const ChapterGrid = () => {
+type TSeasonsProps = {
+  scrollRef?: React.RefObject<HTMLDivElement>;
+};
+
+const ChapterGrid = ({ scrollRef }: TSeasonsProps) => {
   const { chapters } = useChapters();
 
   let chapterContent = [
@@ -31,7 +35,7 @@ const ChapterGrid = () => {
   }
 
   return (
-    <>
+    <section ref={scrollRef}>
       <h4 className='mb-3 mt-6 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
         TEMPORADES RECENTS
       </h4>
@@ -48,7 +52,7 @@ const ChapterGrid = () => {
           chapterContent
         )}
       </section>
-    </>
+    </section>
   );
 };
 

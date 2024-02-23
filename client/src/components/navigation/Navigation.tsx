@@ -10,11 +10,20 @@ import { UserContext } from '../../context/UserContext';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import LogoutService from '../../services/LogoutService';
-import NavList from './NavList';
 import { paths } from '../../constants';
-import Footer from '../main/Footer';
+import Footer from './Footer';
+import MainNavList from './MainNavList';
+import AdminNavList from './AdminNavList';
 
-export const Navigation = () => {
+type TNavigationProps = {
+  associationRef?: React.RefObject<HTMLDivElement>;
+  seasonsRef?: React.RefObject<HTMLDivElement>;
+};
+
+export const Navigation = ({
+  associationRef,
+  seasonsRef,
+}: TNavigationProps) => {
   const [show, setShow] = useState(false);
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
@@ -34,7 +43,7 @@ export const Navigation = () => {
 
   return (
     <>
-      <div className='md:col-span-1 md:col-start-2 md:flex md:justify-end opacity-90'>
+      <div className='fixed md:h-screen md:col-span-1 md:col-start-1 md:flex md:justify-end opacity-[92]'>
         <nav className='w-full min-w-fit bg-primary text-right text-slate-200 relative'>
           <motion.div
             initial={{ x: '100%', opacity: 0.2 }}
@@ -74,9 +83,12 @@ export const Navigation = () => {
           </motion.div>
           <div className='hidden w-full pe-2 pt-2 mt-0 ps-2 text-sm md:block border-t-[1px] border-slate-300'>
             {user.name === '' ? (
-              <NavList mode='main' onLogout={onLogoutHandler} />
+              <MainNavList
+                associationRef={associationRef}
+                seasonsRef={seasonsRef}
+              />
             ) : (
-              <NavList mode='admin' onLogout={onLogoutHandler} />
+              <AdminNavList onLogout={onLogoutHandler} />
             )}
           </div>
           <Footer />
@@ -86,7 +98,6 @@ export const Navigation = () => {
       {show && (
         <>
           <Backdrop onClick={menuClickHandler} />
-
           <motion.div
             initial={{ x: '100vw', opacity: 0 }}
             animate={{ x: '40vw', opacity: 1 }}
@@ -95,9 +106,9 @@ export const Navigation = () => {
             className='fixed transform translate-x-full md:translate-x-0 top-20 z-50 w-[60vw] bg-primary px-8 pb-2 pt-2 text-slate-200 md:hidden'
           >
             {user.name === '' ? (
-              <NavList mode='main' onLogout={onLogoutHandler} />
+              <MainNavList associationRef={associationRef} />
             ) : (
-              <NavList mode='admin' onLogout={onLogoutHandler} />
+              <AdminNavList onLogout={onLogoutHandler} />
             )}
           </motion.div>
         </>

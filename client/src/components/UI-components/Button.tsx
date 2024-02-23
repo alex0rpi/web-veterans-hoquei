@@ -1,14 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 type TButtonProps = {
-  type?: "button" | "submit";
+  type?: 'button' | 'submit';
   title: string;
   to?: string;
   onClick?: () => void;
 };
 
 export const Button = ({
-  type = "button",
+  type = 'button',
   title,
   to,
   onClick,

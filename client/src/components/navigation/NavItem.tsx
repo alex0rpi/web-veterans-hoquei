@@ -6,23 +6,33 @@ import { useLocation } from 'react-router-dom';
 
 type Props = {
   title: string;
-  // iconItem: FontAwesomeIconProps;
   to?: string;
-  onItemClick?: () => void;
   icon?: IconDefinition;
+  scrollRef?: React.RefObject<HTMLDivElement>;
+  onItemClick?: () => void;
 };
 
-export const MenuItem = ({ title, to = '/', icon, onItemClick }: Props) => {
+export const NavItem = ({
+  title,
+  to = '/',
+  icon,
+  onItemClick,
+  scrollRef,
+}: Props) => {
   const location = useLocation();
   let navFontSize: string = 'text-base';
   if (location.pathname === '/llibre-veterans-hoquei-patins-fcb') {
     navFontSize = 'text-sm';
   }
+  const onScrollLinkClick = () => {
+    scrollRef?.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <Link
-      to={to}
+      to={scrollRef ? '#' : to}
       className='group flex justify-end py-1 pe-1 text-base transition-all duration-250 ease-in-out hover:bg-slate-100 rounded-lg hover:text-primary'
-      onClick={onItemClick}
+      onClick={onItemClick ? onItemClick : scrollRef && onScrollLinkClick}
     >
       <div className='flex flex-row items-center'>
         <p className={`${navFontSize}`}>{title}</p>

@@ -2,7 +2,6 @@ import { ToastContainer } from 'react-toastify';
 // import { Outlet } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 import { PropsWithChildren } from 'react';
-import { Navigation } from '../components/navigation/Navigation';
 
 export const MainLayout = (props: PropsWithChildren) => {
   const location = useLocation();
@@ -19,8 +18,6 @@ export const MainLayout = (props: PropsWithChildren) => {
     <div
       className={`${gridClass} md:bg-hero-pattern md:bg-cover transition-all duration-200`}
     >
-      <Navigation />
-
       <div className={`main-column-layout opacity-${opacityAmount}`}>
         <ToastContainer
           position='bottom-right'
