@@ -3,9 +3,13 @@
 // import { MdOutlineSportsHockey } from 'react-icons/md';
 import StickIcon from '../UI-components/StickIcon';
 
-const BookFeatures = () => {
+type TBookProps = {
+  scrollRef: React.RefObject<HTMLDivElement>;
+};
+
+const BookFeatures = ({ scrollRef }: TBookProps) => {
   return (
-    <>
+    <section ref={scrollRef}>
       <h4 className='mb-3 mt-6 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
         LLIBRE
       </h4>
@@ -42,7 +46,7 @@ const BookFeatures = () => {
           </p>
         </div>
       </section>
-    </>
+    </section>
   );
 };
 

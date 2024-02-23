@@ -6,7 +6,11 @@ import TextAreaInput from '../UI-components/TextAreaInput';
 // import { toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 
-const ContactForm = () => {
+type TContactFormProps = {
+  scrollRef: React.RefObject<HTMLDivElement>;
+};
+
+const ContactForm = ({ scrollRef }: TContactFormProps) => {
   const contactEmailRef = useRef<HTMLInputElement>(null);
   const contactMessageRef = useRef<HTMLTextAreaElement>(null);
   // const onContactSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -20,7 +24,7 @@ const ContactForm = () => {
   // };
   const onContactSubmitHandler = () => {};
   return (
-    <>
+    <section ref={scrollRef}>
       <h4 className='mb-3 mt-6 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
         Contacte
       </h4>
@@ -62,7 +66,7 @@ const ContactForm = () => {
           </div>
         </form>
       </div>
-    </>
+    </section>
   );
 };
 

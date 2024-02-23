@@ -18,7 +18,12 @@ const MainPage = () => {
   const { user } = useContext(UserContext);
   const [backToTopBtn, setBackToTopBtn] = useState(false);
   const associationRef = useRef<HTMLDivElement | null>(null);
+  const boardRef = useRef<HTMLDivElement | null>(null);
+  const bookRef = useRef<HTMLDivElement | null>(null);
   const seasonsRef = useRef<HTMLDivElement | null>(null);
+  const locationRef = useRef<HTMLDivElement | null>(null);
+  const contactRef = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
     window.addEventListener('scroll', () => {
       if (window.scrollY > 100) {
@@ -41,7 +46,14 @@ const MainPage = () => {
       exit={{ opacity: 0 }}
     >
       <div className='md:grid md:grid-cols-layoutNav'>
-        <Navigation associationRef={associationRef} seasonsRef={seasonsRef} />
+        <Navigation
+          associationRef={associationRef}
+          seasonsRef={seasonsRef}
+          boardRef={boardRef}
+          bookRef={bookRef}
+          locationRef={locationRef}
+          contactRef={contactRef}
+        />
         <div className='mt-4 mx-3 md:col-span1 md:col-start-2 overflow-y-auto'>
           {user.name !== '' && (
             <h1 className='text-lg text-right text-gray-600'>
@@ -52,13 +64,13 @@ const MainPage = () => {
           <HeaderTitle />
           <ImageSlider />
           <Association scrollRef={associationRef} />
-          <BoardMembers />
-          <BookFeatures />
+          <BoardMembers scrollRef={boardRef} />
+          <BookFeatures scrollRef={bookRef} />
           <BookTeasers />
           <BookTestimonials />
           <ChapterGrid scrollRef={seasonsRef} />
-          <Location />
-          <ContactForm />
+          <Location scrollRef={locationRef} />
+          <ContactForm scrollRef={contactRef} />
           {backToTopBtn && <ScrollTopBtn title='↑' onClick={scrollUp} />}
         </div>
       </div>

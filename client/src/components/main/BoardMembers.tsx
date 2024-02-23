@@ -1,8 +1,12 @@
 import React from 'react';
 
-const BoardMembers = () => {
+type TBoardProps = {
+  scrollRef: React.RefObject<HTMLDivElement>;
+};
+
+const BoardMembers = ({ scrollRef }: TBoardProps) => {
   return (
-    <>
+    <section ref={scrollRef}>
       <h4 className='mb-3 mt-6 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
         JUNTA
       </h4>
@@ -11,7 +15,7 @@ const BoardMembers = () => {
           Més contingut relatiu a la junta, membres, organigrama, etc.
         </div>
       </div>
-    </>
+    </section>
   );
 };
 

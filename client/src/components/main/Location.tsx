@@ -1,6 +1,10 @@
-const Location = () => {
+type TLocationProps = {
+  scrollRef: React.RefObject<HTMLDivElement>;
+};
+
+const Location = ({ scrollRef }: TLocationProps) => {
   return (
-    <>
+    <section ref={scrollRef}>
       <h4 className='mb-3 mt-6 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
         On Som
       </h4>
@@ -16,7 +20,7 @@ const Location = () => {
           className='mx-auto h-96 w-full rounded-xl shadow-xl'
         ></iframe>
       </div>
-    </>
+    </section>
   );
 };
 
