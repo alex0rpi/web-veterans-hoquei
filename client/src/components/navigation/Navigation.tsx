@@ -16,6 +16,7 @@ import MainNavList from './MainNavList';
 import AdminNavList from './AdminNavList';
 
 type TNavigationProps = {
+  homeRef?: React.RefObject<HTMLDivElement>;
   associationRef?: React.RefObject<HTMLDivElement>;
   seasonsRef?: React.RefObject<HTMLDivElement>;
   contactRef?: React.RefObject<HTMLDivElement>;
@@ -25,6 +26,7 @@ type TNavigationProps = {
 };
 
 export const Navigation = ({
+  homeRef,
   associationRef,
   seasonsRef,
   contactRef,
@@ -51,7 +53,7 @@ export const Navigation = ({
 
   return (
     <>
-      <div className='fixed md:h-screen md:col-span-1 md:col-start-1 md:flex md:justify-end opacity-[92]'>
+      <div className='navLayout'>
         <nav className='w-full min-w-fit bg-primary text-right text-slate-200 relative'>
           <motion.div
             initial={{ x: '100%', opacity: 0.2 }}
@@ -92,6 +94,7 @@ export const Navigation = ({
           <div className='hidden w-full pe-2 pt-2 mt-0 ps-2 text-sm md:block border-t-[1px] border-slate-300'>
             {user.name === '' ? (
               <MainNavList
+                homeRef={homeRef}
                 associationRef={associationRef}
                 seasonsRef={seasonsRef}
                 contactRef={contactRef}
@@ -119,6 +122,7 @@ export const Navigation = ({
           >
             {user.name === '' ? (
               <MainNavList
+                homeRef={homeRef}
                 associationRef={associationRef}
                 seasonsRef={seasonsRef}
                 contactRef={contactRef}

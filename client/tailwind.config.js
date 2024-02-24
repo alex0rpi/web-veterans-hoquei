@@ -26,6 +26,7 @@ export default {
         // layoutLg: '12.5% 15% 60% 12.5%',
         layoutLg: '12.5% 75% 12.5%',
         layoutNav: '20% 80%',
+        layoutBookNav: '15% 85%',
       },
     },
   },

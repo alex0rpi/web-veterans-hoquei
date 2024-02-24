@@ -19,6 +19,7 @@ import {
 const MainPage = () => {
   const { user } = useContext(UserContext);
   const [backToTopBtn, setBackToTopBtn] = useState(false);
+  const homeRef = useRef<HTMLDivElement | null>(null);
   const associationRef = useRef<HTMLDivElement | null>(null);
   const boardRef = useRef<HTMLDivElement | null>(null);
   const bookRef = useRef<HTMLDivElement | null>(null);
@@ -47,8 +48,9 @@ const MainPage = () => {
       transition={{ type: easeInOut, duration: 1 }}
       exit={{ opacity: 0 }}
     >
-      <div className='md:grid md:grid-cols-layoutNav'>
+      <div className='twoColLayout'>
         <Navigation
+          homeRef={homeRef}
           associationRef={associationRef}
           seasonsRef={seasonsRef}
           boardRef={boardRef}
@@ -56,14 +58,14 @@ const MainPage = () => {
           locationRef={locationRef}
           contactRef={contactRef}
         />
-        <div className='mt-4 mx-3 md:col-span1 md:col-start-2 overflow-y-auto'>
+        <div className='pageLayout'>
           {user.name !== '' && (
             <h1 className='text-lg text-right text-gray-600'>
               Bon dia,{' '}
               <span className='font-bold text-lg text-right'> {user.name}</span>
             </h1>
           )}
-          <HeaderTitle />
+          <HeaderTitle scrollRef={homeRef} />
           <ImageSlider />
           <Association scrollRef={associationRef} />
           <BoardMembers scrollRef={boardRef} />

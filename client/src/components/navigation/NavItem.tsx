@@ -5,7 +5,7 @@ import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { useLocation } from 'react-router-dom';
 
 type Props = {
-  title: string;
+  title: string | React.ReactNode;
   to?: string;
   icon?: IconDefinition;
   scrollRef?: React.RefObject<HTMLDivElement>;
@@ -25,7 +25,7 @@ export const NavItem = ({
     navFontSize = 'text-sm';
   }
   const onScrollLinkClick = () => {
-    scrollRef?.current?.scrollIntoView({ behavior: 'smooth' });
+    scrollRef?.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
 
   return (

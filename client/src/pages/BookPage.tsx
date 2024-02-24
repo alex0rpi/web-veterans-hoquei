@@ -1,18 +1,33 @@
 // import pdf from '../../public/assets/documents/Llibre-veterans-hoquei-patins-fcb_compressed.pdf';
 
+import { easeInOut, motion } from 'framer-motion';
+import { Navigation } from '../components/navigation/Navigation';
+
 const pdfUrl =
-  "http://localhost:4000/documents/Llibre-veterans-hoquei-patins-fcb_compressed.pdf";
+  'http://localhost:4000/documents/Llibre-veterans-hoquei-patins-fcb_compressed.pdf';
 
 const BookPage = () => {
   return (
-    <div className="w-full h-full">
-      <iframe
-        title="Browser PDF Viewer"
-        src={pdfUrl}
-        allowFullScreen
-        className="w-full h-[95vh] rounded-lg"
-      />
-    </div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ type: easeInOut, duration: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <div className='bookPageTwoColLayout'>
+        <Navigation />
+        <div className='pageLayout'>
+          <div className='w-full h-full'>
+            <iframe
+              title='Browser PDF Viewer'
+              src={pdfUrl}
+              allowFullScreen
+              className='w-full h-[95vh] rounded-lg'
+            />
+          </div>
+        </div>
+      </div>
+    </motion.div>
   );
 };
 

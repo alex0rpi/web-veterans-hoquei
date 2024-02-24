@@ -15,6 +15,7 @@ import { paths } from '../../constants';
 import { useLocation } from 'react-router-dom';
 
 type TMainNav = {
+  homeRef?: React.RefObject<HTMLDivElement>;
   associationRef?: React.RefObject<HTMLDivElement>;
   seasonsRef?: React.RefObject<HTMLDivElement>;
   contactRef?: React.RefObject<HTMLDivElement>;
@@ -24,6 +25,7 @@ type TMainNav = {
 };
 
 const MainNavList = ({
+  homeRef,
   associationRef,
   seasonsRef,
   contactRef,
@@ -34,9 +36,28 @@ const MainNavList = ({
   const location = useLocation();
 
   return (
-    <>
-      <NavItem icon={faHouse} title='Home' />
+    <div>
+      <NavItem icon={faHouse} title='Home' scrollRef={homeRef} />
       <NavItem icon={faUser} title='Accés' to={paths.login} />
+      {location.pathname.startsWith(paths.season.split(':')[0]) && (
+        <>
+          <NavItem icon={faPersonSkating} title='El Llibre' to={paths.book} />
+          <NavItem icon={faPersonSkating} title='Jugadors' to={paths.players} />
+        </>
+      )}
+      {location.pathname === paths.book && (
+        <NavItem
+          icon={faCalendar}
+          title={
+            <>
+              <span>Temporades</span>
+              <br />
+              <span>recents</span>
+            </>
+          }
+          to={paths.genericSeason}
+        />
+      )}
       {location.pathname === paths.home && (
         <>
           <NavItem
@@ -44,13 +65,13 @@ const MainNavList = ({
             title='Qui som'
             scrollRef={associationRef}
           />
+          <NavItem icon={faPeopleGroup} title='Junta' scrollRef={boardRef} />
           <NavItem
             icon={faBookOpen}
             title='El Llibre'
             // to={paths.book}
             scrollRef={bookRef}
           />
-          <NavItem icon={faPeopleGroup} title='Junta' scrollRef={boardRef} />
           <NavItem
             icon={faCalendar}
             title='Temporades'
@@ -67,7 +88,7 @@ const MainNavList = ({
           <NavItem icon={faEnvelope} title='Contacte' scrollRef={contactRef} />
         </>
       )}
-    </>
+    </div>
   );
 };
 

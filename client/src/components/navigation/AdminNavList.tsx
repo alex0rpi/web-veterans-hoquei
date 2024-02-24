@@ -14,7 +14,7 @@ type TMainNav = {
 
 const AdminNavList = ({ onLogout }: TMainNav) => {
   return (
-    <>
+    <div>
       <NavItem icon={faHouse} title='Home' />
       <NavItem
         icon={faCalendar}
@@ -32,7 +32,7 @@ const AdminNavList = ({ onLogout }: TMainNav) => {
         title='Desconnectar'
         onItemClick={onLogout}
       />
-    </>
+    </div>
   );
 };
 

@@ -3,6 +3,7 @@ import {
   AdminLogin,
   AdminRegister,
   RequestPasswordReset,
+  UpdatePassword,
   UserVerify,
 } from '../components/auth';
 import { useLocation } from 'react-router-dom';
@@ -15,6 +16,7 @@ const AuthPage = () => {
   const isRegister = location.pathname === paths.register;
   const isVerify = location.pathname === paths.verify;
   const isRequestPwdReset = location.pathname === paths.requestPasswordReset;
+  const isUpdatePassword = location.pathname === paths.updatePassword;
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -22,13 +24,14 @@ const AuthPage = () => {
       transition={{ type: easeInOut, duration: 1 }}
       exit={{ opacity: 0 }}
     >
-      <div className='md:grid md:grid-cols-layoutNav'>
+      <div className='twoColLayout'>
         <Navigation />
-        <div className='mt-4 mx-3 md:col-span1 md:col-start-2 overflow-y-auto'>
+        <div className='pageLayout'>
           {isLogin && <AdminLogin />}
           {isRegister && <AdminRegister />}
           {isVerify && <UserVerify />}
           {isRequestPwdReset && <RequestPasswordReset />}
+          {isUpdatePassword && <UpdatePassword />}
         </div>
       </div>
     </motion.div>

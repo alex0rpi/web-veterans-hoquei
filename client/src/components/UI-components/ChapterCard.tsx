@@ -29,7 +29,7 @@ export const ChapterCard = (props: TchapterCardProps) => {
           ? ''
           : !props.goTo
             ? `/temporades/${props.season}`
-            : `/admin/temporades/edit-chapter/${props.goTo}`
+            : `/admin/edit-chapter/${props.goTo}`
       }
     >
       <div className={`card block ${cardBg} p-2 h-full`}>

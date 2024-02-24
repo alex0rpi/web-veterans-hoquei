@@ -17,6 +17,21 @@ body {
   @apply h-screen md:grid md:grid-cols-layoutBook;
 }
 
+.twoColLayout {
+  @apply md:grid md:grid-cols-layoutNav;
+}
+
+.bookPageTwoColLayout {
+  @apply md:grid md:grid-cols-layoutBookNav;
+}
+.navLayout {
+  @apply fixed md:h-screen md:col-span-1 md:col-start-1 md:flex md:justify-end opacity-[92];
+}
+
+.pageLayout {
+  @apply my-4 mx-4 md:col-span-1 md:col-start-2 overflow-y-auto;
+}
+
 .main-column-layout {
   @apply md:overflow-auto bg-gray-200 md:col-start-2 md:col-end-3 md:justify-stretch;
 }
