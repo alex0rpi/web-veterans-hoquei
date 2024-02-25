@@ -8,26 +8,25 @@ const pdfUrl =
 
 const BookPage = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ type: easeInOut, duration: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      <div className='twoColLayout'>
-        <Navigation />
-        <div className='bookPageLayout'>
-          <div className='w-full h-full'>
-            <iframe
-              title='Browser PDF Viewer'
-              src={pdfUrl}
-              allowFullScreen
-              className='w-full h-[95vh] rounded-lg'
-            />
-          </div>
+    <div className='twoColLayout'>
+      <Navigation />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ type: easeInOut, duration: 1 }}
+        exit={{ opacity: 0 }}
+        className='bookPageLayout'
+      >
+        <div className='w-full h-full'>
+          <iframe
+            title='Browser PDF Viewer'
+            src={pdfUrl}
+            allowFullScreen
+            className='w-full h-[95vh] rounded-lg'
+          />
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 };
 

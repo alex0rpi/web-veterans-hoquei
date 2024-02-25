@@ -42,43 +42,42 @@ const MainPage = () => {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ type: easeInOut, duration: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      <div className='twoColLayout'>
-        <Navigation
-          homeRef={homeRef}
-          associationRef={associationRef}
-          seasonsRef={seasonsRef}
-          boardRef={boardRef}
-          bookRef={bookRef}
-          locationRef={locationRef}
-          contactRef={contactRef}
-        />
-        <div className='pageLayout'>
-          {user.name !== '' && (
-            <h1 className='text-lg text-right text-gray-600'>
-              Bon dia,{' '}
-              <span className='font-bold text-lg text-right'> {user.name}</span>
-            </h1>
-          )}
-          <HeaderTitle scrollRef={homeRef} />
-          <ImageSlider />
-          <Association scrollRef={associationRef} />
-          <BoardMembers scrollRef={boardRef} />
-          <BookFeatures scrollRef={bookRef} />
-          <BookTeasers />
-          <BookTestimonials />
-          <ChapterGrid scrollRef={seasonsRef} />
-          <Location scrollRef={locationRef} />
-          <ContactForm scrollRef={contactRef} />
-          {backToTopBtn && <ScrollTopBtn title='↑' onClick={scrollUp} />}
-        </div>
-      </div>
-    </motion.div>
+    <div className='twoColLayout'>
+      <Navigation
+        homeRef={homeRef}
+        associationRef={associationRef}
+        seasonsRef={seasonsRef}
+        boardRef={boardRef}
+        bookRef={bookRef}
+        locationRef={locationRef}
+        contactRef={contactRef}
+      />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ type: easeInOut, duration: 1 }}
+        exit={{ opacity: 0 }}
+        className='pageLayout'
+      >
+        {user.name !== '' && (
+          <h1 className='text-lg text-right text-gray-600'>
+            Bon dia,{' '}
+            <span className='font-bold text-lg text-right'> {user.name}</span>
+          </h1>
+        )}
+        <HeaderTitle scrollRef={homeRef} />
+        <ImageSlider />
+        <Association scrollRef={associationRef} />
+        <BoardMembers scrollRef={boardRef} />
+        <BookFeatures scrollRef={bookRef} />
+        <BookTeasers />
+        <BookTestimonials />
+        <ChapterGrid scrollRef={seasonsRef} />
+        <Location scrollRef={locationRef} />
+        <ContactForm scrollRef={contactRef} />
+        {backToTopBtn && <ScrollTopBtn title='↑' onClick={scrollUp} />}
+      </motion.div>
+    </div>
   );
 };
 

@@ -18,23 +18,22 @@ const AuthPage = () => {
   const isRequestPwdReset = location.pathname === paths.requestPasswordReset;
   const isUpdatePassword = location.pathname === paths.updatePassword;
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ type: easeInOut, duration: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      <div className='twoColLayout'>
-        <Navigation />
-        <div className='pageLayout'>
-          {isLogin && <AdminLogin />}
-          {isRegister && <AdminRegister />}
-          {isVerify && <UserVerify />}
-          {isRequestPwdReset && <RequestPasswordReset />}
-          {isUpdatePassword && <UpdatePassword />}
-        </div>
-      </div>
-    </motion.div>
+    <div className='twoColLayout'>
+      <Navigation />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ type: easeInOut, duration: 1 }}
+        exit={{ opacity: 0 }}
+        className='pageLayout'
+      >
+        {isLogin && <AdminLogin />}
+        {isRegister && <AdminRegister />}
+        {isVerify && <UserVerify />}
+        {isRequestPwdReset && <RequestPasswordReset />}
+        {isUpdatePassword && <UpdatePassword />}
+      </motion.div>
+    </div>
   );
 };
 
