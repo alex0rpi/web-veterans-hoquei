@@ -35,10 +35,15 @@ const MainNavList = ({
 }: TMainNav) => {
   const location = useLocation();
 
+  const isNotLoginRegister =
+    location.pathname !== paths.login && location.pathname !== paths.register;
+
   return (
     <div>
       <NavItem icon={faHouse} title='Home' scrollRef={homeRef} />
-      <NavItem icon={faUser} title='Accés' to={paths.login} />
+      {isNotLoginRegister && (
+        <NavItem icon={faUser} title='Accés' to={paths.login} />
+      )}
       {location.pathname.startsWith(paths.season.split(':')[0]) && (
         <>
           <NavItem icon={faPersonSkating} title='El Llibre' to={paths.book} />

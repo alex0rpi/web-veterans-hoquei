@@ -72,8 +72,8 @@ const AdminLogin = () => {
                   name='email'
                   type='email'
                   placeholder='email@email.com'
-                  error={formik.touched.email ? formik.errors.email : undefined}
-                  check={formik.touched.email && !formik.errors.email}
+                  // error={formik.touched.email ? formik.errors.email : undefined}
+                  // check={formik.touched.email && !formik.errors.email}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.email}
@@ -83,10 +83,10 @@ const AdminLogin = () => {
                   name='password'
                   type='password'
                   placeholder='abcABC123!'
-                  error={
-                    formik.touched.password ? formik.errors.password : undefined
-                  }
-                  check={formik.touched.password && !formik.errors.password}
+                  // error={
+                  //   formik.touched.password ? formik.errors.password : undefined
+                  // }
+                  // check={formik.touched.password && !formik.errors.password}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.password}

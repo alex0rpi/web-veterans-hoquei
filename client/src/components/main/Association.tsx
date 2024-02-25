@@ -1,5 +1,5 @@
 import FlipCard from '../UI-components/FlipCardWithImage';
-import { cardImage01 } from '../../assets/CardImages';
+import { cardImage01, cardImage02 } from '../../assets/CardImages';
 
 type TAssociationProps = {
   scrollRef?: React.RefObject<HTMLDivElement>;
@@ -38,7 +38,7 @@ const Association = ({ scrollRef }: TAssociationProps) => {
           text='El nostre equip de veterans participa al Campionat de Catalunya i
           ocupa el lideratge en aquest moment. Participem en torneigs
           nacionals i internacionals als què sóm convidats.'
-          image={cardImage01}
+          image={cardImage02}
         />
       </div>
     </section>
