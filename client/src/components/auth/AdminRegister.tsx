@@ -9,6 +9,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { registerSchema } from '../../validation';
 import { Formik } from 'formik';
 import { TRegisterForm } from '../../types/Item-types';
+import { paths } from '../../constants';
+import { PageTitle } from '../main';
 
 const AdminRegister = () => {
   const initialValues: TRegisterForm = {
@@ -32,7 +34,7 @@ const AdminRegister = () => {
     if (isSuccess) {
       // toast.info('Nou usuari registrat.');
       toast.info('Verifica el teu email per activar el compte.');
-      navigate('/admin/login');
+      navigate(paths.login);
       return;
     }
   };
@@ -57,9 +59,8 @@ const AdminRegister = () => {
       }}
       exit={{ opacity: 0, x: '-100vw' }}
     >
-      <h1 className='mt-10 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
-        Registrar nou membre
-      </h1>
+      <PageTitle titleText='Registrar nou membre' />
+
       <div className='mt-6 space-y-4 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6'>
         <Formik
           initialValues={initialValues}
@@ -135,7 +136,7 @@ const AdminRegister = () => {
           Ja estàs registrat?{' '}
           <Link
             className='font-bold hover:underline hover:underline-offset-4 hover:decoration-[3px]'
-            to='/admin/login'
+            to={paths.login}
           >
             Accedeix
           </Link>

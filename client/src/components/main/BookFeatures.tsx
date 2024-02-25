@@ -6,7 +6,7 @@ import { Button } from '../UI-components/Button';
 import StickIcon from '../UI-components/StickIcon';
 
 type TBookProps = {
-  scrollRef: React.RefObject<HTMLDivElement>;
+  scrollRef?: React.RefObject<HTMLDivElement>;
 };
 
 const BookFeatures = ({ scrollRef }: TBookProps) => {

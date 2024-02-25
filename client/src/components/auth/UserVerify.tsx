@@ -7,6 +7,7 @@ import { paths } from '../../constants';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Spinner from '../UI-components/loading-spinner/Spinner';
+import { PageTitle } from '../main';
 
 const UserVerify = () => {
   const [error, setError] = useState(false);
@@ -57,9 +58,7 @@ const UserVerify = () => {
       }}
       exit={{ opacity: 0, x: '-100vw' }}
     >
-      <h1 className='mt-10 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
-        Confirmació de compte.
-      </h1>
+      <PageTitle titleText='Confirmació de compte' />
       {isLoading ? (
         <>
           <div></div>

@@ -7,7 +7,6 @@ import {
 } from '../components/Admin';
 import { useLocation } from 'react-router-dom';
 import { paths } from '../constants';
-import { Navigation } from '../components/navigation/Navigation';
 
 const AdminPage = () => {
   const location = useLocation();
@@ -24,15 +23,10 @@ const AdminPage = () => {
       transition={{ type: easeInOut, duration: 1 }}
       exit={{ opacity: 0 }}
     >
-      <div className='twoColLayout'>
-        <Navigation />
-        <div className='pageLayout'>
-          {isChapterList && <AdminChapterList />}
-          {isEditChapter && <AdminChapterEdit />}
-          {isNewChapter && <AdminChapterNew />}
-          {isEditUser && <AdminData />}
-        </div>
-      </div>
+      {isChapterList && <AdminChapterList />}
+      {isEditChapter && <AdminChapterEdit />}
+      {isNewChapter && <AdminChapterNew />}
+      {isEditUser && <AdminData />}
     </motion.div>
   );
 };

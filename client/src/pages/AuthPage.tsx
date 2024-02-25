@@ -7,7 +7,6 @@ import {
   UserVerify,
 } from '../components/auth';
 import { useLocation } from 'react-router-dom';
-import { Navigation } from '../components/navigation/Navigation';
 import { paths } from '../constants';
 
 const AuthPage = () => {
@@ -18,22 +17,18 @@ const AuthPage = () => {
   const isRequestPwdReset = location.pathname === paths.requestPasswordReset;
   const isUpdatePassword = location.pathname === paths.updatePassword;
   return (
-    <div className='twoColLayout'>
-      <Navigation />
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ type: easeInOut, duration: 1 }}
-        exit={{ opacity: 0 }}
-        className='pageLayout'
-      >
-        {isLogin && <AdminLogin />}
-        {isRegister && <AdminRegister />}
-        {isVerify && <UserVerify />}
-        {isRequestPwdReset && <RequestPasswordReset />}
-        {isUpdatePassword && <UpdatePassword />}
-      </motion.div>
-    </div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ type: easeInOut, duration: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      {isLogin && <AdminLogin />}
+      {isRegister && <AdminRegister />}
+      {isVerify && <UserVerify />}
+      {isRequestPwdReset && <RequestPasswordReset />}
+      {isUpdatePassword && <UpdatePassword />}
+    </motion.div>
   );
 };
 

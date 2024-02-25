@@ -1,7 +1,7 @@
 import React from 'react';
 
 type TBoardProps = {
-  scrollRef: React.RefObject<HTMLDivElement>;
+  scrollRef?: React.RefObject<HTMLDivElement>;
 };
 
 const BoardMembers = ({ scrollRef }: TBoardProps) => {

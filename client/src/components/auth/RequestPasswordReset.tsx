@@ -10,6 +10,7 @@ import { Button } from '../UI-components/Button';
 import RequestPasswordResetService from '../../services/RequestPasswordResetService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { PageTitle } from '../main';
 
 const RequestPasswordReset = () => {
   const navigate = useNavigate();
@@ -66,9 +67,7 @@ const RequestPasswordReset = () => {
       }}
       exit={{ opacity: 0, x: '-100vw' }}
     >
-      <h1 className='mt-10 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
-        Sol·licita una nova contrasenya
-      </h1>
+      <PageTitle titleText='Sol·licita una nova contrasenya' />
       <div className='mt-6 space-y-4 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6'>
         <form className='' onSubmit={onRequestPasswordResetHandler}>
           <FormInput

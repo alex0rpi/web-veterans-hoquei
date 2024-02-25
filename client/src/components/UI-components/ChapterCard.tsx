@@ -3,6 +3,7 @@ import stickIcon from '../../assets/logos/hockeyStick-no-bg.png';
 
 import { Link } from 'react-router-dom';
 import { TChapterListItem } from '../../types/Item-types';
+import { paths } from '../../constants';
 
 type TchapterCardProps = Omit<TChapterListItem, 'id'> & { index: number } & {
   goTo?: string;
@@ -28,8 +29,8 @@ export const ChapterCard = (props: TchapterCardProps) => {
         props.noLink
           ? ''
           : !props.goTo
-            ? `/temporades/${props.season}`
-            : `/admin/edit-chapter/${props.goTo}`
+            ? `${paths.season.split(':')[0]}${props.season}`
+            : `${paths.editChapter.split(':')[0]}${props.goTo}`
       }
     >
       <div className={`card block ${cardBg} p-2 h-full`}>

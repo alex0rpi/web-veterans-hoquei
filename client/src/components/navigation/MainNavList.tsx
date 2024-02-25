@@ -35,15 +35,24 @@ const MainNavList = ({
 }: TMainNav) => {
   const location = useLocation();
 
-  const isNotLoginRegister =
-    location.pathname !== paths.login && location.pathname !== paths.register;
+  const authPaths = [
+    paths.login,
+    paths.register,
+    paths.verify,
+    paths.requestPasswordReset,
+    paths.updatePassword,
+  ];
+  const isAuth = authPaths.includes(location.pathname);
 
   return (
-    <div>
-      <NavItem icon={faHouse} title='Home' scrollRef={homeRef} />
-      {isNotLoginRegister && (
-        <NavItem icon={faUser} title='Accés' to={paths.login} />
+    <>
+      {location.pathname === paths.home ? (
+        <NavItem icon={faHouse} title='Inici' scrollRef={homeRef} />
+      ) : (
+        <NavItem icon={faHouse} title='Inici' to={paths.home} />
       )}
+
+      {isAuth && <NavItem icon={faUser} title='Accés' to={paths.login} />}
       {location.pathname.startsWith(paths.season.split(':')[0]) && (
         <>
           <NavItem icon={faPersonSkating} title='El Llibre' to={paths.book} />
@@ -65,6 +74,7 @@ const MainNavList = ({
       )}
       {location.pathname === paths.home && (
         <>
+          <NavItem icon={faUser} title='Accés' to={paths.login} />
           <NavItem
             icon={faPeopleGroup}
             title='Qui som'
@@ -93,7 +103,7 @@ const MainNavList = ({
           <NavItem icon={faEnvelope} title='Contacte' scrollRef={contactRef} />
         </>
       )}
-    </div>
+    </>
   );
 };
 

@@ -11,6 +11,7 @@ import { paths } from '../../constants';
 import { loginSchema } from '../../validation';
 import { Formik } from 'formik';
 import { TLoginForm } from '../../types/Item-types';
+import { PageTitle } from '../main';
 
 const AdminLogin = () => {
   const initialValues: TLoginForm = {
@@ -55,9 +56,7 @@ const AdminLogin = () => {
       }}
       exit={{ opacity: 0, x: '-100vw' }}
     >
-      <h1 className='mt-10 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
-        Accés per a membres
-      </h1>
+      <PageTitle titleText='Accés per a membres' />
       <div className='mt-6 space-y-4 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6'>
         <Formik
           initialValues={initialValues}

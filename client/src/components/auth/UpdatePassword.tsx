@@ -10,6 +10,7 @@ import FormInput from '../UI-components/FormInput';
 import { Button } from '../UI-components/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
+import { PageTitle } from '../main';
 
 const UpdatePassword = () => {
   const navigate = useNavigate();
@@ -86,9 +87,7 @@ const UpdatePassword = () => {
         }}
         exit={{ opacity: 0, x: '-100vw' }}
       >
-        <h1 className='mt-10 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
-          Crea una nova contrasenya
-        </h1>
+        <PageTitle titleText='Crea una nova contrasenya' />
         <div className='mt-6 space-y-4 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6'>
           <form onSubmit={onResetPasswordSubmitHandler}>
             <FormInput

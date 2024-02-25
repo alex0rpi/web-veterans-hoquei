@@ -7,7 +7,7 @@ import TextAreaInput from '../UI-components/TextAreaInput';
 // import 'react-toastify/dist/ReactToastify.css';
 
 type TContactFormProps = {
-  scrollRef: React.RefObject<HTMLDivElement>;
+  scrollRef?: React.RefObject<HTMLDivElement>;
 };
 
 const ContactForm = ({ scrollRef }: TContactFormProps) => {

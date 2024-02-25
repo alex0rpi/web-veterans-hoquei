@@ -1,5 +1,5 @@
 type TLocationProps = {
-  scrollRef: React.RefObject<HTMLDivElement>;
+  scrollRef?: React.RefObject<HTMLDivElement>;
 };
 
 const Location = ({ scrollRef }: TLocationProps) => {

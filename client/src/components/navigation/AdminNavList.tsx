@@ -15,7 +15,7 @@ type TMainNav = {
 const AdminNavList = ({ onLogout }: TMainNav) => {
   return (
     <div>
-      <NavItem icon={faHouse} title='Home' />
+      <NavItem icon={faHouse} title='Inici' to={paths.home} />
       <NavItem
         icon={faCalendar}
         title='Els meus capítols'

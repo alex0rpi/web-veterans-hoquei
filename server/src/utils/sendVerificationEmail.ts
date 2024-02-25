@@ -16,8 +16,8 @@ export const sendVerificationEmail = ({
     <p>Bon dia 🌤️👋🏻 ${name}, <br>
     Si has rebut aquest correu electrònic, significa que t'has registrat correctament a la nostra aplicació. <br>
     Per a completar el procés de registre, confirma el teu email fent clic en 
-    <a href='${process.env.CLIENT_URL}/admin/verify?emailToken=${emailToken}' target="_blank">aquest</a> enllaç:</p>
-    ➡️ <a href='${process.env.CLIENT_URL}/admin/verify?emailToken=${emailToken}'>CONFIRMA REGISTRE 📧</a>
+    <a href='${process.env.CLIENT_URL}/auth/verify?emailToken=${emailToken}' target="_blank">aquest</a> enllaç:</p>
+    ➡️ <a href='${process.env.CLIENT_URL}/auth/verify?emailToken=${emailToken}'>CONFIRMA REGISTRE 📧</a>
     <p><span style="color:red">Aquest link caducarà d'aquí 24 hores.</span> Passat aquest temps el teu compte serà esborrat i t'hauràs de tornat a registrar.</p>
     <p>Si no has estat tu, ignora aquest correu electrònic.</p>
     <hr>

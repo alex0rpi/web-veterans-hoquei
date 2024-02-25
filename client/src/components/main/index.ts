@@ -6,6 +6,7 @@ import BookTestimonials from './BookTestimonials';
 import ChapterGrid from './ChapterGrid';
 import ContactForm from './ContactForm';
 import HeaderTitle from './HeaderTitle';
+import PageTitle from './PageTitle';
 import ImageSlider from './ImageSlider';
 import Location from './Location';
 import RelatedLinksSection from './RelatedLinksSection';
@@ -19,6 +20,7 @@ export {
   ChapterGrid,
   ContactForm,
   HeaderTitle,
+  PageTitle,
   ImageSlider,
   Location,
   RelatedLinksSection,
