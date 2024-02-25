@@ -9,6 +9,7 @@ body {
   /* overflow: hidden; */;
 }
 
+/* General web layout */
 .main-grid {
   @apply h-screen md:grid md:grid-cols-layoutMd xl:grid-cols-layoutLg;
 }
@@ -17,25 +18,34 @@ body {
   @apply h-screen md:grid md:grid-cols-layoutBook;
 }
 
-.twoColLayout {
-  @apply md:grid md:grid-cols-layoutNav;
-}
-
-.bookPageTwoColLayout {
-  @apply md:grid md:grid-cols-layoutBookNav;
-}
-.navLayout {
-  @apply fixed md:h-screen md:col-span-1 md:col-start-1 md:flex md:justify-end opacity-[92];
-}
-
-.pageLayout {
-  @apply my-4 mx-4 md:col-span-1 md:col-start-2 overflow-y-auto;
-}
-
 .main-column-layout {
-  @apply md:overflow-auto bg-gray-200 md:col-start-2 md:col-end-3 md:justify-stretch;
+  @apply md:overflow-auto md:col-start-2 md:col-end-3 md:justify-stretch;
 }
 
+/* Page layout inside center column */
+.twoColLayout {
+  @apply md:flex md:flex-row;
+}
+
+.navLayout {
+  /* @apply fixed md:h-screen md:flex md:basis-1/5 md:justify-end; */
+  @apply sticky top-0 md:basis-1/5 h-screen bg-primary text-right opacity-90 text-slate-200;
+}
+.pageLayout {
+  @apply md:basis-4/5 py-4 px-4 overflow-y-auto bg-gray-200 opacity-90;
+}
+
+.navBookLayout {
+  /* @apply fixed md:h-screen md:flex md:basis-1/5 md:justify-end; */
+  @apply sticky top-0 md:basis-1/12 h-screen bg-primary text-right opacity-90 text-slate-200;
+}
+
+.bookPageLayout {
+  /* @apply md:grid md:grid-cols-layoutBookNav; */
+  @apply md:basis-11/12 py-4 px-4 overflow-y-auto bg-gray-200 opacity-90;
+}
+
+/* Components */
 .btn {
   @apply cursor-pointer rounded-full px-3 py-2 text-sm font-bold uppercase tracking-wider;
 }

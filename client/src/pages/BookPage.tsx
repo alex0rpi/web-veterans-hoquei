@@ -14,9 +14,9 @@ const BookPage = () => {
       transition={{ type: easeInOut, duration: 1 }}
       exit={{ opacity: 0 }}
     >
-      <div className='bookPageTwoColLayout'>
+      <div className='twoColLayout'>
         <Navigation />
-        <div className='pageLayout'>
+        <div className='bookPageLayout'>
           <div className='w-full h-full'>
             <iframe
               title='Browser PDF Viewer'

@@ -23,17 +23,16 @@ export const MainLayout = (props: PropsWithChildren) => {
           position='bottom-right'
           autoClose={3000}
           hideProgressBar={false}
-          newestOnTop={false}
+          newestOnTop={true}
           closeOnClick
           rtl={false}
           // pauseOnFocusLoss
-          draggable
-          pauseOnHover={false}
+          // draggable
+          pauseOnHover={true}
           theme='light'
         />
         {props.children}
       </div>
-      {/* Outlet is a special component that will render the child route’s component */}
     </div>
   );
 };
