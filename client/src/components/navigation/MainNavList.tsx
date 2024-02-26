@@ -17,11 +17,12 @@ import { useLocation } from 'react-router-dom';
 type TMainNav = {
   homeRef?: React.RefObject<HTMLDivElement>;
   associationRef?: React.RefObject<HTMLDivElement>;
-  seasonsRef?: React.RefObject<HTMLDivElement>;
-  contactRef?: React.RefObject<HTMLDivElement>;
-  locationRef?: React.RefObject<HTMLDivElement>;
   boardRef?: React.RefObject<HTMLDivElement>;
+  seasonsRef?: React.RefObject<HTMLDivElement>;
   bookRef?: React.RefObject<HTMLDivElement>;
+  relatedLinksRef?: React.RefObject<HTMLDivElement>;
+  locationRef?: React.RefObject<HTMLDivElement>;
+  contactRef?: React.RefObject<HTMLDivElement>;
 };
 
 const MainNavList = ({
@@ -31,6 +32,7 @@ const MainNavList = ({
   contactRef,
   locationRef,
   boardRef,
+  relatedLinksRef,
   bookRef,
 }: TMainNav) => {
   const location = useLocation();
@@ -94,7 +96,7 @@ const MainNavList = ({
           />
           <NavItem icon={faPersonSkating} title='Jugadors' to={paths.players} />
           <NavItem icon={faNewspaper} title='Blog i cotis' to={paths.blog} />
-          <NavItem icon={faLink} title='Enllaços' />
+          <NavItem icon={faLink} title='Enllaços' scrollRef={relatedLinksRef} />
           <NavItem
             icon={faLocationDot}
             title='On som'

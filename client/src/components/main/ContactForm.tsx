@@ -1,5 +1,10 @@
 import { useRef } from 'react';
-import { Button, FormInput, TextAreaInput } from '../UI-components';
+import {
+  Button,
+  FormInput,
+  TextAreaInput,
+  TitleSection,
+} from '../UI-components';
 // import contactEmailService from '../../services/ContactEmailService';
 // import { toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
@@ -23,9 +28,7 @@ const ContactForm = ({ scrollRef }: TContactFormProps) => {
   const onContactSubmitHandler = () => {};
   return (
     <section ref={scrollRef}>
-      <h4 className='mb-3 mt-6 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
-        Contacte
-      </h4>
+      <TitleSection sectionTitle='Contacte' />
       <div className='mt-6 space-y-4 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6'>
         <p className=''>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati et

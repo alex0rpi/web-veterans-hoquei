@@ -19,21 +19,23 @@ import AdminNavList from './AdminNavList';
 type TNavigationProps = {
   homeRef?: React.RefObject<HTMLDivElement>;
   associationRef?: React.RefObject<HTMLDivElement>;
-  seasonsRef?: React.RefObject<HTMLDivElement>;
-  contactRef?: React.RefObject<HTMLDivElement>;
-  locationRef?: React.RefObject<HTMLDivElement>;
   boardRef?: React.RefObject<HTMLDivElement>;
   bookRef?: React.RefObject<HTMLDivElement>;
+  seasonsRef?: React.RefObject<HTMLDivElement>;
+  relatedLinksRef?: React.RefObject<HTMLDivElement>;
+  locationRef?: React.RefObject<HTMLDivElement>;
+  contactRef?: React.RefObject<HTMLDivElement>;
 };
 
 export const Navigation = ({
   homeRef,
   associationRef,
-  seasonsRef,
-  contactRef,
-  locationRef,
   boardRef,
   bookRef,
+  seasonsRef,
+  locationRef,
+  relatedLinksRef,
+  contactRef,
 }: TNavigationProps) => {
   // const [show, setShow] = useState(false);
   const { user, setUser } = useContext(UserContext);
@@ -100,11 +102,12 @@ export const Navigation = ({
           <MainNavList
             homeRef={homeRef}
             associationRef={associationRef}
-            seasonsRef={seasonsRef}
-            contactRef={contactRef}
-            bookRef={bookRef}
             boardRef={boardRef}
+            seasonsRef={seasonsRef}
+            bookRef={bookRef}
+            relatedLinksRef={relatedLinksRef}
             locationRef={locationRef}
+            contactRef={contactRef}
           />
         ) : (
           <AdminNavList onLogout={onLogoutHandler} />

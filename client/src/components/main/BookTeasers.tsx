@@ -34,9 +34,7 @@ const BookTeasers = () => {
         <Button title="Visualitza'l" type='button' to={paths.book} />
         <Button title="Descarrega'l" type='button' to={paths.book} />
       </div>
-      <p className='font-semibold mt-3 mb-2'>
-        Alguns testimonis i protagonistes de la història.
-      </p>
+      <p className='font-semibold mt-3 mb-2'>Esments dels impulsors.</p>
     </section>
   );
 };

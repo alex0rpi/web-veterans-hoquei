@@ -18,10 +18,10 @@ export {
   BookTeasers,
   BookTestimonials,
   ChapterGrid,
-  ContactForm,
   HeaderTitle,
   PageTitle,
   ImageSlider,
-  Location,
   RelatedLinksSection,
+  Location,
+  ContactForm,
 };

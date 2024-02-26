@@ -3,16 +3,17 @@ import { UserContext } from '../context/UserContext';
 import { easeInOut, motion } from 'framer-motion';
 import ScrollTopBtn from '../components/UI-components/ScrollTopBtn';
 import {
+  ImageSlider,
   Association,
   BoardMembers,
   BookFeatures,
   BookTeasers,
   BookTestimonials,
   ChapterGrid,
-  ContactForm,
   HeaderTitle,
-  ImageSlider,
+  RelatedLinksSection,
   Location,
+  ContactForm,
 } from '../components/main';
 
 type TMainPageProps = {
@@ -21,6 +22,7 @@ type TMainPageProps = {
   boardRef?: React.RefObject<HTMLDivElement>;
   bookRef?: React.RefObject<HTMLDivElement>;
   seasonsRef?: React.RefObject<HTMLDivElement>;
+  relatedLinksRef?: React.RefObject<HTMLDivElement>;
   locationRef?: React.RefObject<HTMLDivElement>;
   contactRef?: React.RefObject<HTMLDivElement>;
   scrollUp?: () => void;
@@ -29,11 +31,12 @@ type TMainPageProps = {
 const HomePage = ({
   homeRef,
   associationRef,
-  seasonsRef,
-  contactRef,
-  locationRef,
   boardRef,
   bookRef,
+  seasonsRef,
+  relatedLinksRef,
+  locationRef,
+  contactRef,
 }: TMainPageProps) => {
   const { user } = useContext(UserContext);
   const [backToTopBtn, setBackToTopBtn] = useState(false);
@@ -73,6 +76,7 @@ const HomePage = ({
       <BookTeasers />
       <BookTestimonials />
       <ChapterGrid scrollRef={seasonsRef} />
+      <RelatedLinksSection scrollRef={relatedLinksRef} />
       <Location scrollRef={locationRef} />
       <ContactForm scrollRef={contactRef} />
       {backToTopBtn && <ScrollTopBtn title='↑' onClick={scrollUp} />}

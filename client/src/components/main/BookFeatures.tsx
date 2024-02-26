@@ -1,5 +1,7 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { paths } from '../../constants';
-import { Button, StickIcon } from '../UI-components';
+import { Button, StickIcon, TitleSection } from '../UI-components';
+import { faEye, faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
 
 type TBookProps = {
   scrollRef?: React.RefObject<HTMLDivElement>;
@@ -8,9 +10,7 @@ type TBookProps = {
 const BookFeatures = ({ scrollRef }: TBookProps) => {
   return (
     <section ref={scrollRef}>
-      <h4 className='mb-3 mt-6 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
-        LLIBRE
-      </h4>
+      <TitleSection sectionTitle='El llibre' />
       <div className='mb-3 grid gap-3 md:grid-cols-3'>
         <div className='mx-2 text-left'>
           {/* <img src={stickIcon} width='30' className='ms-1 inline-block' /> */}
@@ -45,8 +45,18 @@ const BookFeatures = ({ scrollRef }: TBookProps) => {
         </div>
       </div>
       <div className='my-3 mx-auto flex flex-row gap-4 items-center justify-center'>
-        <Button title="Visualitza'l" type='button' to={paths.book} />
-        <Button title="Descarrega'l" type='button' to={paths.book} />
+        <Button
+          title="Visualitza'l"
+          type='button'
+          to={paths.book}
+          icon={<FontAwesomeIcon icon={faEye} />}
+        />
+        <Button
+          title='Descàrrega HD'
+          type='button'
+          icon={<FontAwesomeIcon icon={faFloppyDisk} size='lg' />}
+          // to={paths.book}
+        />
       </div>
     </section>
   );

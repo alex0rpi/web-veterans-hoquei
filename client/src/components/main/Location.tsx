@@ -1,3 +1,5 @@
+import { TitleSection } from '../UI-components';
+
 type TLocationProps = {
   scrollRef?: React.RefObject<HTMLDivElement>;
 };
@@ -5,9 +7,7 @@ type TLocationProps = {
 const Location = ({ scrollRef }: TLocationProps) => {
   return (
     <section ref={scrollRef}>
-      <h4 className='mb-3 mt-6 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
-        On Som
-      </h4>
+      <TitleSection sectionTitle='On ens trobem' />
       <div id='location'>
         <p className='mb-4'>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid

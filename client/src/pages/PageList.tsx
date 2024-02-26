@@ -19,6 +19,7 @@ const PageList = () => {
   const boardRef = useRef<HTMLDivElement | null>(null);
   const bookRef = useRef<HTMLDivElement | null>(null);
   const seasonsRef = useRef<HTMLDivElement | null>(null);
+  const relatedLinksRef = useRef<HTMLDivElement | null>(null);
   const locationRef = useRef<HTMLDivElement | null>(null);
   const contactRef = useRef<HTMLDivElement | null>(null);
   const location = useLocation();
@@ -52,6 +53,7 @@ const PageList = () => {
         seasonsRef={seasonsRef}
         boardRef={boardRef}
         bookRef={bookRef}
+        relatedLinksRef={relatedLinksRef}
         locationRef={locationRef}
         contactRef={contactRef}
       />
@@ -64,12 +66,13 @@ const PageList = () => {
       >
         {location.pathname === paths.home && (
           <HomePage
-            scrollUp={scrollUp}
             homeRef={homeRef}
+            scrollUp={scrollUp}
             associationRef={associationRef}
             boardRef={boardRef}
             bookRef={bookRef}
             seasonsRef={seasonsRef}
+            relatedLinksRef={relatedLinksRef}
             locationRef={locationRef}
             contactRef={contactRef}
           />

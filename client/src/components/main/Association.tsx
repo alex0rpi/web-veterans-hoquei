@@ -1,5 +1,6 @@
 import CardImageText from '../UI-components/CardImageText';
 import { cardImage01, cardImage02 } from '../../assets/CardImages';
+import { TitleSection } from '../UI-components';
 
 type TAssociationProps = {
   scrollRef?: React.RefObject<HTMLDivElement>;
@@ -8,9 +9,7 @@ type TAssociationProps = {
 const Association = ({ scrollRef }: TAssociationProps) => {
   return (
     <section ref={scrollRef}>
-      <h4 className='mb-3 mt-6 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
-        QUI SOM
-      </h4>
+      <TitleSection sectionTitle='Qui som' />
       <div className='rounded-md mb-2'>
         {/* <h1 className='text-xl font-bold text-primary mb-2 inline-block ms-2'>
           La nostra missió

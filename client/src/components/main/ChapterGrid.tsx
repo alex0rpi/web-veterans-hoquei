@@ -1,4 +1,4 @@
-import { ChapterCard, Spinner } from '../UI-components';
+import { ChapterCard, Spinner, TitleSection } from '../UI-components';
 import useChapters from '../../hooks/useChapters';
 
 type TSeasonsProps = {
@@ -35,10 +35,8 @@ const ChapterGrid = ({ scrollRef }: TSeasonsProps) => {
 
   return (
     <section ref={scrollRef}>
-      <h4 className='mb-3 mt-6 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
-        TEMPORADES RECENTS
-      </h4>
-      <section className='grid gap-3 md:grid-cols-2 lg:grid-cols-3'>
+      <TitleSection sectionTitle='Temporades recents' />
+      <div className='grid gap-3 md:grid-cols-2 lg:grid-cols-3'>
         {!chapters || chapters.length === 0 ? (
           <>
             <div></div>
@@ -50,7 +48,7 @@ const ChapterGrid = ({ scrollRef }: TSeasonsProps) => {
         ) : (
           chapterContent
         )}
-      </section>
+      </div>
     </section>
   );
 };
