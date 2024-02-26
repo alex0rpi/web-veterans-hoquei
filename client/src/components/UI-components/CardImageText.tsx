@@ -7,7 +7,7 @@ type TFlipCardProps = {
   image: string;
 };
 
-const FlipCard = ({
+const CardImageText = ({
   hasStickIcon = true,
   title,
   text,
@@ -33,4 +33,4 @@ const FlipCard = ({
   );
 };
 
-export default FlipCard;
+export default CardImageText;

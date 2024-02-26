@@ -7,8 +7,7 @@ import {
   faCircleDot,
 } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
-import ImageModal from '../UI-components/ModalImage';
-import { Backdrop } from '../UI-components/Backdrop';
+import { Backdrop, ModalImage } from '../UI-components';
 
 const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -51,7 +50,7 @@ const ImageSlider = () => {
       {showModal && (
         <>
           <Backdrop onClick={toggleImageModal} />
-          <ImageModal
+          <ModalImage
             show={showModal}
             image={slides[currentIndex]}
             onModalClick={toggleImageModal}

@@ -1,9 +1,8 @@
 import { useContext, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Button } from '../UI-components/Button';
+import { Button, FormInput } from '../UI-components';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
-import FormInput from '../UI-components/FormInput';
 import LoginService from '../../services/LoginService';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

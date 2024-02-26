@@ -6,7 +6,7 @@ import { UserContext } from '../../context/UserContext';
 import { paths } from '../../constants';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Spinner from '../UI-components/loading-spinner/Spinner';
+import { Spinner } from '../UI-components';
 import { PageTitle } from '../main';
 
 const UserVerify = () => {

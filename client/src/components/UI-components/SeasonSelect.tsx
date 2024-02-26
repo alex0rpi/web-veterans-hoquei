@@ -1,6 +1,6 @@
-import React from "react";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from 'react';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type TSelectInputProps = {
   label: string;
@@ -36,27 +36,27 @@ const SelectInput = React.forwardRef<HTMLSelectElement, TSelectInputProps>(
     return (
       <div>
         <label
-          htmlFor="season"
-          className="text-md mb-1 block font-semibold text-gray-900"
+          htmlFor='season'
+          className='text-md mb-1 block font-semibold text-gray-900'
         >
           {props.label}
           {props.error && ( // Condición para mostrar el mensaje de error
-            <p className="text-red-600 text-md inline-block ms-1">
+            <p className='text-red-600 text-md inline-block ms-1'>
               -{props.error}
             </p>
           )}
           {props.check && (
             <FontAwesomeIcon
               icon={faCheck}
-              style={{ color: "#2b6e66" }}
-              className="ms-1"
+              style={{ color: '#2b6e66' }}
+              className='ms-1'
             />
           )}
         </label>
         <select
           name={props.name}
           id={props.name}
-          className="mb-3 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
+          className='mb-3 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900'
           ref={props.seasonRef}
           // defaultValue={props.defaultValue}
           value={props.value}

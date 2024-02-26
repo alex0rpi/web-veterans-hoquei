@@ -1,4 +1,4 @@
-import FlipCard from '../UI-components/FlipCardWithImage';
+import CardImageText from '../UI-components/CardImageText';
 import { cardImage01, cardImage02 } from '../../assets/CardImages';
 
 type TAssociationProps = {
@@ -24,7 +24,7 @@ const Association = ({ scrollRef }: TAssociationProps) => {
         </p>
       </div>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-        <FlipCard
+        <CardImageText
           title='Activitats socials'
           text="Reunions a la llotja del Palau en els partits d'hoquei, dinars
             d'aplec en els què col·laborem amb la organització, obertura a
@@ -33,7 +33,7 @@ const Association = ({ scrollRef }: TAssociationProps) => {
             necessitats."
           image={cardImage01}
         />
-        <FlipCard
+        <CardImageText
           title='Activitats esportives'
           text='El nostre equip de veterans participa al Campionat de Catalunya i
           ocupa el lideratge en aquest moment. Participem en torneigs

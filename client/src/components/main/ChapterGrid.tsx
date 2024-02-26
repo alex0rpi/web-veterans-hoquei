@@ -1,5 +1,4 @@
-import { ChapterCard } from '../UI-components/ChapterCard';
-import Spinner from '../UI-components/loading-spinner/Spinner';
+import { ChapterCard, Spinner } from '../UI-components';
 import useChapters from '../../hooks/useChapters';
 
 type TSeasonsProps = {

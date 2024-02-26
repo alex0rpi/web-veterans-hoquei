@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 // import { useState } from "react";
 // import SideDrawer from "";
 
-export const LogoItem = () => {
+const LogoItem = () => {
   // const [show, setShow] = useState(false);
   // const clickHandler = () => {
   //   setShow((prevState) => !prevState);
@@ -36,3 +36,5 @@ export const LogoItem = () => {
     </div>
   );
 };
+
+export default LogoItem;

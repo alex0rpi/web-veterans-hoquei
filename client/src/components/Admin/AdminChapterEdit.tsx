@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion';
-import { Button } from '../UI-components/Button';
-import FormInput from '../UI-components/FormInput';
-import TextAreaInput from '../UI-components/TextAreaInput';
+import {
+  Button,
+  SeasonSelect,
+  Spinner,
+  FormInput,
+  TextAreaInput,
+} from '../UI-components';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,10 +13,8 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { paths } from '../../constants';
 import { ChapterContext } from '../../context/ChaptersContext';
 import GetChaptersService from '../../services/GetChaptersService';
-import SeasonSelect from '../UI-components/SeasonSelect';
 import PatchChapterService from '../../services/PatchChapterService';
 import GetSeasonService from '../../services/GetSeasonService';
-import Spinner from '../UI-components/loading-spinner/Spinner';
 import { TChapter } from '../../types/Item-types';
 
 const AdminChapterEdit = () => {

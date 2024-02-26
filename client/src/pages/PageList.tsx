@@ -62,28 +62,26 @@ const PageList = () => {
         exit={{ opacity: 0 }}
         className='pageLayout'
       >
-        <>
-          {location.pathname === paths.home && (
-            <HomePage
-              scrollUp={scrollUp}
-              homeRef={homeRef}
-              associationRef={associationRef}
-              boardRef={boardRef}
-              bookRef={bookRef}
-              seasonsRef={seasonsRef}
-              locationRef={locationRef}
-              contactRef={contactRef}
-            />
-          )}
-          {isAuthPage && <AuthPage />}
-          {location.pathname.startsWith(paths.season.split(':')[0]) && (
-            <SeasonPage />
-          )}
-          {isAdminPage && <AdminPage />}
-          {location.pathname === paths.book && <BookPage />}
-          {location.pathname === paths.players && <PlayersPage />}
-          {location.pathname === paths.blog && <BlogPage />}
-        </>
+        {location.pathname === paths.home && (
+          <HomePage
+            scrollUp={scrollUp}
+            homeRef={homeRef}
+            associationRef={associationRef}
+            boardRef={boardRef}
+            bookRef={bookRef}
+            seasonsRef={seasonsRef}
+            locationRef={locationRef}
+            contactRef={contactRef}
+          />
+        )}
+        {isAuthPage && <AuthPage />}
+        {location.pathname.startsWith(paths.season.split(':')[0]) && (
+          <SeasonPage />
+        )}
+        {isAdminPage && <AdminPage />}
+        {location.pathname === paths.book && <BookPage />}
+        {location.pathname === paths.players && <PlayersPage />}
+        {location.pathname === paths.blog && <BlogPage />}
       </motion.div>
     </div>
   );

@@ -7,12 +7,7 @@ type TButtonProps = {
   onClick?: () => void;
 };
 
-export const Button = ({
-  type = 'button',
-  title,
-  to,
-  onClick,
-}: TButtonProps) => {
+const Button = ({ type = 'button', title, to, onClick }: TButtonProps) => {
   return (
     <button
       type={type}
@@ -23,3 +18,5 @@ export const Button = ({
     </button>
   );
 };
+
+export default Button;

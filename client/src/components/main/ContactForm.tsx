@@ -1,7 +1,5 @@
 import { useRef } from 'react';
-import FormInput from '../UI-components/FormInput';
-import { Button } from '../UI-components/Button';
-import TextAreaInput from '../UI-components/TextAreaInput';
+import { Button, FormInput, TextAreaInput } from '../UI-components';
 // import contactEmailService from '../../services/ContactEmailService';
 // import { toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';

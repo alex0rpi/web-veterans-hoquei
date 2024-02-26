@@ -6,7 +6,7 @@ import BookTestimonials from './BookTestimonials';
 import ChapterGrid from './ChapterGrid';
 import ContactForm from './ContactForm';
 import HeaderTitle from './HeaderTitle';
-import PageTitle from './PageTitle';
+import PageTitle from '../UI-components/TitlePage';
 import ImageSlider from './ImageSlider';
 import Location from './Location';
 import RelatedLinksSection from './RelatedLinksSection';

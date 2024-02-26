@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion';
-import { Button } from '../UI-components/Button';
-import FormInput from '../UI-components/FormInput';
-import TextAreaInput from '../UI-components/TextAreaInput';
+import {
+  Button,
+  TextAreaInput,
+  SeasonSelect,
+  ImageInput,
+  FormInput,
+} from '../UI-components';
 import CreateChapterService from '../../services/CreateChapterService';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -10,8 +14,6 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { paths } from '../../constants';
 import { ChapterContext } from '../../context/ChaptersContext';
 import GetChaptersService from '../../services/GetChaptersService';
-import SeasonSelect from '../UI-components/SeasonSelect';
-import ImageInput from '../UI-components/ImageInput';
 import { Formik } from 'formik';
 import { TChapter } from '../../types/Item-types';
 import { chapterSchema } from '../../validation/chapterSchema';

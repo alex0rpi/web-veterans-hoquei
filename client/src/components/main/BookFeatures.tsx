@@ -1,9 +1,5 @@
-// import { FaHockeyPuck } from 'react-icons/fa';
-// import { GiHockey } from 'react-icons/gi';
-// import { MdOutlineSportsHockey } from 'react-icons/md';
 import { paths } from '../../constants';
-import { Button } from '../UI-components/Button';
-import StickIcon from '../UI-components/StickIcon';
+import { Button, StickIcon } from '../UI-components';
 
 type TBookProps = {
   scrollRef?: React.RefObject<HTMLDivElement>;

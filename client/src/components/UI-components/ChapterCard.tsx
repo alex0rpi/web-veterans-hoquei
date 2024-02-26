@@ -9,7 +9,7 @@ type TchapterCardProps = Omit<TChapterListItem, 'id'> & { index: number } & {
   goTo?: string;
 } & { noLink?: boolean };
 
-export const ChapterCard = (props: TchapterCardProps) => {
+const ChapterCard = (props: TchapterCardProps) => {
   const truncateString = (str: string, num: number) => {
     // If the length of str is less than or equal to num
     // just return str--don't truncate it.
@@ -51,3 +51,5 @@ export const ChapterCard = (props: TchapterCardProps) => {
     </Link>
   );
 };
+
+export default ChapterCard;

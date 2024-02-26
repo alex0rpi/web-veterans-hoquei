@@ -12,7 +12,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import LogoutService from '../../services/LogoutService';
 import { paths } from '../../constants';
-// import Footer from './Footer';
+import Footer from './Footer';
 import MainNavList from './MainNavList';
 import AdminNavList from './AdminNavList';
 
@@ -57,19 +57,22 @@ export const Navigation = ({
   return (
     <nav className={isBookPage ? 'navBookLayout' : 'navLayout '}>
       <motion.div
-        // initial={{ x: '100%', opacity: 0.2 }}
-        initial={{ x: '0%', opacity: 0.2 }}
+        initial={{ x: '100%', opacity: 0.2 }}
+        // initial={{ x: '0%', opacity: 0.2 }}
         animate={{ x: '0%', opacity: 1 }}
-        // transition={{
-        //   type: 'spring',
-        //   stiffness: 200,
-        //   damping: 10,
-        // }}
+        transition={{
+          type: 'spring',
+          stiffness: 200,
+          damping: 10,
+        }}
         className='flex items-center justify-between md:justify-center'
       >
         {/* Logo and hamburguer / cross icons */}
         {/* Logo always visible but variable */}
-        <a href='/' className='px-4 py-1 transition duration-200 md:py-2'>
+        <a
+          href='/'
+          className='px-4 py-1 transition duration-200 md:py-2 hover:scale-95'
+        >
           <img
             src={logoImage}
             className='h-14 brightness-125 md:h-24'
@@ -107,13 +110,11 @@ export const Navigation = ({
           <AdminNavList onLogout={onLogoutHandler} />
         )}
       </div>
+      <Footer />
     </nav>
   );
 };
 
-{
-  /* <Footer /> */
-}
 {
   /* Mobile side menu */
 }
