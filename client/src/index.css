@@ -28,7 +28,6 @@ body {
 }
 
 .navLayout {
-  /* @apply fixed md:h-screen md:flex md:basis-1/5 md:justify-end; */
   @apply sticky top-0 md:basis-1/5 h-screen bg-primary text-right opacity-90 text-slate-200;
 }
 .pageLayout {
@@ -36,8 +35,7 @@ body {
 }
 
 .navBookLayout {
-  /* @apply fixed md:h-screen md:flex md:basis-1/5 md:justify-end; */
-  @apply sticky top-0 md:basis-[1/12] h-screen bg-primary text-right opacity-90 text-slate-200;
+  @apply sticky top-0 md:basis-1/12 h-screen bg-primary text-right opacity-90 text-slate-200;
 }
 
 .bookPageLayout {

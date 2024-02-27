@@ -1,5 +1,5 @@
 type TBoardItemProps = {
-  email: string;
+  email?: string;
   name: string;
   role: string;
   imageUrl: string;
@@ -12,28 +12,18 @@ const BoardItem = ({ email, name, role, imageUrl, index }: TBoardItemProps) => {
   return (
     <div
       key={email}
-      className={`group ${itemBg} m-2 p-2 cursor-pointer rounded-lg transition-all duration-200 hover:opacity-95 hover:scale-95 flex justify-between gap-x-6 py-5tailwind`}
+      className={`group ${itemBg} mx-4 my-3 p-2 cursor-pointer rounded-lg transition-all duration-200 hover:opacity-95 hover:scale-105 flex justify-between`}
     >
       <div className='flex min-w-0 gap-x-4'>
         <img
-          className='h-12 w-12 flex-none rounded-full bg-gray-50'
+          className='h-20 aspect-square flex-none rounded-full bg-gray-50 object-cover object-top'
           src={imageUrl}
-          alt=''
+          alt='membre de la junta'
         />
-        <div className='min-w-0 flex-auto'>
-          <p className='text-base font-semibold leading-6 text-gray-900'>
-            {name}
-          </p>
-          <p className='mt-1 truncate text-xs leading-5 text-gray-500'>
-            {email}
-          </p>
+        <div className='min-w-0 my-auto'>
+          <p className='text-lg font-semibold text-gray-900'>{name}</p>
+          <p className='font-semibold text-md text-gray-900'>{role}</p>
         </div>
-      </div>
-      <div className='hidden shrink-0 sm:flex sm:flex-col sm:items-end'>
-        <p className='font-semibold text-sm leading-6 text-gray-900'>{role}</p>
-        <p className='mt-1 text-xs leading-5 text-gray-500'>
-          Lorem ipsum dolor.
-        </p>
       </div>
     </div>
   );

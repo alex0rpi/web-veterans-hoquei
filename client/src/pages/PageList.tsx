@@ -45,6 +45,8 @@ const PageList = () => {
   ];
   const isAdminPage = adminPaths.includes(location.pathname);
 
+  const isBookPage = location.pathname === paths.book;
+
   return (
     <div className='twoColLayout'>
       <Navigation
@@ -62,7 +64,7 @@ const PageList = () => {
         animate={{ opacity: 1 }}
         transition={{ type: easeInOut, duration: 1 }}
         exit={{ opacity: 0 }}
-        className='pageLayout'
+        className={!isBookPage ? 'pageLayout' : 'bookPageLayout'}
       >
         {location.pathname === paths.home && (
           <HomePage

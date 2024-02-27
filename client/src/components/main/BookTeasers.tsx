@@ -1,6 +1,8 @@
 import { imatgeLlibre01, imatgeLlibre03 } from '../../assets/bookImages';
 import { Button } from '../UI-components';
 import { paths } from '../../constants';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
 
 const BookTeasers = () => {
   return (
@@ -31,8 +33,18 @@ const BookTeasers = () => {
         />
       </div>
       <div className='my-3 mx-auto flex flex-row gap-4 items-center justify-center'>
-        <Button title="Visualitza'l" type='button' to={paths.book} />
-        <Button title="Descarrega'l" type='button' to={paths.book} />
+        <Button
+          title="Visualitza'l"
+          type='button'
+          to={paths.book}
+          icon={<FontAwesomeIcon icon={faEye} />}
+        />
+        <Button
+          title='Descàrrega HD'
+          type='button'
+          icon={<FontAwesomeIcon icon={faFloppyDisk} size='lg' />}
+          // to={paths.book}
+        />
       </div>
       <p className='font-semibold mt-3 mb-2'>Esments dels impulsors.</p>
     </section>
