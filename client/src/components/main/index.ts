@@ -10,10 +10,14 @@ import PageTitle from '../UI-components/TitlePage';
 import ImageSlider from './ImageSlider';
 import Location from './Location';
 import RelatedLinksSection from './RelatedLinksSection';
+import BoardGrid from './BoardGrid';
+import BoardItem from './BoardItem';
 
 export {
   Association,
   BoardMembers,
+  BoardGrid,
+  BoardItem,
   BookFeatures,
   BookTeasers,
   BookTestimonials,
