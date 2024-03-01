@@ -1,4 +1,6 @@
+import { useLocation } from 'react-router-dom';
 import { NavItem } from './NavItem';
+import { paths } from '../../constants';
 import {
   faHouse,
   faUser,
@@ -11,8 +13,6 @@ import {
   faEnvelope,
   faCalendar,
 } from '@fortawesome/free-solid-svg-icons';
-import { paths } from '../../constants';
-import { useLocation } from 'react-router-dom';
 
 type TMainNav = {
   homeRef?: React.RefObject<HTMLDivElement>;

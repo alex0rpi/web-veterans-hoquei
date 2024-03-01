@@ -5,27 +5,33 @@ import {
 } from '../UI-components';
 import {
   ramonPons,
+  agustiVilar2,
   antoniOrpinell2,
   joanTorner,
   jordiPi,
-  agustiVilar,
-  // antoniOrpinell,
+  isidreGallofre,
+  robertVilella,
+  tinoMartinez,
+  lluisSegarra,
+  joanBrassal,
+  martiValls,
+  santiPuigmarti,
 } from '../../assets/boardFotos';
 import BoardGrid from './BoardGrid';
 
 const people = [
   {
-    name: 'Ramon Pons',
+    name: 'Ramon Pons Vidal',
     role: 'PRESIDENT',
     imageUrl: ramonPons,
   },
   {
-    name: 'Agustí Vilar',
+    name: 'Agustí Vilar Capdevila',
     role: 'VICEPRESIDENT',
-    imageUrl: agustiVilar,
+    imageUrl: agustiVilar2,
   },
   {
-    name: 'Antoni Orpinell',
+    name: 'Antoni Orpinell Enrech',
     role: 'SECRETARI',
     imageUrl: antoniOrpinell2,
   },
@@ -33,49 +39,49 @@ const people = [
 
 const vocals = [
   {
-    name: 'Joan Torné',
+    name: 'Joan Torner i Corcoy',
     role: 'VOCAL',
     imageUrl: joanTorner,
   },
   {
-    name: 'Jordi Pi',
+    name: 'Jordi Pi Roca',
     role: 'VOCAL',
     imageUrl: jordiPi,
   },
   {
-    name: 'Robert Vilella',
+    name: 'Lluís Segarra Albareda',
     role: 'VOCAL',
-    imageUrl: joanTorner,
+    imageUrl: lluisSegarra,
   },
   {
-    name: 'Joan Brassal',
+    name: 'Jordi Martínez Rubió',
     role: 'VOCAL',
-    imageUrl: jordiPi,
+    imageUrl: tinoMartinez,
   },
   {
-    name: 'Santi Puigmartí',
+    name: 'Joan Brassal Vera',
     role: 'VOCAL',
-    imageUrl: joanTorner,
+    imageUrl: joanBrassal,
   },
   {
-    name: 'Jordi Martínez',
+    name: 'Martí Valls Corbalán',
     role: 'VOCAL',
-    imageUrl: jordiPi,
+    imageUrl: martiValls,
   },
   {
-    name: 'Lluís Segarra',
+    name: 'Isidre Gallofré Vidal',
     role: 'VOCAL',
-    imageUrl: jordiPi,
+    imageUrl: isidreGallofre,
   },
   {
-    name: 'Martí Valls',
+    name: 'Robert Vilella Llort',
     role: 'VOCAL',
-    imageUrl: joanTorner,
+    imageUrl: robertVilella,
   },
   {
-    name: 'Isidre Gallofré',
+    name: 'Santiago Puigmartí Curbera',
     role: 'VOCAL',
-    imageUrl: jordiPi,
+    imageUrl: santiPuigmarti,
   },
 ];
 
@@ -93,11 +99,11 @@ const BoardMembers = ({ scrollRef }: TBoardProps) => {
         adipisicing elit. Unde quod sit magni ratione doloremque quas maxime!
       </p>
       {/* Board lists */}
-      <div className='flex flex-col md:flex-row justify-evenly items-center'>
-        <div className='w-1/2'>
+      <div className='flex flex-col md:flex-row justify-evenly items-center mx-1'>
+        <div className='w-1/2 h-80'>
           <BoardGrid boardInfos={people} />
         </div>
-        <div className='overflow-y-scroll h-80 w-1/2 overflow-x-hidden'>
+        <div className='w-1/2 h-80 overflow-y-scroll  overflow-x-hidden'>
           <BoardGrid boardInfos={vocals} />
         </div>
       </div>

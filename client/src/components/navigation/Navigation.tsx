@@ -1,4 +1,3 @@
-// import logoImage from '../../../public/assets/logos/logo-no-text-removebg.png';
 import logoImage from '../../assets/logos/logo-no-text-removebg.png';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
@@ -12,9 +11,9 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import LogoutService from '../../services/LogoutService';
 import { paths } from '../../constants';
-import Footer from './Footer';
 import MainNavList from './MainNavList';
 import AdminNavList from './AdminNavList';
+import Footer from './Footer';
 
 type TNavigationProps = {
   homeRef?: React.RefObject<HTMLDivElement>;

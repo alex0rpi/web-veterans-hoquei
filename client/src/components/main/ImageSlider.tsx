@@ -21,6 +21,7 @@ const ImageSlider = () => {
     fotos.foto05,
     fotos.foto06,
     fotos.foto07,
+    fotos.foto08,
   ];
 
   const slideLeft = () => {

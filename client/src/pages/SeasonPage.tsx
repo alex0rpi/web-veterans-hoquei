@@ -68,14 +68,14 @@ const SeasonPage = () => {
   }, [chapters, currentSeason, setChapters]);
 
   const isLastSeason =
-    chapters.findIndex((chapter) => chapter.season === currentSeason) ===
+    chapters?.findIndex((chapter) => chapter.season === currentSeason) ===
     chapters.length - 1;
 
   const isFirstSeason =
-    chapters.findIndex((chapter) => chapter.season === currentSeason) === 0;
+    chapters?.findIndex((chapter) => chapter.season === currentSeason) === 0;
 
   const nextSeasonClick = () => {
-    const currentSeasonIndex = chapters.findIndex(
+    const currentSeasonIndex = chapters?.findIndex(
       (chapter) => chapter.season === currentSeason
     );
     const followingSeason = chapters[currentSeasonIndex + 1]?.season;
@@ -83,7 +83,7 @@ const SeasonPage = () => {
     navigate(`/temporades/${followingSeason}`);
   };
   const previousSeasonClick = () => {
-    const currentSeasonIndex = chapters.findIndex(
+    const currentSeasonIndex = chapters?.findIndex(
       (chapter) => chapter.season === currentSeason
     );
     const previousSeason = chapters[currentSeasonIndex - 1]?.season;

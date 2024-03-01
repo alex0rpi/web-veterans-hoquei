@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { paths } from '../constants/paths';
 import { easeInOut, motion } from 'framer-motion';
-import { Navigation } from '../components/navigation/Navigation';
+import { Navigation } from '../components/Navigation/Navigation';
 import {
   HomePage,
   AuthPage,

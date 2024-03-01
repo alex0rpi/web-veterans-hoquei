@@ -3,6 +3,7 @@ import stickIcon from '../../assets/logos/hockeyStick-no-bg.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { useLocation } from 'react-router-dom';
+import { paths } from '../../constants';
 
 type Props = {
   title: string | React.ReactNode;
@@ -21,9 +22,9 @@ export const NavItem = ({
 }: Props) => {
   const location = useLocation();
   let navFontSize: string = 'text-base';
-  if (location.pathname === '/llibre-veterans-hoquei-patins-fcb') {
-    navFontSize = 'text-sm';
-  }
+  const isBookPage = location.pathname === paths.book;
+  if (isBookPage) navFontSize = 'text-sm';
+
   const onScrollLinkClick = () => {
     scrollRef?.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
@@ -36,7 +37,13 @@ export const NavItem = ({
     >
       <div className='flex flex-row items-center'>
         <p className={`${navFontSize}`}>{title}</p>
-        {icon && <FontAwesomeIcon icon={icon} className='ms-2' size='1x' />}
+        {icon && !isBookPage && (
+          <FontAwesomeIcon
+            icon={icon}
+            className='ms-2'
+            size={`${isBookPage ? 'sm' : '1x'}`}
+          />
+        )}
         <img
           src={stickIcon}
           width='20'

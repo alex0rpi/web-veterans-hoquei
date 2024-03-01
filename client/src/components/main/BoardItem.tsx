@@ -12,7 +12,7 @@ const BoardItem = ({ email, name, role, imageUrl, index }: TBoardItemProps) => {
   return (
     <div
       key={email}
-      className={`group ${itemBg} mx-4 my-3 p-2 cursor-pointer rounded-lg transition-all duration-200 hover:opacity-95 hover:scale-105 flex justify-between`}
+      className={`group ${itemBg} m-3 p-1 cursor-pointer rounded-lg transition-all duration-200 hover:opacity-95 hover:scale-105 flex justify-between`}
     >
       <div className='flex min-w-0 gap-x-4'>
         <img
