@@ -8,6 +8,7 @@ import FormInput from './FormInput';
 import ImageInput from './ImageInput';
 import LogoItem from './LogoItem';
 import ModalImage from './ModalImage';
+import ModalCard from './ModalCard';
 import ScrollTopBtn from './ScrollTopBtn';
 import SeasonSelect from './SeasonSelect';
 import StickIcon from './StickIcon';
@@ -26,6 +27,7 @@ export {
   ImageInput,
   LogoItem,
   ModalImage,
+  ModalCard,
   ScrollTopBtn,
   SeasonSelect,
   StickIcon,

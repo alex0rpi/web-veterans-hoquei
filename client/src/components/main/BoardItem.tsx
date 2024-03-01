@@ -4,15 +4,24 @@ type TBoardItemProps = {
   role: string;
   imageUrl: string;
   index: number;
+  onMemberClick: (name: string) => void;
 };
 
-const BoardItem = ({ email, name, role, imageUrl, index }: TBoardItemProps) => {
+const BoardItem = ({
+  email,
+  name,
+  role,
+  imageUrl,
+  index,
+  onMemberClick,
+}: TBoardItemProps) => {
   const evenIndex = index % 2 === 0;
   const itemBg = evenIndex ? 'bg-slate-300' : 'bg-slate-200';
   return (
     <div
       key={email}
       className={`group ${itemBg} m-3 p-1 cursor-pointer rounded-lg transition-all duration-200 hover:opacity-95 hover:scale-105 flex justify-between`}
+      onClick={() => onMemberClick(name)}
     >
       <div className='flex min-w-0 gap-x-4'>
         <img

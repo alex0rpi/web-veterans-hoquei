@@ -29,13 +29,13 @@ const ContactForm = ({ scrollRef }: TContactFormProps) => {
   return (
     <section ref={scrollRef}>
       <TitleSection sectionTitle='Contacte' />
-      <div className='mt-6 space-y-4 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6'>
+      <div className='mt-4 rounded-xl bg-slate-300 p-4'>
         <p className=''>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati et
           accusamus rem est ad tempora quibusdam doloremque commodi eligendi
           ullam?
         </p>
-        <form onSubmit={onContactSubmitHandler}>
+        <form onSubmit={onContactSubmitHandler} className='my-2'>
           <div className='flex flex-row justify-start gap-2 w-auto'>
             <div className='w-1/2'>
               <FormInput
@@ -62,9 +62,7 @@ const ContactForm = ({ scrollRef }: TContactFormProps) => {
             placeholder='Escriu el teu missatge...'
             inputRef={contactMessageRef}
           />
-          <div className='w-full'>
-            <Button type='submit' title='Enviar' />
-          </div>
+          <Button type='submit' title='Enviar' />
         </form>
       </div>
     </section>

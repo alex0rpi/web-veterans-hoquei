@@ -9,9 +9,10 @@ type BoardInfos = {
 
 type TBoardlistProps = {
   boardInfos: BoardInfos[];
+  onMemberClick: (name: string) => void;
 };
 
-const BoardList = ({ boardInfos }: TBoardlistProps) => {
+const BoardList = ({ boardInfos, onMemberClick }: TBoardlistProps) => {
   return (
     <ul role='list' className='divide-y divide-gray-100'>
       {boardInfos.map((person, index) => (
@@ -22,6 +23,7 @@ const BoardList = ({ boardInfos }: TBoardlistProps) => {
           role={person.role}
           imageUrl={person.imageUrl}
           index={index}
+          onMemberClick={onMemberClick}
         />
       ))}
     </ul>
