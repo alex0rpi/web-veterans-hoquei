@@ -7,7 +7,7 @@ import {
   faCircleDot,
 } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
-import { Backdrop, ModalImage } from '../UI-components';
+import { ModalImage } from '../UI-components';
 
 const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -49,14 +49,11 @@ const ImageSlider = () => {
   return (
     <>
       {showModal && (
-        <>
-          <Backdrop onClick={toggleImageModal} />
-          <ModalImage
-            show={showModal}
-            image={slides[currentIndex]}
-            onModalClick={toggleImageModal}
-          />
-        </>
+        <ModalImage
+          // show={showModal}
+          image={slides[currentIndex]}
+          onModalClick={toggleImageModal}
+        />
       )}
       <div className='relative m-auto h-[400px] w-auto px-4 pt-4 group'>
         {/* Image container */}
@@ -71,18 +68,20 @@ const ImageSlider = () => {
           onClick={toggleImageModal}
         ></div>
         {/* End of Image container */}
-        <div className='opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 cursor-pointer text-white w-10 h-10 flex items-center justify-center'>
+        <div
+          className='opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-8 bg-black/25 cursor-pointer text-white w-10 h-10 flex items-center justify-center'
+          onClick={slideLeft}
+        >
           <FontAwesomeIcon
             icon={faChevronLeft}
-            size='lg'
-            onClick={slideLeft}
+            size='xl'
             className='transition-scale duration-200 hover:scale-125'
           />
         </div>
-        <div className='opacity-0 group-hover:opacity-100 transition-all duration-250 absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 cursor-pointer text-white w-10 h-10 flex items-center justify-center'>
+        <div className='opacity-0 group-hover:opacity-100 transition-all duration-250 absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-8 bg-black/25 cursor-pointer text-white w-10 h-10 flex items-center justify-center'>
           <FontAwesomeIcon
             icon={faChevronRight}
-            size='lg'
+            size='xl'
             onClick={slideRight}
             className='transition-scale duration-200 hover:scale-125'
           />
