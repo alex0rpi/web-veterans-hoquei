@@ -2,7 +2,6 @@ import BoardItem from './BoardItem';
 
 type BoardInfos = {
   name: string;
-  email?: string;
   role: string;
   imageUrl: string;
 };
@@ -18,7 +17,6 @@ const BoardList = ({ boardInfos, onMemberClick }: TBoardlistProps) => {
       {boardInfos.map((person, index) => (
         <BoardItem
           key={index}
-          email={person.email}
           name={person.name}
           role={person.role}
           imageUrl={person.imageUrl}

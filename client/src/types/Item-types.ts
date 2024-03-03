@@ -11,7 +11,7 @@ export type TRegisterForm = Omit<TUser, 'isVerified' | 'id'> & {
   formError: string | null;
 };
 
-export type TLoginForm = Omit<TUser, 'name'|'isVerified' | 'id'> & {
+export type TLoginForm = Omit<TUser, 'name' | 'isVerified' | 'id'> & {
   email: string;
   password: string;
   formError: string | null;
@@ -35,4 +35,14 @@ export type TChapter = {
   contentPro: string;
   titleBases: string;
   contentBases: string;
+};
+
+export type TBoardMemberInfos = {
+  name: string;
+  role: string;
+  imageUrl: string;
+  playerSeasons: string[];
+  trajectory: string;
+  anecdote?: string;
+  otherComment?: string;
 };

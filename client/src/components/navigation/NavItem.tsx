@@ -26,7 +26,10 @@ export const NavItem = ({
   if (isBookPage) navFontSize = 'text-sm';
 
   const onScrollLinkClick = () => {
-    scrollRef?.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    scrollRef?.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: title === 'Inici' ? 'center' : 'start',
+    });
   };
 
   return (
