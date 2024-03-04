@@ -41,6 +41,7 @@ export type TBoardMemberInfos = {
   name: string;
   role: string;
   imageUrl: string;
+  pictures?: string[];
   playerSeasons: string[];
   trajectory: string;
   anecdote?: string;

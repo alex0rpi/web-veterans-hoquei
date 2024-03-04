@@ -14,12 +14,9 @@ const ImageSlider = () => {
   const [showModal, setShowModal] = useState(false);
   // const slides = [foto01, foto02, foto03, foto04, foto05, foto06, foto07];
   const slides = [
-    fotos.foto01,
     fotos.foto02,
     fotos.foto03,
     fotos.foto04,
-    fotos.foto05,
-    fotos.foto06,
     fotos.foto07,
     fotos.foto08,
   ];
