@@ -10,7 +10,7 @@ import tinoMartinez from './Martínez_Tino.jpeg';
 import lluisSegarra from './Lluis_Segarra.jpeg';
 import joanBrassal from './Joan_Brassal.jpeg';
 import martiValls from './Marti_Valls_01.jpeg';
-import santiPuigmarti from './Santiago_Puigmarti.jpeg';
+import santiPuigmarti from './Santi_Puigmarti.png';
 
 export {
   ramonPons,

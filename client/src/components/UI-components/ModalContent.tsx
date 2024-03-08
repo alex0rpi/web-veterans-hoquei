@@ -72,14 +72,14 @@ const ModalContent = ({ ...props }: TModalProps) => {
             <span className='block mt-1'>
               <strong className='me-1 text-lg mb-1 block'>Trajectòria</strong>
               {!props.trajectory.includes('\n') ? (
-                <p className='inline-block'>{props.trajectory}</p>
+                <p className='inline-block text-lg'>{props.trajectory}</p>
               ) : (
                 props.trajectory
                   .split('\n')
                   .map((etapa) => <p className='inline-block'>{etapa}</p>)
               )}
             </span>
-            {props.anecdote !== '' && (
+            {/*             {props.anecdote !== '' && (
               <span className='block mt-1'>
                 <strong className='me-1 text-lg'>
                   {props.anecdote!.split('\n').length > 1
@@ -90,15 +90,8 @@ const ModalContent = ({ ...props }: TModalProps) => {
                   <p className='inline-block'>{anec}</p>
                 ))}
               </span>
-            )}
-            {/*      {props.otherComment !== '' && (
-              <span className='block mt-1'>
-                <strong className='me-1 text-lg'>Comentari:</strong>
-                {props.otherComment!.split('\n').map((comment) => (
-                  <p className='inline-block'>{comment}</p>
-                ))}
-              </span>
             )} */}
+
             {props.otherComment !== '' && (
               <span className='block mt-1'>
                 <strong className='me-1 text-lg'>Comentari:</strong>

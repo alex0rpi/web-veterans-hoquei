@@ -1,4 +1,4 @@
-import * as fotos from '../../assets/carouselPictures';
+import { fotos } from '../../assets/carouselPictures';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChevronLeft,
@@ -12,24 +12,16 @@ import { ModalImage } from '../UI-components';
 const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showModal, setShowModal] = useState(false);
-  // const slides = [foto01, foto02, foto03, foto04, foto05, foto06, foto07];
-  const slides = [
-    fotos.foto02,
-    fotos.foto03,
-    fotos.foto04,
-    fotos.foto07,
-    fotos.foto08,
-  ];
 
   const slideLeft = () => {
     const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
+    const newIndex = isFirstSlide ? fotos.length - 1 : currentIndex - 1;
     // console.log('newIndex: ', newIndex);
 
     setCurrentIndex(newIndex);
   };
   const slideRight = () => {
-    const isLastSlide = currentIndex === slides.length - 1;
+    const isLastSlide = currentIndex === fotos.length - 1;
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
     // console.log('newIndex: ', newIndex);
 
@@ -48,7 +40,7 @@ const ImageSlider = () => {
       {showModal && (
         <ModalImage
           // show={showModal}
-          image={slides[currentIndex]}
+          image={fotos[currentIndex]}
           onModalClick={toggleImageModal}
         />
       )}
@@ -56,10 +48,10 @@ const ImageSlider = () => {
         {/* Image container */}
         <div
           style={{
-            backgroundImage: `url(${slides[currentIndex]})`,
+            backgroundImage: `url(${fotos[currentIndex]})`,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
+            backgroundPosition: '50% 20%',
           }}
           className='w-full h-full rounded-lg overflow-hidden duration-200 cursor-pointer'
           onClick={toggleImageModal}
@@ -75,7 +67,7 @@ const ImageSlider = () => {
             className='transition-scale duration-200 hover:scale-125'
           />
         </div>
-        <div className='opacity-0 group-hover:opacity-100 transition-all duration-250 absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-8 bg-black/25 cursor-pointer text-white w-10 h-10 flex items-center justify-center'>
+        <div className='opacity-0 group-hover:opacity-100 transition-all duration-250 absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-8 bg-black/35 cursor-pointer text-white w-10 h-10 flex items-center justify-center'>
           <FontAwesomeIcon
             icon={faChevronRight}
             size='xl'
@@ -85,7 +77,7 @@ const ImageSlider = () => {
         </div>
         {/* Circle dots */}
         <div className='flex top-4 justify-center mt-1'>
-          {slides.map((slide, slideIndex) => (
+          {fotos.map((slide, slideIndex) => (
             <div key={slideIndex} className='cursor-pointer'>
               {slideIndex === currentIndex ? (
                 <FontAwesomeIcon

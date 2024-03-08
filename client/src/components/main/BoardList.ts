@@ -53,7 +53,7 @@ export const people: TBoardMemberInfos[] = [
     anecdote:
       '-Quan jugava a segona divisió, jo sent "petit", els adversaris em temien.. No per mi sino pels meus dos companys gegantins: CARRETER i MARTRET.\n -1958 (Any Atomium de Brussel.les), vam jugar i guanyar diversos tornejos a Holanda i Bèlgica. Ens van robar totes les Copes del cotxe... Sortosament, a la darrera frontera la policia ens les tornà.',
     trajectory:
-      "-1949-51 C.D.P.Terrassa Subcampió d'Espanya (millor jugador juvenil).\n-1953-55: C.E.Sabadell.\n-1955: Subcampió d'Espanya:1956, 1957 i 1960.\n-Campionats d'Espanya: 1958 al 1963.\n-Subcampionats de Catalunya: 1958 al 1963.\n-Campionat de Catalunya: 1957,1960,.\n-campió tornejos varis: 1956,1958-60: campió: Samaranch, Alemanya, Sagaró, Vigo, Oviedo, etc.\n-Selecció Espanyola: 1960: Campió Montreux, Subcampió del món a Madrid, campió Copa Llatina.\n-1961: Subcampió d'Europa a Milano, 1962: 3er campionat del món a Chile. (en total 31 partits internacional).\n-Altres guardons: placa mèrit secció FC.Barcelona, medalla d'honor, membre de la junta directiva (hoquei patins) 1977-1980, fundador equip de veterans, participant a tornejos internacionals. seleccionador durant 5 anys.",
+      "-Del 1949 al 51 C.D.P.Terrassa Subcampió d'Espanya (millor jugador juvenil).\n-Del 1953 al 55: C.E.Sabadell.\n-1955 FC Barcelona: subcampió d'Espanya 1956-57 i 1959-60, Campionats d'Espanya 1958 al 1963.\n-Subcampionats de Catalunya: 1958 al 1963.\n-Campionat de Catalunya: 1957,1960,.\n-campió tornejos varis: 1956,1958-60: campió: Samaranch, Alemanya, Sagaró, Vigo, Oviedo, etc.\n-Selecció Espanyola: 1960: Campió Montreux, Subcampió del món a Madrid, campió Copa Llatina.\n-1961: Subcampió d'Europa a Milano, 1962: 3er campionat del món a Chile. (en total 31 partits internacional).\n-Altres guardons: placa mèrit secció FC.Barcelona, medalla d'honor, membre de la junta directiva (hoquei patins) 1977-1980, fundador equip de veterans, participant a tornejos internacionals. seleccionador durant 5 anys.",
     otherComment: 'Tothom em deia tinet',
   },
   {
@@ -122,7 +122,7 @@ export const vocals: TBoardMemberInfos[] = [
     imageUrl: tinoMartinez,
     playerSeasons: ['1994-95', '1995-96', '1996-97', '1997-98', '1998-99'],
     trajectory:
-      "-Inici al Col-legi Sant Ramón de Vilafranca\n-Campió d'Espanya Infantil 1985-86.\n-Campió de Catalunya Juvenil i Junior 1986-87 ¡ 1987-88.\n-Campió OK LLiga 1995-96, 1997-98 i 1998-99 (com a delegat 2011-12,2013-14, 2014-15).\n-Campió d'Europa 1996/97 (com a delegat 2013/14, 2014-15).\n-Copa Intercontinental 1997-98 (com a delegat 2014/15).\n-Copa del Rei (Com a delegat 2011/2012).\n-Supercopa d'Europa 1997-98.\n-Supercopa d'Espanya (com a delegat 2011-12,2012-13,2013-14,2014-15).\n-Copa de les Nacions Montreux 1994/95",
+      "-Inici al Col-legi Sant Ramón de Vilafranca\n-Campió d'Espanya Infantil 1985-86.\n-Campió de Catalunya Juvenil i Junior 1986-87 ¡ 1987-88.\n-Campió OK LLiga 1995-96, 1997-98 i 1998-99 (com a delegat 2011-12,2013-14, 2014-15).\n-Campió d'Europa 1996/97 (com a delegat 2013/14, 2014-15).\n-Copa Intercontinental 1997-98 (com a delegat 2014/15).\n-Copa del Rei (Com a delegat 2011-12).\n-Supercopa d'Europa 1997-98.\n-Supercopa d'Espanya (com a delegat 2011-12,2012-13,2013-14,2014-15).\n-Copa de les Nacions Montreux 1994-95",
     anecdote:
       "Vaig ser porter d'hoquei perqué el meu germa també ho era, el meu sogre també i ara el meu fill també juga de porter d'hoquei.",
     otherComment: '',
@@ -154,7 +154,7 @@ export const vocals: TBoardMemberInfos[] = [
     name: 'Martí Valls Corbalán',
     role: 'VOCAL',
     imageUrl: martiValls,
-    playerSeasons: ['Infantil 1963-64', '1969-70'],
+    playerSeasons: ['1969-70'],
     trajectory:
       "Vaig començar en els infantils del Brafa, després infantils del Barça, juvenils del Horta, juvenils Cotolene Congreso, 3ª divisió Cornellà, divisió d'Honor Barça, divisió d'Honor Español, 2ª Divisió Cornellà i últimament Veterans Sant Josep Badalona..",
     anecdote:
@@ -175,7 +175,7 @@ export const vocals: TBoardMemberInfos[] = [
       '1968-69',
     ],
     trajectory:
-      'Sant pere de Ribes, FC Barcelona: (1 Tempora Juvenil, 6 temporsdes al primer equip., Mataró: 1969/70, 1970/71, Sentmenat: 1971//72, 1972/73, 1973/74.',
+      'Sant pere de Ribes, FC Barcelona: (1 Tempora Juvenil, 6 temporsdes al primer equip., Mataró: 1969-70, 1970-71, Sentmenat: 1971-72, 1972-73, 1973-74.',
     anecdote: '',
     otherComment: '',
   },
@@ -186,7 +186,7 @@ export const vocals: TBoardMemberInfos[] = [
     playerSeasons: ['1959-1960'],
     trajectory:
       "Un partit voltregà - vilanova, l'arbitre sr. garcia va pitar una cosa que al meu parer era injusta. no s'em va ocorre que quedar me quiet a la porteria sense moure'm. les cróniques del diari van escriure que vareig fer de \"Don Tancredo\"",
-    anecdote: 'En tinc moltes peró millor que no les expliqui',
+    anecdote: 'En tinc moltes peró millor que no les expliqui.',
     otherComment: '',
   },
   {
@@ -207,7 +207,7 @@ export const vocals: TBoardMemberInfos[] = [
       '1987-88',
     ],
     trajectory:
-      "Com a Delegat de la Secció, vam comquerir innombrables títols. Posats a relatar els més importants, citaré els segtients:\n 10 Títols de lliga, 8 Copes del Rei, 9 Copes d'Europa, 2 Copes de les nacions a Montreux (Suissa)",
+      "Com a Delegat de la Secció, vam comquerir innombrables títols. Posats a relatar els més importants, citaré els segtients:\n 10 Títols de lliga, 8 Copes del Rei, 9 Copes d'Europa, 2 Copes de les nacions a Montreux (Suissa).",
     anecdote:
       "Durant tota la meva etapa al Club vaig comptar amb l'impagable ajut de Jaume Borràs com a sub-delegat i del suport i recolçament del President del Barça Josep Lluís Nuñez",
     otherComment: '',

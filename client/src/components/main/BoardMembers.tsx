@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ModalCard, TitleSection } from '../UI-components';
+import { BoardModalCard, TitleSection } from '../UI-components';
 import BoardGrid from './BoardGrid';
 import { people as peopleData, vocals as vocalsData } from './BoardList';
 import { TBoardMemberInfos } from '../../types/Item-types';
@@ -28,7 +28,7 @@ const BoardMembers = ({ scrollRef }: TBoardProps) => {
     <section ref={scrollRef}>
       <TitleSection sectionTitle='Membres de la junta' />
       {showModal && (
-        <ModalCard
+        <BoardModalCard
           imageUrl={selectedMember?.imageUrl || ''}
           name={selectedMember?.name || ''}
           role={selectedMember?.role || ''}
