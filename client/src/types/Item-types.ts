@@ -40,7 +40,7 @@ export type TChapter = {
 export type TBoardMemberInfos = {
   name: string;
   role: string;
-  imageUrl: string;
+  imageUrl: string[];
   pictures?: string[];
   playerSeasons: string[];
   trajectory: string;

@@ -1,16 +1,23 @@
 import {
-  ramonPons,
-  agustiVilar2,
-  antoniOrpinell2,
-  joanTorner,
+  ramonPons01,
+  ramonPons02,
+  antoniOrpinell01,
+  antoniOrpinell02,
+  antoniOrpinell03,
+  agustiVilar01,
+  agustiVilar02,
+  joanTorner01,
+  joanTorner02,
   jordiPi,
   isidreGallofre,
   robertVilella,
   tinoMartinez,
-  lluisSegarra,
+  lluisSegarra01,
+  lluisSegarra02,
   joanBrassal,
   martiValls,
-  santiPuigmarti,
+  santiPuigmarti01,
+  santiPuigmarti02,
 } from '../../assets/boardFotos';
 import { TBoardMemberInfos } from '../../types/Item-types';
 
@@ -18,7 +25,7 @@ export const people: TBoardMemberInfos[] = [
   {
     name: 'Ramon Pons Vidal',
     role: 'PRESIDENT',
-    imageUrl: ramonPons,
+    imageUrl: [ramonPons01, ramonPons02],
     playerSeasons: [
       '1970-71',
       '1971-72',
@@ -37,7 +44,7 @@ export const people: TBoardMemberInfos[] = [
   {
     name: 'Agustí Vilar Capdevila',
     role: 'VICEPRESIDENT',
-    imageUrl: agustiVilar2,
+    imageUrl: [agustiVilar01, agustiVilar02],
     playerSeasons: [
       '1955-56',
       '1956-57',
@@ -68,7 +75,7 @@ export const people: TBoardMemberInfos[] = [
       '1959-60',
       '1961-62',
     ],
-    imageUrl: antoniOrpinell2,
+    imageUrl: [antoniOrpinell01, antoniOrpinell02, antoniOrpinell03],
     anecdote:
       "Tantes que ni me'n recordo... un campionat a Oviedo... On els aficionats d'allà ens van \"ensarronar\" amb un vinet molt bò... Amb la bufa que vam agafar... Ens van haver que dur a coll i bé a l'Hotel.",
     trajectory:
@@ -82,7 +89,7 @@ export const vocals: TBoardMemberInfos[] = [
   {
     name: 'Joan Torner i Corcoy',
     role: 'VOCAL',
-    imageUrl: joanTorner,
+    imageUrl: [joanTorner01, joanTorner02],
     playerSeasons: ['1983-84', '1984-85', '1985-86', '1986-87'],
     trajectory:
       "-Començà i acabà l' etapa com a jugador al Club Patí Tordera, i a divisió d'honor jugant als primers equips.\n-Quatre temporades al Club Patí Tordera, una al Club Patí Vic, quatre al Futbol Club Barcelona, quatre a l'Ateneu Agrícola Noia i quatre temporades últimes al Club Patí Tordera.\n-A nivell de club ha guanyat 17 títols majors i Campió d'Espanya de totes les categories des de benjamí a sènior. 56 vegades jugador internacional.\n-Títol nacional d'entrenador, entrenant al CP Malgrat, a la base del Blanes HC i junior i sènior del SHUM Macanet.",
@@ -95,7 +102,7 @@ export const vocals: TBoardMemberInfos[] = [
     role: 'VOCAL',
     // Del 1963 al 1967
     playerSeasons: ['1963-64', '1964-65', '1965-66', '1966-67'],
-    imageUrl: jordiPi,
+    imageUrl: [jordiPi],
     trajectory:
       '-Subcampió de Catalunya jovenil.\n-Campió de Catalunya Jovenil, i 3er. al Campionat estatal.\n-Tres anys entre reserva i 1er equip, que varen coincidir en la meva llarga mili.',
     anecdote:
@@ -108,7 +115,7 @@ export const vocals: TBoardMemberInfos[] = [
     role: 'VOCAL',
     // 5 temporades
     playerSeasons: ['1988-89', '1989-90', '1990-91', '1992-93', '1994-95'],
-    imageUrl: lluisSegarra,
+    imageUrl: [lluisSegarra01, lluisSegarra02],
     anecdote:
       "En el torneig de la copa de les Nacions de Montreux, al acabar la tanda de penalts, Jordi Villacorta,que era el president, em va prendre l' stick i va començat a perseguir l'àrbrite.",
     trajectory:
@@ -119,7 +126,7 @@ export const vocals: TBoardMemberInfos[] = [
   {
     name: 'Jordi Martínez Rubió',
     role: 'VOCAL',
-    imageUrl: tinoMartinez,
+    imageUrl: [tinoMartinez],
     playerSeasons: ['1994-95', '1995-96', '1996-97', '1997-98', '1998-99'],
     trajectory:
       "-Inici al Col-legi Sant Ramón de Vilafranca\n-Campió d'Espanya Infantil 1985-86.\n-Campió de Catalunya Juvenil i Junior 1986-87 ¡ 1987-88.\n-Campió OK LLiga 1995-96, 1997-98 i 1998-99 (com a delegat 2011-12,2013-14, 2014-15).\n-Campió d'Europa 1996/97 (com a delegat 2013/14, 2014-15).\n-Copa Intercontinental 1997-98 (com a delegat 2014/15).\n-Copa del Rei (Com a delegat 2011-12).\n-Supercopa d'Europa 1997-98.\n-Supercopa d'Espanya (com a delegat 2011-12,2012-13,2013-14,2014-15).\n-Copa de les Nacions Montreux 1994-95",
@@ -130,7 +137,7 @@ export const vocals: TBoardMemberInfos[] = [
   {
     name: 'Joan Brassal Vera',
     role: 'VOCAL',
-    imageUrl: joanBrassal,
+    imageUrl: [joanBrassal],
     // 11 temporades del 65-66 i del 70 al 80
     playerSeasons: [
       '1965-66',
@@ -153,7 +160,7 @@ export const vocals: TBoardMemberInfos[] = [
   {
     name: 'Martí Valls Corbalán',
     role: 'VOCAL',
-    imageUrl: martiValls,
+    imageUrl: [martiValls],
     playerSeasons: ['1969-70'],
     trajectory:
       "Vaig començar en els infantils del Brafa, després infantils del Barça, juvenils del Horta, juvenils Cotolene Congreso, 3ª divisió Cornellà, divisió d'Honor Barça, divisió d'Honor Español, 2ª Divisió Cornellà i últimament Veterans Sant Josep Badalona..",
@@ -164,7 +171,7 @@ export const vocals: TBoardMemberInfos[] = [
   {
     name: 'Isidre Gallofré Vidal',
     role: 'VOCAL',
-    imageUrl: isidreGallofre,
+    imageUrl: [isidreGallofre],
     playerSeasons: [
       '1962-63',
       '1963-64',
@@ -180,19 +187,9 @@ export const vocals: TBoardMemberInfos[] = [
     otherComment: '',
   },
   {
-    name: 'Robert Vilella Llort',
-    role: 'VOCAL',
-    imageUrl: robertVilella,
-    playerSeasons: ['1959-1960'],
-    trajectory:
-      "Un partit voltregà - vilanova, l'arbitre sr. garcia va pitar una cosa que al meu parer era injusta. no s'em va ocorre que quedar me quiet a la porteria sense moure'm. les cróniques del diari van escriure que vareig fer de \"Don Tancredo\"",
-    anecdote: 'En tinc moltes peró millor que no les expliqui.',
-    otherComment: '',
-  },
-  {
     name: 'Santiago Puigmartí Curbera',
     role: 'VOCAL',
-    imageUrl: santiPuigmarti,
+    imageUrl: [santiPuigmarti01, santiPuigmarti02],
     // 10 temporades desde 1975 a 1988
     playerSeasons: [
       '1975-76',
@@ -210,6 +207,16 @@ export const vocals: TBoardMemberInfos[] = [
       "Com a Delegat de la Secció, vam comquerir innombrables títols. Posats a relatar els més importants, citaré els segtients:\n 10 Títols de lliga, 8 Copes del Rei, 9 Copes d'Europa, 2 Copes de les nacions a Montreux (Suissa).",
     anecdote:
       "Durant tota la meva etapa al Club vaig comptar amb l'impagable ajut de Jaume Borràs com a sub-delegat i del suport i recolçament del President del Barça Josep Lluís Nuñez",
+    otherComment: '',
+  },
+  {
+    name: 'Robert Vilella Llort',
+    role: 'VOCAL',
+    imageUrl: [robertVilella],
+    playerSeasons: ['1959-1960'],
+    trajectory:
+      "Un partit voltregà - vilanova, l'arbitre sr. garcia va pitar una cosa que al meu parer era injusta. no s'em va ocorre que quedar me quiet a la porteria sense moure'm. les cróniques del diari van escriure que vareig fer de \"Don Tancredo\"",
+    anecdote: 'En tinc moltes peró millor que no les expliqui.',
     otherComment: '',
   },
 ];

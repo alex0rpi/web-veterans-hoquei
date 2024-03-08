@@ -37,7 +37,7 @@ const ModalContent = ({ ...props }: TModalProps) => {
       <div className='w-[60vw] h-[65vh] bg-slate-200 rounded-xl fixed top-[15vh] left-1/2 transform -translate-x-1/2 z-30 transition-all duration-200 flex flex-row justify-between items-start p-2'>
         <div className='w-[30%] h-full'>
           <img
-            src={props.imageUrl}
+            src={props.imageUrl[1] ?? props.imageUrl[0]}
             alt='Foto'
             className='object-cover h-full w-full rounded-lg'
           />
