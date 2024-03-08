@@ -26,7 +26,7 @@ const BoardItem = ({
       <div className='flex min-w-0 gap-x-4'>
         <img
           className='h-20 aspect-square flex-none rounded-full bg-gray-50 object-cover object-top'
-          src={imageUrl}
+          src={imageUrl[0]}
           alt='membre de la junta'
         />
         <div className='min-w-0 my-auto'>

@@ -1,31 +1,26 @@
-import { useRef } from 'react';
 import {
   Button,
   FormInput,
   TextAreaInput,
   TitleSection,
 } from '../UI-components';
-// import contactEmailService from '../../services/ContactEmailService';
-// import { toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useForm } from '@formspree/react';
 
 type TContactFormProps = {
   scrollRef?: React.RefObject<HTMLDivElement>;
 };
 
 const ContactForm = ({ scrollRef }: TContactFormProps) => {
-  const contactEmailRef = useRef<HTMLInputElement>(null);
-  const contactMessageRef = useRef<HTMLTextAreaElement>(null);
-  // const onContactSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //     const email: contactEmailRef.current?.value
-  //     const message: contactMessageRef.current?.value
-  //   const success = await contactEmailService(email, message)
-  //   if (success) {
-  //     toast.info(`Missagte enviat`);
-  //   }
-  // };
-  const onContactSubmitHandler = () => {};
+  const [state, handleSubmit, resetForm] = useForm(
+    import.meta.env.VITE_FORMSPREE_KEY
+  );
+  if (state.succeeded) {
+    toast.success('Missatge enviat correctament. Gràcies per contactar-nos!');
+    resetForm();
+  }
+
   return (
     <section ref={scrollRef}>
       <TitleSection sectionTitle='Contacte' />
@@ -35,7 +30,7 @@ const ContactForm = ({ scrollRef }: TContactFormProps) => {
           accusamus rem est ad tempora quibusdam doloremque commodi eligendi
           ullam?
         </p>
-        <form onSubmit={onContactSubmitHandler} className='my-2'>
+        <form onSubmit={handleSubmit} className='my-2'>
           <div className='flex flex-row justify-start gap-2 w-auto'>
             <div className='w-1/2'>
               <FormInput
@@ -51,7 +46,6 @@ const ContactForm = ({ scrollRef }: TContactFormProps) => {
                 name='email'
                 type='email'
                 placeholder='email@email.com'
-                inputRef={contactEmailRef}
               />
             </div>
           </div>
@@ -60,9 +54,8 @@ const ContactForm = ({ scrollRef }: TContactFormProps) => {
             name='message'
             rows={4}
             placeholder='Escriu el teu missatge...'
-            inputRef={contactMessageRef}
           />
-          <Button type='submit' title='Enviar' />
+          <Button type='submit' title='Enviar' disabled={state.submitting} />
         </form>
       </div>
     </section>
@@ -70,3 +63,19 @@ const ContactForm = ({ scrollRef }: TContactFormProps) => {
 };
 
 export default ContactForm;
+
+// const onContactSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+//   e.preventDefault();
+//     const email: contactEmailRef.current?.value
+//     const message: contactMessageRef.current?.value
+//   const success = await contactEmailService(email, message)
+//   if (success) {
+//     toast.info(`Missagte enviat`);
+//   }
+// };
+
+// import contactEmailService from '../../services/ContactEmailService';
+// import { toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+
+// const onContactSubmitHandler = () => {};
