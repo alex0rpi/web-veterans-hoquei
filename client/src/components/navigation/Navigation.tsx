@@ -5,7 +5,7 @@ import logoImage from '../../assets/logos/logo-no-text-removebg.png';
 // import { Backdrop } from '../UI-components/Backdrop';
 import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { UserContext } from '../../context/UserContext';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +14,9 @@ import { paths } from '../../constants';
 import MainNavList from './MainNavList';
 import AdminNavList from './AdminNavList';
 import Footer from './Footer';
+import PageNavList from './pageNavList';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 type TNavigationProps = {
   homeRef?: React.RefObject<HTMLDivElement>;
@@ -36,14 +39,9 @@ export const Navigation = ({
   relatedLinksRef,
   contactRef,
 }: TNavigationProps) => {
-  // const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false);
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
-
-  // const menuClickHandler = () => {
-  //   setShow((prevState) => !prevState);
-  // };
-
   const onLogoutHandler = async () => {
     const isSuccess = await LogoutService();
     if (isSuccess) {
@@ -59,7 +57,6 @@ export const Navigation = ({
     <nav className={isBookPage ? 'navBookLayout' : 'navLayout '}>
       <motion.div
         initial={{ x: '100%', opacity: 0.2 }}
-        // initial={{ x: '0%', opacity: 0.2 }}
         animate={{ x: '0%', opacity: 1 }}
         transition={{
           type: 'spring',
@@ -68,35 +65,38 @@ export const Navigation = ({
         }}
         className='flex items-center justify-between md:justify-center'
       >
-        {/* Logo and hamburguer / cross icons */}
         {/* Logo always visible but variable */}
         <a
           href='/'
-          className='px-4 py-1 transition duration-200 md:py-2 hover:scale-95'
+          className='px-0 py-1 transition duration-200 md:py-2 hover:scale-95'
         >
           <img
             src={logoImage}
-            className='h-14 brightness-125 md:h-24'
-            alt='rink-hockey-logo'
+            className='h-14 brightness-125 md:h-24 object-fit'
+            alt='logo-associació-veterans-hoquei-patins-fcb'
           />
         </a>
+        {/* Logo and hamburguer / cross icons */}
         {/* {!show ? (
-              <FontAwesomeIcon
-                icon={faBars}
-                size='xl'
-                className='z-50 cursor-pointer px-8 md:hidden'
-                onClick={menuClickHandler}
-              />
-            ) : (
-              <FontAwesomeIcon
-                icon={faXmark}
-                size='2xl'
-                className='cursor-pointer px-8 md:hidden'
-                onClick={menuClickHandler}
-              />
-            )} */}
+          <FontAwesomeIcon
+            icon={faBars}
+            size='xl'
+            className='z-50 cursor-pointer px-8 md:hidden'
+            // onClick={menuClickHandler}
+          />
+        ) : (
+          <FontAwesomeIcon
+            icon={faXmark}
+            size='2xl'
+            className='cursor-pointer px-8 md:hidden'
+            // onClick={menuClickHandler}
+          />
+        )} */}
       </motion.div>
       <div className='hidden pe-2 pt-2 mt-0 ps-2 text-sm md:block border-t-[1px] border-slate-300'>
+        <div className='border-b-[1px] border-slate-400'>
+          <PageNavList homeRef={homeRef} />
+        </div>
         {user.name === '' ? (
           <MainNavList
             homeRef={homeRef}
@@ -117,34 +117,29 @@ export const Navigation = ({
   );
 };
 
-{
-  /* Mobile side menu */
-}
-{
-  /* {show && (
-  <>
-    <Backdrop onClick={menuClickHandler} />
-    <motion.div
-      initial={{ x: '100vw', opacity: 0 }}
-      animate={{ x: '40vw', opacity: 1 }}
-      exit={{ x: '100vw', opacity: 0 }}
-      transition={{ duration: 0.2 }}
-      className='fixed transform translate-x-full md:translate-x-0 top-20 z-50 w-[60vw] bg-primary px-8 pb-2 pt-2 text-slate-200 md:hidden'
-    >
-      {user.name === '' ? (
-        <MainNavList
-          homeRef={homeRef}
-          associationRef={associationRef}
-          seasonsRef={seasonsRef}
-          contactRef={contactRef}
-          bookRef={bookRef}
-          boardRef={boardRef}
-          locationRef={locationRef}
-        />
-      ) : (
-        <AdminNavList onLogout={onLogoutHandler} />
-      )}
-    </motion.div>
-  </>
-)} */
-}
+// {show && (
+//   <>
+//     {/* <Backdrop onClick={menuClickHandler} /> */}
+//     <motion.div
+//       initial={{ x: '100vw', opacity: 0 }}
+//       animate={{ x: '40vw', opacity: 1 }}
+//       exit={{ x: '100vw', opacity: 0 }}
+//       transition={{ duration: 0.2 }}
+//       className='fixed transform translate-x-full md:translate-x-0 top-20 z-50 w-[60vw] bg-primary px-8 pb-2 pt-2 text-slate-200 md:hidden'
+//     >
+//       {user.name === '' ? (
+//         <MainNavList
+//           homeRef={homeRef}
+//           associationRef={associationRef}
+//           seasonsRef={seasonsRef}
+//           contactRef={contactRef}
+//           bookRef={bookRef}
+//           boardRef={boardRef}
+//           locationRef={locationRef}
+//         />
+//       ) : (
+//         <AdminNavList onLogout={onLogoutHandler} />
+//       )}
+//     </motion.div>
+//   </>
+// )}

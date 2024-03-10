@@ -24,22 +24,22 @@ body {
 
 /* Page layout inside center column */
 .twoColLayout {
-  @apply md:flex md:flex-row;
+  @apply md:flex md:flex-row bg-transparent;
 }
 
 .navLayout {
-  @apply sticky top-0 md:basis-1/5 h-screen bg-primary text-right opacity-90 text-slate-200;
+  @apply sticky top-0 md:basis-[20%] h-screen bg-primary opacity-[88%];
 }
 .pageLayout {
-  @apply md:basis-4/5 py-4 px-4 overflow-y-auto bg-gray-200 opacity-90;
+  @apply md:basis-[80%] py-4 px-4 overflow-y-auto bg-gray-200 opacity-[90%];
 }
 
 .navBookLayout {
-  @apply sticky top-0 md:basis-[10%] h-screen bg-primary text-right opacity-90 text-slate-200;
+  @apply sticky top-0 md:basis-[10%] h-screen bg-primary opacity-[88%];
 }
 
 .bookPageLayout {
-  @apply md:basis-[90%] py-4 px-4 overflow-y-auto bg-gray-200 opacity-90;
+  @apply md:basis-[90%] py-4 px-4 overflow-y-auto bg-gray-200 opacity-100;
 }
 
 /* Components */

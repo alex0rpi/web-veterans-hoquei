@@ -44,7 +44,6 @@ const PageList = () => {
     paths.me,
   ];
   const isAdminPage = adminPaths.includes(location.pathname);
-
   const isBookPage = location.pathname === paths.book;
 
   return (
@@ -84,7 +83,7 @@ const PageList = () => {
           <SeasonPage />
         )}
         {isAdminPage && <AdminPage />}
-        {location.pathname === paths.book && <BookPage />}
+        {isBookPage && <BookPage />}
         {location.pathname === paths.players && <PlayersPage />}
         {location.pathname === paths.blog && <BlogPage />}
       </motion.div>

@@ -11,6 +11,7 @@ type Props = {
   icon?: IconDefinition;
   scrollRef?: React.RefObject<HTMLDivElement>;
   onItemClick?: () => void;
+  highlight?: boolean;
 };
 
 export const NavItem = ({
@@ -19,6 +20,7 @@ export const NavItem = ({
   icon,
   onItemClick,
   scrollRef,
+  highlight = false,
 }: Props) => {
   const location = useLocation();
   let navFontSize: string = 'text-base';
@@ -35,7 +37,7 @@ export const NavItem = ({
   return (
     <Link
       to={scrollRef ? '#' : to}
-      className='group flex justify-end py-1 pe-1 text-base transition-all duration-250 ease-in-out hover:bg-slate-100 rounded-lg hover:text-primary'
+      className={`text-right group flex justify-end py-1 pe-1 text-base transition-all duration-250 ease-in-out rounded-lg ${highlight ? 'bg-gradient-to-r from-primary to-slate-100 text-primary' : 'text-slate-200 hover:bg-slate-100  hover:text-primary'}`}
       onClick={onItemClick ? onItemClick : scrollRef && onScrollLinkClick}
     >
       <div className='flex flex-row items-center'>

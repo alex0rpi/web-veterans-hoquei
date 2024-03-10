@@ -2,12 +2,8 @@ import { useLocation } from 'react-router-dom';
 import { NavItem } from './NavItem';
 import { paths } from '../../constants';
 import {
-  faHouse,
-  faUser,
   faBookOpen,
   faPeopleGroup,
-  faPersonSkating,
-  faNewspaper,
   faLink,
   faLocationDot,
   faEnvelope,
@@ -26,7 +22,6 @@ type TMainNav = {
 };
 
 const MainNavList = ({
-  homeRef,
   associationRef,
   seasonsRef,
   contactRef,
@@ -37,46 +32,10 @@ const MainNavList = ({
 }: TMainNav) => {
   const location = useLocation();
 
-  const authPaths = [
-    paths.login,
-    paths.register,
-    paths.verify,
-    paths.requestPasswordReset,
-    paths.updatePassword,
-  ];
-  const isAuth = authPaths.includes(location.pathname);
-
   return (
     <>
-      {location.pathname === paths.home ? (
-        <NavItem icon={faHouse} title='Inici' scrollRef={homeRef} />
-      ) : (
-        <NavItem icon={faHouse} title='Inici' to={paths.home} />
-      )}
-
-      {isAuth && <NavItem icon={faUser} title='Accés' to={paths.login} />}
-      {location.pathname.startsWith(paths.season.split(':')[0]) && (
-        <>
-          <NavItem icon={faPersonSkating} title='El Llibre' to={paths.book} />
-          <NavItem icon={faPersonSkating} title='Jugadors' to={paths.players} />
-        </>
-      )}
-      {location.pathname === paths.book && (
-        <NavItem
-          icon={faCalendar}
-          title={
-            <>
-              <span>Temporades</span>
-              <br />
-              <span>recents</span>
-            </>
-          }
-          to={paths.genericSeason}
-        />
-      )}
       {location.pathname === paths.home && (
         <>
-          <NavItem icon={faUser} title='Accés' to={paths.login} />
           <NavItem
             icon={faPeopleGroup}
             title='Qui som'
@@ -94,8 +53,7 @@ const MainNavList = ({
             title='Temporades'
             scrollRef={seasonsRef}
           />
-          <NavItem icon={faPersonSkating} title='Jugadors' to={paths.players} />
-          <NavItem icon={faNewspaper} title='Blog i cotis' to={paths.blog} />
+
           <NavItem icon={faLink} title='Enllaços' scrollRef={relatedLinksRef} />
           <NavItem
             icon={faLocationDot}
