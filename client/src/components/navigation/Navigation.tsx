@@ -39,7 +39,7 @@ export const Navigation = ({
   relatedLinksRef,
   contactRef,
 }: TNavigationProps) => {
-  // const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false);
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
   const onLogoutHandler = async () => {
