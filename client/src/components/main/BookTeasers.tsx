@@ -40,7 +40,7 @@ const BookTeasers = () => {
           icon={<FontAwesomeIcon icon={faEye} />}
         />
         <Button
-          title='Descàrrega HD'
+          title="Descarrega'l HD"
           type='button'
           icon={<FontAwesomeIcon icon={faFloppyDisk} size='lg' />}
           // to={paths.book}

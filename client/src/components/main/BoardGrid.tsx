@@ -1,4 +1,4 @@
-import BoardItem from './BoardItem';
+import BoardItem from '../UI-components/BoardStackItem';
 
 type BoardInfos = {
   name: string;

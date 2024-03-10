@@ -15,6 +15,7 @@ import StickIcon from './StickIcon';
 import TextAreaInput from './TextAreaInput';
 import TitlePage from './TitlePage';
 import TitleSection from './TitleSection';
+import BoardStackItem from './BoardStackItem';
 
 export {
   Spinner,
@@ -27,6 +28,7 @@ export {
   ImageInput,
   LogoItem,
   ModalImage,
+  BoardStackItem,
   BoardModalCard,
   ScrollTopBtn,
   SeasonSelect,

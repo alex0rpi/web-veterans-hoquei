@@ -7,7 +7,7 @@ type TBoardItemProps = {
   onMemberClick: (name: string) => void;
 };
 
-const BoardItem = ({
+const BoardStackItem = ({
   email,
   name,
   role,
@@ -38,4 +38,4 @@ const BoardItem = ({
   );
 };
 
-export default BoardItem;
+export default BoardStackItem;
