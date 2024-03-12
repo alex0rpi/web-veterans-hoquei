@@ -76,3 +76,9 @@ npm run dev
 ```Bash
 npm run tailwind:watch
 ```
+
+## Dockerize frontend react
+
+1. Write a dockerfile to specify how the Docker Image should be built.
+2. Create a .dockerignore file to tell docker to ignore the node modules folder when building the image.
+3. Edit our docker compose file to add on this react project service.
