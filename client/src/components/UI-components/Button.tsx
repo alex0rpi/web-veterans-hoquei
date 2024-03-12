@@ -7,6 +7,7 @@ type TButtonProps = {
   onClick?: () => void;
   icon?: React.ReactNode;
   disabled?: boolean;
+  inverted?: boolean;
 };
 
 const Button = ({
@@ -16,11 +17,12 @@ const Button = ({
   onClick,
   icon,
   disabled,
+  inverted,
 }: TButtonProps) => {
   return (
     <button
       type={type}
-      className={`btn border-primary text-primary transition duration-500 ease-out hover:bg-primary hover:text-white md:border-2`}
+      className={`btn ${!inverted ? 'border-primary text-primary  hover:bg-primary hover:text-white' : 'border-white text-white  hover:bg-white hover:text-primary'} md:border-2 transition duration-500 ease-out`}
       onClick={onClick}
       disabled={disabled}
     >

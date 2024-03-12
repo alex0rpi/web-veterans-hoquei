@@ -1,8 +1,4 @@
 import logoImage from '../../assets/logos/logo-no-text-removebg.png';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
-// import { useState } from 'react';
-// import { Backdrop } from '../UI-components/Backdrop';
 import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import { useContext, useState } from 'react';
@@ -14,11 +10,12 @@ import { paths } from '../../constants';
 import MainNavList from './MainNavList';
 import AdminNavList from './AdminNavList';
 import Footer from './Footer';
-import PageNavList from './pageNavList';
+import PageNavList from './PageNavList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+import MobileNav from './MobileNav';
 
-type TNavigationProps = {
+export type TNavigationProps = {
   homeRef?: React.RefObject<HTMLDivElement>;
   associationRef?: React.RefObject<HTMLDivElement>;
   boardRef?: React.RefObject<HTMLDivElement>;
@@ -52,6 +49,9 @@ export const Navigation = ({
   };
   const location = useLocation();
   const isBookPage = location.pathname === paths.book;
+  const menuClickHandler = () => {
+    setShow((prevState) => !prevState);
+  };
 
   return (
     <nav className={isBookPage ? 'navBookLayout' : 'navLayout '}>
@@ -82,14 +82,14 @@ export const Navigation = ({
             icon={faBars}
             size='xl'
             className='z-50 cursor-pointer px-8 md:hidden text-slate-200'
-            // onClick={menuClickHandler}
+            onClick={menuClickHandler}
           />
         ) : (
           <FontAwesomeIcon
             icon={faXmark}
             size='2xl'
             className='cursor-pointer px-8 md:hidden text-slate-200'
-            // onClick={menuClickHandler}
+            onClick={menuClickHandler}
           />
         )}
       </motion.div>
@@ -112,34 +112,20 @@ export const Navigation = ({
           <AdminNavList onLogout={onLogoutHandler} />
         )}
       </div>
+      {show && (
+        <MobileNav
+          homeRef={homeRef}
+          associationRef={associationRef}
+          seasonsRef={seasonsRef}
+          contactRef={contactRef}
+          bookRef={bookRef}
+          boardRef={boardRef}
+          locationRef={locationRef}
+          relatedLinksRef={relatedLinksRef}
+          onModalClick={menuClickHandler}
+        />
+      )}
       <Footer />
     </nav>
   );
 };
-
-// {show && (
-//   <>
-//     {/* <Backdrop onClick={menuClickHandler} /> */}
-//     <motion.div
-//       initial={{ x: '100vw', opacity: 0 }}
-//       animate={{ x: '40vw', opacity: 1 }}
-//       exit={{ x: '100vw', opacity: 0 }}
-//       transition={{ duration: 0.2 }}
-//       className='fixed transform translate-x-full md:translate-x-0 top-20 z-50 w-[60vw] bg-primary px-8 pb-2 pt-2 text-slate-200 md:hidden'
-//     >
-//       {user.name === '' ? (
-//         <MainNavList
-//           homeRef={homeRef}
-//           associationRef={associationRef}
-//           seasonsRef={seasonsRef}
-//           contactRef={contactRef}
-//           bookRef={bookRef}
-//           boardRef={boardRef}
-//           locationRef={locationRef}
-//         />
-//       ) : (
-//         <AdminNavList onLogout={onLogoutHandler} />
-//       )}
-//     </motion.div>
-//   </>
-// )}

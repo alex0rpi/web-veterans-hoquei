@@ -1,0 +1,71 @@
+import { easeIn, motion } from 'framer-motion';
+import MainNavList from './MainNavList';
+import { TNavigationProps } from './Navigation';
+import ReactDOM from 'react-dom';
+import PageNavList from './PageNavList';
+import { Button } from '../UI-components';
+import Footer from './Footer';
+
+type TMobileNavProps = TNavigationProps & {
+  onModalClick: () => void;
+};
+
+const MobileNav = ({
+  homeRef,
+  associationRef,
+  boardRef,
+  bookRef,
+  seasonsRef,
+  locationRef,
+  relatedLinksRef,
+  contactRef,
+  onModalClick,
+}: TMobileNavProps) => {
+  const modalScreen = (
+    <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ type: easeIn, duration: 0.2 }}
+        exit={{ opacity: 0 }}
+        className='fixed top-0 left-0 w-full h-screen z-20 bg-slate-950/50 cursor-pointer'
+        onClick={onModalClick}
+      ></motion.div>
+      <motion.div
+        initial={{ x: '100vw', opacity: 0 }}
+        animate={{ x: '40vw', opacity: 1 }}
+        exit={{ x: '100vw', opacity: 0 }}
+        transition={{ duration: 0.2 }}
+        className='z-30 fixed transform translate-x-full md:translate-x-0 top-[0vh] w-[55vw] right-[40vw] bg-primary bg-opacity-95 ps-6 pe-6 pb-2 pt-2 rounded-s-lg text-slate-200 md:hidden flex flex-col items-end h-screen'
+      >
+        <Button
+          title='X'
+          onClick={onModalClick}
+          type='button'
+          inverted={true}
+        />
+        <div className='w-full'>
+          <div className='mt-1 border-b-[1px] border-slate-400'>
+            <PageNavList homeRef={homeRef} />
+          </div>
+          <MainNavList
+            homeRef={homeRef}
+            associationRef={associationRef}
+            boardRef={boardRef}
+            seasonsRef={seasonsRef}
+            bookRef={bookRef}
+            relatedLinksRef={relatedLinksRef}
+            locationRef={locationRef}
+            contactRef={contactRef}
+          />
+          <Footer />
+        </div>
+      </motion.div>
+    </>
+  );
+  const modalElement = document.getElementById('modalbackdrop');
+  if (!modalElement) return null; // or return some fallback component
+  return ReactDOM.createPortal(modalScreen, modalElement);
+};
+
+export default MobileNav;
