@@ -29,7 +29,7 @@ const BoardMembers = ({ scrollRef }: TBoardProps) => {
       <TitleSection sectionTitle='Membres de la junta' />
       {showModal && (
         <BoardModalCard
-          imageUrl={selectedMember?.imageUrl || ''}
+          imageUrl={selectedMember?.imageUrl || []}
           name={selectedMember?.name || ''}
           role={selectedMember?.role || ''}
           playerSeasons={selectedMember?.playerSeasons || []}
@@ -46,10 +46,10 @@ const BoardMembers = ({ scrollRef }: TBoardProps) => {
       </p>
       {/* Board lists */}
       <div className='flex flex-col md:flex-row justify-evenly items-center mx-1'>
-        <div className='w-1/2 h-80'>
+        <div className='w-full md:w-1/2 h-80'>
           <BoardGrid boardInfos={people} onMemberClick={clickMemberHandler} />
         </div>
-        <div className='w-1/2 h-80 overflow-y-scroll  overflow-x-hidden'>
+        <div className='w-full md:w-1/2 h-80 md:overflow-y-scroll'>
           <BoardGrid boardInfos={vocals} onMemberClick={clickMemberHandler} />
         </div>
       </div>

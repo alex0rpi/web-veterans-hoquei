@@ -79,7 +79,7 @@ const HomePage = ({
       <RelatedLinksSection scrollRef={relatedLinksRef} />
       <Location scrollRef={locationRef} />
       <ContactForm scrollRef={contactRef} />
-      {backToTopBtn && <ScrollTopBtn title='↑' onClick={scrollUp} />}
+      {backToTopBtn && <ScrollTopBtn onClick={scrollUp} />}
     </motion.div>
   );
 };

@@ -1,21 +1,23 @@
+import { faCircleArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 type TScrollTopBtn = {
-  title: string;
   onClick?: () => void;
 };
-const ScrollTopBtn = ({ title, onClick }: TScrollTopBtn) => {
+const ScrollTopBtn = ({ onClick }: TScrollTopBtn) => {
   return (
     <button
       onClick={onClick}
       style={{
         position: 'fixed',
-        bottom: '50px',
-        right: '50%',
-        height: '50px',
-        width: '50px',
-        fontSize: '50px',
+        bottom: '5%',
+        right: '5%',
+        height: '40px',
+        width: '40px',
+        fontSize: '40px',
       }}
     >
-      {title}
+      <FontAwesomeIcon icon={faCircleArrowUp} />
     </button>
   );
 };

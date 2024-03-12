@@ -3,12 +3,14 @@ import { Button } from '.';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { motion } from 'framer-motion';
+import { useMediaQuery } from 'react-responsive';
 
 type TModalProps = TBoardMemberInfos & {
   onModalClick: () => void;
 };
 
 const ModalContent = ({ ...props }: TModalProps) => {
+  const isMdScreenOrLarger = useMediaQuery({ minWidth: 768 });
   const linkify = (inputText: string) => {
     const urlPattern = /(www.[^\s]+)/g;
     return inputText.split(urlPattern).map((text, index) =>
@@ -34,7 +36,7 @@ const ModalContent = ({ ...props }: TModalProps) => {
       animate={{ opacity: 1 }}
       transition={{ type: 'spring', stiffness: 500, damping: 30 }}
     >
-      <div className='w-[60vw] h-[65vh] bg-slate-200 rounded-xl fixed top-[15vh] left-1/2 transform -translate-x-1/2 z-30 transition-all duration-200 flex flex-row justify-between items-start p-2'>
+      <div className='w-[95vw] h-[85vh] md:w-[60vw] md:h-[65vh] top-[10vh] md:top-[15vh] left-1/2 bg-slate-200 rounded-xl fixed transform -translate-x-1/2 z-30 transition-all duration-200 flex flex-row justify-between items-start p-2'>
         <div className='w-[30%] h-full'>
           <img
             src={props.imageUrl[1] ?? props.imageUrl[0]}
@@ -45,18 +47,26 @@ const ModalContent = ({ ...props }: TModalProps) => {
         <div className='w-[70%] h-full mx-2 text-primary flex flex-col'>
           <div className='mx-1 absolute top-2 right-1 flex-none'>
             <Button
-              title='Tanca'
+              title={isMdScreenOrLarger ? 'Tanca' : 'X'}
               type='button'
-              icon={<FontAwesomeIcon icon={faXmark} size='lg' />}
+              icon={
+                isMdScreenOrLarger && (
+                  <FontAwesomeIcon icon={faXmark} size='lg' />
+                )
+              }
               onClick={props.onModalClick}
             />
           </div>
           {/* Seasons List */}
           <div className='flex-none'>
-            <p className='text-2xl font-semibold '>{props.name}</p>
-            <p className='font-semibold text-xl mb-1'>{props.role}</p>
+            <p className='text-xl md:text-2xl font-semibold '>{props.name}</p>
+            <p className='font-semibold text-lg md:text-xl mb-1'>
+              {props.role}
+            </p>
             <div className='block'>
-              <strong className='me-1 text-lg block'>Temporades al FCB</strong>
+              <strong className='me-1 text-md md:text-lg block'>
+                Temporades al FCB
+              </strong>
               {props.playerSeasons.map((season, index) => (
                 // Season badge
                 <span
@@ -70,13 +80,17 @@ const ModalContent = ({ ...props }: TModalProps) => {
           </div>
           <div className='overflow-y-auto'>
             <span className='block mt-1'>
-              <strong className='me-1 text-lg mb-1 block'>Trajectòria</strong>
+              <strong className='me-1 text-md md:text-lg mb-1 block'>
+                Trajectòria
+              </strong>
               {!props.trajectory.includes('\n') ? (
                 <p className='inline-block text-lg'>{props.trajectory}</p>
               ) : (
-                props.trajectory
-                  .split('\n')
-                  .map((etapa) => <p className='inline-block'>{etapa}</p>)
+                props.trajectory.split('\n').map((etapa, index) => (
+                  <p key={index} className='inline-block'>
+                    {etapa}
+                  </p>
+                ))
               )}
             </span>
             {/*             {props.anecdote !== '' && (
@@ -94,7 +108,7 @@ const ModalContent = ({ ...props }: TModalProps) => {
 
             {props.otherComment !== '' && (
               <span className='block mt-1'>
-                <strong className='me-1 text-lg'>Comentari:</strong>
+                <strong className='me-1 text-md md:text-lg'>Comentari:</strong>
                 {props.otherComment!.split('\n').map((comment, index) => (
                   <p key={index} className='inline-block'>
                     {linkify(comment)}

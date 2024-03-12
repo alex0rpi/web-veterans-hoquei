@@ -23,15 +23,16 @@ body {
 }
 
 /* Page layout inside center column */
-.twoColLayout {
+
+.centerLayout {
   @apply md:flex md:flex-row bg-transparent;
 }
 
 .navLayout {
-  @apply sticky top-0 md:basis-[20%] h-screen bg-primary opacity-[88%];
+  @apply md:sticky top-0 md:basis-[20%] md:h-screen bg-primary opacity-[88%];
 }
 .pageLayout {
-  @apply md:basis-[80%] py-4 px-4 overflow-y-auto bg-gray-200 opacity-[90%];
+  @apply md:basis-[80%] py-4 px-4 overflow-y-auto bg-gray-200 bg-opacity-[90%];
 }
 
 .navBookLayout {

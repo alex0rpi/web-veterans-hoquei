@@ -1,19 +1,14 @@
+import { TBoardMemberInfos } from '../../types/Item-types';
 import BoardItem from '../UI-components/BoardStackItem';
 
-type BoardInfos = {
-  name: string;
-  role: string;
-  imageUrl: string;
-};
-
 type TBoardlistProps = {
-  boardInfos: BoardInfos[];
+  boardInfos: TBoardMemberInfos[];
   onMemberClick: (name: string) => void;
 };
 
 const BoardList = ({ boardInfos, onMemberClick }: TBoardlistProps) => {
   return (
-    <ul role='list' className='divide-y divide-gray-100'>
+    <ul role='list' className='mx-auto'>
       {boardInfos.map((person, index) => (
         <BoardItem
           key={index}

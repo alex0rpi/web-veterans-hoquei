@@ -77,21 +77,21 @@ export const Navigation = ({
           />
         </a>
         {/* Logo and hamburguer / cross icons */}
-        {/* {!show ? (
+        {!show ? (
           <FontAwesomeIcon
             icon={faBars}
             size='xl'
-            className='z-50 cursor-pointer px-8 md:hidden'
+            className='z-50 cursor-pointer px-8 md:hidden text-slate-200'
             // onClick={menuClickHandler}
           />
         ) : (
           <FontAwesomeIcon
             icon={faXmark}
             size='2xl'
-            className='cursor-pointer px-8 md:hidden'
+            className='cursor-pointer px-8 md:hidden text-slate-200'
             // onClick={menuClickHandler}
           />
-        )} */}
+        )}
       </motion.div>
       <div className='hidden pe-2 pt-2 mt-0 ps-2 text-sm md:block border-t-[1px] border-slate-300'>
         <div className='border-b-[1px] border-slate-400'>

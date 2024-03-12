@@ -47,7 +47,7 @@ const PageList = () => {
   const isBookPage = location.pathname === paths.book;
 
   return (
-    <div className='twoColLayout'>
+    <div className='centerLayout'>
       <Navigation
         homeRef={homeRef}
         associationRef={associationRef}

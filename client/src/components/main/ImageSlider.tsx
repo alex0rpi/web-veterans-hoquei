@@ -6,10 +6,12 @@ import {
   faCircle,
   faCircleDot,
 } from '@fortawesome/free-solid-svg-icons';
+import { useMediaQuery } from 'react-responsive';
 import { useState } from 'react';
 import { ModalImage } from '../UI-components';
 
 const ImageSlider = () => {
+  const isMdScreenOrLarger = useMediaQuery({ minWidth: 768 });
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showModal, setShowModal] = useState(false);
 
@@ -37,9 +39,8 @@ const ImageSlider = () => {
 
   return (
     <>
-      {showModal && (
+      {showModal && isMdScreenOrLarger && (
         <ModalImage
-          // show={showModal}
           image={fotos[currentIndex]}
           onModalClick={toggleImageModal}
         />
@@ -53,7 +54,7 @@ const ImageSlider = () => {
             backgroundRepeat: 'no-repeat',
             backgroundPosition: '50% 20%',
           }}
-          className='w-full h-full rounded-lg overflow-hidden duration-200 cursor-pointer'
+          className='w-full h-full rounded-lg overflow-hidden duration-200 md:cursor-pointer'
           onClick={toggleImageModal}
         ></div>
         {/* End of Image container */}
@@ -67,11 +68,13 @@ const ImageSlider = () => {
             className='transition-scale duration-200 hover:scale-125'
           />
         </div>
-        <div className='opacity-0 group-hover:opacity-100 transition-all duration-250 absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-8 bg-black/35 cursor-pointer text-white w-10 h-10 flex items-center justify-center'>
+        <div
+          className='opacity-0 group-hover:opacity-100 transition-all duration-250 absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-8 bg-black/35 cursor-pointer text-white w-10 h-10 flex items-center justify-center'
+          onClick={slideRight}
+        >
           <FontAwesomeIcon
             icon={faChevronRight}
             size='xl'
-            onClick={slideRight}
             className='transition-scale duration-200 hover:scale-125'
           />
         </div>

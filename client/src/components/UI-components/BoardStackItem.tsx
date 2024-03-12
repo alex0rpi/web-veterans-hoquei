@@ -1,14 +1,12 @@
 type TBoardItemProps = {
-  email?: string;
   name: string;
   role: string;
-  imageUrl: string;
+  imageUrl: string[];
   index: number;
   onMemberClick: (name: string) => void;
 };
 
 const BoardStackItem = ({
-  email,
   name,
   role,
   imageUrl,
@@ -16,11 +14,11 @@ const BoardStackItem = ({
   onMemberClick,
 }: TBoardItemProps) => {
   const evenIndex = index % 2 === 0;
-  const itemBg = evenIndex ? 'bg-slate-300' : 'bg-slate-200';
+  const itemBg = evenIndex ? 'bg-slate-400' : 'bg-slate-300';
   return (
     <div
-      key={email}
-      className={`group ${itemBg} m-3 p-1 cursor-pointer rounded-lg transition-all duration-200 hover:opacity-95 hover:scale-105 flex justify-between`}
+      key={name}
+      className={`group ${itemBg} m-3 p-1 cursor-pointer rounded-lg transition-all duration-200 hover:opacity-85 hover:scale-105 hover:shadow-xl flex justify-between w-4/5 md:w-auto`}
       onClick={() => onMemberClick(name)}
     >
       <div className='flex min-w-0 gap-x-4'>
