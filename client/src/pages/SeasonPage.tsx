@@ -151,19 +151,19 @@ const SeasonPage = () => {
               <div className='flex flex-row items-center justify-center border border-gray-400 rounded-full px-3'>
                 <button
                   type='button'
-                  className='font-bold text-2xl hover:scale-125'
+                  className='font-bold text-4xl md:text-3xl md:hover:scale-125 active:text-gray-500'
                   onClick={() => changeFontSizeHandler('-')}
                 >
                   -
                 </button>
                 <RxFontSize
-                  className='mx-2 text-xl hover:scale-125'
+                  className='mx-2 text-3xl md:text-2xl md:hover:scale-125 active:text-gray-500 cursor-pointer'
                   onClick={() => changeFontSizeHandler('=')}
                 />
                 {/* <RiFontSize2 className="mx-2 text-xl" /> */}
                 <button
                   type='button'
-                  className='font-bold text-2xl hover:scale-125'
+                  className='font-bold text-4xl md:text-3xl md:hover:scale-125 active:text-gray-500'
                   onClick={() => changeFontSizeHandler('+')}
                 >
                   +

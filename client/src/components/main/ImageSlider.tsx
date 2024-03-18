@@ -55,7 +55,9 @@ const ImageSlider = () => {
             backgroundPosition: '50% 20%',
           }}
           className='w-full h-full rounded-lg overflow-hidden duration-200 md:cursor-pointer'
-          onClick={toggleImageModal}
+          onClick={() => {
+            if (isMdScreenOrLarger) toggleImageModal();
+          }}
         ></div>
         {/* End of Image container */}
         <div

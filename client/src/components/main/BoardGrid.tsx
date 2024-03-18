@@ -8,7 +8,7 @@ type TBoardlistProps = {
 
 const BoardList = ({ boardInfos, onMemberClick }: TBoardlistProps) => {
   return (
-    <ul role='list' className='mx-auto'>
+    <ul role='list' className='md:mx-auto'>
       {boardInfos.map((person, index) => (
         <BoardItem
           key={index}

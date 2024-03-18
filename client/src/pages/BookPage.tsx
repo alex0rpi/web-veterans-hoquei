@@ -18,7 +18,7 @@ const BookPage = () => {
           title='Browser PDF Viewer'
           src={pdfUrl}
           allowFullScreen
-          className='w-full h-[95vh] rounded-lg'
+          className='w-full h-[89vh] md:h-[95vh] rounded-lg'
         />
       </div>
     </motion.div>

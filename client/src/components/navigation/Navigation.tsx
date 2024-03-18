@@ -12,7 +12,8 @@ import AdminNavList from './AdminNavList';
 import Footer from './Footer';
 import PageNavList from './PageNavList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { useMediaQuery } from 'react-responsive';
 import MobileNav from './MobileNav';
 
 export type TNavigationProps = {
@@ -36,6 +37,7 @@ export const Navigation = ({
   relatedLinksRef,
   contactRef,
 }: TNavigationProps) => {
+  const isMdScreenOrLarger = useMediaQuery({ minWidth: 768 });
   const [show, setShow] = useState(false);
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
@@ -53,6 +55,7 @@ export const Navigation = ({
     setShow((prevState) => !prevState);
   };
 
+  const logoHeight = isBookPage ? 'h-10 md:h-24' : 'h-14 md:h-24';
   return (
     <nav className={isBookPage ? 'navBookLayout' : 'navLayout '}>
       <motion.div
@@ -67,28 +70,21 @@ export const Navigation = ({
       >
         {/* Logo always visible but variable */}
         <a
-          href='/'
-          className='px-0 py-1 transition duration-200 md:py-2 hover:scale-95'
+          href={paths.home}
+          className='ps-1 md:ps-0 pe-0 py-1 transition duration-200 md:py-2 hover:scale-95'
         >
           <img
             src={logoImage}
-            className='h-14 brightness-125 md:h-24 object-fit'
+            className={`${logoHeight} brightness-125  w-full object-fit transition-all duration-200`}
             alt='logo-associació-veterans-hoquei-patins-fcb'
           />
         </a>
         {/* Logo and hamburguer / cross icons */}
-        {!show ? (
+        {!show && (
           <FontAwesomeIcon
             icon={faBars}
             size='xl'
             className='z-50 cursor-pointer px-8 md:hidden text-slate-200'
-            onClick={menuClickHandler}
-          />
-        ) : (
-          <FontAwesomeIcon
-            icon={faXmark}
-            size='2xl'
-            className='cursor-pointer px-8 md:hidden text-slate-200'
             onClick={menuClickHandler}
           />
         )}
@@ -125,7 +121,7 @@ export const Navigation = ({
           onModalClick={menuClickHandler}
         />
       )}
-      <Footer />
+      {isMdScreenOrLarger && <Footer />}
     </nav>
   );
 };

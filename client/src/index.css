@@ -36,11 +36,11 @@ body {
 }
 
 .navBookLayout {
-  @apply sticky top-0 md:basis-[10%] h-screen bg-primary opacity-[88%];
+  @apply md:sticky top-0 md:basis-[10%] md:h-screen bg-primary opacity-[88%];
 }
 
 .bookPageLayout {
-  @apply md:basis-[90%] py-4 px-4 overflow-y-auto bg-gray-200 opacity-100;
+  @apply md:basis-[90%] py-1 md:py-4 px-1 md:px-4 overflow-y-auto bg-gray-200 opacity-100;
 }
 
 /* Components */

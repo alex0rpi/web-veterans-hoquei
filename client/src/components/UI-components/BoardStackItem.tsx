@@ -14,11 +14,12 @@ const BoardStackItem = ({
   onMemberClick,
 }: TBoardItemProps) => {
   const evenIndex = index % 2 === 0;
+
   const itemBg = evenIndex ? 'bg-slate-400' : 'bg-slate-300';
   return (
     <div
       key={name}
-      className={`group ${itemBg} m-3 p-1 cursor-pointer rounded-lg transition-all duration-200 hover:opacity-85 hover:scale-105 hover:shadow-xl flex justify-between w-4/5 md:w-auto`}
+      className={`group ${itemBg} m-3 p-1 cursor-pointer rounded-lg transition-all duration-200 hover:opacity-85 hover:scale-105 hover:shadow-xl md:flex md:justify-between w-4/5 md:w-auto mx-auto md:mx-2`}
       onClick={() => onMemberClick(name)}
     >
       <div className='flex min-w-0 gap-x-4'>
