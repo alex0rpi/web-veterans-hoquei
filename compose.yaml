@@ -22,6 +22,8 @@ services:
       - /app/node_modules
     stdin_open: true
     tty: true
+    depends_on:
+      - postgres
   react:
     build: ./client
     container_name: react_veterans
