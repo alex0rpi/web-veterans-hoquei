@@ -24,6 +24,7 @@ services:
     tty: true
     depends_on:
       - postgres
+    command: sh -c "npx prisma migrate dev && npx prisma generate && npm run dev"
   react:
     build: ./client
     container_name: react_veterans
