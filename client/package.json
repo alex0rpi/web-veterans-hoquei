@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "start": "vite --host",
+    "dev": "vite --host",
     "tailwind": "tailwind build src/index.css --watch -o public/css/styles.css",
     "tailwind:build": "tailwind build src/index.css -o public/css/styles.css",
     "build": "tsc && vite build",
