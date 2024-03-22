@@ -6,14 +6,17 @@ import {
   faHouse,
   faUser,
   faPersonSkating,
-  faNewspaper,
+  // faNewspaper,
   faCalendar,
 } from '@fortawesome/free-solid-svg-icons';
+import { useContext } from 'react';
+import { UserContext } from '../../context/UserContext';
 
 type TPageNav = {
   homeRef?: React.RefObject<HTMLDivElement>;
 };
 const PageNavList = ({ homeRef }: TPageNav) => {
+  const { user } = useContext(UserContext);
   const location = useLocation();
   const authPaths = [
     paths.login,
@@ -26,8 +29,16 @@ const PageNavList = ({ homeRef }: TPageNav) => {
   const isAuth = authPaths.includes(location.pathname);
   const isBook = location.pathname === paths.book;
   const isPlayers = location.pathname === paths.players;
-  const isBlog = location.pathname === paths.blog;
+  // const isBlog = location.pathname === paths.blog;
   const isSeason = location.pathname.startsWith(paths.season.split(':')[0]);
+  const adminPaths = [
+    paths.me,
+    paths.newChapter,
+    paths.userChapterList,
+    paths.editChapter,
+  ];
+  const isAdmin = adminPaths.includes(location.pathname) && user.name !== '';
+
   return (
     <>
       {isHome ? (
@@ -45,12 +56,21 @@ const PageNavList = ({ homeRef }: TPageNav) => {
           highlight={isHome}
         />
       )}
-      <NavItem
-        icon={faUser}
-        title='Accés'
-        to={paths.login}
-        highlight={isAuth}
-      />
+      {user.name === '' ? (
+        <NavItem
+          icon={faUser}
+          title='Accés'
+          to={paths.login}
+          highlight={isAuth}
+        />
+      ) : (
+        <NavItem
+          icon={faUser}
+          title='El meu espai'
+          to={paths.userChapterList}
+          highlight={isAdmin}
+        />
+      )}
       {isSeason && (
         <NavItem
           icon={faPersonSkating}
@@ -78,12 +98,12 @@ const PageNavList = ({ homeRef }: TPageNav) => {
         to={paths.players}
         highlight={isPlayers}
       />
-      <NavItem
+      {/*   <NavItem
         icon={faNewspaper}
         title='Blog i cotis'
         to={paths.blog}
         highlight={isBlog}
-      />
+      /> */}
     </>
   );
 };

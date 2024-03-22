@@ -10,7 +10,7 @@ import {
   AdminPage,
   BookPage,
   PlayersPage,
-  BlogPage,
+  // BlogPage,
 } from './index';
 
 const PageList = () => {
@@ -85,7 +85,7 @@ const PageList = () => {
         {isAdminPage && <AdminPage />}
         {isBookPage && <BookPage />}
         {location.pathname === paths.players && <PlayersPage />}
-        {location.pathname === paths.blog && <BlogPage />}
+        {/* {location.pathname === paths.blog && <BlogPage />} */}
       </motion.div>
     </div>
   );

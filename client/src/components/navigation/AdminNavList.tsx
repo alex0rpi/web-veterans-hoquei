@@ -1,7 +1,6 @@
 import { NavItem } from './NavItem';
 import { paths } from '../../constants';
 import {
-  faHouse,
   faAddressCard,
   faCirclePlus,
   faArrowRightFromBracket,
@@ -15,7 +14,6 @@ type TMainNav = {
 const AdminNavList = ({ onLogout }: TMainNav) => {
   return (
     <div>
-      <NavItem icon={faHouse} title='Inici' to={paths.home} />
       <NavItem
         icon={faCalendar}
         title='Els meus capítols'

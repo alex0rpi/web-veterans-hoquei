@@ -49,8 +49,15 @@ export const Navigation = ({
       navigate(`${paths.home}`);
     }
   };
+  const adminPaths = [
+    paths.me,
+    paths.newChapter,
+    paths.userChapterList,
+    paths.editChapter,
+  ];
   const location = useLocation();
   const isBookPage = location.pathname === paths.book;
+  const isAdmin = adminPaths.includes(location.pathname) && user.name !== '';
   const menuClickHandler = () => {
     setShow((prevState) => !prevState);
   };
@@ -93,7 +100,7 @@ export const Navigation = ({
         <div className='border-b-[1px] border-slate-400'>
           <PageNavList homeRef={homeRef} />
         </div>
-        {user.name === '' ? (
+        {!isAdmin ? (
           <MainNavList
             homeRef={homeRef}
             associationRef={associationRef}

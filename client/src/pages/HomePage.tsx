@@ -15,6 +15,10 @@ import {
   Location,
   ContactForm,
 } from '../components/main';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import LogoutService from '../services/LogoutService';
+import { toast } from 'react-toastify';
 
 type TMainPageProps = {
   homeRef?: React.RefObject<HTMLDivElement>;
@@ -38,7 +42,7 @@ const HomePage = ({
   locationRef,
   contactRef,
 }: TMainPageProps) => {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const [backToTopBtn, setBackToTopBtn] = useState(false);
 
   useEffect(() => {
@@ -50,6 +54,14 @@ const HomePage = ({
       }
     });
   }, []);
+
+  const onLogoutHandler = async () => {
+    const isSuccess = await LogoutService();
+    if (isSuccess) {
+      setUser({ id: '', name: '', isVerified: false });
+      toast.info('Usuari desconnectat.');
+    }
+  };
 
   const scrollUp = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -63,10 +75,24 @@ const HomePage = ({
       exit={{ opacity: 0 }}
     >
       {user.name !== '' && (
-        <h1 className='text-lg text-right text-gray-600'>
-          Bon dia,{' '}
-          <span className='font-bold text-lg text-right'> {user.name}</span>
-        </h1>
+        <div className='fixed top-0 right-[13vw] p-4'>
+          <h1 className='flex items-center justify-end flex-row text-lg text-right text-gray-600'>
+            Bon dia,
+            <span className='font-bold text-lg text-right ms-1'>
+              {user.name}
+            </span>
+            <div className='group flex relative'>
+              <FontAwesomeIcon
+                icon={faRightFromBracket}
+                className='ms-2 cursor-pointer hover:opacity-95 hover:translate-x-1 transition-all duration-300 ease-in-out'
+                onClick={onLogoutHandler}
+              />
+              <span className='opacity-0 group-hover:opacity-100 transition-opacity bg-primary p-2 text-sm text-gray-100 rounded-md absolute left-1/2 -translate-x-1/2 translate-y-1/2 mt-2 mx-auto'>
+                Surt
+              </span>
+            </div>
+          </h1>
+        </div>
       )}
       <HeaderTitle scrollRef={homeRef} />
       <ImageSlider />
