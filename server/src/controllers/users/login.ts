@@ -24,7 +24,7 @@ export const login = async (ctx: Koa.Context) => {
   });
 
   if (user) {
-    if (user.isVerified === false || user.status !== 'ACTIVE') {
+    if (user.status !== 'ACTIVE') {
       ctx.status = 403;
       ctx.body = { error: 'Only verified and activated users can login' };
       return;
@@ -36,9 +36,13 @@ export const login = async (ctx: Koa.Context) => {
       throw new ValidationError('Invalid password');
     }
 
-    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET as Secret, {
-      expiresIn: expirationInMilliseconds.toString(),
-    });
+    const token = jwt.sign(
+      { userId: user.id },
+      process.env.JWT_SECRET as Secret,
+      {
+        expiresIn: expirationInMilliseconds.toString(),
+      }
+    );
 
     ctx.cookies.set('token', token, {
       httpOnly: true,
@@ -49,5 +53,9 @@ export const login = async (ctx: Koa.Context) => {
 
     ctx.status = 200;
     ctx.body = parsedUser;
+    return;
   }
+  ctx.status = 403;
+  ctx.body = { error: 'Only verified and activated users can login' };
+  return;
 };

@@ -11,7 +11,7 @@ const defaultState = {
   user: {
     id: '',
     name: '',
-    isVerified: false,
+    isAuthenticated: false,
   },
   setUser: () => {},
 } as IUserContext;
@@ -27,10 +27,12 @@ export default function UserProvider({ children }: TUserProviderProps) {
   const [user, setUser] = useState<TUser>({
     id: '',
     name: '',
-    isVerified: false,
+    isAuthenticated: false,
   });
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ user, setUser }}>
+      {children}
+    </UserContext.Provider>
   );
 }

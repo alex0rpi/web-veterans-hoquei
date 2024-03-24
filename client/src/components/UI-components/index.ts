@@ -16,6 +16,7 @@ import TextAreaInput from './TextAreaInput';
 import TitlePage from './TitlePage';
 import TitleSection from './TitleSection';
 import BoardStackItem from './BoardStackItem';
+import UserNameGreet from './UserNameGreet';
 
 export {
   Spinner,
@@ -36,4 +37,5 @@ export {
   TextAreaInput,
   TitlePage,
   TitleSection,
+  UserNameGreet,
 };

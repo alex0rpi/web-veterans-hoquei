@@ -29,7 +29,11 @@ const AdminLogin = () => {
 
     const user = await LoginService(formState);
     if (user) {
-      setUser({ id: user.id, name: user.name, isVerified: user.isVerified });
+      setUser({
+        id: user.id,
+        name: user.name,
+        isAuthenticated: true,
+      });
       toast.info(`Benvingut ${user.name}!`);
       navigate(`${paths.userChapterList}`);
     }

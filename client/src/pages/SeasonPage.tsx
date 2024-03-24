@@ -42,7 +42,6 @@ const SeasonPage = () => {
   };
 
   const { chapters, setChapters } = useContext(ChapterContext);
-
   const [isLoading, setIsLoading] = useState(true);
   const [season, setSeason] = useState<TChapter | null>(null);
 

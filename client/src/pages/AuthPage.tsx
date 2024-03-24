@@ -8,13 +8,18 @@ import {
 } from '../components/auth';
 import { useLocation } from 'react-router-dom';
 import { paths } from '../constants';
+import { useContext } from 'react';
+import { UserContext } from '../context/UserContext';
 
 const AuthPage = () => {
+  const { user } = useContext(UserContext);
   const location = useLocation();
   const isLogin = location.pathname === paths.login;
   const isRegister = location.pathname === paths.register;
   const isVerify = location.pathname === paths.verify;
-  const isRequestPwdReset = location.pathname === paths.requestPasswordReset;
+  const isRequestPwdReset =
+    location.pathname === paths.requestPasswordReset &&
+    user.isAuthenticated === true;
   const isUpdatePassword = location.pathname === paths.updatePassword;
   return (
     <motion.div

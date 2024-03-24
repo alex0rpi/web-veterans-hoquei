@@ -18,14 +18,12 @@ const ImageSlider = () => {
   const slideLeft = () => {
     const isFirstSlide = currentIndex === 0;
     const newIndex = isFirstSlide ? fotos.length - 1 : currentIndex - 1;
-    // console.log('newIndex: ', newIndex);
 
     setCurrentIndex(newIndex);
   };
   const slideRight = () => {
     const isLastSlide = currentIndex === fotos.length - 1;
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    // console.log('newIndex: ', newIndex);
 
     setCurrentIndex(newIndex);
   };

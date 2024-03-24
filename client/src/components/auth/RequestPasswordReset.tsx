@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useContext } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { paths } from '../../constants';
@@ -9,6 +9,7 @@ import RequestPasswordResetService from '../../services/RequestPasswordResetServ
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { PageTitle } from '../main';
+import { UserContext } from '../../context/UserContext';
 
 const RequestPasswordReset = () => {
   const navigate = useNavigate();
@@ -20,6 +21,12 @@ const RequestPasswordReset = () => {
     isLoading: false,
     error: false,
   });
+
+  const { user } = useContext(UserContext);
+
+  useEffect(() => {
+    if (!user.isAuthenticated) navigate(paths.login);
+  }, [navigate, user.isAuthenticated]);
 
   useEffect(() => {
     if (emailRef.current) {

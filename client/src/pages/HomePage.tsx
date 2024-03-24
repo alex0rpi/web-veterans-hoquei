@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../context/UserContext';
 import { easeInOut, motion } from 'framer-motion';
-import ScrollTopBtn from '../components/UI-components/ScrollTopBtn';
 import {
   ImageSlider,
   Association,
@@ -15,10 +14,9 @@ import {
   Location,
   ContactForm,
 } from '../components/main';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import LogoutService from '../services/LogoutService';
 import { toast } from 'react-toastify';
+import { UserNameGreet, ScrollTopBtn } from '../components/UI-components';
 
 type TMainPageProps = {
   homeRef?: React.RefObject<HTMLDivElement>;
@@ -58,7 +56,7 @@ const HomePage = ({
   const onLogoutHandler = async () => {
     const isSuccess = await LogoutService();
     if (isSuccess) {
-      setUser({ id: '', name: '', isVerified: false });
+      setUser({ ...user, id: '', name: '', isAuthenticated: false });
       toast.info('Usuari desconnectat.');
     }
   };
@@ -74,25 +72,8 @@ const HomePage = ({
       transition={{ type: easeInOut, duration: 1 }}
       exit={{ opacity: 0 }}
     >
-      {user.name !== '' && (
-        <div className='fixed top-0 right-[13vw] p-4'>
-          <h1 className='flex items-center justify-end flex-row text-lg text-right text-gray-600'>
-            Bon dia,
-            <span className='font-bold text-lg text-right ms-1'>
-              {user.name}
-            </span>
-            <div className='group flex relative'>
-              <FontAwesomeIcon
-                icon={faRightFromBracket}
-                className='ms-2 cursor-pointer hover:opacity-95 hover:translate-x-1 transition-all duration-300 ease-in-out'
-                onClick={onLogoutHandler}
-              />
-              <span className='opacity-0 group-hover:opacity-100 transition-opacity bg-primary p-2 text-sm text-gray-100 rounded-md absolute left-1/2 -translate-x-1/2 translate-y-1/2 mt-2 mx-auto'>
-                Surt
-              </span>
-            </div>
-          </h1>
-        </div>
+      {user.isAuthenticated && (
+        <UserNameGreet name={user.name} logOutHandler={onLogoutHandler} />
       )}
       <HeaderTitle scrollRef={homeRef} />
       <ImageSlider />

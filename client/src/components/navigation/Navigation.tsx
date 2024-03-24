@@ -44,7 +44,7 @@ export const Navigation = ({
   const onLogoutHandler = async () => {
     const isSuccess = await LogoutService();
     if (isSuccess) {
-      setUser({ id: '', name: '', isVerified: false });
+      setUser({ ...user, id: '', name: '', isAuthenticated: false });
       toast.info('Usuari desconnectat.');
       navigate(`${paths.home}`);
     }
@@ -53,11 +53,13 @@ export const Navigation = ({
     paths.me,
     paths.newChapter,
     paths.userChapterList,
-    paths.editChapter,
+    paths.editChapter.split(':')[0],
   ];
   const location = useLocation();
   const isBookPage = location.pathname === paths.book;
-  const isAdmin = adminPaths.includes(location.pathname) && user.name !== '';
+  const isAdmin =
+    adminPaths.some((path) => location.pathname.startsWith(path)) &&
+    user.isAuthenticated === true;
   const menuClickHandler = () => {
     setShow((prevState) => !prevState);
   };
@@ -86,7 +88,7 @@ export const Navigation = ({
             alt='logo-associació-veterans-hoquei-patins-fcb'
           />
         </a>
-        {/* Logo and hamburguer / cross icons */}
+        {/* Hamburguer and cross icons */}
         {!show && (
           <FontAwesomeIcon
             icon={faBars}
@@ -127,6 +129,7 @@ export const Navigation = ({
           relatedLinksRef={relatedLinksRef}
           onModalClick={menuClickHandler}
         />
+        // Missing ADMIN MOBILE navigation
       )}
       {isMdScreenOrLarger && <Footer />}
     </nav>

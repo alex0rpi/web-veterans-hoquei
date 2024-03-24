@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { paths } from '../constants/paths';
 import { easeInOut, motion } from 'framer-motion';
@@ -12,6 +12,7 @@ import {
   PlayersPage,
   // BlogPage,
 } from './index';
+import { UserContext } from '../context/UserContext';
 
 const PageList = () => {
   const homeRef = useRef<HTMLDivElement | null>(null);
@@ -23,6 +24,8 @@ const PageList = () => {
   const locationRef = useRef<HTMLDivElement | null>(null);
   const contactRef = useRef<HTMLDivElement | null>(null);
   const location = useLocation();
+
+  const { user } = useContext(UserContext);
 
   const scrollUp = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -40,10 +43,13 @@ const PageList = () => {
   const adminPaths = [
     paths.userChapterList,
     paths.newChapter,
-    paths.editChapter,
+    paths.editChapter.split(':')[0],
     paths.me,
   ];
-  const isAdminPage = adminPaths.includes(location.pathname);
+
+  const isAdminPage =
+    adminPaths.some((path) => location.pathname.startsWith(path)) &&
+    user.isAuthenticated === true;
   const isBookPage = location.pathname === paths.book;
 
   return (

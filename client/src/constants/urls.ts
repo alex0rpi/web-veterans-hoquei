@@ -12,6 +12,7 @@ export const urls = {
   getChapterById: '/api/v1/chapters/id/:chapterId',
   getChapterBySeason: '/api/v1/chapters/season',
   getMyChapters: '/api/v1/chapters/me',
-  getPdfBook: '/public/documents/Llibre-veterans-hoquei-patins-fcb_compressed.pdf',
-  sendContactEmail: 'https://formspree.io/f/mzbljkgl',
+  getPdfBook:
+    '/public/documents/Llibre-veterans-hoquei-patins-fcb_compressed.pdf',
+  sendContactEmail: `https://formspree.io/f/${import.meta.env.VITE_FORMSPREE_KEY}`,
 };
