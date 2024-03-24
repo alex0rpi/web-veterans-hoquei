@@ -14,7 +14,7 @@ import {
   Location,
   ContactForm,
 } from '../components/main';
-import LogoutService from '../services/LogoutService';
+import LogoutService from '../services/User/LogoutService';
 import { toast } from 'react-toastify';
 import { UserNameGreet, ScrollTopBtn } from '../components/UI-components';
 

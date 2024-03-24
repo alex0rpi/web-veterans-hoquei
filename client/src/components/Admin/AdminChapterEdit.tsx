@@ -5,6 +5,7 @@ import {
   Spinner,
   FormInput,
   TextAreaInput,
+  PageTitle,
   // ImageInput,
 } from '../UI-components';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -18,9 +19,9 @@ import {
 } from 'react';
 import { paths } from '../../constants';
 import { ChapterContext } from '../../context/ChaptersContext';
-import GetChaptersService from '../../services/GetChaptersService';
-import PatchChapterService from '../../services/PatchChapterService';
-import GetSeasonService from '../../services/GetSeasonService';
+import GetChaptersService from '../../services/Chapters/GetChaptersService';
+import PatchChapterService from '../../services/Chapters/PatchChapterService';
+import GetSeasonService from '../../services/Chapters/GetSeasonService';
 import { TChapter } from '../../types/Item-types';
 import { Formik } from 'formik';
 import { chapterSchema } from '../../validation/chapterSchema';
@@ -47,7 +48,10 @@ const AdminChapterEdit = () => {
   useEffect(() => {
     const fetchSeason = async () => {
       const fetchedSeason = await GetSeasonService(currentSeason!);
-      if (!fetchedSeason) return;
+      if (!fetchedSeason) {
+        setIsLoading(false);
+        return;
+      }
       setSeason(fetchedSeason);
       setInitialValues({
         season: fetchedSeason.season,
@@ -111,9 +115,7 @@ const AdminChapterEdit = () => {
       }}
       exit={{ opacity: 0, x: '-100vw' }}
     >
-      <h1 className='mt-10 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
-        Edita aquesta temporada
-      </h1>
+      <PageTitle titleText='Edita aquesta temporada' />
       <div className='mt-6 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6'>
         {isLoading ? (
           <>

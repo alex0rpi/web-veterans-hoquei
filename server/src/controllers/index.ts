@@ -4,6 +4,7 @@ export { verify } from './users/verify';
 export { requestPasswordReset } from './users/requestPasswordReset';
 export { udpatePassword } from './users/updatePassword';
 export { getMe } from './users/getMe';
+export { getUserData } from './users/getUserData';
 export { logout } from './users/logout';
 export { modifyUser } from './users/patchUser';
 export { createChapter } from './chapters/create';

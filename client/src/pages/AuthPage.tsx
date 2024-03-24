@@ -19,7 +19,7 @@ const AuthPage = () => {
   const isVerify = location.pathname === paths.verify;
   const isRequestPwdReset =
     location.pathname === paths.requestPasswordReset &&
-    user.isAuthenticated === true;
+    user.isAuthenticated === false;
   const isUpdatePassword = location.pathname === paths.updatePassword;
   return (
     <motion.div

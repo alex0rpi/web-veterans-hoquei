@@ -5,7 +5,7 @@ import { useContext, useState } from 'react';
 import { UserContext } from '../../context/UserContext';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import LogoutService from '../../services/LogoutService';
+import LogoutService from '../../services/User/LogoutService';
 import { paths } from '../../constants';
 import MainNavList from './MainNavList';
 import AdminNavList from './AdminNavList';

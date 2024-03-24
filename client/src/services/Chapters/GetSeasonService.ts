@@ -1,11 +1,11 @@
-import { toast } from "react-toastify";
-import { urls } from "../constants";
+import { toast } from 'react-toastify';
+import { urls } from '../../constants';
 
 const GetSeasonService = async (season: string) => {
   try {
     const response = await fetch(`${urls.getChapterBySeason}/${season}`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
     });
     if (!response.ok) {
       const error = await response.json();
@@ -16,7 +16,7 @@ const GetSeasonService = async (season: string) => {
 
     return data;
   } catch (error) {
-    toast.warning("Alguna cosa ha fallat, sisplau torna-ho a provar més tard.");
+    toast.warning('Alguna cosa ha fallat, sisplau torna-ho a provar més tard.');
     return false;
   }
 };

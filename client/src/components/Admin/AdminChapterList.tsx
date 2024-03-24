@@ -1,7 +1,7 @@
 import { TChapterListItem } from '../../types/Item-types';
 import { useEffect, useState } from 'react';
-import GetUserChaptersService from '../../services/GetUserChatpersService';
-import { ChapterCard, Spinner } from '../UI-components';
+import GetUserChaptersService from '../../services/Chapters/GetUserChatpersService';
+import { ChapterCard, PageTitle, Spinner } from '../UI-components';
 import { motion } from 'framer-motion';
 
 const AdminChapterList = () => {
@@ -30,9 +30,8 @@ const AdminChapterList = () => {
       }}
       exit={{ opacity: 0, x: '-100vw' }}
     >
-      <h1 className='mt-10 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
-        Els meus capítols
-      </h1>
+      <PageTitle titleText='Els meus capítols' />
+
       {isLoading ? (
         <>
           <div></div>

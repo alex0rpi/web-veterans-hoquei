@@ -13,6 +13,7 @@ export const paths = {
   updatePassword: '/auth/reset-password',
   // admin paths
   me: '/admin/me',
+  meData: '/admin/me/data',
   newChapter: '/admin/new-chapter',
   userChapterList: '/admin/user-chapter-list',
   editChapter: '/admin/edit-chapter/:currentSeason',

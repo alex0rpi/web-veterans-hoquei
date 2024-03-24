@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Button, FormInput } from '../UI-components';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
-import LoginService from '../../services/LoginService';
+import LoginService from '../../services/User/LoginService';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { paths } from '../../constants';

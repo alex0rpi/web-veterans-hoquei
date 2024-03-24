@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import VerifyUserService from '../../services/VerifyUserService';
+import VerifyUserService from '../../services/User/VerifyUserService';
 import { paths } from '../../constants';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

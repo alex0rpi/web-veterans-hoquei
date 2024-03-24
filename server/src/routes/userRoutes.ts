@@ -2,6 +2,7 @@ import Router from '@koa/router';
 import { z } from 'zod';
 import {
   getMe,
+  getUserData,
   login,
   logout,
   modifyUser,
@@ -53,6 +54,8 @@ userRouter.post('/login', validate(z.object({ body: userLoginSchema })), login);
 userRouter.get('/logout', logout);
 
 userRouter.get('/me', getUserFromToken, getMe);
+
+userRouter.get('/me/data', authenticate, getUserData);
 
 userRouter.patch('/me', authenticate, modifyUser);
 

@@ -5,7 +5,7 @@ import { paths } from '../../constants';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Button, Spinner, FormInput } from '../UI-components';
-import RequestPasswordResetService from '../../services/RequestPasswordResetService';
+import RequestPasswordResetService from '../../services/User/RequestPasswordResetService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { PageTitle } from '../main';
@@ -25,7 +25,7 @@ const RequestPasswordReset = () => {
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    if (!user.isAuthenticated) navigate(paths.login);
+    if (user.isAuthenticated) navigate(paths.login);
   }, [navigate, user.isAuthenticated]);
 
   useEffect(() => {

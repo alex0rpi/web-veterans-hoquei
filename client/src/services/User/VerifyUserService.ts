@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import { urls } from '../constants';
+import { urls } from '../../constants';
 
 const VerifyUserService = async (emailToken: string) => {
   if (!emailToken) {

@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { urls } from '../constants';
+import { urls } from '../../constants';
 
 type TRegisterProps = {
   email: string | undefined;

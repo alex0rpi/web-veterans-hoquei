@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { ChapterContext } from '../context/ChaptersContext';
-import GetChaptersService from '../services/GetChaptersService';
+import GetChaptersService from '../services/Chapters/GetChaptersService';
 
 const useChapters = () => {
   const { chapters, setChapters } = useContext(ChapterContext);

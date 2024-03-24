@@ -13,7 +13,7 @@ import {
   // BlogPage,
 } from './index';
 import { UserContext } from '../context/UserContext';
-import CheckAuthenticatedService from '../services/CheckAuthenticatedService';
+import CheckAuthenticatedService from '../services/User/CheckAuthenticatedService';
 
 const PageList = () => {
   const homeRef = useRef<HTMLDivElement | null>(null);

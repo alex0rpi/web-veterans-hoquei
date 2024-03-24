@@ -11,6 +11,13 @@ export type TRegisterForm = Omit<TUser, 'isAuthenticated' | 'id'> & {
   formError: string | null;
 };
 
+export type TUpdateUserForm = {
+  name?: string;
+  email?: string;
+  password?: string;
+  confirmPassword?: string;
+};
+
 export type TLoginForm = {
   email: string;
   password: string;

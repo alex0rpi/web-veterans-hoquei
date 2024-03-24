@@ -5,15 +5,16 @@ import {
   SeasonSelect,
   ImageInput,
   FormInput,
+  PageTitle,
 } from '../UI-components';
-import CreateChapterService from '../../services/CreateChapterService';
+import CreateChapterService from '../../services/Chapters/CreateChapterService';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { paths } from '../../constants';
 import { ChapterContext } from '../../context/ChaptersContext';
-import GetChaptersService from '../../services/GetChaptersService';
+import GetChaptersService from '../../services/Chapters/GetChaptersService';
 import { Formik } from 'formik';
 import { TChapter } from '../../types/Item-types';
 import { chapterSchema } from '../../validation/chapterSchema';
@@ -93,9 +94,8 @@ const AdminChapterNew = () => {
       }}
       exit={{ opacity: 0, x: '-100vw' }}
     >
-      <h1 className='mt-10 border-b border-gray-400 pb-2 text-4xl font-medium text-gray-700'>
-        Crea un nou capítol
-      </h1>
+      <PageTitle titleText='Crea un nou capítol' />
+
       <div className='mt-6 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6'>
         <Formik
           initialValues={initialValues}

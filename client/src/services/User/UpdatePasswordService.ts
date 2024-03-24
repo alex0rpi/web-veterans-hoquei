@@ -1,4 +1,4 @@
-import { urls } from '../constants';
+import { urls } from '../../constants';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

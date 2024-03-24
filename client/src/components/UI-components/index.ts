@@ -13,7 +13,7 @@ import ScrollTopBtn from './ScrollTopBtn';
 import SeasonSelect from './SeasonSelect';
 import StickIcon from './StickIcon';
 import TextAreaInput from './TextAreaInput';
-import TitlePage from './TitlePage';
+import PageTitle from './PageTitle';
 import TitleSection from './TitleSection';
 import BoardStackItem from './BoardStackItem';
 import UserNameGreet from './UserNameGreet';
@@ -35,7 +35,7 @@ export {
   SeasonSelect,
   StickIcon,
   TextAreaInput,
-  TitlePage,
+  PageTitle,
   TitleSection,
   UserNameGreet,
 };

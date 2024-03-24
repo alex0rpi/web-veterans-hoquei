@@ -1,5 +1,5 @@
-import { toast } from "react-toastify";
-import { urls } from "../constants";
+import { toast } from 'react-toastify';
+import { urls } from '../../constants';
 
 type TCreateChapterProps = {
   season: string | undefined;
@@ -10,12 +10,12 @@ type TCreateChapterProps = {
 };
 
 const CreateChapterService = async (props: TCreateChapterProps) => {
-  console.log("CreateChapterService");
+  console.log('CreateChapterService');
   const { season, titlePro, contentPro, titleBases, contentBases } = props;
   try {
     const response = await fetch(urls.createChapter, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         season,
         titlePro,
@@ -24,7 +24,7 @@ const CreateChapterService = async (props: TCreateChapterProps) => {
         contentBases,
       }),
     });
-    console.log("response", response);
+    console.log('response', response);
 
     if (!response.ok) {
       const error = await response.json();
@@ -33,7 +33,7 @@ const CreateChapterService = async (props: TCreateChapterProps) => {
     }
     return true;
   } catch (error) {
-    toast.warning("Alguna cosa ha fallat, sisplau torna-ho a provar més tard.");
+    toast.warning('Alguna cosa ha fallat, sisplau torna-ho a provar més tard.');
     return false;
   }
 };

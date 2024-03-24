@@ -9,9 +9,9 @@ import { useContext } from 'react';
 import { ChapterContext } from '../context/ChaptersContext';
 import { easeInOut, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import GetSeasonService from '../services/GetSeasonService';
+import GetSeasonService from '../services/Chapters/GetSeasonService';
 import Spinner from '../components/UI-components/loading-spinner/Spinner';
-import GetChaptersService from '../services/GetChaptersService';
+import GetChaptersService from '../services/Chapters/GetChaptersService';
 import { RxFontSize } from 'react-icons/rx';
 import { TChapter } from '../types/Item-types';
 

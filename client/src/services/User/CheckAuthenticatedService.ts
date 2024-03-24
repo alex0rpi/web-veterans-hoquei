@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { urls } from '../constants';
-import { TUser } from '../types/Item-types';
+import { urls } from '../../constants';
+import { TUser } from '../../types/Item-types';
 
 const CheckAuthenticatedUser = async () => {
   try {

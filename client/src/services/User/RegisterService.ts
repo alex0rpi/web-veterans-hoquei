@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import { urls } from '../constants';
+import { urls } from '../../constants';
 
 type TRegisterProps = {
   name: string;

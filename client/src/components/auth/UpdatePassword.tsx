@@ -4,7 +4,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { paths } from '../../constants';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import UpdatePasswordService from '../../services/UpdatePasswordService';
+import UpdatePasswordService from '../../services/User/UpdatePasswordService';
 import { Button, FormInput, Spinner } from '../UI-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';

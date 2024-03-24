@@ -1,17 +1,18 @@
 import { toast } from 'react-toastify';
-import { urls } from '../constants';
+import 'react-toastify/dist/ReactToastify.css';
+import { urls } from '../../constants';
 
-const GetUserChaptersService = async () => {
+const GetUserInfosService = async () => {
   try {
-    const response = await fetch(urls.getMyChapters, {
+    const response = await fetch(urls.getMe, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
+      credentials: 'include', // Incluir cookies en solicitudes a dominios diferentes
     });
     if (!response.ok) {
-      const error = await response.json();
-      toast.warning(error.message);
       return false;
     }
+
     const data = await response.json();
 
     return data;
@@ -21,4 +22,4 @@ const GetUserChaptersService = async () => {
   }
 };
 
-export default GetUserChaptersService;
+export default GetUserInfosService;
