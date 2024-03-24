@@ -10,7 +10,7 @@ type TLoginUserWithPassword = TLoginUser & { password: string };
 
 export const login = async (ctx: Koa.Context) => {
   const { email, password } = ctx.request.body as TLoginUserWithPassword;
-  const expirationInMilliseconds = 86400000;
+  const expirationInMilliseconds = 86400000; // 24 hours
 
   const user = await prisma.user.findUnique({
     where: { email },

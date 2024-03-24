@@ -27,7 +27,6 @@ const AdminPage = () => {
     paths.editChapter.split(':')[0]
   );
   const isEditUser = location.pathname === paths.me;
-  console.log('isEditChapter: ', isEditChapter);
 
   return (
     <motion.div

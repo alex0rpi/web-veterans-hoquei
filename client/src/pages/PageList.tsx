@@ -1,4 +1,4 @@
-import { useContext, useRef } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { paths } from '../constants/paths';
 import { easeInOut, motion } from 'framer-motion';
@@ -13,6 +13,7 @@ import {
   // BlogPage,
 } from './index';
 import { UserContext } from '../context/UserContext';
+import CheckAuthenticatedService from '../services/CheckAuthenticatedService';
 
 const PageList = () => {
   const homeRef = useRef<HTMLDivElement | null>(null);
@@ -25,11 +26,27 @@ const PageList = () => {
   const contactRef = useRef<HTMLDivElement | null>(null);
   const location = useLocation();
 
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   const scrollUp = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  useEffect(() => {
+    const checkIfUserIsAuth = async () => {
+      const user = await CheckAuthenticatedService();
+      if (user) {
+        setUser({
+          id: user.id,
+          name: user.name,
+          isAuthenticated: true,
+        });
+        return;
+      }
+      setUser({ id: '', name: '', isAuthenticated: false });
+    };
+    if (!user.isAuthenticated) checkIfUserIsAuth();
+  }, [setUser]);
 
   const authPaths = [
     paths.login,

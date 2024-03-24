@@ -26,8 +26,6 @@ import { Formik } from 'formik';
 import { chapterSchema } from '../../validation/chapterSchema';
 
 const AdminChapterEdit = () => {
-  console.log('AdminChapterEdit rendered');
-
   const { setChapters } = useContext(ChapterContext);
   const [isLoading, setIsLoading] = useState(true);
   const [season, setSeason] = useState<TChapter | null>(null);
