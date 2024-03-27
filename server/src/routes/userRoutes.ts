@@ -15,6 +15,7 @@ import { authenticate, getUserFromToken, validate } from '../middleware';
 import {
   requestPasswordResetSchema,
   userLoginSchema,
+  userPatchSchema,
   userRegisterSchema,
   userUpdatePasswordSchema,
   userVerifySchema,
@@ -57,6 +58,11 @@ userRouter.get('/me', getUserFromToken, getMe);
 
 userRouter.get('/me/data', authenticate, getUserData);
 
-userRouter.patch('/me', authenticate, modifyUser);
+userRouter.patch(
+  '/me',
+  authenticate,
+  validate(z.object({ body: userPatchSchema })),
+  modifyUser
+);
 
 export { userRouter };

@@ -61,3 +61,18 @@ const userEmailVerifySchema = userSchema.pick({
   emailToken: true,
 });
 export type TUserForVerification = z.infer<typeof userEmailVerifySchema>;
+
+export type UserPatchData = {
+  email?: string;
+  name?: string;
+  password?: string;
+  confirmPassword?: string;
+};
+
+export const userPatchSchema = userSchema
+  .pick({
+    email: true,
+    name: true,
+  })
+  .partial()
+  .optional();

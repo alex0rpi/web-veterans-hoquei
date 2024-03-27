@@ -1,16 +1,11 @@
 import { urls } from '../../constants';
 
 type TUpdateUserFormProps = {
-  name: string | undefined;
-  email: string | undefined;
-  password: string | undefined;
+  name?: string;
+  email?: string;
 };
 
-const PatchUserService = async ({
-  name,
-  email,
-  password,
-}: TUpdateUserFormProps) => {
+const PatchUserService = async ({ name, email }: TUpdateUserFormProps) => {
   try {
     const response = await fetch(urls.patchMe, {
       method: 'PATCH',
@@ -18,8 +13,6 @@ const PatchUserService = async ({
       body: JSON.stringify({
         name,
         email,
-        password,
-        // TODO finish, check optionals, fields that are different from before passwords match etc.
       }),
     });
     if (!response.ok) {

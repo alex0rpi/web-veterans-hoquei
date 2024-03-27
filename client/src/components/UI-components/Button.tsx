@@ -22,7 +22,7 @@ const Button = ({
   return (
     <button
       type={type}
-      className={`btn ${!inverted ? 'border-primary text-primary  hover:bg-primary hover:text-white' : 'border-white text-white  hover:bg-white hover:text-primary'} md:border-2 transition duration-500 ease-out`}
+      className={`btn ${!inverted ? 'border-primary text-primary  hover:bg-primary hover:text-white' : 'border-white text-white  hover:bg-white hover:text-primary'} md:border-2 transition duration-500 ease-out ${disabled ? 'opacity-50 pointer-events-none' : ''}`}
       onClick={onClick}
       disabled={disabled}
     >
