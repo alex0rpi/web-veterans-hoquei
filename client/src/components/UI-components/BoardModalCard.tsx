@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { easeIn, motion } from 'framer-motion';
 import ReactDOM from 'react-dom';
 import { TBoardMemberInfos } from '../../types/Item-types';
 import ModalContent from './ModalContent';
@@ -13,7 +13,7 @@ const BoardModalCard = ({ ...props }: TModalProps) => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+        transition={{ type: easeIn, duration: 0.2 }}
         className='fixed top-0 left-0 w-full h-screen z-20 bg-slate-950/50 cursor-pointer'
         onClick={props.onModalClick}
       ></motion.div>

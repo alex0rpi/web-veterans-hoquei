@@ -2,7 +2,7 @@ import { TBoardMemberInfos } from '../../types/Item-types';
 import { Button } from '.';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { motion } from 'framer-motion';
+import { easeIn, motion } from 'framer-motion';
 import { useMediaQuery } from 'react-responsive';
 
 type TModalProps = TBoardMemberInfos & {
@@ -34,7 +34,8 @@ const ModalContent = ({ ...props }: TModalProps) => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+      transition={{ type: easeIn, duration: 0.2 }}
+      exit={{ opacity: 0 }}
     >
       <div className='w-[95vw] h-[85vh] md:w-[60vw] md:h-[65vh] top-[10vh] md:top-[15vh] left-1/2 bg-slate-200 rounded-xl fixed transform -translate-x-1/2 z-30 transition-all duration-200 flex flex-row justify-between items-start p-2'>
         <div className='w-[30%] h-full'>
