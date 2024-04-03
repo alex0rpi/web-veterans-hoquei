@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-import { BoardModalCard, TitleSection } from '../UI-components';
+import { BoardModalCard, Button, TitleSection } from '../UI-components';
 import BoardGrid from './BoardGrid';
 import { people as peopleData, vocals as vocalsData } from './BoardList';
 import { TBoardMemberInfos } from '../../types/Item-types';
+import { useMediaQuery } from 'react-responsive';
+import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const people: TBoardMemberInfos[] = peopleData;
 const vocals: TBoardMemberInfos[] = vocalsData;
@@ -14,6 +18,12 @@ type TBoardProps = {
 };
 
 const BoardMembers = ({ scrollRef }: TBoardProps) => {
+  const isMdScreenOrLarger = useMediaQuery({ minWidth: 768 });
+  const [showVocals, setShowVocals] = useState<boolean>(false);
+  const onClickShowVocals = () => {
+    setShowVocals((prevState) => !prevState);
+  };
+
   const [showModal, setShowModal] = useState(false);
   const [selectedMember, setSelectedMember] =
     useState<TBoardMemberInfos | null>(null);
@@ -49,9 +59,44 @@ const BoardMembers = ({ scrollRef }: TBoardProps) => {
         <div className='w-full md:w-1/2 md:h-80'>
           <BoardGrid boardInfos={people} onMemberClick={clickMemberHandler} />
         </div>
-        <div className='w-full md:w-1/2 md:h-80 md:overflow-y-scroll'>
-          <BoardGrid boardInfos={vocals} onMemberClick={clickMemberHandler} />
-        </div>
+        {!isMdScreenOrLarger ? (
+          <>
+            <Button
+              title={`${!showVocals ? 'Mostrar' : 'Ocultar'} vocals membres`}
+              icon={
+                !showVocals ? (
+                  <FontAwesomeIcon icon={faPlus} />
+                ) : (
+                  <FontAwesomeIcon icon={faMinus} />
+                )
+              }
+              onClick={onClickShowVocals}
+              type='button'
+            />
+            <AnimatePresence>
+              {showVocals && (
+                <motion.div
+                  className='w-full md:w-1/2 md:h-80 md:overflow-y-scroll'
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <BoardGrid
+                    boardInfos={vocals}
+                    onMemberClick={clickMemberHandler}
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </>
+        ) : (
+          // Show button to toggle show vocal members
+          // Show vocal members directly
+          <div className='w-full md:w-1/2 md:h-80 md:overflow-y-scroll'>
+            <BoardGrid boardInfos={vocals} onMemberClick={clickMemberHandler} />
+          </div>
+        )}
       </div>
     </section>
   );

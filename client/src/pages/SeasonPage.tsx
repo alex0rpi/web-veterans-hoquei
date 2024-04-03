@@ -2,6 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { HeaderTitle } from '../components/main';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+  faCat,
   faChevronLeft,
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
@@ -14,12 +15,12 @@ import Spinner from '../components/UI-components/loading-spinner/Spinner';
 import GetChaptersService from '../services/Chapters/GetChaptersService';
 import { RxFontSize } from 'react-icons/rx';
 import { TChapter } from '../types/Item-types';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SeasonPage = () => {
   const availableTextSizes = ['xs', 'sm', 'base', 'lg', 'xl', '2xl'];
-
   const [textSize, setTextSize] = useState('base');
-
   const changeFontSizeHandler = (value: string) => {
     if (value === '=') {
       setTextSize('base');
@@ -57,6 +58,12 @@ const SeasonPage = () => {
     };
     const populateChapters = async () => {
       const fetchedChapters = await GetChaptersService();
+      if (!fetchedChapters || fetchedChapters.length === 0) {
+        toast.warning('Per ara no hi ha cap temporada per mostrar.');
+        setChapters([]);
+        setIsLoading(false);
+        return;
+      }
       setChapters(fetchedChapters);
     };
 
@@ -64,27 +71,31 @@ const SeasonPage = () => {
       populateChapters();
     }
     fetchSeason();
-  }, [chapters, currentSeason, setChapters]);
-
+  }, [currentSeason]);
+  console.log(chapters);
   const isLastSeason =
     chapters?.findIndex((chapter) => chapter.season === currentSeason) ===
-    chapters.length - 1;
+    chapters?.length - 1;
 
   const isFirstSeason =
     chapters?.findIndex((chapter) => chapter.season === currentSeason) === 0;
 
   const nextSeasonClick = () => {
+    if (!chapters || chapters.length === 0) return;
     const currentSeasonIndex = chapters?.findIndex(
       (chapter) => chapter.season === currentSeason
     );
+    if (currentSeasonIndex === -1) return;
     const followingSeason = chapters[currentSeasonIndex + 1]?.season;
     if (!followingSeason) return;
     navigate(`/temporades/${followingSeason}`);
   };
   const previousSeasonClick = () => {
+    if (!chapters || chapters.length === 0) return;
     const currentSeasonIndex = chapters?.findIndex(
       (chapter) => chapter.season === currentSeason
     );
+    if (currentSeasonIndex === -1) return;
     const previousSeason = chapters[currentSeasonIndex - 1]?.season;
     if (!previousSeason) return;
     navigate(`/temporades/${previousSeason}`);
@@ -106,7 +117,7 @@ const SeasonPage = () => {
           </div>
           <div></div>
         </>
-      ) : (
+      ) : season ? (
         <article>
           <div className='flex items-center justify-center mt-6'>
             {!isFirstSeason && (
@@ -186,6 +197,13 @@ const SeasonPage = () => {
             ))}
           </div>
         </article>
+      ) : (
+        <div className='flex items-center justify-center'>
+          <FontAwesomeIcon icon={faCat} size='2xl' />
+          <p className='text-2xl mt-4 mx-2'>
+            De moment no hi ha temporades per mostrar.
+          </p>
+        </div>
       )}
     </motion.div>
   );

@@ -36,6 +36,14 @@ const ChapterGrid = ({ scrollRef }: TSeasonsProps) => {
   return (
     <section ref={scrollRef}>
       <TitleSection sectionTitle='Temporades recents' />
+      <p className='text-primary font-semibold text-lg mb-2'>
+        "Descobreix les temporades més recents de la nostra història. Cada
+        temporada inclou una recapitulació redactada per Carles Gallèn, que
+        destaca tant la trajectòria de la secció professional com la dels equips
+        de base. Estem treballant en la incorporació de més imatges i vídeos per
+        enriquir el contingut."
+      </p>
+
       <div className='grid gap-3 md:grid-cols-2 lg:grid-cols-3'>
         {!chapters || chapters.length === 0 ? (
           <>
