@@ -1,5 +1,5 @@
 import logoImage from '../../assets/logos/logo-no-text-removebg.png';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { UserContext } from '../../context/UserContext';
@@ -117,21 +117,23 @@ export const Navigation = ({
           <AdminNavList onLogout={onLogoutHandler} />
         )}
       </div>
-      {show && (
-        <MobileNav
-          homeRef={homeRef}
-          associationRef={associationRef}
-          seasonsRef={seasonsRef}
-          contactRef={contactRef}
-          bookRef={bookRef}
-          boardRef={boardRef}
-          locationRef={locationRef}
-          relatedLinksRef={relatedLinksRef}
-          onModalClick={menuClickHandler}
-        />
-        // Missing ADMIN MOBILE navigation
-      )}
       {isMdScreenOrLarger && <Footer />}
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {show && (
+          <MobileNav
+            homeRef={homeRef}
+            associationRef={associationRef}
+            seasonsRef={seasonsRef}
+            contactRef={contactRef}
+            bookRef={bookRef}
+            boardRef={boardRef}
+            locationRef={locationRef}
+            relatedLinksRef={relatedLinksRef}
+            onModalClick={menuClickHandler}
+          />
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
