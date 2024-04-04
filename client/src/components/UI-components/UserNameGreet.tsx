@@ -8,10 +8,10 @@ type TUserGreetProps = {
 
 const UserNameGreet = ({ name, logOutHandler }: TUserGreetProps) => {
   return (
-    <div className='fixed top-0 md:right-[8vw] xl:right-[13vw] p-4'>
-      <h1 className='flex items-center justify-end flex-row text-lg text-right text-gray-600'>
+    <div className='hidden md:block fixed top-0 md:right-[8vw] xl:right-[13vw] px-4 py-2'>
+      <h1 className='flex items-center justify-end flex-row text-md text-right text-gray-600'>
         Bon dia,
-        <span className='font-bold text-lg text-right ms-1'>{name}</span>
+        <span className='font-bold text-md text-right ms-1'>{name}</span>
         <div className='group flex relative'>
           {logOutHandler && (
             <FontAwesomeIcon

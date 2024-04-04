@@ -6,9 +6,12 @@ import PageNavList from './PageNavList';
 import Footer from './Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import AdminNavList from './AdminNavList';
 
 type TMobileNavProps = TNavigationProps & {
   onModalClick?: () => void;
+  onLogout: () => void;
+  isAdmin?: boolean;
 };
 
 const MobileNav = ({
@@ -21,6 +24,8 @@ const MobileNav = ({
   relatedLinksRef,
   contactRef,
   onModalClick,
+  onLogout,
+  isAdmin,
 }: TMobileNavProps) => {
   const modalScreen = (
     <>
@@ -41,6 +46,7 @@ const MobileNav = ({
           <div className='mt-1 border-b-[1px] border-slate-400'>
             <PageNavList homeRef={homeRef} />
           </div>
+          {/* Will show only at HOME */}
           <MainNavList
             homeRef={homeRef}
             associationRef={associationRef}
@@ -51,6 +57,8 @@ const MobileNav = ({
             locationRef={locationRef}
             contactRef={contactRef}
           />
+          {/* Needs to show only ad admin */}
+          {isAdmin && <AdminNavList onLogout={onLogout} />}
           <Footer />
         </div>
       </motion.div>

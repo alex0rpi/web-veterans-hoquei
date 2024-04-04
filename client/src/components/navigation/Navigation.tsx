@@ -131,6 +131,8 @@ export const Navigation = ({
             locationRef={locationRef}
             relatedLinksRef={relatedLinksRef}
             onModalClick={menuClickHandler}
+            isAdmin={isAdmin}
+            onLogout={onLogoutHandler}
           />
         )}
       </AnimatePresence>

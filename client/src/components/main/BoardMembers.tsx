@@ -93,7 +93,7 @@ const BoardMembers = ({ scrollRef }: TBoardProps) => {
         ) : (
           // Show button to toggle show vocal members
           // Show vocal members directly
-          <div className='w-full md:w-1/2 md:h-80 md:overflow-y-scroll'>
+          <div className='w-full md:w-1/2 md:h-80 md:overflow-y-scroll md:overflow-x-hidden'>
             <BoardGrid boardInfos={vocals} onMemberClick={clickMemberHandler} />
           </div>
         )}

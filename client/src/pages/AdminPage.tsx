@@ -10,7 +10,6 @@ import { useNavigate } from 'react-router-dom';
 import { paths } from '../constants';
 import { useContext, useEffect } from 'react';
 import { UserContext } from '../context/UserContext';
-import { UserNameGreet } from '../components/UI-components';
 
 const AdminPage = () => {
   const navigate = useNavigate();
@@ -35,7 +34,6 @@ const AdminPage = () => {
       transition={{ type: easeInOut, duration: 1 }}
       exit={{ opacity: 0 }}
     >
-      {user.isAuthenticated && <UserNameGreet name={user.name} />}
       {isChapterList && <AdminChapterList />}
       {isEditChapter && <AdminChapterEdit />}
       {isNewChapter && <AdminChapterNew />}

@@ -32,7 +32,7 @@ body {
   @apply md:sticky top-0 md:basis-[20%] md:h-screen bg-primary opacity-[88%];
 }
 .pageLayout {
-  @apply md:basis-[80%] py-4 px-4 overflow-y-auto bg-gray-200 bg-opacity-[90%];
+  @apply md:basis-[80%] py-3 md:py-4 px-3 md:px-4 overflow-y-auto bg-gray-200 bg-opacity-[90%];
 }
 
 .navBookLayout {
