@@ -17,6 +17,7 @@ import PageTitle from './PageTitle';
 import TitleSection from './TitleSection';
 import BoardStackItem from './BoardStackItem';
 import UserNameGreet from './UserNameGreet';
+import BadgeClickable from './BadgeClickable';
 
 export {
   Spinner,
@@ -31,6 +32,7 @@ export {
   ModalImage,
   BoardStackItem,
   BoardModalCard,
+  BadgeClickable,
   ScrollTopBtn,
   SeasonSelect,
   StickIcon,

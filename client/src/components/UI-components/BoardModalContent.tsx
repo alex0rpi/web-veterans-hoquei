@@ -9,7 +9,7 @@ type TModalProps = TBoardMemberInfos & {
   onModalClick: () => void;
 };
 
-const ModalContent = ({ ...props }: TModalProps) => {
+const BoardModalContent = ({ ...props }: TModalProps) => {
   const isMdScreenOrLarger = useMediaQuery({ minWidth: 768 });
   const linkify = (inputText: string) => {
     const urlPattern = /(www.[^\s]+)/g;
@@ -124,4 +124,4 @@ const ModalContent = ({ ...props }: TModalProps) => {
   );
 };
 
-export default ModalContent;
+export default BoardModalContent;

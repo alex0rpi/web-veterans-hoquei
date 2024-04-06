@@ -17,6 +17,7 @@ import { RxFontSize } from 'react-icons/rx';
 import { TChapter } from '../types/Item-types';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { BadgeClickable } from '../components/UI-components';
 
 const SeasonPage = () => {
   const availableTextSizes = ['xs', 'sm', 'base', 'lg', 'xl', '2xl'];
@@ -72,7 +73,6 @@ const SeasonPage = () => {
     }
     fetchSeason();
   }, [currentSeason]);
-  console.log(chapters);
   const isLastSeason =
     chapters?.findIndex((chapter) => chapter.season === currentSeason) ===
     chapters?.length - 1;
@@ -119,7 +119,7 @@ const SeasonPage = () => {
         </>
       ) : season ? (
         <article>
-          <div className='flex items-center justify-center mt-6'>
+          <div className='flex items-center justify-center mt-2'>
             {!isFirstSeason && (
               <div className='group flex items-center justify-center '>
                 <FontAwesomeIcon
@@ -152,8 +152,18 @@ const SeasonPage = () => {
               </div>
             )}
           </div>
+          <div className='flex justify-center items-center mt-2'>
+            {chapters?.map((chapter, index) => (
+              <BadgeClickable
+                chapter={chapter}
+                index={index}
+                currentElement={currentSeason!}
+                clickHandler={() => navigate(`/temporades/${chapter.season}`)}
+              />
+            ))}
+          </div>
           {/* Season text content here below */}
-          <div className='mt-6 '>
+          <div className='mt-2'>
             <div className='flex flex-row justify-between items-center'>
               <h1 className='text-left text-lg md:text-2xl font-semibold md:font-bold text-primary'>
                 {season?.titlePro}

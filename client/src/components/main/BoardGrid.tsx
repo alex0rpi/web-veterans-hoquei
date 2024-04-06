@@ -1,5 +1,5 @@
 import { TBoardMemberInfos } from '../../types/Item-types';
-import BoardItem from '../UI-components/BoardStackItem';
+import { BoardStackItem } from '../UI-components';
 
 type TBoardlistProps = {
   boardInfos: TBoardMemberInfos[];
@@ -10,7 +10,7 @@ const BoardList = ({ boardInfos, onMemberClick }: TBoardlistProps) => {
   return (
     <ul role='list' className='md:mx-auto'>
       {boardInfos.map((person, index) => (
-        <BoardItem
+        <BoardStackItem
           key={index}
           name={person.name}
           role={person.role}
