@@ -15,8 +15,8 @@ const routePaths = [
   paths.players, // Not implemented
   // Auth paths
   paths.login,
-  paths.register,
-  paths.verify,
+  // paths.register,
+  // paths.verify,
   paths.requestPasswordReset,
   paths.updatePassword,
   // Admin paths

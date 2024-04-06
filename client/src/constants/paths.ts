@@ -6,9 +6,9 @@ export const paths = {
   blog: '/blog',
   players: '/jugadors',
   // auth paths
-  register: '/auth/register',
+  // register: '/auth/register',
   login: '/auth/login',
-  verify: '/auth/verify',
+  // verify: '/auth/verify',
   requestPasswordReset: '/auth/request-password-reset',
   updatePassword: '/auth/reset-password',
   // admin paths

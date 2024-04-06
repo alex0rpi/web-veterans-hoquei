@@ -98,6 +98,7 @@ export const Navigation = ({
           />
         )}
       </motion.div>
+      {/* Menu Items */}
       <div className='hidden pe-2 pt-2 mt-0 ps-2 text-sm md:block border-t-[1px] border-slate-300'>
         <div className='border-b-[1px] border-slate-400'>
           <PageNavList homeRef={homeRef} />

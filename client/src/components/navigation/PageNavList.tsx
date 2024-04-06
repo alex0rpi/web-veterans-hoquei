@@ -18,15 +18,15 @@ type TPageNav = {
 const PageNavList = ({ homeRef }: TPageNav) => {
   const { user } = useContext(UserContext);
   const location = useLocation();
-  const authPaths = [
+  /*   const authPaths = [
     paths.login,
     paths.register,
     paths.verify,
     paths.requestPasswordReset,
     paths.updatePassword,
-  ];
+  ]; */
   const isHome = location.pathname === paths.home;
-  const isAuth = authPaths.includes(location.pathname);
+  // const isAuth = authPaths.includes(location.pathname);
   const isBook = location.pathname === paths.book;
   // const isPlayers = location.pathname === paths.players;
   // const isBlog = location.pathname === paths.blog;
@@ -56,13 +56,14 @@ const PageNavList = ({ homeRef }: TPageNav) => {
           highlight={isHome}
         />
       )}
-      {user.name === '' ? (
-        <NavItem
+      {!user.isAuthenticated ? (
+        /*  <NavItem
           icon={faUser}
           title='Accés'
           to={paths.login}
           highlight={isAuth}
-        />
+        /> */
+        <></>
       ) : (
         <NavItem
           icon={faUser}

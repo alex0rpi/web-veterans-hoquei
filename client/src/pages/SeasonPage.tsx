@@ -72,7 +72,6 @@ const SeasonPage = () => {
     }
     fetchSeason();
   }, [currentSeason]);
-  console.log(chapters);
   const isLastSeason =
     chapters?.findIndex((chapter) => chapter.season === currentSeason) ===
     chapters?.length - 1;

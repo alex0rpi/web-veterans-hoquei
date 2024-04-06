@@ -1,10 +1,10 @@
 import { easeInOut, motion } from 'framer-motion';
 import {
   AdminLogin,
-  AdminRegister,
+  // AdminRegister,
   RequestPasswordReset,
   UpdatePassword,
-  UserVerify,
+  // UserVerify,
 } from '../components/auth';
 import { useLocation } from 'react-router-dom';
 import { paths } from '../constants';
@@ -15,8 +15,8 @@ const AuthPage = () => {
   const { user } = useContext(UserContext);
   const location = useLocation();
   const isLogin = location.pathname === paths.login;
-  const isRegister = location.pathname === paths.register;
-  const isVerify = location.pathname === paths.verify;
+  // const isRegister = location.pathname === paths.register;
+  // const isVerify = location.pathname === paths.verify;
   const isRequestPwdReset =
     location.pathname === paths.requestPasswordReset &&
     user.isAuthenticated === false;
@@ -29,8 +29,8 @@ const AuthPage = () => {
       exit={{ opacity: 0 }}
     >
       {isLogin && <AdminLogin />}
-      {isRegister && <AdminRegister />}
-      {isVerify && <UserVerify />}
+      {/* {isRegister && <AdminRegister />} */}
+      {/* {isVerify && <UserVerify />} */}
       {isRequestPwdReset && <RequestPasswordReset />}
       {isUpdatePassword && <UpdatePassword />}
     </motion.div>

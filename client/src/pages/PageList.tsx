@@ -9,7 +9,7 @@ import {
   SeasonPage,
   AdminPage,
   BookPage,
-  PlayersPage,
+  // PlayersPage,
   // BlogPage,
 } from './index';
 import { UserContext } from '../context/UserContext';
@@ -50,8 +50,8 @@ const PageList = () => {
 
   const authPaths = [
     paths.login,
-    paths.register,
-    paths.verify,
+    // paths.register,
+    // paths.verify,
     paths.requestPasswordReset,
     paths.updatePassword,
   ];
@@ -107,7 +107,7 @@ const PageList = () => {
         )}
         {isAdminPage && <AdminPage />}
         {isBookPage && <BookPage />}
-        {location.pathname === paths.players && <PlayersPage />}
+        {/* {location.pathname === paths.players && <PlayersPage />} */}
         {/* {location.pathname === paths.blog && <BlogPage />} */}
       </motion.div>
     </div>
