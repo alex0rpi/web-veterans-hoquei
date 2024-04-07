@@ -78,7 +78,7 @@ const PageNavList = ({ homeRef }: TPageNav) => {
         to={paths.book}
         highlight={isBook}
       />
-      {location.pathname === paths.book && (
+      {location.pathname === paths.book ? (
         <NavItem
           icon={faCalendar}
           title={
@@ -88,6 +88,12 @@ const PageNavList = ({ homeRef }: TPageNav) => {
               <span>recents</span>
             </>
           }
+          to={paths.genericSeason}
+        />
+      ) : (
+        <NavItem
+          icon={faCalendar}
+          title='Temporades recents'
           to={paths.genericSeason}
         />
       )}

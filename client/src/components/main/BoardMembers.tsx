@@ -60,6 +60,7 @@ const BoardMembers = ({ scrollRef }: TBoardProps) => {
           <BoardGrid boardInfos={people} onMemberClick={clickMemberHandler} />
         </div>
         {!isMdScreenOrLarger ? (
+          // Show button to toggle show vocal members
           <>
             <Button
               title={`${!showVocals ? 'Mostrar' : 'Ocultar'} vocals membres`}
@@ -91,7 +92,6 @@ const BoardMembers = ({ scrollRef }: TBoardProps) => {
             </AnimatePresence>
           </>
         ) : (
-          // Show button to toggle show vocal members
           // Show vocal members directly
           <div className='w-full md:w-1/2 md:h-80 md:overflow-y-scroll md:overflow-x-hidden'>
             <BoardGrid boardInfos={vocals} onMemberClick={clickMemberHandler} />
