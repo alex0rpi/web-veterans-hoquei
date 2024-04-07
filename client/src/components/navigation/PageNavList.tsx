@@ -37,7 +37,8 @@ const PageNavList = ({ homeRef }: TPageNav) => {
     paths.userChapterList,
     paths.editChapter,
   ];
-  const isAdmin = adminPaths.includes(location.pathname) && user.name !== '';
+  const isAdmin =
+    adminPaths.includes(location.pathname) && user.isAuthenticated !== true;
 
   return (
     <>

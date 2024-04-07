@@ -111,7 +111,7 @@ const AdminLogin = () => {
           }}
         </Formik>
 
-        <p className='text-md font-light mt-2'>
+        {/* <p className='text-md font-light mt-2'>
           No estàs registrat?{' '}
           <Link
             className='font-bold underline underline-offset-4 decoration-[3px] px-2 py-2 hover:border-2 border-rose-700 rounded-lg '
@@ -119,7 +119,7 @@ const AdminLogin = () => {
           >
             Crear usuari
           </Link>
-        </p>
+        </p> */}
       </div>
     </motion.div>
   );
