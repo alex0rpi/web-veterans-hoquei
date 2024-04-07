@@ -18,15 +18,15 @@ type TPageNav = {
 const PageNavList = ({ homeRef }: TPageNav) => {
   const { user } = useContext(UserContext);
   const location = useLocation();
-  /*   const authPaths = [
+  const authPaths = [
     paths.login,
     paths.register,
     paths.verify,
     paths.requestPasswordReset,
     paths.updatePassword,
-  ]; */
+  ];
   const isHome = location.pathname === paths.home;
-  // const isAuth = authPaths.includes(location.pathname);
+  const isAuth = authPaths.includes(location.pathname);
   const isBook = location.pathname === paths.book;
   // const isPlayers = location.pathname === paths.players;
   // const isBlog = location.pathname === paths.blog;
@@ -37,7 +37,8 @@ const PageNavList = ({ homeRef }: TPageNav) => {
     paths.userChapterList,
     paths.editChapter,
   ];
-  const isAdmin = adminPaths.includes(location.pathname) && user.name !== '';
+  const isAdmin =
+    adminPaths.includes(location.pathname) && user.isAuthenticated === true;
 
   return (
     <>
@@ -57,14 +58,14 @@ const PageNavList = ({ homeRef }: TPageNav) => {
         />
       )}
       {!user.isAuthenticated ? (
-        /*  <NavItem
+        <NavItem
           icon={faUser}
           title='Accés'
           to={paths.login}
           highlight={isAuth}
-        /> */
-        <></>
+        />
       ) : (
+        // <></>
         <NavItem
           icon={faUser}
           title='El meu espai'
