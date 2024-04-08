@@ -1,8 +1,8 @@
 import { useContext, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { paths } from '../constants/paths';
 import { AnimatePresence, easeInOut, motion } from 'framer-motion';
-import { Navigation } from '../components/Navigation/Navigation';
+import { NavigationBar } from '../components/navigation';
 import {
   HomePage,
   AuthPage,
@@ -16,6 +16,8 @@ import { UserContext } from '../context/UserContext';
 import CheckAuthenticatedService from '../services/User/CheckAuthenticatedService';
 
 const PageList = () => {
+  console.log('PageList');
+
   const homeRef = useRef<HTMLDivElement | null>(null);
   const associationRef = useRef<HTMLDivElement | null>(null);
   const boardRef = useRef<HTMLDivElement | null>(null);
@@ -25,6 +27,7 @@ const PageList = () => {
   const locationRef = useRef<HTMLDivElement | null>(null);
   const contactRef = useRef<HTMLDivElement | null>(null);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const { user, setUser } = useContext(UserContext);
 
@@ -44,14 +47,17 @@ const PageList = () => {
         return;
       }
       setUser({ id: '', name: '', isAuthenticated: false });
+      if (adminPaths.includes(location.pathname)) {
+        navigate(paths.home);
+      }
     };
     if (!user.isAuthenticated) checkIfUserIsAuth();
   }, [setUser]);
 
   const authPaths = [
     paths.login,
-    // paths.register,
-    // paths.verify,
+    paths.register,
+    paths.verify,
     paths.requestPasswordReset,
     paths.updatePassword,
   ];
@@ -67,11 +73,12 @@ const PageList = () => {
   const isAdminPage =
     adminPaths.some((path) => location.pathname.startsWith(path)) &&
     user.isAuthenticated === true;
+
   const isBookPage = location.pathname === paths.book;
 
   return (
     <div className='centerLayout'>
-      <Navigation
+      <NavigationBar
         homeRef={homeRef}
         associationRef={associationRef}
         seasonsRef={seasonsRef}
@@ -103,9 +110,7 @@ const PageList = () => {
             />
           )}
           {isAuthPage && <AuthPage />}
-          {location.pathname.startsWith(paths.season.split(':')[0]) && (
-            <SeasonPage />
-          )}
+          {location.pathname.startsWith(paths.season.split(':')[0]) && <SeasonPage />}
           {isAdminPage && <AdminPage />}
           {isBookPage && <BookPage />}
           {/* {location.pathname === paths.players && <PlayersPage />} */}

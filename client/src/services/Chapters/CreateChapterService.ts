@@ -10,7 +10,6 @@ type TCreateChapterProps = {
 };
 
 const CreateChapterService = async (props: TCreateChapterProps) => {
-  console.log('CreateChapterService');
   const { season, titlePro, contentPro, titleBases, contentBases } = props;
   try {
     const response = await fetch(urls.createChapter, {
@@ -24,7 +23,6 @@ const CreateChapterService = async (props: TCreateChapterProps) => {
         contentBases,
       }),
     });
-    console.log('response', response);
 
     if (!response.ok) {
       const error = await response.json();

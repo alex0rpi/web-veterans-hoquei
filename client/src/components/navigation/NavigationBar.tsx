@@ -2,19 +2,15 @@ import logoImage from '../../assets/logos/logo-no-text-removebg.png';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import { useContext, useState } from 'react';
-import { UserContext } from '../../context/UserContext';
+import { UserContext } from '../../context/UserContext.tsx';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import LogoutService from '../../services/User/LogoutService';
-import { paths } from '../../constants';
-import MainNavList from './MainNavList';
-import AdminNavList from './AdminNavList';
-import Footer from './Footer';
-import PageNavList from './PageNavList';
+import LogoutService from '../../services/User/LogoutService.ts';
+import { paths } from '../../constants/index.ts';
+import { MainNavList, AdminNavList, PageNavList, Footer, MobileNav } from './index.ts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { useMediaQuery } from 'react-responsive';
-import MobileNav from './MobileNav';
 
 export type TNavigationProps = {
   homeRef?: React.RefObject<HTMLDivElement>;
@@ -27,7 +23,7 @@ export type TNavigationProps = {
   contactRef?: React.RefObject<HTMLDivElement>;
 };
 
-export const Navigation = ({
+const NavigationBar = ({
   homeRef,
   associationRef,
   boardRef,
@@ -140,3 +136,5 @@ export const Navigation = ({
     </nav>
   );
 };
+
+export default NavigationBar;

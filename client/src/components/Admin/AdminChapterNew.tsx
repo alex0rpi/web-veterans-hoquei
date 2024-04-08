@@ -55,8 +55,6 @@ const AdminChapterNew = () => {
   };
 
   const onChapterSubmitHandler = async (values: Omit<TChapter, 'id'>) => {
-    console.log('SUBMITTED');
-
     const formState = {
       season: values.season,
       titlePro: values.titlePro,

@@ -1,25 +1,25 @@
+import React from 'react';
+import { MainLayout } from './layouts/Layout';
+import { PageList, NotFound } from './pages';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import UserProvider from './context/UserContext';
-import { MainLayout } from './layouts/Layout';
 import { paths } from './constants';
-import { PageList, NotFound } from './pages';
 import ChapterProvider from './context/ChaptersContext';
-import React from 'react';
 
 const routePaths = [
-  // Main paths
+  // * Main paths *
   paths.home,
   paths.season,
   paths.book,
   // paths.blog, // Not implemented
-  paths.players, // Not implemented
-  // Auth paths
+  // paths.players, // Not implemented
+  // * Auth paths
   paths.login,
-  // paths.register,
-  // paths.verify,
+  paths.register,
+  paths.verify,
   paths.requestPasswordReset,
   paths.updatePassword,
-  // Admin paths
+  // * Admin paths *
   paths.newChapter,
   paths.userChapterList,
   paths.editChapter,

@@ -25,11 +25,10 @@ const Association = ({ scrollRef }: TAssociationProps) => {
       <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
         <CardImageText
           title='Activitats socials'
-          text="Reunions a la llotja del Palau en els partits d'hoquei, dinars
-            d'aplec en els què col·laborem amb la organització, obertura a
+          text="Reunions a la llotja del Palau en els partits d'hoquei, dinars d'aplec en els què col·laborem en l'organització, apertura a
             tot el món de l'hoquei i integració a l'Associació a través d'un
-            carnet nominatiu. Ajudes econòmiques i socials als membres
-            necessitats."
+            carnet. Ajudes als membres
+            amb dificultats."
           image={cardImage01}
         />
         <CardImageText

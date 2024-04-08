@@ -80,7 +80,7 @@ const ImageSlider = () => {
         </div>
         {/* Circle dots */}
         <div className='flex top-4 justify-center mt-1'>
-          {fotos.map((slide, slideIndex) => (
+          {fotos.map((_, slideIndex) => (
             <div key={slideIndex} className='cursor-pointer'>
               {slideIndex === currentIndex ? (
                 <FontAwesomeIcon

@@ -18,13 +18,14 @@ const AdminPage = () => {
     if (!user.isAuthenticated) {
       navigate(paths.home);
     }
-  }, [navigate, user.isAuthenticated]);
+  }, [user.isAuthenticated, navigate]);
   const location = useLocation();
   const isChapterList = location.pathname === paths.userChapterList;
   const isNewChapter = location.pathname === paths.newChapter;
   const isEditChapter = location.pathname.startsWith(
     paths.editChapter.split(':')[0]
   );
+
   const isEditUser = location.pathname === paths.me;
 
   return (

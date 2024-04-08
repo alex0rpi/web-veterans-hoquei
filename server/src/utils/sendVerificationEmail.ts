@@ -7,9 +7,10 @@ export const sendVerificationEmail = ({
   emailToken,
 }: TUserForVerification) => {
   const transporter = createMailTransporter();
+  const senderEmail = process.env.EMAIL_ADDRESS || '';
 
   const mailOptions = {
-    from: `"no-reply Veterans Hoquei Patins FCB" <${process.env.EMAIL_ADDRESS}>`,
+    from: `"no-reply Veterans Hoquei Patins FCB" <${senderEmail}>`,
     to: email,
     subject: 'Verifica el teu correu electrònic...',
     html: `<div style="font-family: sans-serif; font-size: 1.2em;">

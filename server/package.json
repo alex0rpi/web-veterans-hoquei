@@ -7,15 +7,15 @@
   "scripts": {
     "dev": "nodemon src/app.ts",
     "build": "tsc",
-    "bundle": "ncc build src/server.ts -o dist -m",
-    "start": "node dist/index.js",
+    "bundle": "ncc build src/app.ts -o dist -m",
+    "start": "node dist/src/app.js",
     "prisma:generate": "npx prisma generate",
     "prisma:studio": "npx prisma studio",
     "prisma:migrate": "npx prisma migrate dev --name init",
     "prisma:migrate:reset": "npx prisma migrate reset --force",
     "up": "docker compose up -d",
     "down": "docker compose down",
-    "start:prod": "prisma migrate deploy && node dist/server.js"
+    "start:prod": "prisma migrate deploy && node dist/index.js"
   },
   "keywords": [],
   "author": "Alex Orpi",

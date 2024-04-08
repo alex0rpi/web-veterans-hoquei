@@ -13,9 +13,10 @@ export const sendPasswordResetEmail = ({
   resetToken,
 }: TSendPasswordResetEmail) => {
   const transporter = createMailTransporter();
+  const senderEmail = process.env.EMAIL_ADDRESS || '';
 
   const mailOptions = {
-    from: `"no-reply Veterans Hoquei Patins FCB" <${process.env.EMAIL_ADDRESS}>`,
+    from: `"no-reply Veterans Hoquei Patins FCB" <${senderEmail}>`,
     to: email,
     subject: 'Crea un nou password pel teu compte...',
     html: `<div style="font-family: sans-serif; font-size: 1.2em;">

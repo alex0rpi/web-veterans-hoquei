@@ -6,20 +6,25 @@ import {
 } from '../UI-components';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useForm } from '@formspree/react';
+// import { useForm } from '@formspree/react';
 
 type TContactFormProps = {
   scrollRef?: React.RefObject<HTMLDivElement>;
 };
 
 const ContactForm = ({ scrollRef }: TContactFormProps) => {
-  const [state, handleSubmit, resetForm] = useForm(
+  /* const [state, handleSubmit, resetForm] = useForm(
     import.meta.env.VITE_FORMSPREE_KEY
   );
   if (state.succeeded) {
     toast.success('Missatge enviat correctament. Gràcies per contactar-nos!');
     resetForm();
-  }
+  } */
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    toast.info('Aquest servei encara no està activat. Disculpa les molèsties.');
+  };
 
   return (
     <section ref={scrollRef}>
@@ -55,7 +60,8 @@ const ContactForm = ({ scrollRef }: TContactFormProps) => {
             rows={4}
             placeholder='Escriu el teu missatge...'
           />
-          <Button type='submit' title='Enviar' disabled={state.submitting} />
+          {/* <Button type='submit' title='Enviar' disabled={state.submitting} /> */}
+          <Button type='submit' title='Enviar' disabled={false} />
         </form>
       </div>
     </section>

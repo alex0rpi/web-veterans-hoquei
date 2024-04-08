@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
-import { NavItem } from './NavItem';
-import { paths } from '../../constants';
+import { NavItem } from './index.ts';
+import { paths } from '../../constants/index.ts';
 import {
   faBookOpen,
   faPeopleGroup,
@@ -36,11 +36,7 @@ const MainNavList = ({
     <>
       {location.pathname === paths.home && (
         <>
-          <NavItem
-            icon={faPeopleGroup}
-            title='Qui som'
-            scrollRef={associationRef}
-          />
+          <NavItem icon={faPeopleGroup} title='Qui som' scrollRef={associationRef} />
           <NavItem icon={faPeopleGroup} title='Junta' scrollRef={boardRef} />
           <NavItem
             icon={faBookOpen}
@@ -48,18 +44,10 @@ const MainNavList = ({
             // to={paths.book}
             scrollRef={bookRef}
           />
-          <NavItem
-            icon={faCalendar}
-            title='Temporades'
-            scrollRef={seasonsRef}
-          />
+          <NavItem icon={faCalendar} title='Temporades' scrollRef={seasonsRef} />
 
           <NavItem icon={faLink} title='Enllaços' scrollRef={relatedLinksRef} />
-          <NavItem
-            icon={faLocationDot}
-            title='On som'
-            scrollRef={locationRef}
-          />
+          <NavItem icon={faLocationDot} title='On som' scrollRef={locationRef} />
           <NavItem icon={faEnvelope} title='Contacte' scrollRef={contactRef} />
         </>
       )}

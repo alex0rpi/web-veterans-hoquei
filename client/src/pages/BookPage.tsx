@@ -2,8 +2,7 @@
 
 import { easeInOut, motion } from 'framer-motion';
 
-const pdfUrl =
-  'http://localhost:4000/documents/Llibre-veterans-hoquei-patins-fcb_compressed.pdf';
+const pdfUrl = `${import.meta.env.VITE_BACKEND_URL}/api/v1/documents/Llibre-veterans-hoquei-patins-fcb_compressed.pdf`;
 
 const BookPage = () => {
   return (

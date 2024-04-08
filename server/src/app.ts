@@ -19,7 +19,14 @@ const app = new Koa();
 
 app.use(errorMiddleware);
 
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL,
+    allowMethods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+  })
+);
 app.use(helmet());
 
 app.use(
@@ -33,7 +40,7 @@ app.use(
       fontSrc: ["'self'"],
       objectSrc: ["'none'"],
       mediaSrc: ["'self'"],
-      frameAncestors: ["'self'", 'http://localhost:3000'],
+      frameAncestors: ["'self'", process.env.CLIENT_URL || 'http://localhost:3000'],
     },
   })
 );
@@ -69,7 +76,8 @@ app.use(Routes.chapterRouter.routes());
 // if (process.env.NODE_ENV !== 'test') {
 app.listen(process.env.PORT, () => {
   // eslint-disable-next-line no-console
-  console.log(`🚀 Server ready at http://localhost:${process.env.PORT}`);
+  // console.log(`🚀 Server ready at http://localhost:${process.env.PORT}`);
+  console.log(`🚀 Server ready at PORT ${process.env.PORT}`);
 });
 // }
 export { app };

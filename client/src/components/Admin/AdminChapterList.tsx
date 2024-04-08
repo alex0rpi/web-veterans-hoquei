@@ -5,6 +5,7 @@ import { ChapterCard, PageTitle, Spinner } from '../UI-components';
 import { motion } from 'framer-motion';
 
 const AdminChapterList = () => {
+  console.log('AdminChapterList');
   const [isLoading, setIsLoading] = useState(true);
   const [chapters, setChapters] = useState<TChapterListItem[]>([]);
   useEffect(() => {

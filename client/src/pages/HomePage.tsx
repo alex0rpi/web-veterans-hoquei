@@ -17,6 +17,7 @@ import {
 import LogoutService from '../services/User/LogoutService';
 import { toast } from 'react-toastify';
 import { UserNameGreet, ScrollTopBtn } from '../components/UI-components';
+import { useMediaQuery } from 'react-responsive';
 
 type TMainPageProps = {
   homeRef?: React.RefObject<HTMLDivElement>;
@@ -40,18 +41,20 @@ const HomePage = ({
   locationRef,
   contactRef,
 }: TMainPageProps) => {
+  const isMdScreenOrLarger = useMediaQuery({ minWidth: 768 });
+
   const { user, setUser } = useContext(UserContext);
   const [backToTopBtn, setBackToTopBtn] = useState(false);
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
       if (window.scrollY > 100) {
-        setBackToTopBtn(true);
+        !isMdScreenOrLarger && setBackToTopBtn(true);
       } else {
         setBackToTopBtn(false);
       }
     });
-  }, []);
+  }, [isMdScreenOrLarger]);
 
   const onLogoutHandler = async () => {
     const isSuccess = await LogoutService();

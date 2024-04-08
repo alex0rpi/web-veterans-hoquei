@@ -1,5 +1,5 @@
-import { NavItem } from './NavItem';
-import { paths } from '../../constants';
+import { NavItem } from './index.ts';
+import { paths } from '../../constants/index.ts';
 import {
   faAddressCard,
   faCirclePlus,
@@ -14,16 +14,8 @@ type TMainNav = {
 const AdminNavList = ({ onLogout }: TMainNav) => {
   return (
     <div>
-      <NavItem
-        icon={faCalendar}
-        title='Els meus capítols'
-        to={paths.userChapterList}
-      />
-      <NavItem
-        icon={faCirclePlus}
-        title='Crear capítol'
-        to={paths.newChapter}
-      />
+      <NavItem icon={faCalendar} title='Els meus capítols' to={paths.userChapterList} />
+      <NavItem icon={faCirclePlus} title='Crear capítol' to={paths.newChapter} />
       <NavItem icon={faAddressCard} title='Les meves dades' to={paths.me} />
       <NavItem
         icon={faArrowRightFromBracket}

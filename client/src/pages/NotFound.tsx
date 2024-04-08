@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { easeInOut, motion } from 'framer-motion';
-import { Navigation } from '../components/Navigation/Navigation';
+import { NavigationBar } from '../components/navigation';
 import { useRef } from 'react';
 
 const NotFound = () => {
@@ -15,7 +15,7 @@ const NotFound = () => {
 
   return (
     <div className='centerLayout'>
-      <Navigation
+      <NavigationBar
         homeRef={homeRef}
         associationRef={associationRef}
         seasonsRef={seasonsRef}
@@ -34,10 +34,7 @@ const NotFound = () => {
       >
         <div className='mt-20 font-bold text-2xl text-center text-primary'>
           <h1>Aquí no tenim res per mostrar❗</h1>
-          <Link
-            to='/'
-            className='hover:underline underline-offset-4 decoration-4'
-          >
+          <Link to='/' className='hover:underline underline-offset-4 decoration-4'>
             Torna a l'inici
           </Link>
         </div>

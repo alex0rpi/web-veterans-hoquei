@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button, FormInput, PageTitle } from '../UI-components';
@@ -11,6 +11,7 @@ import { TRegisterForm } from '../../types/Item-types';
 import { paths } from '../../constants';
 
 const AdminRegister = () => {
+  const [honeyPot, setHoneyPot] = useState<string>('');
   const initialValues: TRegisterForm = {
     name: '',
     email: '',
@@ -22,6 +23,7 @@ const AdminRegister = () => {
   const navigate = useNavigate();
 
   const onRegisterHandler = async (values: TRegisterForm) => {
+    if (honeyPot.trim() !== '') return console.warn('Bot 🤖 detected');
     const formState = {
       name: values.name.trim(),
       email: values.email.trim(),
@@ -30,7 +32,6 @@ const AdminRegister = () => {
     };
     const isSuccess = await RegisterService(formState);
     if (isSuccess) {
-      // toast.info('Nou usuari registrat.');
       toast.info('Verifica el teu email per activar el compte.');
       navigate(paths.login);
       return;
@@ -59,6 +60,15 @@ const AdminRegister = () => {
     >
       <PageTitle titleText='Registrar nou membre' />
 
+      <div className='absolute inset-x-0 bottom-0 h-0'>
+        <input
+          className='w-0 h-0 opacity-0'
+          placeholder='Nom'
+          type='text'
+          onChange={(e) => setHoneyPot(e.target.value)}
+          value={honeyPot}
+        />
+      </div>
       <div className='mt-6 space-y-4 rounded-xl bg-slate-300 p-6 sm:p-8 md:space-y-6'>
         <Formik
           initialValues={initialValues}
@@ -80,6 +90,7 @@ const AdminRegister = () => {
                   value={formik.values.name}
                   inputRef={nameInputRef}
                 />
+
                 <FormInput
                   label='El teu email'
                   name='email'

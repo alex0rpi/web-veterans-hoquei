@@ -14,7 +14,7 @@ type Props = {
   highlight?: boolean;
 };
 
-export const NavItem = ({
+const NavItem = ({
   title,
   to = '/',
   icon,
@@ -58,3 +58,5 @@ export const NavItem = ({
     </Link>
   );
 };
+
+export default NavItem;

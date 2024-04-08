@@ -10,7 +10,6 @@ type TPatchChapterProps = {
 };
 
 const EditChapterService = async (props: TPatchChapterProps) => {
-  console.log('CreateChapterService');
   const { id, season, titlePro, contentPro, titleBases, contentBases } = props;
   try {
     const response = await fetch(urls.patchChapter, {

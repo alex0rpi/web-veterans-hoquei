@@ -1,12 +1,9 @@
 import { easeIn, motion } from 'framer-motion';
-import MainNavList from './MainNavList';
-import { TNavigationProps } from './Navigation';
+import { MainNavList, PageNavList, Footer, AdminNavList } from './index';
+import { TNavigationProps } from './NavigationBar';
 import ReactDOM from 'react-dom';
-import PageNavList from './PageNavList';
-import Footer from './Footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import AdminNavList from './AdminNavList';
 
 type TMobileNavProps = TNavigationProps & {
   onModalClick?: () => void;
