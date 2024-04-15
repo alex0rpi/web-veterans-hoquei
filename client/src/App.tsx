@@ -11,7 +11,6 @@ const routePaths = [
   paths.home,
   paths.season,
   paths.book,
-  // paths.blog, // Not implemented
   // paths.players, // Not implemented
   // * Auth paths
   paths.login,

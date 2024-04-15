@@ -10,7 +10,6 @@ import {
   AdminPage,
   BookPage,
   // PlayersPage,
-  // BlogPage,
 } from './index';
 import { UserContext } from '../context/UserContext';
 import CheckAuthenticatedService from '../services/User/CheckAuthenticatedService';
@@ -63,6 +62,8 @@ const PageList = () => {
   ];
   const isAuthPage = authPaths.includes(location.pathname);
 
+  console.log('isAuthPage: ', isAuthPage);
+
   const adminPaths = [
     paths.userChapterList,
     paths.newChapter,
@@ -114,7 +115,6 @@ const PageList = () => {
           {isAdminPage && <AdminPage />}
           {isBookPage && <BookPage />}
           {/* {location.pathname === paths.players && <PlayersPage />} */}
-          {/* {location.pathname === paths.blog && <BlogPage />} */}
         </motion.div>
       </AnimatePresence>
     </div>

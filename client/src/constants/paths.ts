@@ -3,8 +3,8 @@ export const paths = {
   genericSeason: `/temporades/2017-2018`,
   season: `/temporades/:currentSeason`,
   book: `/llibre-veterans-hoquei-patins-fcb`,
-  blog: `/blog`,
-  players: `/jugadors`,
+  // blog: `/blog`,
+  // players: `/jugadors`,
   // auth paths
   register: `/auth/register`,
   login: `/auth/login`,
