@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BoardModalCard, Button, TitleSection } from '../UI-components';
 import BoardGrid from './BoardGrid';
-import { people as peopleData, vocals as vocalsData } from './BoardList';
+import { people as peopleData, vocals as vocalsData } from '../../assets/infos/BoardList';
 import { TBoardMemberInfos } from '../../types/Item-types';
 import { useMediaQuery } from 'react-responsive';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -25,8 +25,7 @@ const BoardMembers = ({ scrollRef }: TBoardProps) => {
   };
 
   const [showModal, setShowModal] = useState(false);
-  const [selectedMember, setSelectedMember] =
-    useState<TBoardMemberInfos | null>(null);
+  const [selectedMember, setSelectedMember] = useState<TBoardMemberInfos | null>(null);
   const toggleImageModal = () => {
     setShowModal((prevState) => !prevState);
   };
@@ -50,9 +49,9 @@ const BoardMembers = ({ scrollRef }: TBoardProps) => {
         />
       )}
       <p className='text-primary font-semibold text-lg mb-2'>
-        Els següents membres formen part de la junta i són els responsables de
-        la gestió de l'Associació i Lorem ipsum dolor sit amet consectetur
-        adipisicing elit. Unde quod sit magni ratione doloremque quas maxime!
+        Els següents membres formen part de la junta i són els responsables de la gestió
+        de l'Associació i Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
+        quod sit magni ratione doloremque quas maxime!
       </p>
       {/* Board lists */}
       <div className='flex flex-col md:flex-row justify-evenly items-center mx-1'>
@@ -83,10 +82,7 @@ const BoardMembers = ({ scrollRef }: TBoardProps) => {
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <BoardGrid
-                    boardInfos={vocals}
-                    onMemberClick={clickMemberHandler}
-                  />
+                  <BoardGrid boardInfos={vocals} onMemberClick={clickMemberHandler} />
                 </motion.div>
               )}
             </AnimatePresence>

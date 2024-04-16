@@ -1,4 +1,4 @@
-type TBoardItemProps = {
+type TBoardStackItemProps = {
   name: string;
   role: string;
   imageUrl: string[];
@@ -12,7 +12,7 @@ const BoardStackItem = ({
   imageUrl,
   index,
   onMemberClick,
-}: TBoardItemProps) => {
+}: TBoardStackItemProps) => {
   const evenIndex = index % 2 === 0;
 
   const itemBg = evenIndex ? 'bg-slate-400' : 'bg-slate-300';

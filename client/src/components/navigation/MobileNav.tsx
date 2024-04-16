@@ -1,5 +1,5 @@
 import { easeIn, motion } from 'framer-motion';
-import { MainNavList, PageNavList, Footer, AdminNavList } from './index';
+import { MainNavList, PageNavList, Footer } from './index';
 import { TNavigationProps } from './NavigationBar';
 import ReactDOM from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,8 +7,6 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 type TMobileNavProps = TNavigationProps & {
   onModalClick?: () => void;
-  onLogout: () => void;
-  isAdmin?: boolean;
 };
 
 const MobileNav = ({
@@ -21,8 +19,6 @@ const MobileNav = ({
   relatedLinksRef,
   contactRef,
   onModalClick,
-  onLogout,
-  isAdmin,
 }: TMobileNavProps) => {
   const modalScreen = (
     <>
@@ -55,7 +51,6 @@ const MobileNav = ({
             contactRef={contactRef}
           />
           {/* Needs to show only ad admin */}
-          {isAdmin && <AdminNavList onLogout={onLogout} />}
           <Footer />
         </div>
       </motion.div>

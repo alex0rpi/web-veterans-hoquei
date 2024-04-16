@@ -2,7 +2,6 @@ import React from 'react';
 import { MainLayout } from './layouts/Layout';
 import { PageList, NotFound } from './pages';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import UserProvider from './context/UserContext';
 import { paths } from './constants';
 import ChapterProvider from './context/ChaptersContext';
 
@@ -12,17 +11,6 @@ const routePaths = [
   paths.season,
   paths.book,
   // paths.players, // Not implemented
-  // * Auth paths
-  paths.login,
-  paths.register,
-  paths.verify,
-  paths.requestPasswordReset,
-  paths.updatePassword,
-  // * Admin paths *
-  paths.newChapter,
-  paths.userChapterList,
-  paths.editChapter,
-  paths.me,
 ];
 
 const router = createBrowserRouter([
@@ -39,9 +27,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <ChapterProvider>
-      <UserProvider>
-        <RouterProvider router={router} />
-      </UserProvider>
+      <RouterProvider router={router} />
     </ChapterProvider>
   );
 }

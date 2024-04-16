@@ -1,13 +1,9 @@
 import logoImage from '../../assets/logos/logo-no-text-removebg.png';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
-import { useContext, useState } from 'react';
-import { UserContext } from '../../context/UserContext.tsx';
-import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
-import LogoutService from '../../services/User/LogoutService.ts';
+import { useState } from 'react';
 import { paths } from '../../constants/index.ts';
-import { MainNavList, AdminNavList, PageNavList, Footer, MobileNav } from './index.ts';
+import { MainNavList, PageNavList, Footer, MobileNav } from './index.ts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { useMediaQuery } from 'react-responsive';
@@ -35,27 +31,10 @@ const NavigationBar = ({
 }: TNavigationProps) => {
   const isMdScreenOrLarger = useMediaQuery({ minWidth: 768 });
   const [show, setShow] = useState(false);
-  const { user, setUser } = useContext(UserContext);
-  const navigate = useNavigate();
-  const onLogoutHandler = async () => {
-    const isSuccess = await LogoutService();
-    if (isSuccess) {
-      setUser({ ...user, id: '', name: '', isAuthenticated: false });
-      toast.info('Usuari desconnectat.');
-      navigate(`${paths.home}`);
-    }
-  };
-  const adminPaths = [
-    paths.me,
-    paths.newChapter,
-    paths.userChapterList,
-    paths.editChapter.split(':')[0],
-  ];
+
   const location = useLocation();
   const isBookPage = location.pathname === paths.book;
-  const isAdmin =
-    adminPaths.some((path) => location.pathname.startsWith(path)) &&
-    user.isAuthenticated === true;
+
   const menuClickHandler = () => {
     setShow((prevState) => !prevState);
   };
@@ -99,20 +78,16 @@ const NavigationBar = ({
         <div className='border-b-[1px] border-slate-400'>
           <PageNavList homeRef={homeRef} />
         </div>
-        {!isAdmin ? (
-          <MainNavList
-            homeRef={homeRef}
-            associationRef={associationRef}
-            boardRef={boardRef}
-            seasonsRef={seasonsRef}
-            bookRef={bookRef}
-            relatedLinksRef={relatedLinksRef}
-            locationRef={locationRef}
-            contactRef={contactRef}
-          />
-        ) : (
-          <AdminNavList onLogout={onLogoutHandler} />
-        )}
+        <MainNavList
+          homeRef={homeRef}
+          associationRef={associationRef}
+          boardRef={boardRef}
+          seasonsRef={seasonsRef}
+          bookRef={bookRef}
+          relatedLinksRef={relatedLinksRef}
+          locationRef={locationRef}
+          contactRef={contactRef}
+        />
       </div>
       {isMdScreenOrLarger && <Footer />}
       {/* Mobile menu */}
@@ -128,8 +103,6 @@ const NavigationBar = ({
             locationRef={locationRef}
             relatedLinksRef={relatedLinksRef}
             onModalClick={menuClickHandler}
-            isAdmin={isAdmin}
-            onLogout={onLogoutHandler}
           />
         )}
       </AnimatePresence>
