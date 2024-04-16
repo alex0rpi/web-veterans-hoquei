@@ -28,8 +28,9 @@ const ImageModal = ({ image, onModalClick }: TModalProps) => {
         <img
           src={image}
           alt='Foto'
-          className='w-auto h-[87%] m-auto rounded-xl cursor-pointer object-contain border-4 border-slate-100'
+          className='w-auto h-[87%] m-auto rounded-xl cursor-pointer object-contain'
           onClick={onModalClick}
+          // loading='lazy'
         />
       </motion.div>
     </>

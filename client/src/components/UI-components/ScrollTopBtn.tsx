@@ -8,14 +8,7 @@ const ScrollTopBtn = ({ onClick }: TScrollTopBtn) => {
   return (
     <button
       onClick={onClick}
-      style={{
-        position: 'fixed',
-        bottom: '5%',
-        right: '5%',
-        height: '40px',
-        width: '40px',
-        fontSize: '40px',
-      }}
+      className='fixed bottom-[5%] right-[5%] h-[40px] w-[40px] text-[45px] active:text-gray-500'
     >
       <FontAwesomeIcon icon={faCircleArrowUp} />
     </button>

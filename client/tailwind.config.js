@@ -19,7 +19,7 @@ export default {
       },
 
       backgroundImage: {
-        'hero-pattern': "url('/assets/backgrounds/bg02.jpg')",
+        'hero-pattern': "url('/assets/backgrounds/bg04.jpg')",
       },
 
       colors: {
@@ -27,11 +27,10 @@ export default {
       },
 
       gridTemplateColumns: {
+        // Global 3 col grid
         layoutBook: '5% 90% 5%',
         layoutMd: '7.5% 85% 7.5%',
         layoutLg: '12.5% 75% 12.5%',
-        layoutNav: '20% 80%',
-        layoutBookNav: '15% 85%',
       },
     },
   },

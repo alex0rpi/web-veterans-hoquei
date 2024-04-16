@@ -18,8 +18,11 @@ import TitleSection from './TitleSection';
 import BoardStackItem from './BoardStackItem';
 import UserNameGreet from './UserNameGreet';
 import BadgeClickable from './BadgeClickable';
+import ImageSlider from './ImageSlider';
+import FontSizeController from './FontSizeController';
 
 export {
+  ImageSlider,
   Spinner,
   Backdrop,
   Button,
@@ -40,4 +43,5 @@ export {
   PageTitle,
   TitleSection,
   UserNameGreet,
+  FontSizeController,
 };

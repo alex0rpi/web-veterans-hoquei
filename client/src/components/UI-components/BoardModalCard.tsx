@@ -1,13 +1,15 @@
 import { easeIn, motion } from 'framer-motion';
-import ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom';
 import { TBoardMemberInfos } from '../../types/Item-types';
 import BoardModalContent from './BoardModalContent';
+import BoardModalContentMobile from './BoardModalContentMobile';
 
 type TModalProps = TBoardMemberInfos & {
   onModalClick: () => void;
+  isMobile: boolean;
 };
 
-const BoardModalCard = ({ ...props }: TModalProps) => {
+const BoardModalCard = (props: TModalProps) => {
   const modalScreen = (
     <>
       <motion.div
@@ -17,7 +19,7 @@ const BoardModalCard = ({ ...props }: TModalProps) => {
         className='fixed top-0 left-0 w-full h-screen z-20 bg-slate-950/50 cursor-pointer'
         onClick={props.onModalClick}
       ></motion.div>
-      <BoardModalContent {...props} />
+      {props.isMobile ? <BoardModalContentMobile {...props} /> : <BoardModalContent {...props} />}
     </>
   );
   const modalElement = document.getElementById('modalbackdrop');

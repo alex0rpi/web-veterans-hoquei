@@ -1,25 +1,14 @@
 import { easeIn, motion } from 'framer-motion';
 import { MainNavList, PageNavList, Footer } from './index';
-import { TNavigationProps } from './NavigationBar';
-import ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
-type TMobileNavProps = TNavigationProps & {
+type TMobileNavProps = {
   onModalClick?: () => void;
 };
 
-const MobileNav = ({
-  homeRef,
-  associationRef,
-  boardRef,
-  bookRef,
-  seasonsRef,
-  locationRef,
-  relatedLinksRef,
-  contactRef,
-  onModalClick,
-}: TMobileNavProps) => {
+const MobileNav = ({ onModalClick }: TMobileNavProps) => {
   const modalScreen = (
     <>
       <motion.div
@@ -27,7 +16,7 @@ const MobileNav = ({
         animate={{ opacity: 1, right: '55vw' }}
         exit={{ opacity: 0, right: '-100vw' }}
         transition={{ duration: 0.2 }}
-        className='z-30 fixed translate-x-full md:translate-x-0 top-[0vh] w-[55vw] right-[40vw] bg-primary bg-opacity-95 ps-6 pe-6 pb-2 pt-4 rounded-s-lg text-slate-200 md:hidden flex flex-col items-end h-screen'
+        className='z-30 fixed translate-x-full md:translate-x-0 top-[0vh] w-[55vw] right-[40vw] bg-primary bg-opacity-90 ps-6 pe-6 pb-2 pt-4 rounded-s-lg text-slate-200 md:hidden flex flex-col items-end h-screen'
       >
         <FontAwesomeIcon
           icon={faXmark}
@@ -37,19 +26,10 @@ const MobileNav = ({
         />
         <div className='w-full'>
           <div className='mt-1 border-b-[1px] border-slate-400'>
-            <PageNavList homeRef={homeRef} />
+            <PageNavList />
           </div>
           {/* Will show only at HOME */}
-          <MainNavList
-            homeRef={homeRef}
-            associationRef={associationRef}
-            boardRef={boardRef}
-            seasonsRef={seasonsRef}
-            bookRef={bookRef}
-            relatedLinksRef={relatedLinksRef}
-            locationRef={locationRef}
-            contactRef={contactRef}
-          />
+          <MainNavList />
           {/* Needs to show only ad admin */}
           <Footer />
         </div>

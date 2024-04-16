@@ -1,23 +1,21 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { BoardModalCard, Button, TitleSection } from '../UI-components';
-import BoardGrid from './BoardGrid';
-import { people as peopleData, vocals as vocalsData } from '../../assets/infos/BoardList';
+import BoardList from './BoardList';
+import { people as peopleData, vocals as vocalsData } from '../../assets/boardFotos';
 import { TBoardMemberInfos } from '../../types/Item-types';
 import { useMediaQuery } from 'react-responsive';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AnimatePresence, motion } from 'framer-motion';
 
+type componentProps = {
+  id: string;
+};
 const people: TBoardMemberInfos[] = peopleData;
 const vocals: TBoardMemberInfos[] = vocalsData;
-
 const allPeople = [...people, ...vocals];
 
-type TBoardProps = {
-  scrollRef?: React.RefObject<HTMLDivElement>;
-};
-
-const BoardMembers = ({ scrollRef }: TBoardProps) => {
+const BoardMembers = ({ id }: componentProps) => {
   const isMdScreenOrLarger = useMediaQuery({ minWidth: 768 });
   const [showVocals, setShowVocals] = useState<boolean>(false);
   const onClickShowVocals = () => {
@@ -34,11 +32,12 @@ const BoardMembers = ({ scrollRef }: TBoardProps) => {
     setShowModal((prevState) => !prevState);
   };
   return (
-    <section ref={scrollRef}>
+    <section id={id}>
       <TitleSection sectionTitle='Membres de la junta' />
       {showModal && (
         <BoardModalCard
-          imageUrl={selectedMember?.imageUrl || []}
+          imageUrls={selectedMember?.imageUrls || []}
+          lowResimageUrls={selectedMember?.lowResimageUrls || []}
           name={selectedMember?.name || ''}
           role={selectedMember?.role || ''}
           playerSeasons={selectedMember?.playerSeasons || []}
@@ -46,17 +45,17 @@ const BoardMembers = ({ scrollRef }: TBoardProps) => {
           trajectory={selectedMember?.trajectory || ''}
           onModalClick={toggleImageModal}
           otherComment={selectedMember?.otherComment || ''}
+          isMobile={!isMdScreenOrLarger}
         />
       )}
       <p className='text-primary font-semibold text-lg mb-2'>
-        Els següents membres formen part de la junta i són els responsables de la gestió
-        de l'Associació i Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
-        quod sit magni ratione doloremque quas maxime!
+        Els següents membres formen part de la junta i són els responsables de la gestió de
+        l'Associació. Si voleu saber més sobre algun d'ells, feu clic a la seva imatge.
       </p>
       {/* Board lists */}
       <div className='flex flex-col md:flex-row justify-evenly items-center mx-1'>
         <div className='w-full md:w-1/2 md:h-80'>
-          <BoardGrid boardInfos={people} onMemberClick={clickMemberHandler} />
+          <BoardList boardInfos={people} onMemberClick={clickMemberHandler} />
         </div>
         {!isMdScreenOrLarger ? (
           // Show button to toggle show vocal members
@@ -64,11 +63,7 @@ const BoardMembers = ({ scrollRef }: TBoardProps) => {
             <Button
               title={`${!showVocals ? 'Mostrar' : 'Ocultar'} vocals membres`}
               icon={
-                !showVocals ? (
-                  <FontAwesomeIcon icon={faPlus} />
-                ) : (
-                  <FontAwesomeIcon icon={faMinus} />
-                )
+                !showVocals ? <FontAwesomeIcon icon={faPlus} /> : <FontAwesomeIcon icon={faMinus} />
               }
               onClick={onClickShowVocals}
               type='button'
@@ -82,7 +77,11 @@ const BoardMembers = ({ scrollRef }: TBoardProps) => {
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <BoardGrid boardInfos={vocals} onMemberClick={clickMemberHandler} />
+                  <BoardList
+                    boardInfos={vocals}
+                    onMemberClick={clickMemberHandler}
+                    isVocal={true}
+                  />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -90,7 +89,7 @@ const BoardMembers = ({ scrollRef }: TBoardProps) => {
         ) : (
           // Show vocal members directly
           <div className='w-full md:w-1/2 md:h-80 md:overflow-y-scroll md:overflow-x-hidden'>
-            <BoardGrid boardInfos={vocals} onMemberClick={clickMemberHandler} />
+            <BoardList boardInfos={vocals} onMemberClick={clickMemberHandler} isVocal={true} />
           </div>
         )}
       </div>

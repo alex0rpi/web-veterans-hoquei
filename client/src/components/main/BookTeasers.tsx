@@ -1,52 +1,30 @@
-import { imatgeLlibre01, imatgeLlibre03 } from '../../assets/bookImages';
-import { Button } from '../UI-components';
-import { paths } from '../../constants';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
+import { bookImages } from '../../assets/bookImages';
+import { ImageSlider, TitleSection } from '../UI-components';
 
-const BookTeasers = () => {
+type componentProps = {
+  id: string;
+};
+
+const BookTeasers = ({ id }: componentProps) => {
   return (
-    <section className='my-4'>
-      <p>
-        Aquí podriem afegir imatges del contingut del llibre a mode de teaser. 3
-        o 4 imatges, o les que vulguem. Lorem, ipsum dolor sit amet consectetur
-        adipisicing elit. Aquesta es obra és producte d'un rigurós treball de
-        recerca i documentació i blablabla.
+    <section id={id} className='my-4'>
+      <TitleSection sectionTitle='El llibre' />
+      <p className='text-web'>
+        El 15 de maig de 2019, l’Espai Barça Fundació va acollir un esdeveniment memorable: la
+        presentació del llibre que narra la trajectòria de la secció d’hoquei patins del FC
+        Barcelona. La sala París es va omplir d’una atmosfera de celebració i nostàlgia. Entre els
+        assistents, es trobaven Ramon Pons, president de l’associació; Carles Gallèn, redactor
+        principal de l’obra, que va compartir els detalls de la creació del llibre; i Imma
+        Pedemonte, periodista esportiva, que va oferir una visió sobre els moments més destacats de
+        l’esport. La vetllada va ser un reconeixement a les personalitats de l’hoquei patins,
+        incloent veterans com el Paco Valsecchi, que van ser part fonamental dels inicis de la
+        secció. Les imatges i documents inèdits projectats van recordar els moments gloriosos
+        viscuts al llarg dels anys, i la cerimònia va ser un tribut a la història de l’hoquei patins
+        i a aquells que han contribuït a la seva grandesa. Aquesta obra, resultat d’un meticulós
+        treball de recerca i documentació, no només celebra els èxits passats, sinó que també aspira
+        a inspirar a les futures generacions de l’hoquei patins.
       </p>
-      <div className='my-1 flex flex-col items-center justify-center'>
-        <p className='font-semibold mt-3 mb-2'>
-          El relat de la història de la secció en un preciós treball de
-          recopilació.{' '}
-        </p>
-        <img
-          src={imatgeLlibre01}
-          alt='Imatge llibre'
-          className='rounded-lg mt-2 h-auto max-w-[75%]'
-        />
-        <p className='font-semibold mt-3 mb-2'>
-          Una mica més de text aquí també
-        </p>
-        <img
-          src={imatgeLlibre03}
-          alt='Imatge llibre'
-          className='h-auto max-w-[75%] rounded-lg'
-        />
-      </div>
-      <div className='my-3 mx-auto flex flex-row gap-4 items-center justify-center'>
-        <Button
-          title="Visualitza'l"
-          type='button'
-          to={paths.book}
-          icon={<FontAwesomeIcon icon={faEye} />}
-        />
-        <Button
-          title="Descarrega'l HD"
-          type='button'
-          icon={<FontAwesomeIcon icon={faFloppyDisk} size='lg' />}
-          // to={paths.book}
-        />
-      </div>
-      <p className='font-semibold mt-3 mb-2'>Esments dels impulsors.</p>
+      <ImageSlider pictures={bookImages} />
     </section>
   );
 };

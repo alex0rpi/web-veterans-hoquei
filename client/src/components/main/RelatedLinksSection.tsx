@@ -1,12 +1,12 @@
 import { TitleSection } from '../UI-components';
 
-type TRelatedLinksProps = {
-  scrollRef?: React.RefObject<HTMLDivElement>;
+type componentProps = {
+  id: string;
 };
 
-const RelatedLinksSection = ({ scrollRef }: TRelatedLinksProps) => {
+const RelatedLinksSection = ({ id }: componentProps) => {
   return (
-    <section ref={scrollRef}>
+    <section id={id}>
       <TitleSection sectionTitle="Enllaços d'interès" />
       <div className='flex justify-center'>
         <div className='btn bg-secondary-100 text-secondary-200 transform transition duration-500 ease-out hover:scale-125 hover:bg-opacity-50 hover:shadow-inner'>

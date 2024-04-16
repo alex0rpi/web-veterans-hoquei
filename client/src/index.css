@@ -18,25 +18,27 @@ body {
   @apply h-screen md:grid md:grid-cols-layoutBook;
 }
 
+/* Main center column */
 .main-column-layout {
   @apply md:overflow-auto md:col-start-2 md:col-end-3 md:justify-stretch;
 }
 
-/* Page layout inside center column */
-
+/* Structure inside main center column */
 .centerLayout {
   @apply md:flex md:flex-row bg-transparent;
 }
 
+/* Navigation fit inside main center column */
 .navLayout {
   @apply md:sticky top-0 md:basis-[20%] md:h-screen bg-primary opacity-[88%];
-}
-.pageLayout {
-  @apply md:basis-[80%] py-3 md:py-4 px-3 md:px-4 overflow-y-auto bg-gray-200 bg-opacity-[90%];
 }
 
 .navBookLayout {
   @apply md:sticky top-0 md:basis-[10%] md:h-screen bg-primary opacity-[88%];
+}
+
+.pageLayout {
+  @apply md:basis-[80%] py-3 md:py-4 px-3 md:px-4 overflow-y-auto bg-gray-200 bg-opacity-[90%];
 }
 
 .bookPageLayout {
@@ -44,12 +46,21 @@ body {
 }
 
 /* Components */
+/* Add a general text and title class */
 .btn {
-  @apply cursor-pointer rounded-full px-3 py-2 text-sm font-bold uppercase tracking-wider;
+  @apply cursor-pointer rounded-full px-2 sm:px-3 py-2 text-xs sm:text-sm font-bold uppercase tracking-wider;
 }
 
 .card {
   @apply cursor-pointer rounded-xl shadow-slate-950 transition duration-300 ease-out hover:scale-95 hover:shadow-xl;
+}
+
+.text-web {
+  @apply text-primary font-semibold text-lg mb-2;
+}
+
+.text-web-sm {
+  @apply text-primary font-semibold text-base mb-2;
 }
 
 /* ------------------------------------- */

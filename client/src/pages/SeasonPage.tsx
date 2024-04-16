@@ -1,36 +1,49 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { HeaderTitle } from '../components/main';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faCat,
-  faChevronLeft,
-  faChevronRight,
-} from '@fortawesome/free-solid-svg-icons';
-import { useContext } from 'react';
-import { ChapterContext } from '../context/ChaptersContext';
-import { AnimatePresence, easeInOut, motion } from 'framer-motion';
+import { faCat, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import GetSeasonService from '../services/Chapters/GetSeasonService';
-import Spinner from '../components/UI-components/loading-spinner/Spinner';
-import GetChaptersService from '../services/Chapters/GetChaptersService';
-import { RxFontSize } from 'react-icons/rx';
-import { TChapter } from '../types/Item-types';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { BadgeClickable } from '../components/UI-components';
+import {
+  BadgeClickable,
+  FontSizeController,
+  ImageSlider,
+  ScrollTopBtn,
+} from '../components/UI-components';
+// import * as seasonInfos from '../data/seasonInfos.json';
+import { seasonInfos as chapters } from '../data/SeasonInfos';
+import { seasonFotos } from '../assets/seasonPictures';
+import { useMediaQuery } from 'react-responsive';
 
 const SeasonPage = () => {
+  const isMdScreenOrLarger = useMediaQuery({ minWidth: 768 });
+
+  const [backToTopBtn, setBackToTopBtn] = useState(false);
+
+  const scrollUp = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        !isMdScreenOrLarger && setBackToTopBtn(true);
+      } else {
+        setBackToTopBtn(false);
+      }
+    });
+  }, []);
+
   const availableTextSizes = ['xs', 'sm', 'base', 'lg', 'xl', '2xl'];
-  const [textSize, setTextSize] = useState('base');
+  const [textSize, setTextSize] = useState('lg');
   const changeFontSizeHandler = (value: string) => {
     if (value === '=') {
-      setTextSize('base');
+      setTextSize('lg');
       return;
     }
     const increase = value === '+';
-    const currentIndex = availableTextSizes.findIndex(
-      (size) => size === textSize
-    );
+    const currentIndex = availableTextSizes.findIndex((size) => size === textSize);
 
     if (increase) {
       if (currentIndex < availableTextSizes.length - 1) {
@@ -42,62 +55,30 @@ const SeasonPage = () => {
       }
     }
   };
-  // const [direction, setDirection] = useState<number>(0);
-
-  const { chapters, setChapters } = useContext(ChapterContext);
-  const [isLoading, setIsLoading] = useState(true);
-  const [season, setSeason] = useState<TChapter | null>(null);
 
   const navigate = useNavigate();
   const { currentSeason } = useParams();
 
-  useEffect(() => {
-    const fetchSeason = async () => {
-      const fetchedSeason = await GetSeasonService(currentSeason!);
-      if (!fetchedSeason) return;
-      setSeason(fetchedSeason);
-      setIsLoading(false);
-    };
-    const populateChapters = async () => {
-      const fetchedChapters = await GetChaptersService();
-      if (!fetchedChapters || fetchedChapters.length === 0) {
-        toast.warning('Per ara no hi ha cap temporada per mostrar.');
-        setChapters([]);
-        setIsLoading(false);
-        return;
-      }
-      setChapters(fetchedChapters);
-    };
+  const seasonProPictures = seasonFotos[currentSeason!].pro;
+  const seasonBasesPictures = seasonFotos[currentSeason!].bases;
+  const displayChapter = chapters?.find((chapter) => chapter.season === currentSeason);
 
-    if (!chapters || chapters.length === 0) {
-      populateChapters();
-    }
-    fetchSeason();
-  }, [currentSeason]);
   const isLastSeason =
-    chapters?.findIndex((chapter) => chapter.season === currentSeason) ===
-    chapters?.length - 1;
+    chapters?.findIndex((chapter) => chapter.season === currentSeason) === chapters?.length - 1;
 
-  const isFirstSeason =
-    chapters?.findIndex((chapter) => chapter.season === currentSeason) === 0;
+  const isFirstSeason = chapters?.findIndex((chapter) => chapter.season === currentSeason) === 0;
 
   const nextSeasonClick = () => {
-    // setDirection(1);
     if (!chapters || chapters.length === 0) return;
-    const currentSeasonIndex = chapters?.findIndex(
-      (chapter) => chapter.season === currentSeason
-    );
+    const currentSeasonIndex = chapters?.findIndex((chapter) => chapter.season === currentSeason);
     if (currentSeasonIndex === -1) return;
     const followingSeason = chapters[currentSeasonIndex + 1]?.season;
     if (!followingSeason) return;
     navigate(`/temporades/${followingSeason}`);
   };
   const previousSeasonClick = () => {
-    // setDirection(-1);
     if (!chapters || chapters.length === 0) return;
-    const currentSeasonIndex = chapters?.findIndex(
-      (chapter) => chapter.season === currentSeason
-    );
+    const currentSeasonIndex = chapters?.findIndex((chapter) => chapter.season === currentSeason);
     if (currentSeasonIndex === -1) return;
     const previousSeason = chapters[currentSeasonIndex - 1]?.season;
     if (!previousSeason) return;
@@ -117,12 +98,7 @@ const SeasonPage = () => {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ type: easeInOut, duration: 0.2 }}
-      exit={{ opacity: 0 }}
-    >
+    <div id='proArticle'>
       <HeaderTitle />
       <div className='flex justify-center items-center mt-2'>
         {chapters?.map((chapter, index) => (
@@ -136,29 +112,12 @@ const SeasonPage = () => {
         ))}
       </div>
       <AnimatePresence mode='wait'>
-        {isLoading ? (
-          <>
-            <div></div>
-            <div className='flex items-center justify-center'>
-              <Spinner />
-            </div>
-            <div></div>
-          </>
-        ) : season ? (
-          <motion.article
+        {displayChapter ? (
+          <motion.section
             key={currentSeason}
-            initial={{
-              opacity: 0,
-              // x: 300 * direction
-            }}
-            animate={{
-              opacity: 1,
-              // x: 0,
-            }}
-            exit={{
-              opacity: 0,
-              // x: -300 * direction,
-            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
           >
             <div className='flex items-center justify-center mt-2'>
@@ -180,7 +139,7 @@ const SeasonPage = () => {
                     WebkitUserSelect: 'none',
                   }}
                 >
-                  Temporada {`${season?.season}`}
+                  Temporada {`${displayChapter?.season}`}
                 </span>
               </h1>
               {!isLastSeason && (
@@ -197,59 +156,49 @@ const SeasonPage = () => {
 
             {/* Season text content here below */}
             <div className='mt-2'>
-              <div className='flex flex-row justify-between items-center'>
-                <h1 className='text-left text-lg md:text-2xl font-semibold md:font-bold text-primary'>
-                  {season?.titlePro}
-                </h1>
-                <div className='flex flex-row items-center justify-center border border-gray-400 rounded-full px-3'>
-                  <button
-                    type='button'
-                    className='font-bold text-4xl md:text-3xl md:hover:scale-125 active:text-gray-500'
-                    onClick={() => changeFontSizeHandler('-')}
-                  >
-                    -
-                  </button>
-                  <RxFontSize
-                    className='mx-2 text-3xl md:text-2xl md:hover:scale-125 active:text-gray-500 cursor-pointer'
-                    onClick={() => changeFontSizeHandler('=')}
-                  />
-                  {/* <RiFontSize2 className="mx-2 text-xl" /> */}
-                  <button
-                    type='button'
-                    className='font-bold text-4xl md:text-3xl md:hover:scale-125 active:text-gray-500'
-                    onClick={() => changeFontSizeHandler('+')}
-                  >
-                    +
-                  </button>
+              <article>
+                <div className='flex flex-row justify-between items-center'>
+                  <h1 className='text-left text-lg md:text-2xl font-semibold md:font-bold text-primary'>
+                    {displayChapter?.titlePro}
+                  </h1>
+                  {/* Change font Size controls */}
+                  <FontSizeController onFontSizeChange={changeFontSizeHandler} />
                 </div>
-              </div>
-              <div className='mb-2 border-b border-gray-400 pb-2'></div>
-              {season?.contentPro.split('\n').map((line, i) => (
-                <p key={i} className={`text-${textSize} mt-2 leading-7`}>
-                  {line}
-                </p>
-              ))}
-              <h1 className='mt-6 text-left text-2xl font-semibold text-primary'>
-                {season?.titleBases}
-              </h1>
-              <div className='mb-2 border-b border-gray-400 pb-2'></div>
-              {season?.contentBases.split('\n').map((line, i) => (
-                <p key={i} className={`text-${textSize} mt-2 leading-7`}>
-                  {line}
-                </p>
-              ))}
+                <div className='mb-2 border-b border-gray-400 pb-2'></div>
+                <ImageSlider pictures={seasonProPictures} />
+                <div className='mt-6'>
+                  {displayChapter?.contentPro.split('\n').map((line, i) => (
+                    <p key={i} className={`text-${textSize} mt-2 text-primary leading-7`}>
+                      {line}
+                    </p>
+                  ))}
+                </div>
+              </article>
+              <article id='basesArticle'>
+                <h1 className='mt-6 text-left text-2xl font-semibold text-primary'>
+                  {displayChapter?.titleBases}
+                </h1>
+                <div className='mb-2 border-b border-gray-400 pb-2'></div>
+                {seasonBasesPictures && <ImageSlider pictures={seasonBasesPictures} />}
+                <div className='mt-6'>
+                  {displayChapter?.contentBases.split('\n').map((line, i) => (
+                    <p key={i} className={`text-${textSize} mt-2 text-primary leading-7`}>
+                      {line}
+                    </p>
+                  ))}
+                </div>
+              </article>
             </div>
-          </motion.article>
+          </motion.section>
         ) : (
           <div className='flex items-center justify-center'>
             <FontAwesomeIcon icon={faCat} size='2xl' />
-            <p className='text-2xl mt-4 mx-2'>
-              De moment no hi ha temporades per mostrar.
-            </p>
+            <p className='text-2xl mt-4 mx-2'>De moment no hi ha temporades per mostrar.</p>
           </div>
         )}
       </AnimatePresence>
-    </motion.div>
+      {backToTopBtn && <ScrollTopBtn onClick={scrollUp} />}
+    </div>
   );
 };
 
