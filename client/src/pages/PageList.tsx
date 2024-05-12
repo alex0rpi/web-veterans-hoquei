@@ -50,8 +50,8 @@ const PageList = () => {
 
   const authPaths = [
     paths.login,
-    // paths.register,
-    // paths.verify,
+    paths.register,
+    paths.verify,
     paths.requestPasswordReset,
     paths.updatePassword,
   ];
@@ -65,8 +65,7 @@ const PageList = () => {
   ];
 
   const isAdminPage =
-    adminPaths.some((path) => location.pathname.startsWith(path)) &&
-    user.isAuthenticated === true;
+    adminPaths.some((path) => location.pathname.startsWith(path)) && user.isAuthenticated === true;
   const isBookPage = location.pathname === paths.book;
 
   return (
@@ -103,9 +102,7 @@ const PageList = () => {
             />
           )}
           {isAuthPage && <AuthPage />}
-          {location.pathname.startsWith(paths.season.split(':')[0]) && (
-            <SeasonPage />
-          )}
+          {location.pathname.startsWith(paths.season.split(':')[0]) && <SeasonPage />}
           {isAdminPage && <AdminPage />}
           {isBookPage && <BookPage />}
           {/* {location.pathname === paths.players && <PlayersPage />} */}
