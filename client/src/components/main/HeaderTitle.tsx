@@ -1,10 +1,6 @@
-type THeaderProps = {
-  scrollRef?: React.RefObject<HTMLDivElement>;
-};
-
-const HeaderTitle = ({ scrollRef }: THeaderProps) => {
+const HeaderTitle = () => {
   return (
-    <header className='ms-1 mt-1' ref={scrollRef}>
+    <header className='ms-1 mt-1'>
       <h1 className='hidden text-center font-semibold text-gray-700 sm:block sm:text-2xl md:text-left lg:text-3xl xl:text-4xl'>
         ASSOCIACIO DE VETERANS
       </h1>

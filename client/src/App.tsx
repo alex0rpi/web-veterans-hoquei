@@ -1,50 +1,28 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import UserProvider from './context/UserContext';
 import { MainLayout } from './layouts/Layout';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HomePage, NotFound } from './pages';
 import { paths } from './constants';
-import { PageList, NotFound } from './pages';
-import ChapterProvider from './context/ChaptersContext';
-import React from 'react';
+import { lazy, Suspense } from 'react';
+import { Spinner } from './components/UI-components';
 
-const routePaths = [
-  // Main paths
-  paths.home,
-  paths.season,
-  paths.book,
-  // paths.blog, // Not implemented
-  paths.players, // Not implemented
-  // Auth paths
-  paths.login,
-  paths.register,
-  paths.verify,
-  paths.requestPasswordReset,
-  paths.updatePassword,
-  // Admin paths
-  paths.newChapter,
-  paths.userChapterList,
-  paths.editChapter,
-  paths.me,
-];
-
-const router = createBrowserRouter([
-  ...routePaths.map((path) => ({
-    path,
-    element: <MainLayout>{React.createElement(PageList)}</MainLayout>,
-  })),
-  {
-    path: '*',
-    element: <MainLayout>{React.createElement(NotFound)}</MainLayout>,
-  },
-]);
-
+// prettier-ignore
 function App() {
+  const BookPage = lazy(() => import('./pages/BookPage'));
+  const SeasonPage = lazy(() => import('./pages/SeasonPage'));
+
+  const fallBackSpinner = <div className='flex items-center justify-center'>
+                            <Spinner />
+                          </div>
   return (
-    <ChapterProvider>
-      <UserProvider>
-        <RouterProvider router={router} />
-      </UserProvider>
-    </ChapterProvider>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route path={paths.home} element={<MainLayout><HomePage /></MainLayout>} />
+        <Route path={paths.season} element={<MainLayout><Suspense fallback={fallBackSpinner}><SeasonPage /></Suspense></MainLayout>} />
+        <Route path={paths.book} element={<MainLayout><Suspense fallback={fallBackSpinner}><BookPage /></Suspense></MainLayout>} />
+        <Route path='*' element={<MainLayout><Suspense fallback={fallBackSpinner}><NotFound /></Suspense></MainLayout>} />
+      </Routes>
+  </BrowserRouter>
+  )
 }
 
 export default App;

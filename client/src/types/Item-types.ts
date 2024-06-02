@@ -1,27 +1,3 @@
-export type TUser = {
-  id: string;
-  name: string;
-  isAuthenticated: boolean;
-};
-
-export type TRegisterForm = Omit<TUser, 'isAuthenticated' | 'id'> & {
-  email: string;
-  password: string;
-  confirmPassword: string;
-  formError: string | null;
-};
-
-export type TUpdateUserForm = {
-  name?: string;
-  email?: string;
-};
-
-export type TLoginForm = {
-  email: string;
-  password: string;
-  formError: string | null;
-};
-
 export type TChapterListItem = {
   id: string;
   season: string;
@@ -45,10 +21,24 @@ export type TChapter = {
 export type TBoardMemberInfos = {
   name: string;
   role: string;
-  imageUrl: string[];
+  imageUrls: string[];
+  lowResimageUrls: string[];
   pictures?: string[];
   playerSeasons: string[];
   trajectory: string;
   anecdote?: string;
   otherComment?: string;
+};
+
+export type SeasonFotosType = {
+  [key: string]: {
+    pro: TImageWithMiniature[];
+    bases?: TImageWithMiniature[];
+  };
+};
+
+export type TImageWithMiniature = {
+  name: string;
+  src: string;
+  lowResSrc?: string;
 };

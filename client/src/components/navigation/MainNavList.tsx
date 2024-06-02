@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
-import { NavItem } from './NavItem';
-import { paths } from '../../constants';
+import { NavItem } from './index.ts';
+import { paths } from '../../constants/index.ts';
 import {
   faBookOpen,
   faPeopleGroup,
@@ -8,62 +8,50 @@ import {
   faLocationDot,
   faEnvelope,
   faCalendar,
+  faStreetView,
+  faPeopleRoof,
 } from '@fortawesome/free-solid-svg-icons';
+import { AnimatePresence, motion } from 'framer-motion';
 
-type TMainNav = {
-  homeRef?: React.RefObject<HTMLDivElement>;
-  associationRef?: React.RefObject<HTMLDivElement>;
-  boardRef?: React.RefObject<HTMLDivElement>;
-  seasonsRef?: React.RefObject<HTMLDivElement>;
-  bookRef?: React.RefObject<HTMLDivElement>;
-  relatedLinksRef?: React.RefObject<HTMLDivElement>;
-  locationRef?: React.RefObject<HTMLDivElement>;
-  contactRef?: React.RefObject<HTMLDivElement>;
-};
-
-const MainNavList = ({
-  associationRef,
-  seasonsRef,
-  contactRef,
-  locationRef,
-  boardRef,
-  relatedLinksRef,
-  bookRef,
-}: TMainNav) => {
+const MainNavList = () => {
   const location = useLocation();
+  const isHome = location.pathname === paths.home;
+  const isSeason = location.pathname.startsWith(paths.season.split(':')[0]);
 
   return (
-    <>
-      {location.pathname === paths.home && (
-        <>
-          <NavItem
-            icon={faPeopleGroup}
-            title='Qui som'
-            scrollRef={associationRef}
-          />
-          <NavItem icon={faPeopleGroup} title='Junta' scrollRef={boardRef} />
-          <NavItem
-            icon={faBookOpen}
-            title='El Llibre'
-            // to={paths.book}
-            scrollRef={bookRef}
-          />
-          <NavItem
-            icon={faCalendar}
-            title='Temporades'
-            scrollRef={seasonsRef}
-          />
-
-          <NavItem icon={faLink} title='Enllaços' scrollRef={relatedLinksRef} />
-          <NavItem
-            icon={faLocationDot}
-            title='On som'
-            scrollRef={locationRef}
-          />
-          <NavItem icon={faEnvelope} title='Contacte' scrollRef={contactRef} />
-        </>
-      )}
-    </>
+    <AnimatePresence>
+      <motion.div
+        key={isHome ? 'home' : 'season'}
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -50 }}
+        transition={{ duration: 0.3 }}
+      >
+        {isHome && (
+          <>
+            <NavItem icon={faPeopleRoof} title='Qui som' id='association' />
+            <NavItem icon={faStreetView} title='Salutació president' id='presidentGreeting' />
+            <NavItem icon={faPeopleGroup} title='Junta' id='boardMembers' />
+            <NavItem
+              icon={faBookOpen}
+              title='El Llibre'
+              // to={paths.book}
+              id='bookSection'
+            />
+            <NavItem icon={faCalendar} title='Temporades' id='seasonsSection' />
+            <NavItem icon={faLink} title='Enllaços' id='linksSection' />
+            <NavItem icon={faLocationDot} title='On som' id='locationSection' />
+            <NavItem icon={faEnvelope} title='Contacte' id='contactSection' />
+          </>
+        )}
+        {isSeason && (
+          <>
+            <NavItem icon={faPeopleGroup} title='Professional' id='proArticle' />
+            <NavItem icon={faPeopleGroup} title='Bases' id='basesArticle' />
+          </>
+        )}
+      </motion.div>
+    </AnimatePresence>
   );
 };
 

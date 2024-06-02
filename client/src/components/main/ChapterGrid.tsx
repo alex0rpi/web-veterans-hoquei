@@ -1,12 +1,12 @@
 import { ChapterCard, Spinner, TitleSection } from '../UI-components';
-import useChapters from '../../hooks/useChapters';
+import { seasonInfos } from '../../data/SeasonInfos';
 
-type TSeasonsProps = {
-  scrollRef?: React.RefObject<HTMLDivElement>;
+type componentProps = {
+  id: string;
 };
 
-const ChapterGrid = ({ scrollRef }: TSeasonsProps) => {
-  const { chapters } = useChapters();
+const ChapterGrid = ({ id }: componentProps) => {
+  const chapters = seasonInfos;
 
   let chapterContent = [
     <ChapterCard
@@ -34,14 +34,13 @@ const ChapterGrid = ({ scrollRef }: TSeasonsProps) => {
   }
 
   return (
-    <section ref={scrollRef}>
+    <section id={id}>
       <TitleSection sectionTitle='Temporades recents' />
-      <p className='text-primary font-semibold text-lg mb-2'>
-        "Descobreix les temporades més recents de la nostra història. Cada
-        temporada inclou una recapitulació redactada per Carles Gallèn, que
-        destaca tant la trajectòria de la secció professional com la dels equips
-        de base. Estem treballant en la incorporació de més imatges i vídeos per
-        enriquir el contingut."
+      <p className='text-web'>
+        "Descobreix les temporades més recents de la nostra història. Cada temporada inclou una
+        recapitulació redactada per Carles Gallèn, que destaca tant la trajectòria de la secció
+        professional com la dels equips de base. Estem treballant en la incorporació de més imatges
+        i vídeos per enriquir el contingut."
       </p>
 
       <div className='grid gap-3 md:grid-cols-2 lg:grid-cols-3'>

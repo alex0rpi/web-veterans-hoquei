@@ -1,93 +1,82 @@
-import { useContext, useEffect, useState } from 'react';
-import { UserContext } from '../context/UserContext';
-import { easeInOut, motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { lazy, Suspense } from 'react';
+
 import {
-  ImageSlider,
+  HeaderTitle,
   Association,
   BoardMembers,
-  BookFeatures,
   BookTeasers,
-  BookTestimonials,
-  ChapterGrid,
-  HeaderTitle,
-  RelatedLinksSection,
-  Location,
-  ContactForm,
+  // BookFeatures,
+  // BookTestimonials,
+  // ChapterGrid,
+  // RelatedLinksSection,
+  // Location,
+  // ContactForm,
+  PresidentGreet,
 } from '../components/main';
-import LogoutService from '../services/User/LogoutService';
-import { toast } from 'react-toastify';
-import { UserNameGreet, ScrollTopBtn } from '../components/UI-components';
+import { fotos } from '../assets/carouselPictures';
+import { ScrollTopBtn, ImageSlider, Spinner } from '../components/UI-components';
+import { useMediaQuery } from 'react-responsive';
 
-type TMainPageProps = {
-  homeRef?: React.RefObject<HTMLDivElement>;
-  associationRef?: React.RefObject<HTMLDivElement>;
-  boardRef?: React.RefObject<HTMLDivElement>;
-  bookRef?: React.RefObject<HTMLDivElement>;
-  seasonsRef?: React.RefObject<HTMLDivElement>;
-  relatedLinksRef?: React.RefObject<HTMLDivElement>;
-  locationRef?: React.RefObject<HTMLDivElement>;
-  contactRef?: React.RefObject<HTMLDivElement>;
-  scrollUp?: () => void;
-};
+const HomePage = () => {
+  const BookFeatures = lazy(() =>
+    import('../components/main').then((module) => ({ default: module.BookFeatures }))
+  );
+  const ChapterGrid = lazy(() =>
+    import('../components/main').then((module) => ({ default: module.ChapterGrid }))
+  );
+  const RelatedLinksSection = lazy(() =>
+    import('../components/main').then((module) => ({ default: module.RelatedLinksSection }))
+  );
+  const Location = lazy(() =>
+    import('../components/main').then((module) => ({ default: module.Location }))
+  );
+  const ContactForm = lazy(() =>
+    import('../components/main').then((module) => ({ default: module.ContactForm }))
+  );
 
-const HomePage = ({
-  homeRef,
-  associationRef,
-  boardRef,
-  bookRef,
-  seasonsRef,
-  relatedLinksRef,
-  locationRef,
-  contactRef,
-}: TMainPageProps) => {
-  const { user, setUser } = useContext(UserContext);
+  const fallBackSpinner = (
+    <div className='flex items-center justify-center'>
+      <Spinner />
+    </div>
+  );
+
+  const isMdScreenOrLarger = useMediaQuery({ minWidth: 768 });
+
   const [backToTopBtn, setBackToTopBtn] = useState(false);
-
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
-        setBackToTopBtn(true);
-      } else {
-        setBackToTopBtn(false);
-      }
-    });
-  }, []);
-
-  const onLogoutHandler = async () => {
-    const isSuccess = await LogoutService();
-    if (isSuccess) {
-      setUser({ ...user, id: '', name: '', isAuthenticated: false });
-      toast.info('Usuari desconnectat.');
-    }
-  };
 
   const scrollUp = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        !isMdScreenOrLarger && setBackToTopBtn(true);
+      } else {
+        setBackToTopBtn(false);
+      }
+    });
+  }, [isMdScreenOrLarger]);
+
+  // prettier-ignore
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ type: easeInOut, duration: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      {user.isAuthenticated && (
-        <UserNameGreet name={user.name} logOutHandler={onLogoutHandler} />
-      )}
-      <HeaderTitle scrollRef={homeRef} />
-      <ImageSlider />
-      <Association scrollRef={associationRef} />
-      <BoardMembers scrollRef={boardRef} />
-      <BookFeatures scrollRef={bookRef} />
-      <BookTeasers />
-      <BookTestimonials />
-      <ChapterGrid scrollRef={seasonsRef} />
-      <RelatedLinksSection scrollRef={relatedLinksRef} />
-      <Location scrollRef={locationRef} />
-      <ContactForm scrollRef={contactRef} />
+    <>
+      <div id="association"><HeaderTitle /></div>
+      <ImageSlider pictures={fotos} />
+      <Association />
+      <PresidentGreet id="presidentGreeting" />
+      <BoardMembers id="boardMembers" />
+      <BookTeasers id="bookSection" />
+      <Suspense fallback={fallBackSpinner}>
+        <BookFeatures />
+        <ChapterGrid id="seasonsSection" />
+        <RelatedLinksSection id="linksSection" />
+        <Location id="locationSection" />
+        <ContactForm id="contactSection" />
+      </Suspense>
       {backToTopBtn && <ScrollTopBtn onClick={scrollUp} />}
-    </motion.div>
+    </>
   );
 };
 

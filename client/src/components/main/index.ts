@@ -7,17 +7,17 @@ import ChapterGrid from './ChapterGrid';
 import ContactForm from './ContactForm';
 import HeaderTitle from './HeaderTitle';
 import PageTitle from '../UI-components/PageTitle';
-import ImageSlider from './ImageSlider';
+import ImageSlider from '../UI-components/ImageSlider';
 import Location from './Location';
 import RelatedLinksSection from './RelatedLinksSection';
-import BoardGrid from './BoardGrid';
-import BoardItem from '../UI-components/BoardStackItem';
+import BoardList from './BoardList';
+import PresidentGreet from './PresidentGreet';
 
 export {
   Association,
+  PresidentGreet,
   BoardMembers,
-  BoardGrid,
-  BoardItem,
+  BoardList,
   BookFeatures,
   BookTeasers,
   BookTestimonials,

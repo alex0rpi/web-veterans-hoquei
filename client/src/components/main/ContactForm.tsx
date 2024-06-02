@@ -1,44 +1,36 @@
-import {
-  Button,
-  FormInput,
-  TextAreaInput,
-  TitleSection,
-} from '../UI-components';
+import { Button, FormInput, TextAreaInput, TitleSection } from '../UI-components';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useForm } from '@formspree/react';
+import { useState } from 'react';
 
-type TContactFormProps = {
-  scrollRef?: React.RefObject<HTMLDivElement>;
+type componentProps = {
+  id: string;
 };
 
-const ContactForm = ({ scrollRef }: TContactFormProps) => {
-  const [state, handleSubmit, resetForm] = useForm(
-    import.meta.env.VITE_FORMSPREE_KEY
-  );
+const ContactForm = ({ id }: componentProps) => {
+  const [state, handleSubmit] = useForm(import.meta.env.VITE_FORMSPREE_KEY);
+  const [message, setMessage] = useState('');
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setMessage(event.target.value);
+  };
   if (state.succeeded) {
     toast.success('Missatge enviat correctament. Gràcies per contactar-nos!');
-    resetForm();
   }
 
   return (
-    <section ref={scrollRef}>
+    <section id={id}>
       <TitleSection sectionTitle='Contacte' />
-      <div className='mt-4 rounded-xl bg-slate-300 p-4'>
-        <p className=''>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati et
-          accusamus rem est ad tempora quibusdam doloremque commodi eligendi
-          ullam?
-        </p>
-        <form onSubmit={handleSubmit} className='my-2'>
+      <p className='text'>
+        Si vols estar al corrent de les nostres activitats o tens alguna consulta, no dubtis a
+        contactar-nos.
+      </p>
+      <div className='mt-2 rounded-lg bg-slate-300 p-3'>
+        <form onSubmit={handleSubmit} className=''>
           <div className='flex flex-row justify-start gap-2 w-auto'>
             <div className='w-1/2'>
-              <FormInput
-                label='El teu nom'
-                name='name'
-                type='text'
-                placeholder='Nom'
-              />
+              <FormInput label='El teu nom' name='name' type='text' placeholder='Nom' />
             </div>
             <div className='w-1/2'>
               <FormInput
@@ -54,8 +46,10 @@ const ContactForm = ({ scrollRef }: TContactFormProps) => {
             name='message'
             rows={4}
             placeholder='Escriu el teu missatge...'
+            onChange={handleInputChange}
           />
-          <Button type='submit' title='Enviar' disabled={state.submitting} />
+          {/* <Button type='submit' title='Enviar' disabled={state.submitting} /> */}
+          <Button type='submit' title='Enviar' disabled={state.submitting || !message.trim()} />
         </form>
       </div>
     </section>
@@ -63,19 +57,3 @@ const ContactForm = ({ scrollRef }: TContactFormProps) => {
 };
 
 export default ContactForm;
-
-// const onContactSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
-//   e.preventDefault();
-//     const email: contactEmailRef.current?.value
-//     const message: contactMessageRef.current?.value
-//   const success = await contactEmailService(email, message)
-//   if (success) {
-//     toast.info(`Missagte enviat`);
-//   }
-// };
-
-// import contactEmailService from '../../services/ContactEmailService';
-// import { toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
-
-// const onContactSubmitHandler = () => {};

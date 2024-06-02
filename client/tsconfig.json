@@ -3,11 +3,14 @@
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
+    "module": "ES2020",
     "skipLibCheck": true,
+    "baseUrl": "./src",
+    "typeRoots": ["node_modules/@types", "src/types"],
+    "allowSyntheticDefaultImports": true,
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -21,10 +24,14 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts",
     "src",
     "src/assets/carouselPictures",
     "src/assets/testimonis",
-    "src/assets/bookImages"
+    "src/assets/bookImages",
+    "vite-env.d.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

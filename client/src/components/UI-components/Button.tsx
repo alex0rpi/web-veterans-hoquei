@@ -7,27 +7,24 @@ type TButtonProps = {
   onClick?: () => void;
   icon?: React.ReactNode;
   disabled?: boolean;
-  inverted?: boolean;
 };
 
-const Button = ({
-  type = 'button',
-  title,
-  to,
-  onClick,
-  icon,
-  disabled,
-  inverted,
-}: TButtonProps) => {
+const Button = ({ type = 'button', title, to, onClick, icon, disabled }: TButtonProps) => {
   return (
     <button
       type={type}
-      className={`btn ${!inverted ? 'border-primary text-primary  hover:bg-primary hover:text-white' : 'border-white text-white  hover:bg-white hover:text-primary'} md:border-2 transition duration-500 ease-out ${disabled ? 'opacity-50 pointer-events-none' : ''}`}
+      className={`flex items-center justify-center border-2 border-primary bg-transparent hover:bg-primary hover:text-white transition duration-500 ease-out ${disabled ? 'opacity-50 pointer-events-none' : ''} btn`}
       onClick={onClick}
       disabled={disabled}
     >
       {icon && <span className='mr-2'>{icon}</span>}
-      {to ? <Link to={to}>{title}</Link> : title}
+      {to ? (
+        <Link to={to} className='flex items-center'>
+          {title}
+        </Link>
+      ) : (
+        title
+      )}
     </button>
   );
 };
