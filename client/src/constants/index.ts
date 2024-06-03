@@ -1,3 +1,4 @@
+import { urls } from './urls';
 import { paths } from './paths';
 
-export { paths };
+export { paths, urls };

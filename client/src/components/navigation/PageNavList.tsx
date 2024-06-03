@@ -1,14 +1,21 @@
 import { useLocation } from 'react-router-dom';
 import { paths } from '../../constants';
 import { NavItem } from './index';
-import { faHouse, faPersonSkating, faCalendar } from '@fortawesome/free-solid-svg-icons';
+import { faHouse, faPersonSkating, faCalendar, faUser } from '@fortawesome/free-solid-svg-icons';
 
 const PageNavList = () => {
   const location = useLocation();
   const isHome = location.pathname === paths.home;
   const isBook = location.pathname === paths.book;
-  // const isPlayers = location.pathname === paths.players;
   const isSeason = location.pathname.startsWith(paths.season.split(':')[0]);
+  const authPaths = [
+    paths.login,
+    paths.register,
+    paths.verify,
+    paths.requestPasswordReset,
+    paths.updatePassword,
+  ];
+  const isAuth = authPaths.includes(location.pathname);
 
   return (
     <>
@@ -26,6 +33,7 @@ const PageNavList = () => {
         to={paths.genericSeason}
         highlight={isSeason}
       />
+      <NavItem icon={faUser} title='Accés' to={paths.login} highlight={isAuth} />
 
       {/*       <NavItem
         icon={faPersonSkating}

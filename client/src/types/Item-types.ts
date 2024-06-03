@@ -42,3 +42,9 @@ export type TImageWithMiniature = {
   src: string;
   lowResSrc?: string;
 };
+
+export type TUser = {
+  id: string;
+  name: string;
+  isAuthenticated: boolean;
+};
