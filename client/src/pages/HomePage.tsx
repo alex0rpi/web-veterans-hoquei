@@ -15,7 +15,12 @@ import {
   PresidentGreet,
 } from '../components/main';
 import { fotos } from '../assets/carouselPictures';
-import { ScrollTopBtn, ImageSlider, Spinner } from '../components/UI-components';
+import {
+  ScrollTopBtn,
+  ImageSlider,
+  Spinner,
+  //  LabelUnderTesting
+} from '../components/UI-components';
 import { useMediaQuery } from 'react-responsive';
 
 const HomePage = () => {
@@ -63,6 +68,7 @@ const HomePage = () => {
   return (
     <>
       <div id="association"><HeaderTitle /></div>
+      {/* {isMdScreenOrLarger && <div className="fixed top-0 right-0 z-50"><LabelUnderTesting/></div>} */}
       <ImageSlider pictures={fotos} />
       <Association />
       <PresidentGreet id="presidentGreeting" />

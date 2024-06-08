@@ -10,6 +10,7 @@ import {
   FontSizeController,
   ImageSlider,
   ScrollTopBtn,
+  // LabelUnderTesting
 } from '../components/UI-components';
 // import * as seasonInfos from '../data/seasonInfos.json';
 import { seasonInfos as chapters } from '../data/SeasonInfos';
@@ -33,7 +34,7 @@ const SeasonPage = () => {
         setBackToTopBtn(false);
       }
     });
-  }, []);
+  });
 
   const availableTextSizes = ['xs', 'sm', 'base', 'lg', 'xl', '2xl'];
   const [textSize, setTextSize] = useState('lg');
@@ -56,8 +57,8 @@ const SeasonPage = () => {
     }
   };
 
-  const navigate = useNavigate();
   const { currentSeason } = useParams();
+  const navigate = useNavigate();
 
   const seasonProPictures = seasonFotos[currentSeason!].pro;
   const seasonBasesPictures = seasonFotos[currentSeason!].bases;
@@ -100,27 +101,22 @@ const SeasonPage = () => {
   return (
     <div id='proArticle'>
       <HeaderTitle />
-      <div className='flex justify-center items-center mt-2'>
-        {chapters?.map((chapter, index) => (
-          <BadgeClickable
-            key={chapter.season}
-            season={chapter.season}
-            index={index}
-            currentElement={currentSeason!}
-            clickHandler={() => onBadgeClickHandler(chapter.season)}
-          />
-        ))}
-      </div>
-      <AnimatePresence mode='wait'>
-        {displayChapter ? (
-          <motion.section
-            key={currentSeason}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-          >
-            <div className='flex items-center justify-center mt-2'>
+
+      {displayChapter ? (
+        <>
+          <div className='flex items-center flex-col justify-center mt-2 sticky top-0 z-10 bg-gray-200 bg-opacity-80 py-1 rounded-xl'>
+            <div className='flex justify-center items-center mt-2 mb-1'>
+              {chapters?.map((chapter, index) => (
+                <BadgeClickable
+                  key={chapter.season}
+                  season={chapter.season}
+                  index={index}
+                  currentElement={currentSeason!}
+                  clickHandler={() => onBadgeClickHandler(chapter.season)}
+                />
+              ))}
+            </div>
+            <div className='flex flex-row'>
               {!isFirstSeason && (
                 <div className='group flex items-center justify-center '>
                   <FontAwesomeIcon
@@ -131,7 +127,10 @@ const SeasonPage = () => {
                   />
                 </div>
               )}
-              <h1 className='max-w-xl px-2 text-center text-2xl md:text-4xl lg:text-5xl font-light text-primary'>
+              <h1
+                id='seasonTitle'
+                className='max-w-xl px-2 text-center text-2xl md:text-4xl lg:text-5xl font-light text-primary'
+              >
                 <span
                   style={{
                     userSelect: 'none',
@@ -153,50 +152,59 @@ const SeasonPage = () => {
                 </div>
               )}
             </div>
-
-            {/* Season text content here below */}
-            <div className='mt-2'>
-              <article>
-                <div className='flex flex-row justify-between items-center'>
-                  <h1 className='text-left text-lg md:text-2xl font-semibold md:font-bold text-primary'>
-                    {displayChapter?.titlePro}
-                  </h1>
-                  {/* Change font Size controls */}
-                  <FontSizeController onFontSizeChange={changeFontSizeHandler} />
-                </div>
-                <div className='mb-2 border-b border-gray-400 pb-2'></div>
-                <ImageSlider pictures={seasonProPictures} />
-                <div className='mt-6'>
-                  {displayChapter?.contentPro.split('\n').map((line, i) => (
-                    <p key={i} className={`text-${textSize} mt-2 text-primary leading-7`}>
-                      {line}
-                    </p>
-                  ))}
-                </div>
-              </article>
-              <article id='basesArticle'>
-                <h1 className='mt-6 text-left text-2xl font-semibold text-primary'>
-                  {displayChapter?.titleBases}
-                </h1>
-                <div className='mb-2 border-b border-gray-400 pb-2'></div>
-                {seasonBasesPictures && <ImageSlider pictures={seasonBasesPictures} />}
-                <div className='mt-6'>
-                  {displayChapter?.contentBases.split('\n').map((line, i) => (
-                    <p key={i} className={`text-${textSize} mt-2 text-primary leading-7`}>
-                      {line}
-                    </p>
-                  ))}
-                </div>
-              </article>
-            </div>
-          </motion.section>
-        ) : (
-          <div className='flex items-center justify-center'>
-            <FontAwesomeIcon icon={faCat} size='2xl' />
-            <p className='text-2xl mt-4 mx-2'>De moment no hi ha temporades per mostrar.</p>
           </div>
-        )}
-      </AnimatePresence>
+          <AnimatePresence mode='wait'>
+            <motion.section
+              key={currentSeason}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+            >
+              {/* Season text content here below */}
+              <div className='mt-2'>
+                <article>
+                  <div className='flex flex-row justify-between items-center'>
+                    <h1 className='text-left text-lg md:text-2xl font-semibold md:font-bold text-primary'>
+                      {displayChapter?.titlePro}
+                    </h1>
+                    {/* Change font Size controls */}
+                    <FontSizeController onFontSizeChange={changeFontSizeHandler} />
+                  </div>
+                  <div className='mb-2 border-b border-gray-400 pb-2'></div>
+                  <ImageSlider pictures={seasonProPictures} />
+                  <div className='mt-6'>
+                    {displayChapter?.contentPro.split('\n').map((line, i) => (
+                      <p key={i} className={`text-${textSize} mt-2 text-primary leading-7`}>
+                        {line}
+                      </p>
+                    ))}
+                  </div>
+                </article>
+                <article id='basesArticle'>
+                  <h1 className='mt-6 text-left text-2xl font-semibold text-primary'>
+                    {displayChapter?.titleBases}
+                  </h1>
+                  <div className='mb-2 border-b border-gray-400 pb-2'></div>
+                  {seasonBasesPictures && <ImageSlider pictures={seasonBasesPictures} />}
+                  <div className='mt-6'>
+                    {displayChapter?.contentBases.split('\n').map((line, i) => (
+                      <p key={i} className={`text-${textSize} mt-2 text-primary leading-7`}>
+                        {line}
+                      </p>
+                    ))}
+                  </div>
+                </article>
+              </div>
+            </motion.section>
+          </AnimatePresence>
+        </>
+      ) : (
+        <div className='flex items-center justify-center'>
+          <FontAwesomeIcon icon={faCat} size='2xl' />
+          <p className='text-2xl mt-4 mx-2'>De moment no hi ha temporades per mostrar.</p>
+        </div>
+      )}
       {backToTopBtn && <ScrollTopBtn onClick={scrollUp} />}
     </div>
   );

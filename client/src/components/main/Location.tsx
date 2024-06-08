@@ -9,7 +9,7 @@ const Location = ({ id }: componentProps) => {
     <section id={id}>
       <TitleSection sectionTitle='On ens trobem' />
       <div id='location'>
-        <p className='mb-4'>
+        <p className='text-web'>
           La junta directiva de l’Associació manté reunions periòdiques a les oficines del FC
           Barcelona, on es tracten temes oficials.
         </p>

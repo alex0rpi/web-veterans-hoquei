@@ -22,7 +22,7 @@ const ContactForm = ({ id }: componentProps) => {
   return (
     <section id={id}>
       <TitleSection sectionTitle='Contacte' />
-      <p className='text'>
+      <p className='text-web'>
         Si vols estar al corrent de les nostres activitats o tens alguna consulta, no dubtis a
         contactar-nos.
       </p>

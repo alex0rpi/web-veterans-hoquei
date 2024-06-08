@@ -1,6 +1,7 @@
 import Spinner from './loading-spinner/Spinner';
 import Backdrop from './Backdrop';
 import Button from './Button';
+import ButtonDownload from './ButtonDownload';
 import CardPerson from './CardPerson';
 import CardImageText from './CardImageText';
 import ChapterCard from './ChapterCard';
@@ -20,12 +21,14 @@ import UserNameGreet from './UserNameGreet';
 import BadgeClickable from './BadgeClickable';
 import ImageSlider from './ImageSlider';
 import FontSizeController from './FontSizeController';
+import LabelUnderTesting from './LabelUnderTesting';
 
 export {
   ImageSlider,
   Spinner,
   Backdrop,
   Button,
+  ButtonDownload,
   CardPerson,
   CardImageText,
   ChapterCard,
@@ -44,4 +47,5 @@ export {
   TitleSection,
   UserNameGreet,
   FontSizeController,
+  LabelUnderTesting,
 };

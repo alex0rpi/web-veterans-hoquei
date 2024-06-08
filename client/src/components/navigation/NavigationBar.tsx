@@ -20,7 +20,8 @@ const NavigationBar = () => {
   const isBookPage = location.pathname === paths.book;
   const isHomePage = location.pathname === paths.home;
 
-  const logoHeight = isBookPage ? 'h-10 md:h-24' : 'h-14 md:h-24';
+  // const logoHeight = isBookPage ? 'h-10 md:h-24' : 'h-14 md:h-24';
+  const logoHeight = isBookPage ? 'h-14 md:h-24' : 'h-14 md:h-24';
   return (
     <nav className={isBookPage ? 'navBookLayout' : 'navLayout'}>
       <div className='flex items-center justify-between w-full'>
@@ -50,6 +51,9 @@ const NavigationBar = () => {
 
         {/* Espacio vacío */}
         <div className='flex-grow md:hidden'></div>
+        {/* <div className='flex-grow md:hidden flex items-center justify-center'>
+          <p className='text-yellow-400 text-sm'>🚧Web en proves🏗️</p>
+        </div> */}
 
         {/* Botón de hamburguesa */}
         {!show && (

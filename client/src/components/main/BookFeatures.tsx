@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { paths } from '../../constants';
-import { Button, StickIcon } from '../UI-components';
+import { Button, ButtonDownload, StickIcon } from '../UI-components';
 import { faEye, faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
 
 const BookFeatures = () => {
@@ -10,7 +10,9 @@ const BookFeatures = () => {
         <div className='mx-2 text-left'>
           {/* <img src={stickIcon} width='30' className='ms-1 inline-block' /> */}
           <StickIcon />
-          <p className='ms-1 inline text-lg font-semibold'>Des dels inicis fins a l'actualitat</p>
+          <p className='ms-1 inline text-lg font-bold text-primary'>
+            Des dels inicis fins a l'actualitat
+          </p>
           <p className='text-web-sm'>
             La història de l’hoquei patins del FC Barcelona és rica i plena de moments inoblidables.
             Des de la fundació de la secció, els jugadors, entrenadors i aficionats han viscut junts
@@ -19,7 +21,7 @@ const BookFeatures = () => {
         </div>
         <div className='mx-2 text-left'>
           <StickIcon />
-          <p className='ms-1 inline text-lg font-semibold'>
+          <p className='ms-1 inline text-lg font-bold text-primary'>
             Amb imatges històriques i documents inèdits
           </p>
           <p className='text-web-sm'>
@@ -30,7 +32,9 @@ const BookFeatures = () => {
         </div>
         <div className='mx-2 text-left'>
           <StickIcon />
-          <p className='ms-1 inline text-lg font-semibold'>Amb totes les dades per temporades</p>
+          <p className='ms-1 inline text-lg font-bold text-primary'>
+            Amb totes les dades per temporades
+          </p>
           <p className='text-web-sm'>
             Cada pàgina està carregada d’informació detallada sobre les diferents temporades,
             incloent estadístiques, resultats i anècdotes que donen vida a les xifres.
@@ -49,11 +53,9 @@ const BookFeatures = () => {
           to={paths.book}
           icon={<FontAwesomeIcon icon={faEye} />}
         />
-        <Button
-          title="Descarrega'l HD"
-          type='button'
+        <ButtonDownload
+          title="Descarrega'l"
           icon={<FontAwesomeIcon icon={faFloppyDisk} size='lg' />}
-          // to={paths.book}
         />
       </div>
     </section>

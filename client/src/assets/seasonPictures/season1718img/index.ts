@@ -31,9 +31,9 @@ import smFoto15 from './small_Supercopa_2017-18.webp';
 
 export const fotos_2017_2018 = {
   pro: [
-    { name: 'foto01', src: foto01, lowResSrc: smFoto01 },
     { name: 'foto02', src: foto02, lowResSrc: smFoto02 },
     { name: 'foto03', src: foto03, lowResSrc: smFoto03 },
+    { name: 'foto01', src: foto01, lowResSrc: smFoto01 },
     { name: 'foto04', src: foto04, lowResSrc: smFoto04 },
     { name: 'foto05', src: foto05, lowResSrc: smFoto05 },
     { name: 'foto08', src: foto08, lowResSrc: smFoto08 },

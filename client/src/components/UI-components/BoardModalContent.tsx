@@ -83,7 +83,7 @@ const BoardModalContent = ({ ...props }: TModalProps) => {
                   props.trajectory.split('\n').map((etapa, index) => (
                     <p
                       key={index}
-                      className={`inline-block text-lg ${etapa.startsWith('-') && 'indent-3'} ${etapa.includes('*') && 'indent-6'}`}
+                      className={`inline-block text-lg ${etapa.startsWith('-') && 'indent-3'} ${etapa.includes('*') && 'indent-6'} ${etapa.startsWith('>') && 'font-semibold'}`}
                     >
                       {etapa}
                     </p>

@@ -38,11 +38,13 @@ body {
 }
 
 .pageLayout {
-  @apply md:basis-[80%] py-3 md:py-4 px-3 md:px-4 overflow-y-auto bg-gray-200 bg-opacity-[90%];
+  @apply md:basis-[80%] py-3 md:py-4 px-3 md:px-4 bg-gray-200 bg-opacity-[90%];
+  /* @apply md:basis-[80%] py-3 md:py-4 px-3 md:px-4 overflow-y-auto bg-gray-200 bg-opacity-[90%]; */
+  /* removed the oveflow class to allow sticky title on seasonPage. */
 }
 
 .bookPageLayout {
-  @apply md:basis-[90%] py-1 md:py-4 px-1 md:px-4 overflow-y-auto bg-gray-200 opacity-100;
+  @apply md:basis-[90%] py-1 md:py-2 px-1 md:px-2 h-screen overflow-y-auto bg-gray-200 opacity-100;
 }
 
 /* Components */
