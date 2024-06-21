@@ -16,7 +16,7 @@ export const MainLayout = (props: PropsWithChildren) => {
   }
 
   return (
-    <div className={`${gridClass} md:bg-hero-pattern md:bg-cover transition-all duration-200`}>
+    <div className={`${gridClass} md:bg-hero-pattern md:bg-cover transition-all duration-250`}>
       <div className={`main-column-layout`}>
         <ToastContainer
           position='bottom-right'

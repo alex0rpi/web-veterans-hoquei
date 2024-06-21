@@ -30,11 +30,11 @@ body {
 
 /* Navigation fit inside main center column */
 .navLayout {
-  @apply md:sticky top-0 md:basis-[20%] md:h-screen bg-primary opacity-[88%];
+  @apply sticky z-10 top-0 md:basis-[20%] md:h-screen bg-primary opacity-[88%];
 }
 
 .navBookLayout {
-  @apply md:sticky top-0 md:basis-[10%] md:h-screen bg-primary opacity-[88%];
+  @apply sticky z-10 top-0 md:basis-[10%] md:h-screen bg-primary opacity-[88%];
 }
 
 .pageLayout {

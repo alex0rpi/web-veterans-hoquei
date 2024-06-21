@@ -104,7 +104,9 @@ const SeasonPage = () => {
 
       {displayChapter ? (
         <>
-          <div className='flex items-center flex-col justify-center mt-2 sticky top-0 z-10 bg-gray-200 bg-opacity-80 py-1 rounded-xl'>
+          <div
+            className={`flex items-center flex-col justify-center mt-2 sticky ${isMdScreenOrLarger ? 'top-0' : 'top-14'} z-10 bg-gray-200 bg-opacity-85 pt-1 pb-2 rounded-xl`}
+          >
             <div className='flex justify-center items-center mt-2 mb-1'>
               {chapters?.map((chapter, index) => (
                 <BadgeClickable

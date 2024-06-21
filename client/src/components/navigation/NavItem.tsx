@@ -37,6 +37,8 @@ const NavItem = ({ title, to = '/', icon, id, onItemClick, highlight = false }: 
     }
   };
 
+  const noIcon = isBookPage && isMdScreenOrLarger;
+
   return (
     <Link
       to={id ? '#' : to}
@@ -53,7 +55,7 @@ const NavItem = ({ title, to = '/', icon, id, onItemClick, highlight = false }: 
     >
       <div className='flex flex-row items-center'>
         <p className={`${navFontSize}`}>{title}</p>
-        {icon && !isBookPage && (
+        {icon && !noIcon && (
           <FontAwesomeIcon icon={icon} className='ms-2' size={`${isBookPage ? 'sm' : '1x'}`} />
         )}
         <img
